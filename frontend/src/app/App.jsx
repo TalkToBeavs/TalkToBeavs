@@ -63,6 +63,8 @@ function App() {
               onClick={async (e) => {
                 e.preventDefault();
                 setIsLoading(true);
+                setError("");
+                setResponse("");
                 try {
                   const response = await axios.post(
                     "http://localhost:8080/api/register",
