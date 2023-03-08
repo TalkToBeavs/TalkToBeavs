@@ -2,8 +2,9 @@ import express from "express";
 import cors from "cors";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
-
-import register from "./routes/register.js";
+import register from "./routes/auth/register.js";
+import { Server, Socket } from "socket.io";
+import newConnection from "./sockets/handlers/new_connection.js";
 
 dotenv.config();
 
@@ -21,7 +22,6 @@ app.use("/api/register", register);
 app.get("/", (req, res) => {
   res.send("Hello TalkToBeavs!");
 });
-
 mongoose
   .connect(process.env.MONGODB_URI, {
     useNewUrlParser: true,
@@ -34,6 +34,20 @@ mongoose
     console.log(err);
   });
 
-app.listen(PORT, () => {
-  console.log(`[Backend ⚡️] Server Running on port ${PORT}`);
+const server = app.listen(PORT, () => {
+  console.log(`[Backend ⚡️]: Server is running on port ${PORT}`);
+});
+
+const io = new Server(server, {
+  cors: {
+    origin: "*",
+  },
+});
+
+
+
+io.on("connection", (socket) => {
+  newConnection(socket, io);
+
+
 });
