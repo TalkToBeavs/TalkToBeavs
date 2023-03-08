@@ -1,6 +1,6 @@
 import { Router } from "express";
 import joi from "joi";
-import User from "../models/User.js";
+import User from "../../models/User.js";
 const router = Router();
 
 router.post("/", async (req, res) => {

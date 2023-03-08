@@ -1,7 +1,8 @@
 # Backend Ignores
 backend/node_modules
 backend/.env
-
+backend/package-lock.json
 
 # Frontend Ignores
 frontend/node_modules
+frontend/package-lock.json
