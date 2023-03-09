@@ -6,3 +6,5 @@ backend/package-lock.json
 # Frontend Ignores
 frontend/node_modules
 frontend/package-lock.json
+frontend/.env
+frontend/.DS_Store
