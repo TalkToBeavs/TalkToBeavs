@@ -3,7 +3,17 @@ import cors from "cors";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
 
-import register from "./routes/register.js";
+// Auth
+import register from "./routes/auth/register.js";
+import login from "./routes/auth/login.js";
+
+// Social
+import follow_user from "./routes/social/follow_user.js";
+import create_post from "./routes/feed/create_post.js";
+
+// Sockets
+import { Server, Socket } from "socket.io";
+import newConnection from "./sockets/handlers/new_connection.js";
 
 dotenv.config();
 
@@ -15,13 +25,15 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Routes
-app.use("/api/register", register);
+app.use("/api/auth/register", register);
+app.use("/api/auth/login", login);
+app.use("/api/social/follow_user", follow_user);
+app.use("/api/feed/create_post", create_post);
 
 // Default Route
 app.get("/", (req, res) => {
   res.send("Hello TalkToBeavs!");
 });
-
 mongoose
   .connect(process.env.MONGODB_URI, {
     useNewUrlParser: true,
@@ -34,6 +46,16 @@ mongoose
     console.log(err);
   });
 
-app.listen(PORT, () => {
-  console.log(`[Backend ⚡️] Server Running on port ${PORT}`);
+const server = app.listen(PORT, () => {
+  console.log(`[Backend ⚡️]: Server is running on port ${PORT}`);
+});
+
+const io = new Server(server, {
+  cors: {
+    origin: "*",
+  },
+});
+
+io.on("connection", (socket) => {
+  newConnection(socket, io);
 });

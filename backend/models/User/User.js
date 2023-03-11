@@ -1,10 +1,10 @@
 import mongoose from "mongoose";
+import Post from "../Feed/Post.js";
 
 const userSchema = new mongoose.Schema({
   email: {
     type: String,
     required: true,
-    unique: true,
   },
   password: {
     type: String,
@@ -13,6 +13,20 @@ const userSchema = new mongoose.Schema({
   name: {
     type: String,
     required: true,
+  },
+  followers: {
+    type: [mongoose.Schema.Types.ObjectId],
+    ref: "User",
+    default: [],
+  },
+  following: {
+    type: [mongoose.Schema.Types.ObjectId],
+    ref: "User",
+    default: [],
+  },
+  posts: {
+    type: [Post.Schema],
+    default: [],
   },
 });
 
