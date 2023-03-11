@@ -1,10 +1,12 @@
 # Backend Ignores
 backend/node_modules
 backend/.env
-backend/package-lock.json
+
+
 
 # Frontend Ignores
 frontend/node_modules
-frontend/.env
+frontend/.vs
 frontend/.DS_Store
-frontend/package-lock.json
+frontend/src/.DS_Store
+

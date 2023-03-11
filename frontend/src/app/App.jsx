@@ -1,103 +1,60 @@
-import { useState } from "react";
-import { Box, Button, Flex, Heading, Input, Text } from "@chakra-ui/react";
-import axios from "axios";
+import React from "react";
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+  useNavigate,
+  Outlet,
+} from "react-router-dom";
+import io from "socket.io-client";
+import { Provider } from "react-redux";
 
-function App() {
-  const [isLoading, setIsLoading] = useState(false);
-  const [name, setName] = useState("");
-  const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
-  const [email, setEmail] = useState("");
-  const [response, setResponse] = useState("");
+import SidebarWithHeader from "../components/layout/Skeleton";
+import { AuthContext } from "../components/AuthProvider";
+import ProtectedRoute from "../components/ProtectedRoute";
+
+import store from "../redux/store/store";
+
+import FourOhFour from "../pages/error/FourOhFour";
+
+import VideoLobby from "../pages/navigation/VideoLobby";
+import TextLobby from "../pages/navigation/TextLobby";
+import Home from "../pages/navigation/Home";
+import Landing from "../pages/navigation/Landing";
+
+import Signup from "../pages/auth/Signup";
+import Login from "../pages/auth/Login";
+
+import VideoChat from "../pages/chat/VideoChat";
+import TextChat from "../pages/chat/TextChat";
+
+const App = () => {
+  // useEffect(() => {
+  //   getUser(email);
+  // }, []);
 
   return (
-    <Flex
-      direction="column"
-      align="center"
-      justify="center"
-      minH="100vh"
-      bg="gray.100"
-    >
-      <Box
-        p={8}
-        maxWidth="500px"
-        borderWidth={1}
-        borderRadius={8}
-        boxShadow="lg"
-      >
-        <Box textAlign="center">
-          <Heading>Sign Up</Heading>
-        </Box>
-        <Box my={4} textAlign="left">
-          <form>
-            <Input
-              variant="filled"
-              mb={3}
-              type="email"
-              placeholder="Email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
-            <Input
-              variant="filled"
-              mb={3}
-              type="text"
-              placeholder="Name"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-            />
-            <Input
-              variant="filled"
-              mb={3}
-              type="password"
-              placeholder="Password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
-            <Button
-              width="full"
-              mt={4}
-              colorScheme="teal"
-              isLoading={isLoading}
-              loadingText="Submitting"
-              onClick={async (e) => {
-                e.preventDefault();
-                setIsLoading(true);
-                setError("");
-                setResponse("");
-                try {
-                  const response = await axios.post(
-                    "http://localhost:8080/api/register",
-                    {
-                      email,
-                      name,
-                      password,
-                    }
-                  );
-                  setResponse(response.data.message);
-                } catch (error) {
-                  setError(error.response.data.message);
-                }
-                setIsLoading(false);
-              }}
-            >
-              Submit
-            </Button>
-          </form>
-        </Box>
-        {error && (
-          <Text mt={4} textAlign="center" color="red.500">
-            {error}
-          </Text>
-        )}
-        {response && (
-          <Text mt={4} textAlign="center" color="green.500">
-            {response}
-          </Text>
-        )}
-      </Box>
-    </Flex>
+    <Provider store={store}>
+      {/* <SidebarWithHeader> */}
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Landing />} />
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/home" element={<Home />} />
+
+          <Route path="/video" element={<VideoLobby />} />
+          <Route path="/video/:roomId" element={<VideoChat />} />
+
+          <Route path="/text" element={<TextLobby />} />
+          <Route path="/text/:roomId" element={<TextChat />} />
+
+          <Route path="*" element={<FourOhFour />} />
+        </Routes>
+      </BrowserRouter>
+      {/* </SidebarWithHeader> */}
+    </Provider>
   );
-}
+};
 
 export default App;
