@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import Post from "./Post";
+import Post from "./Post.js";
 
 const feedSchema = new mongoose.Schema({
   posts: {

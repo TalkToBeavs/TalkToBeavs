@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import Post from "../Feed/Post.js";
 
 const userSchema = new mongoose.Schema({
   email: {
@@ -21,6 +22,10 @@ const userSchema = new mongoose.Schema({
   following: {
     type: [mongoose.Schema.Types.ObjectId],
     ref: "User",
+    default: [],
+  },
+  posts: {
+    type: [Post.Schema],
     default: [],
   },
 });

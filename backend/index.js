@@ -3,10 +3,13 @@ import cors from "cors";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
 
-// Social/Auth
+// Auth
 import register from "./routes/auth/register.js";
 import login from "./routes/auth/login.js";
+
+// Social
 import follow_user from "./routes/social/follow_user.js";
+import create_post from "./routes/feed/create_post.js";
 
 // Sockets
 import { Server, Socket } from "socket.io";
@@ -25,6 +28,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use("/api/auth/register", register);
 app.use("/api/auth/login", login);
 app.use("/api/social/follow_user", follow_user);
+app.use("/api/feed/create_post", create_post);
 
 // Default Route
 app.get("/", (req, res) => {

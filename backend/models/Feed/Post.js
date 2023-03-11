@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import User from "../User/User";
+import User from "../User/User.js";
 
 const postSchema = new mongoose.Schema(
   {
@@ -9,13 +9,18 @@ const postSchema = new mongoose.Schema(
     },
     upvotes: {
       type: Number,
-      required: true,
+      required: false,
+      default: 0,
     },
     downvotes: {
       type: Number,
+      required: false,
+      default: 0,
+    },
+    postedBy: {
+      type: mongoose.Schema.Types.ObjectId,
       required: true,
     },
-    postedBy: User,
   },
   { timestamps: true }
 );
