@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import User from "./User.js";
+import User from "../User/User.js";
 
 const roomSchema = new mongoose.Schema({
   name: {
