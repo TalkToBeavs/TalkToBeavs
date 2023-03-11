@@ -1,4 +1,4 @@
-import Room from "../../models/Room.js";
+import Room from "../../models/Chat/Room.js";
 import roomOptions from "./room_options.js";
 /*
       This is the handler for the queue options.

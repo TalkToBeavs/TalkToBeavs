@@ -1,6 +1,6 @@
 import { Router } from "express";
 const router = Router();
-import User from "../../models/User.js";
+import User from "../../models/User/User.js";
 
 router.post("/", async (req, res) => {
   const { email, currentUserEmail } = req.body;

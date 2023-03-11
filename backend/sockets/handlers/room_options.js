@@ -1,4 +1,4 @@
-import Room from "../../models/Room.js";
+import Room from "../../models/Chat/Room.js";
 /*
       This file handles the room options.
       This will be called when a user enters a room.
