@@ -3,27 +3,35 @@ import { useSelector } from 'react-redux';
 import axios from 'axios';
 
 function usePosts({ onid }) {
-  const [posts, setPosts] = useState(null);
 
-  const fetchPosts = async () => {
-    try {
-      const response = await axios.get(`http://localhost:8080/api/feed/get_posts`);
-      setPosts(response.data.posts[0].posts);
-    } catch (err) {
-      setPosts(null);
-      console.error(err.response.data.message);
-    }
-  };
+      const emailDomain = '@oregonstate.edu'
+      onid = onid + emailDomain
+      const [posts, setPosts] = useState(null)
 
-  useEffect(() => {
-    fetchPosts();
+      const fetchPosts = async () => {
+            try {
+              const response = await axios.get(
+                `http://localhost:8080/api/feed/get_posts`
+              )
+              const allPosts = response.data.posts[0].posts
+              const filteredPosts = allPosts.filter(post => post.postedBy === onid)
+              setPosts(filteredPosts)
+            } catch (err) {
+              setPosts(null)
+            }
+          }
 
-    return () => {
-      setPosts(null);
-    };
-  }, [onid]);
+      useEffect(() => {
+            fetchPosts()
 
-  return posts;
+            return () => {
+                  setPosts(null)
+
+            }
+
+      }, [onid])
+
+      return posts
 }
 
 export default usePosts;
