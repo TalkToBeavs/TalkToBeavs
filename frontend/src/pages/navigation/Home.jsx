@@ -1,66 +1,115 @@
-import React, { useContext } from "react";
+import React from 'react'
 import {
-  Button,
-  Text,
-  Heading,
-  Flex,
-  Box,
-  Image,
-  HStack,
-  ButtonGroup,
-  Input,
-} from "@chakra-ui/react";
-import { Link, useNavigate } from "react-router-dom";
+      Heading,
+      Box,
+      Flex,
+      Stack,
+      Divider,
+      HStack,
+      Text,
+      VStack,
+      Button,
+      useColorMode,
+      useColorModeValue,
+      SimpleGrid,
+      AbsoluteCenter,
+      Center,
+} from '@chakra-ui/react'
+import TalkToBeavs from '../../components/text/TalkToBeavs'
+import { slideAnimation, popInAnimation, comeFromLeftAnimation } from '../../lib/animations'
+import { motion } from 'framer-motion'
+import { useNavigate } from 'react-router-dom'
 
-import OnlineUser from "../../components/OnlineUser";
+export default function Home() {
+      const { colorMode, toggleColorMode } = useColorMode()
+      const navigate = useNavigate()
 
-import { AuthContext } from "../../components/AuthProvider";
+      return (
+            <Flex
+                  minH={'100vh'}
+                  align={"flex-start"}
+                  justify={'center'}
+                  direction={"column"}
+                  w={"full"}
+            >
+                  <Stack spacing={8} mx={'auto'} maxW={'lg'} py={12} px={6}>
+                        <Flex direction="column" align="center" justify="center" as={motion.div} animation={slideAnimation} sx={{
+                              animationDelay: '0.2s',
+                        }}>
 
-const Home = () => {
-  const [name, setName] = React.useState("");
+                              <TalkToBeavs />
+                              <Text fontSize={'xl'} fontWeight="extrabold" color={useColorModeValue('gray.800', 'white')}>
+                                    By Students, For Students.
+                              </Text>
+                        </Flex>
 
-  return (
-    <Flex
-      direction="column"
-      align="center"
-      justify="center"
-      minH="100vh"
-      bg="gray.100"
-    >
-      <HStack>
-        <OnlineUser/>
-        <Box
-          p={8}
-          maxWidth="400px"
-          borderWidth={1}
-          borderRadius={8}
-          boxShadow="lg"
-        >
-          <Heading textAlign={"center"}>Home</Heading>
-          <Text py={4} textAlign={"center"} w={"fit-content"}>
-            In TalkToBeavs, you can either text or video chat with other
-            students. You can also post to the bulletin board and see what other
-            students are posting.{" "}
-            <b>
-              <i>Enjoy!</i>
-            </b>
-          </Text>
-          <Input
-            placeholder="Enter your name"
-            onChange={(e) => setName(e.target.value)}
-          />
-          <ButtonGroup mt={4} spacing={4} w={"full"} justifyContent={"center"}>
-            <Button colorScheme="blue" variant="outline">
-              <Link to={`/video`}>Video Chat</Link>
-            </Button>
-            <Button colorScheme="blue" variant="outline">
-              <Link to="/text">Text Chat</Link>
-            </Button>
-          </ButtonGroup>
-        </Box>
-      </HStack>
-    </Flex>
-  );
-};
+                        <Box w={"full"} textAlign="center">
+                              <Heading
+                                    as={motion.div}
+                                    animation={comeFromLeftAnimation}
+                                    fontSize={'4xl'} fontWeight="extrabold" color={useColorModeValue('gray.800', 'gray.400')}>
+                                    Start Chatting!
+                              </Heading>
+                              <Divider w={'100%'} my={4} />
 
-export default Home;
+                              <SimpleGrid minChildWidth='220px' spacing='40px' w={"full"} textAlign="center">
+                                    <Flex direction="row" align="center" gap={42} >
+                                          <Box
+                                                as={motion.div}
+                                                animation={comeFromLeftAnimation}
+                                                sx={{
+                                                      animationDelay: '0.2s',
+                                                }}
+                                                shadow="xl"
+                                                bg='orange.500' height='20' width='200px' borderRadius="lg" role="group" cursor="pointer" transition={'all 0.3s ease-in-out'} _hover={{
+                                                      boxShadow: 'rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px',
+                                                      transform: 'scale(1.05)',
+                                                      padding: '1rem',
+                                                      cursor: 'pointer',
+                                                      borderRadius: '0.5rem',
+                                                      bg: 'orange.500',
+                                                      color: useColorModeValue('white', 'gray.900'),
+                                                }}>
+
+                                                <Center h='100%' w="100%" as='button' onClick={() => navigate('/video')}>
+                                                      <Text fontSize={'xl'} fontWeight="extrabold">
+                                                            Video Chat
+                                                      </Text>
+                                                </Center>
+                                          </Box>
+                                          <Box
+                                                shadow="xl"
+                                                as={motion.div}
+                                                animation={comeFromLeftAnimation}
+                                                sx={{
+                                                      animationDelay: '0.2s',
+                                                }}
+                                                bg='orange.500' height='20' width='200px' borderRadius="lg" role="group" cursor="pointer" transition={'all 0.3s ease-in-out'} _hover={{
+                                                      boxShadow: 'rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px',
+                                                      transform: 'scale(1.05)',
+                                                      padding: '1rem',
+                                                      cursor: 'pointer',
+                                                      borderRadius: '0.5rem',
+                                                      bg: 'orange.500',
+                                                      color: useColorModeValue('white', 'gray.900'),
+                                                }}>
+
+                                                <Center h='100%' w="100%" as='button' onClick={() => navigate('/text')}>
+                                                      <Text fontSize={'xl'} fontWeight="extrabold">
+                                                            Text Chat
+                                                      </Text>
+                                                </Center>
+                                          </Box>
+                                    </Flex>
+
+                              </SimpleGrid>
+                        </Box>
+                  </Stack >
+
+
+
+
+
+            </Flex >
+      )
+}

@@ -1,56 +1,56 @@
-import { Router } from "express";
-import joi from "joi";
-import Post from "../../models/Feed/Post.js";
-import Feed from "../../models/Feed/Feed.js";
-import User from "../../models/User/User.js";
-import dotenv from "dotenv";
+import { Router } from 'express'
+import joi from 'joi'
+import Post from '../../models/Feed/Post.js'
+import Feed from '../../models/Feed/Feed.js'
+import User from '../../models/User/User.js'
+import dotenv from 'dotenv'
 
-const router = Router();
+const router = Router()
 
-dotenv.config();
+dotenv.config()
 
-router.post("/", async (req, res) => {
-  const schema = joi.object({
-    content: joi.string().required(),
-    postedBy: joi.string().required(),
-  });
+router.post('/', async (req, res) => {
+    const schema = joi.object({
+        content: joi.string().required(),
+        postedBy: joi.string().required(),
+    })
 
-  const { error } = schema.validate(req.body);
+    const { error } = schema.validate(req.body)
 
-  const { content, postedBy } = req.body;
+    const { content, postedBy } = req.body
 
-  if (error) {
-    return res.status(400).json({ error: error.details[0].message });
-  }
-
-  try {
-    const user = await User.findOne({ _id: postedBy });
-
-    if (!user) {
-      return res.status(400).json({ error: "User not found" });
+    if (error) {
+        return res.status(400).json({ error: error.details[0].message })
     }
 
-    const post = new Post({
-      content,
-      postedBy: user._id,
-    });
+    try {
+        const user = await User.findOne({ email: postedBy })
 
-    await post.save();
+        if (!user) {
+            return res.status(400).json({ error: 'User not found' })
+        }
 
-    user.posts.push(post);
+        const post = new Post({
+            content,
+            postedBy: user.email,
+        })
 
-    await user.save();
+        await post.save()
 
-    const feed = await Feed.findOne({ _id: process.env.FEED_ID });
+        user.posts.push(post)
 
-    feed.posts.push(post);
+        await user.save()
 
-    await feed.save();
+        const feed = await Feed.findOne({ _id: process.env.FEED_ID })
 
-    return res.status(200).json({ message: "Post created", post });
-  } catch (err) {
-    return res.status(500).json({ error: err.message });
-  }
-});
+        feed.posts.push(post)
 
-export default router;
+        await feed.save()
+
+        return res.status(200).json({ message: 'Post created', post })
+    } catch (err) {
+        return res.status(500).json({ error: err.message })
+    }
+})
+
+export default router

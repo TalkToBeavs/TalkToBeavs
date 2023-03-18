@@ -1,25 +1,24 @@
-import { configureStore, combineReducers } from "@reduxjs/toolkit";
+import { configureStore, combineReducers } from '@reduxjs/toolkit'
 
-import VideoSlice from "../slices/VideoSlice";
-import ChatSlice from "../slices/ChatSlice";
-import UserSlice from "../slices/UserSlice";
-import FeedSlice from "../slices/FeedSlice";
-
+import VideoSlice from '../slices/VideoSlice'
+import ChatSlice from '../slices/ChatSlice'
+import UserSlice from '../slices/UserSlice'
+import FeedSlice from '../slices/FeedSlice'
 
 const rootReducer = combineReducers({
-      video: VideoSlice,
-      chat: ChatSlice,
-      user: UserSlice,
-      feed: FeedSlice,
-});
+    video: VideoSlice,
+    chat: ChatSlice,
+    user: UserSlice,
+    feed: FeedSlice,
+})
 
 const store = configureStore({
-  reducer: rootReducer,
-  devTools: process.env.NODE_ENV !== "production",
-  middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware({
-      serializableCheck: false,
-    }),
-});
+    reducer: rootReducer,
+    devTools: process.env.NODE_ENV !== 'production',
+    middleware: (getDefaultMiddleware) =>
+        getDefaultMiddleware({
+            serializableCheck: false,
+        }),
+})
 
-export default store;
+export default store

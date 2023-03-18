@@ -1,24 +1,25 @@
 {
-  "name": "backend",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "dev": "nodemon index.js",
-    "start": "node index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "cors": "^2.8.5",
-    "dotenv": "^16.0.3",
-    "express": "^4.18.2",
-    "joi": "17.8.3",
-    "mongoose": "^7.0.0",
-    "nodemon": "^2.0.20",
-    "socket.io": "^4.6.1"
-  },
-  "type": "module"
+    "name": "backend",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "dev": "nodemon index.js",
+        "start": "node index.js",
+        "format": "prettier --write ."
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "cors": "^2.8.5",
+        "dotenv": "^16.0.3",
+        "express": "^4.18.2",
+        "joi": "17.8.3",
+        "mongoose": "^7.0.0",
+        "nodemon": "^2.0.20",
+        "prettier": "^2.8.4",
+        "socket.io": "^4.6.1"
+    },
+    "type": "module"
 }
