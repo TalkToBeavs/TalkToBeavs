@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { Box, Flex, IconButton, Text, Tooltip, Spacer } from '@chakra-ui/react'
 import { ArrowDownIcon, ArrowUpIcon } from '@chakra-ui/icons'
-import { upvotePost, downvotePost } from '../redux/slices/FeedSlice'
+// import { upvotePost, downvotePost } from '../redux/slices/FeedSlice'
 import moment from 'moment'
 
 const Post = ({ post }) => {
