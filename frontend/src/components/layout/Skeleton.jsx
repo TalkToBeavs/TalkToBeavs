@@ -41,7 +41,7 @@ import { NavLink, useLocation, useNavigate } from 'react-router-dom'
 import OnlineUser from '../OnlineUser'
 import { useDispatch, useSelector } from 'react-redux'
 
-import TalkToBeavs from '../text/TalkToBeavs'
+import TalkToBeavs, { TalkToBeavsMobile } from '../text/TalkToBeavs'
 import { loadUserData } from '../../redux/slices/UserSlice'
 
 
@@ -74,8 +74,8 @@ function SidebarWithHeader({ children }) {
                 {location.pathname !== '/logout' &&
                     location.pathname !== '/login' &&
                     location.pathname !== '/signup' &&
-                    location.pathname !== '/text' &&
-                    location.pathname !== '/video' &&
+                    !location.pathname.includes("text") &&
+                    !location.pathname.includes("video") &&
                     location.pathname !== '/' && (
                         <>
                             <OnlineUser />
@@ -86,8 +86,8 @@ function SidebarWithHeader({ children }) {
                 {location.pathname !== '/logout' &&
                     location.pathname !== '/login' &&
                     location.pathname !== '/signup' &&
-                    location.pathname !== '/text' &&
-                    location.pathname !== '/video' &&
+                    !location.pathname.includes("text") &&
+                    !location.pathname.includes("video") &&
                     location.pathname !== '/' && (
                         <SidebarContent
                             onClose={() => onClose}
@@ -211,9 +211,10 @@ const MobileNav = ({ onOpen, ...rest }) => {
     return (
         <Flex
             // display={{ base: "flex", md: "none" }}
-            ml={{ base: 0, md: 60 }}
             px={{ base: 4, md: 4 }}
             height="20"
+            gap={4}
+            w="100vw"
             alignItems="center"
             bg={useColorModeValue('white', 'gray.900')}
             borderBottomWidth="1px"
@@ -222,12 +223,7 @@ const MobileNav = ({ onOpen, ...rest }) => {
             {...rest}
         >
             {location.pathname.split('/')[1] !== 'home' && (
-                <Flex alignItems="center" justifyContent="center" w="full">
-                    <TalkToBeavs />
-                    {/* <Heading size="2xl" color="gray.900">
-          {location.pathname.split("/")[1]}
-        </Heading> */}
-                </Flex>
+                <TalkToBeavsMobile />
             )}
             <IconButton
                 display={{ base: 'flex', md: 'none' }}
@@ -237,7 +233,7 @@ const MobileNav = ({ onOpen, ...rest }) => {
                 icon={<FiMenu />}
             />
 
-            <HStack spacing={{ base: '0', md: '6' }}>
+            <HStack spacing={{ base: '0', md: '6' }} mx="auto">
                 <IconButton
                     size="lg"
                     variant="ghost"

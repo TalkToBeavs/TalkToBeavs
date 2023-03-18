@@ -9,7 +9,7 @@ export function TalkToBeavsMobile() {
             textTransform="uppercase"
             letterSpacing="tight"
             ml={'32'}
-            size="2xl"
+            size="lg"
             color="orange.500"
         >
             Talk

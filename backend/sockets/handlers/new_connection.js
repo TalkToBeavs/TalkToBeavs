@@ -11,6 +11,12 @@ const newConnection = (socket, io) => {
         console.log(`[Backend ⚡️]: Disconnected!`)
     })
 
+    socket.on('join', (data) => {
+        console.log(`[Backend ⚡️]: ${data.username} joined.`)
+        socket.emit('join', data)
+    })
+
+
     // Add the queue options handler
     queue_options.default(socket, io)
 }
