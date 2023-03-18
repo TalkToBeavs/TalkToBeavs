@@ -1,4 +1,4 @@
-import { keyframes } from "@emotion/react"
+import { keyframes } from '@emotion/react';
 
 const slide = keyframes`
       0% {
@@ -25,8 +25,8 @@ const slide = keyframes`
             scale: 1;
             transform: translate3d(0, 0, 0);
       }
-`
-const slideAnimation = `${slide} 1s ease-in-out`
+`;
+const slideAnimation = `${slide} 1s ease-in-out`;
 
 const popIn = keyframes`
       0% {
@@ -54,10 +54,9 @@ const popIn = keyframes`
             opacity: 1;
             transform: scale(1);
       }
-`
+`;
 
-const popInAnimation = `${slide} 1.4s ease-in-out`
-
+const popInAnimation = `${slide} 1.4s ease-in-out`;
 
 // transform: translate3d(0, 100%, 0);
 const comeFromLeft = keyframes`
@@ -88,8 +87,8 @@ const comeFromLeft = keyframes`
             transform: translate3d(0, 0, 0);
       }
 
-`
+`;
 
-const comeFromLeftAnimation = `${comeFromLeft} 2.2s ease-in-out`
+const comeFromLeftAnimation = `${comeFromLeft} 2.2s ease-in-out`;
 
-export { slideAnimation, popInAnimation, comeFromLeftAnimation }
+export { slideAnimation, popInAnimation, comeFromLeftAnimation };

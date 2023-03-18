@@ -1,73 +1,68 @@
-import { createSlice } from '@reduxjs/toolkit'
-import { useSelector } from 'react-redux'
+import { createSlice } from '@reduxjs/toolkit';
+import { useSelector } from 'react-redux';
 
 export const socketMiddleware = (socket) => (params) => (next) => (action) => {
-    const { dispatch, getState } = params
-    const { type, payload } = action
+  const { dispatch, getState } = params;
+  const { type, payload } = action;
 
-    switch (type) {
+  switch (type) {
+    case 'chat/connect':
+      console.log('connecting to socket');
+      console.log(payload);
+      console.log(type);
+      socket.connect(payload.url);
 
-        case 'chat/connect':
-            console.log('connecting to socket')
-            console.log(payload)
-            console.log(type)
-            socket.connect(payload.url)
+      socket.on('connect', () => {
+        console.log('connected to socket');
+      });
 
-            socket.on('connect', () => {
-                console.log('connected to socket')
-            })
+      socket.on('join', (data) => {
+        console.log(`[Frontend ⚡️]: ${data.username} joined.`);
+        let init = {
+          username: data.username,
+          message: 'joined the room',
+        };
+        dispatch(addMessage(init));
+        di;
+      });
 
+      break;
 
-            socket.on('join', (data) => {
-                console.log(`[Frontend ⚡️]: ${data.username} joined.`)
-                let init = {
-                    username: data.username,
-                    message: 'joined the room',
-                }
-                dispatch(addMessage(init))
-                di
-            })
+    case 'chat/join':
+      console.log(`${payload.username} joining room`);
 
-            break
+      socket.emit('join', {
+        username: payload.username,
+        room: payload.room,
+      });
 
-        case 'chat/join':
-            console.log(`${payload.username} joining room`)
+      break;
 
-            socket.emit('join', {
-                username: payload.username,
-                room: payload.room,
-            })
+    case 'chat/disconnect':
+      socket.disconnect();
+      break;
 
-            break
-
-
-        case 'chat/disconnect':
-            socket.disconnect()
-            break
-
-        default:
-            break
-
-    }
-    return next(action)
-}
-
+    default:
+      break;
+  }
+  return next(action);
+};
 
 const initialState = {
-    messages: [],
-    status: 'idle',
-    error: null,
-}
+  messages: [],
+  status: 'idle',
+  error: null,
+};
 
 const chatSlice = createSlice({
-    name: 'chat',
-    initialState,
-    reducers: {
-        addMessage: (state, action) => {
-            state.messages = [...state.messages, action.payload]
-        },
+  name: 'chat',
+  initialState,
+  reducers: {
+    addMessage: (state, action) => {
+      state.messages.push(action.payload);
     },
-})
+  },
+});
 
-export const { addMessage } = chatSlice.actions
-export default chatSlice.reducer
+export const { addMessage } = chatSlice.actions;
+export default chatSlice.reducer;
