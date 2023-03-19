@@ -10,11 +10,18 @@ import {
   Icon,
   useColorMode,
   useMediaQuery,
+  Menu,
+  MenuItem,
+  MenuList,
+  MenuButton,
+  Flex,
+  useColorModeValue,
 } from '@chakra-ui/react';
 import { RiSendPlaneFill } from 'react-icons/ri';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate, useParams, useLocation } from 'react-router-dom';
 import useChat from '../../hooks/useChat';
+import { MdExitToApp } from 'react-icons/md';
 
 export default function TextChat() {
   const navigate = useNavigate();
@@ -113,6 +120,46 @@ export default function TextChat() {
   };
 
   return (
+    <Flex
+    direction='column'
+    align='stretch'
+    justify='center'
+    h='100vh'
+    bg={useColorModeValue('gray.50', 'inherit')}
+  >
+          {!isMobile && (
+        <Menu closeOnSelect={true}>
+          <MenuButton
+            as={IconButton}
+            position='absolute'
+            top='5'
+            right='5'
+            zIndex='9999'
+            icon={<MdExitToApp />}
+          />
+          <MenuList>
+            {['Leave Text Chat', 'Logout'].map((item, i) => (
+              <MenuItem
+                key={i}
+                onClick={() => {
+                  switch (item) {
+                    case 'Leave Text Chat':
+                      navigate('/home');
+                      break;
+                    case 'Logout':
+                      navigate('/logout');
+                      break;
+                    default:
+                      break;
+                  }
+                }}
+              >
+                {item}
+              </MenuItem>
+            ))}
+          </MenuList>
+        </Menu>
+      )}
     <Box
       minH={isMobile ? 'calc(100vh - 80px)' : 'calc(100vh)'}
       maxW='100vw'
@@ -169,5 +216,6 @@ export default function TextChat() {
         </Button>
       </FormControl>
     </Box>
+    </Flex>
   );
 }
