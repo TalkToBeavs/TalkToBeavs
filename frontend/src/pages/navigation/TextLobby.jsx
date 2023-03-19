@@ -161,7 +161,7 @@ const TextLobby = () => {
         textAlign={'center'}
         w={'70%'}
         mx={'auto'}
-        color={useColorModeValue('gray.900', 'gray.900')}
+        color={useColorModeValue('gray.900', 'gray.100')}
         fontSize={isMobile ? '4xl' : '6xl'}
       >
         Welcome To The Lobby
