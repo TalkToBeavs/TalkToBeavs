@@ -1,4 +1,4 @@
-import React, { ReactNode, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import {
   IconButton,
   Avatar,
@@ -7,33 +7,25 @@ import {
   Flex,
   HStack,
   VStack,
+  MenuItem,
   Icon,
   useColorModeValue,
   Link,
   Drawer,
+  Image,
   DrawerContent,
   Text,
   useMediaQuery,
   useDisclosure,
   Menu,
   MenuButton,
-  MenuDivider,
-  MenuItem,
-  useBreakpoint,
   MenuList,
-  Image,
-  DrawerFooter,
-  Heading,
   useBreakpointValue,
 } from '@chakra-ui/react';
 import {
   FiHome,
-  FiTrendingUp,
   FiCompass,
-  FiStar,
-  FiSettings,
   FiMenu,
-  FiBell,
   FiChevronDown,
 } from 'react-icons/fi';
 import ttb from '../../assets/logo.png';
@@ -42,8 +34,7 @@ import { SlLogout } from 'react-icons/sl';
 import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 import OnlineUser from './OnlineUser';
 import { useDispatch, useSelector } from 'react-redux';
-
-import TalkToBeavs, { TalkToBeavsMobile } from '../text/TalkToBeavs';
+import { TalkToBeavsMobile } from '../text/TalkToBeavs';
 import { loadUserData } from '../../redux/slices/UserSlice';
 
 const LinkItems = [
@@ -57,11 +48,9 @@ function SidebarWithHeader({ children }) {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [isMobile] = useMediaQuery('(max-width: 768px)');
 
-
   const dispatch = useDispatch();
   const location = useLocation();
   const navigate = useNavigate();
-  const user = useSelector((state) => state.user.data);
 
   useEffect(() => {
     if (localStorage.getItem('token')?.includes('@oregonstate.edu')) {
@@ -71,12 +60,14 @@ function SidebarWithHeader({ children }) {
     }
   }, []);
 
+  const breakPt = useBreakpointValue({ base: false, md: true });
+
   return (
     <Box minH='100vh' bg={useColorModeValue('gray.100', 'gray.900')}>
       <>
         {location.pathname !== '/logout' &&
           location.pathname !== '/login' &&
-          !useBreakpointValue({ base: false, md: false }) &&
+          breakPt &&
           location.pathname !== '/signup' &&
           !location.pathname.includes('text') &&
           !location.pathname.includes('video') &&
@@ -89,12 +80,12 @@ function SidebarWithHeader({ children }) {
       <>
         {location.pathname !== '/logout' &&
           location.pathname !== '/login' &&
-          !useBreakpointValue({ base: false, md: false }) &&
+          breakPt &&
           location.pathname !== '/signup' &&
           !location.pathname.includes('text') &&
           !location.pathname.includes('video') &&
           location.pathname !== '/' && (
-            <SidebarContent onClose={() => onClose} display={{ base: 'none', md: 'block' }} />
+            <SidebarContent onClose={onClose} display={{ base: 'none', md: 'block' }} />
           )}
 
         {/* Maybe Allow in the future? */}
@@ -116,7 +107,6 @@ function SidebarWithHeader({ children }) {
         )}
         {/* mobilenav */}
         {isMobile && <MobileNav onOpen={onOpen} />}
-
 
         <Box>{children}</Box>
       </>
@@ -211,8 +201,8 @@ const MobileNav = ({ onOpen, ...rest }) => {
   const navigate = useNavigate();
 
   return (
+    // display={{ base: "flex", md: "none" }}
     <Flex
-      // display={{ base: "flex", md: "none" }}
       px={{ base: 4, md: 4 }}
       height='20'
       gap={4}
@@ -226,8 +216,8 @@ const MobileNav = ({ onOpen, ...rest }) => {
     >
       <TalkToBeavsMobile />
 
+      {/* // Maybe allow in the future? */}
       <IconButton
-        // Maybe allow in the future?
         display={!rest.notOpen ? 'none' : 'flex'}
         onClick={onOpen}
         variant='outline'
@@ -240,10 +230,7 @@ const MobileNav = ({ onOpen, ...rest }) => {
           <Menu>
             <MenuButton py={2} _focus={{ boxShadow: 'none' }}>
               <HStack>
-                <Avatar
-                  size={'sm'}
-                  name={user?.name}
-                />
+                <Avatar size={'sm'} name={user?.name} />
                 <VStack
                   display={{ base: 'none', md: 'flex' }}
                   alignItems='flex-start'
@@ -265,14 +252,14 @@ const MobileNav = ({ onOpen, ...rest }) => {
               py='1'
               mt='2'
             >
-              {["Home", "Profile", "Feed", "Logout"].map((item, i) => (
+              {['Home', 'Profile', 'Feed', 'Logout'].map((item, i) => (
                 <MenuItem
                   key={i}
                   onClick={() => {
-                    if (item === "Logout") {
-                      localStorage.removeItem("token");
-                      navigate("/login");
-                    } else if (item === "Profile") {
+                    if (item === 'Logout') {
+                      localStorage.removeItem('token');
+                      navigate('/login');
+                    } else if (item === 'Profile') {
                       navigate(`/profile/${onid}`);
                     } else {
                       navigate(`/${item.toLowerCase()}`);

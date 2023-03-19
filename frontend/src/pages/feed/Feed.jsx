@@ -32,12 +32,22 @@ function Feed() {
 
   return (
     allPosts && (
-      <Flex w='100%' h={
-        isMobile ? 'calc(100vh - 80px)' : '100vh'
-      } direction='column' justify='center' align='center'>
+      <Flex
+        w='100%'
+        h={isMobile ? 'calc(100vh - 80px)' : '100vh'}
+        direction='column'
+        justify='center'
+        align='center'
+      >
         <Box display={'flex'} gap={12} flexDirection={'row'} justify='center' align='center'>
-
-          <Box display={'flex'} flexDirection={'column'} justify='center' align='center' w={isMobile ? '100%' : '30%'} mt={2}>
+          <Box
+            display={'flex'}
+            flexDirection={'column'}
+            justify='center'
+            align='center'
+            w={isMobile ? '100%' : '30%'}
+            mt={2}
+          >
             <IconButton
               aria-label='Create Post'
               icon={<EditIcon />}
@@ -47,13 +57,8 @@ function Feed() {
               size='lg'
               mt={4}
             />
-            <CreatePostModal
-              isOpen={isOpen}
-              onClose={onClose}
-              handleValidPost={handleValidPost}
-            />
+            <CreatePostModal isOpen={isOpen} onClose={onClose} handleValidPost={handleValidPost} />
           </Box>
-
 
           <Text
             textAlign='center'
@@ -76,15 +81,20 @@ function Feed() {
 
           <Divider w={'50%'} mb={4} />
         </Box>
-        <Box h={'100vh'} overflowY={'scroll'} display={'flex'} flexDirection={'column'}
+        <Box
+          h={'100vh'}
+          overflowY={'scroll'}
+          display={'flex'}
+          flexDirection={'column'}
           w={isMobile ? '100%' : '70%'}
           ml={isMobile ? 0 : 8}
-          mt={4}>
+          mt={4}
+        >
           {allPosts.map((post, i) => (
             <Post key={i} post={post} />
           ))}
         </Box>
-      </Flex >
+      </Flex>
     )
   );
 }

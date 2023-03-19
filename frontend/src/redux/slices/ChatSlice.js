@@ -1,5 +1,4 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { useSelector } from 'react-redux';
 
 export const socketMiddleware = (socket) => (params) => (next) => (action) => {
   const { dispatch, getState } = params;
@@ -13,18 +12,18 @@ export const socketMiddleware = (socket) => (params) => (next) => (action) => {
 
       socket.on('connect', (data) => {
         console.log('connected to socket');
-        console.log(payload)
+        console.log(payload);
         socket.emit('joinQueue', {
-          name: payload.who
-        })
+          name: payload.who,
+        });
       });
 
       socket.on('joinQueue', (data) => {
         console.log('joined queue');
         console.log(data);
         socket.emit('getQueueStatus', {
-          name: payload.who
-        })
+          name: payload.who,
+        });
       });
 
       socket.on('getQueueStatus', (data) => {
@@ -77,7 +76,6 @@ const chatSlice = createSlice({
     addMessage: (state, action) => {
       state.messages.push(action.payload);
     },
-
   },
 });
 

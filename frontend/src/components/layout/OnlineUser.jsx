@@ -1,14 +1,7 @@
 import React from 'react';
-
 import {
   Text,
-  Heading,
-  Flex,
   Box,
-  AbsoluteCenter,
-  Avatar,
-  AvatarBadge,
-  AvatarGroup,
   useColorMode,
   useColorModeValue,
   Divider,
@@ -70,10 +63,12 @@ const OnlineUser = () => {
             .map((user, i) => (
               <Box key={i}>
                 <UserAvatar user={user} />
-                <Divider style={{
-                  borderColor: '###8a8a8ad4',
-                  borderWidth: '0.1px',
-                }} />
+                <Divider
+                  style={{
+                    borderColor: '###8a8a8ad4',
+                    borderWidth: '0.1px',
+                  }}
+                />
               </Box>
             ))}
         </Box>

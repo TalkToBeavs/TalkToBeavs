@@ -28,13 +28,13 @@
     "react-redux": "^8.0.5",
     "react-router-dom": "^6.9.0",
     "react-transition-group": "^4.4.5",
-    "react-uuid": "^2.0.0",
     "socket.io-client": "^4.6.1"
   },
   "devDependencies": {
     "@types/react": "^18.0.27",
     "@types/react-dom": "^18.0.10",
     "@vitejs/plugin-react": "^3.1.0",
+    "prettier-plugin-organize-imports": "^3.2.2",
     "vite": "^4.1.0"
   }
 }

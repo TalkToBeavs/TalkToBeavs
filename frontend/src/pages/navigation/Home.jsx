@@ -5,35 +5,30 @@ import {
   Flex,
   Stack,
   Divider,
-  HStack,
   Text,
-  VStack,
-  Button,
-  useColorMode,
   useColorModeValue,
   SimpleGrid,
-  useMediaQuery,
-  AbsoluteCenter,
   Center,
 } from '@chakra-ui/react';
 import TalkToBeavs from '../../components/text/TalkToBeavs';
-import { slideAnimation, comeFromRightAnimation, comeFromLeftAnimation, fadeIntoViewAnimation, comeFromTopAnimation, comeFromBottomAnimation } from '../../lib/animations';
+import {
+  slideAnimation,
+  comeFromRightAnimation,
+  comeFromLeftAnimation,
+  fadeIntoViewAnimation,
+} from '../../lib/animations';
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 
 export default function Home() {
-  const { colorMode, toggleColorMode } = useColorMode();
   const navigate = useNavigate();
-  const [isMobile] = useMediaQuery('(max-width: 768px)');
-
-
   const child = {
     visible: {
       opacity: 1,
       x: 0,
       y: 0,
       transition: {
-        type: "spring",
+        type: 'spring',
         damping: 12,
         stiffness: 100,
       },
@@ -43,7 +38,7 @@ export default function Home() {
       x: -20,
       y: 10,
       transition: {
-        type: "spring",
+        type: 'spring',
         damping: 12,
         stiffness: 100,
       },
@@ -58,8 +53,7 @@ export default function Home() {
     }),
   };
 
-  const letters = Array.from("By Students, For Students.");
-
+  const letters = Array.from('By Students, For Students.');
 
   return (
     <Flex minH={'100vh'} align={'flex-start'} justify={'center'} direction={'column'} w={'100vw'}>
@@ -73,22 +67,22 @@ export default function Home() {
         >
           <TalkToBeavs />
           <motion.i
-            style={{ overflow: "hidden", display: "flex", fontSize: "1rem" }}
+            style={{ overflow: 'hidden', display: 'flex', fontSize: '1rem' }}
             variants={container}
             color={useColorModeValue('gray.800', 'white')}
-            initial="hidden"
-            animate="visible"
-            aria-label="By Students, For Students."
+            initial='hidden'
+            animate='visible'
+            aria-label='By Students, For Students.'
           >
             {letters.map((letter, index) => (
               <motion.span variants={child} key={index}>
-                {letter === " " ? "\u00A0" : letter}
+                {letter === ' ' ? '\u00A0' : letter}
               </motion.span>
             ))}
           </motion.i>
         </Flex>
 
-        <Box w={'full'} as={motion.div} animation={comeFromRightAnimation} textAlign={"center"}>
+        <Box w={'full'} as={motion.div} animation={comeFromRightAnimation} textAlign={'center'}>
           <Heading
             as={motion.div}
             animation={fadeIntoViewAnimation}
@@ -98,15 +92,15 @@ export default function Home() {
             textAlign={'center'}
           >
             <motion.i
-              style={{ overflow: "hidden", textAlign: "center", fontSize: "2rem" }}
+              style={{ overflow: 'hidden', textAlign: 'center', fontSize: '2rem' }}
               variants={container}
               color={useColorModeValue('gray.800', 'white')}
-              initial="hidden"
-              animate="visible"
+              initial='hidden'
+              animate='visible'
             >
-              {Array.from("Start Chatting!").map((letter, index) => (
+              {Array.from('Start Chatting!').map((letter, index) => (
                 <motion.span variants={child} key={index}>
-                  {letter === " " ? "\u00A0" : letter}
+                  {letter === ' ' ? '\u00A0' : letter}
                 </motion.span>
               ))}
             </motion.i>

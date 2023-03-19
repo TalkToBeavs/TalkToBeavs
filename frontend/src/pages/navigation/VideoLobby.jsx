@@ -3,16 +3,15 @@ import { Text, Heading, Flex, Box, Button } from '@chakra-ui/react';
 import io from 'socket.io-client';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { AuthContext } from '../../components/AuthProvider';
 
 const VideoLobby = () => {
   // const socket = io('http://localhost:8080');
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  React.useEffect(() => {
-    dispatch({ type: 'video/connect', payload: { url: 'ws://localhost:8080' } });
-  }, []);
+  // React.useEffect(() => {
+  //   dispatch({ type: 'video/connect', payload: { url: 'ws://localhost:8080' } });
+  // }, []);
   /*
   React.useEffect(() => {
     let email = localStorage.getItem('token');

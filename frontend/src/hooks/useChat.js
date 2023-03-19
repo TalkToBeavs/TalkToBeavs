@@ -5,11 +5,13 @@ const NEW_CHAT_MESSAGE_EVENT = 'newMessage';
 const SOCKET_SERVER_URL = 'http://localhost:8080';
 
 const useChat = (roomId) => {
-  const [messages, setMessages] = useState([{
-    body: 'You have been connected to the chat. Say hi!',
-    ownedByCurrentUser: true,
-    senderUsername: 'Chat Bot',
-  }]);
+  const [messages, setMessages] = useState([
+    {
+      body: 'You have been connected to the chat. Say hi!',
+      ownedByCurrentUser: true,
+      senderUsername: 'Chat Bot',
+    },
+  ]);
   const socketRef = useRef();
 
   useEffect(() => {
@@ -18,7 +20,7 @@ const useChat = (roomId) => {
     });
 
     socketRef.current.on(NEW_CHAT_MESSAGE_EVENT, (message) => {
-      console.log(message)
+      console.log(message);
       const incomingMessage = {
         ...message,
         ownedByCurrentUser: message.senderId === socketRef.current.id,

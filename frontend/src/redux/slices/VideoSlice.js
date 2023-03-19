@@ -45,7 +45,7 @@ export const socketMiddleware = (socket) => (params) => (next) => (action) => {
       break;
   }
   return next(action);
-}
+};
 
 const initialState = {
   video: null,

@@ -23,13 +23,13 @@ const feedSlice = createSlice({
   name: 'feed',
   initialState,
   reducers: {},
-  extraReducers: {
-    [loadPosts.fulfilled]: (state, action) => {
+  extraReducers: (builder) => {
+    builder.addCase(loadPosts.fulfilled, (state, action) => {
       state.posts = action.payload[0].posts;
-    },
-    [createPost.fulfilled]: (state, action) => {
+    });
+    builder.addCase(createPost.fulfilled, (state, action) => {
       state.posts.unshift(action.payload);
-    },
+    });
   },
 });
 

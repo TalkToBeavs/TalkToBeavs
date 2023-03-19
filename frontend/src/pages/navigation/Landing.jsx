@@ -1,17 +1,36 @@
 import React from 'react';
-import { Text, Box, Flex, Heading, Button, ButtonGroup, useColorModeValue, useMediaQuery, Image } from '@chakra-ui/react';
+import {
+  Text,
+  Box,
+  Flex,
+  Heading,
+  Button,
+  ButtonGroup,
+  useColorModeValue,
+  useMediaQuery,
+  Image,
+} from '@chakra-ui/react';
 import { useNavigate } from 'react-router-dom';
-import logo from "../../assets/logo.png";
 import TalkToBeavs, { TalkToBeavsMobile } from '../../components/text/TalkToBeavs';
 
 const Landing = () => {
   const [isMobile] = useMediaQuery('(max-width: 768px)');
   const navigate = useNavigate();
   return (
-    <Flex direction='column' justify='center' align='center' minH={"100vh"} bg={useColorModeValue('gray.100', 'gray.900')}>
-      <Box p={8} maxWidth={
-        isMobile ? '70%' : '50%'
-      } borderWidth={1} borderRadius={8} boxShadow='lg'>
+    <Flex
+      direction='column'
+      justify='center'
+      align='center'
+      minH={'100vh'}
+      bg={useColorModeValue('gray.100', 'gray.900')}
+    >
+      <Box
+        p={8}
+        maxWidth={isMobile ? '70%' : '50%'}
+        borderWidth={1}
+        borderRadius={8}
+        boxShadow='lg'
+      >
         <Box textAlign='center'>
           <Heading textAlign='center' fontSize='4xl' fontWeight='extrabold'>
             {/* <Image

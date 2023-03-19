@@ -6,13 +6,10 @@ import {
   Heading,
   Image,
   Input,
-  keyframes,
   Text,
   useColorModeValue,
   useMediaQuery,
-  useToast,
   useColorMode,
-  AbsoluteCenter,
 } from '@chakra-ui/react';
 import axios from 'axios';
 import ttb from '../../assets/logo.png';
@@ -112,7 +109,9 @@ function Signup() {
         w='full'
       >
         <Box textAlign='center' align='center' justify='center' mb={12}>
-          <Image src={ttb} alt='logo'
+          <Image
+            src={ttb}
+            alt='logo'
             width='100%'
             maxH={isMobile ? '100px' : '200px'}
             objectFit='contain'
@@ -122,9 +121,11 @@ function Signup() {
             size='2xl'
             fontWeight='bold'
             textShadow={colorMode === 'light' ? '2px 2px #DE6A1F' : '2px 2px #f2a673'}
-            color={
-              colorMode === 'light' ? '#f2a673' : '#DE6A1F'}
-          > Sign Up</Heading>
+            color={colorMode === 'light' ? '#f2a673' : '#DE6A1F'}
+          >
+            {' '}
+            Sign Up
+          </Heading>
         </Box>
         <Box my={4} textAlign='left'>
           <form onSubmit={handleSubmit}>
@@ -212,7 +213,7 @@ function Signup() {
           </Link>
         </Text>
       </Box>
-    </Flex >
+    </Flex>
   );
 }
 

@@ -28,8 +28,8 @@ export default function Profile() {
     document.querySelector('title').innerHTML = `${onid}'s Profile`;
 
     return () => {
-      document.querySelector('title').innerHTML = 'Talk2Beavs - OSU CS494'
-    }
+      document.querySelector('title').innerHTML = 'Talk2Beavs - OSU CS494';
+    };
   }, [onid]);
 
   return (

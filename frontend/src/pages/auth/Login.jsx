@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext } from 'react';
+import { useState } from 'react';
 import {
   Box,
   Button,
@@ -6,18 +6,16 @@ import {
   Heading,
   Image,
   Input,
-  keyframes,
   Text,
   useColorModeValue,
-  useToast,
   useColorMode,
-  useMediaQuery
+  useMediaQuery,
 } from '@chakra-ui/react';
 import axios from 'axios';
 import ttb from '../../assets/logo.png';
 import { Link, useNavigate } from 'react-router-dom';
-import { loginUser, selectUser } from '../../redux/slices/UserSlice';
-import { useDispatch, useSelector } from 'react-redux';
+import { loginUser } from '../../redux/slices/UserSlice';
+import { useDispatch } from 'react-redux';
 import { motion } from 'framer-motion';
 import { slideAnimation } from '../../lib/animations';
 
@@ -42,7 +40,6 @@ function Login() {
       setTimeout(() => {
         setLoading(false);
         setError('Please fill in all fields');
-        return;
       }, 1000);
     }
 
@@ -111,19 +108,22 @@ function Login() {
         w='full'
       >
         <Box textAlign='center' align='center' justify='center' mb={12}>
-          <Image src={ttb}
+          <Image
+            src={ttb}
             width='100%'
             maxH={isMobile ? '100px' : '200px'}
             objectFit='contain'
-            alt='logo' />
+            alt='logo'
+          />
           <Heading
             as='h1'
             size='2xl'
             fontWeight='bold'
             textShadow={colorMode === 'light' ? '2px 2px #DE6A1F' : '2px 2px #f2a673'}
-            color={
-              colorMode === 'light' ? '#f2a673' : '#DE6A1F'
-            }>Login</Heading>
+            color={colorMode === 'light' ? '#f2a673' : '#DE6A1F'}
+          >
+            Login
+          </Heading>
         </Box>
         <Box my={4} textAlign='left'>
           <form onSubmit={handleSubmit}>

@@ -1,13 +1,31 @@
 import React, { useState } from 'react';
-import { Text, Heading, Flex, Box, Button, useColorModeValue, MenuList, MenuItem, MenuDivider, Input, useMediaQuery, MenuButton, Menu, IconButton } from '@chakra-ui/react';
+import {
+  Text,
+  Heading,
+  Flex,
+  Box,
+  Button,
+  useColorModeValue,
+  MenuList,
+  MenuItem,
+  MenuDivider,
+  Input,
+  useMediaQuery,
+  MenuButton,
+  Menu,
+  IconButton,
+} from '@chakra-ui/react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import useLobby from '../../hooks/useLobby';
-import { fadeIntoViewAnimation, pulseLoaderAnimation, comeFromLeftAnimation } from '../../lib/animations';
+import {
+  fadeIntoViewAnimation,
+  pulseLoaderAnimation,
+  comeFromLeftAnimation,
+} from '../../lib/animations';
 import { motion } from 'framer-motion';
-import { Rings, Circles } from 'react-loader-spinner'
+import { Rings, Circles } from 'react-loader-spinner';
 import { MdExitToApp } from 'react-icons/md';
-
 
 const TextLobby = () => {
   const navigate = useNavigate();
@@ -43,9 +61,7 @@ const TextLobby = () => {
 
     return () => {
       disconnect();
-    }
-
-
+    };
   }, [roomId]);
 
   // React.useEffect(() => {
@@ -62,30 +78,37 @@ const TextLobby = () => {
     >
       {!isMobile && (
         <Menu closeOnSelect={true}>
-          <MenuButton as={IconButton} position='absolute' top='5' right='5' zIndex='9999' icon={<MdExitToApp />} />
+          <MenuButton
+            as={IconButton}
+            position='absolute'
+            top='5'
+            right='5'
+            zIndex='9999'
+            icon={<MdExitToApp />}
+          />
           <MenuList>
-            {["Leave Lobby", "Logout"].map((item, i) => (
-              <MenuItem key={i} onClick={() => {
-                switch (item) {
-                  case "Leave Lobby":
-                    navigate('/home');
-                    break;
-                  case "Logout":
-                    navigate('/logout');
-                    break;
-                  default:
-                    break;
-                }
-              }}>
+            {['Leave Lobby', 'Logout'].map((item, i) => (
+              <MenuItem
+                key={i}
+                onClick={() => {
+                  switch (item) {
+                    case 'Leave Lobby':
+                      navigate('/home');
+                      break;
+                    case 'Logout':
+                      navigate('/logout');
+                      break;
+                    default:
+                      break;
+                  }
+                }}
+              >
                 {item}
               </MenuItem>
             ))}
-
           </MenuList>
         </Menu>
-
       )}
-
 
       {/* 
         Either use the Rings or Circles loader works fine
@@ -106,7 +129,8 @@ const TextLobby = () => {
         ariaLabel="rings-loading"
       /> */}
 
-      <Box as={motion.div}
+      <Box
+        as={motion.div}
         animation={pulseLoaderAnimation}
         style={{
           position: 'absolute',
@@ -119,8 +143,8 @@ const TextLobby = () => {
         <Circles
           height={isMobile ? '60vh' : '50vh'}
           width={isMobile ? '60vw' : '50vw'}
-          color="#DE6A1F"
-          ariaLabel="circles-loading"
+          color='#DE6A1F'
+          ariaLabel='circles-loading'
           wrapperStyle={{
             position: 'absolute',
             top: `${isMobile ? '53%' : '50%'}`,
@@ -133,19 +157,28 @@ const TextLobby = () => {
         />
       </Box>
 
-      <Heading textAlign={'center'}
+      <Heading
+        textAlign={'center'}
         w={'70%'}
         mx={'auto'}
         color={useColorModeValue('gray.900', 'gray.900')}
         fontSize={isMobile ? '4xl' : '6xl'}
-      >Welcome To The Lobby</Heading>
-      <Text py={4} textAlign={'center'} w={'fit-content'} mx={'auto'} color={
-        useColorModeValue('gray.600', 'gray.400')
-      } fontSize={isMobile ? 'sm' : 'xl'} fontWeight={500} letterSpacing={1.5} animation={comeFromLeftAnimation}>
+      >
+        Welcome To The Lobby
+      </Heading>
+      <Text
+        py={4}
+        textAlign={'center'}
+        w={'fit-content'}
+        mx={'auto'}
+        color={useColorModeValue('gray.600', 'gray.400')}
+        fontSize={isMobile ? 'sm' : 'xl'}
+        fontWeight={500}
+        letterSpacing={1.5}
+        animation={comeFromLeftAnimation}
+      >
         Waiting for another beaver to join
-        <span>
-          {dots}
-        </span>
+        <span>{dots}</span>
       </Text>
 
       {/* <form onSubmit={handleSubmit}>
@@ -161,7 +194,6 @@ const TextLobby = () => {
         Go To Chat
       </Button> */}
     </Flex>
-
   );
 };
 

@@ -1,11 +1,10 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import {
   Button,
   Text,
   Heading,
   Flex,
   Box,
-  Image,
   HStack,
   ButtonGroup,
   Input,

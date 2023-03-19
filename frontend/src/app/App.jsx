@@ -1,14 +1,9 @@
 import React, { useEffect } from 'react';
-import { BrowserRouter, Routes, Route, useNavigate, Outlet, useLocation } from 'react-router-dom';
-import io from 'socket.io-client';
+import { Routes, Route, useLocation } from 'react-router-dom';
 import { Provider } from 'react-redux';
-
-import { TransitionGroup, CSSTransition } from 'react-transition-group';
 import ThemeToggle from '../components/layout/ThemeToggle';
 
 import SidebarWithHeader from '../components/layout/Skeleton';
-import { AuthContext } from '../components/AuthProvider';
-import ProtectedRoute from '../components/ProtectedRoute';
 
 import store from '../redux/store/store';
 
