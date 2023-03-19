@@ -3,12 +3,22 @@
     "version": "1.0.0",
     "description": "",
     "main": "index.js",
+    "private": true,
     "scripts": {
         "dev": "nodemon index.js",
         "start": "node index.js",
-        "format": "prettier --write ."
+        "format": "prettier --write {src}/**/*.{js,jsx,ts,tsx,json,css,scss,md}"
     },
-    "keywords": [],
+    "keywords": [
+        "node",
+        "express",
+        "socket.io",
+        "mongodb",
+        "mongoose",
+        "joi",
+        "cors",
+        "dotenv"
+    ],
     "author": "",
     "license": "ISC",
     "dependencies": {
