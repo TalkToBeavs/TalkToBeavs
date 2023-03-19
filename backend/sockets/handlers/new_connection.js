@@ -16,6 +16,15 @@ const newConnection = (socket, io) => {
         socket.emit('join', data)
     })
 
+    socket.on("sdp", (data) => {
+        socket.broadcast.emit("sdp", data)
+    })
+
+    socket.on("candidate", (data) => {
+        socket.broadcast.emit("candidate", data)
+    })
+
+
 
     // Add the queue options handler
     queue_options.default(socket, io)

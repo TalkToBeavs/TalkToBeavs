@@ -3,9 +3,9 @@ import { Button, Center, Text, VStack, HStack, Input, Image } from '@chakra-ui/r
 import io from 'socket.io-client';
 import ttb from '../../assets/logo.png';
 
-// const socket = io("ws://localhost:8080", {
-//   transports: ["websocket"],
-// });
+const socket = io("ws://localhost:8080", {
+   transports: ["websocket"],
+});
 
 /**
  * We're doing manual signaling just to keep things simple.
@@ -25,7 +25,7 @@ function VideoChat() {
   const [status, setStatus] = useState('Not Connected');
 
   const options = {
-    audio: false,
+    audio: true,
     video: true,
   };
 
