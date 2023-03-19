@@ -9,16 +9,7 @@
         "start": "node index.js",
         "format": "prettier --write {src}/**/*.{js,jsx,ts,tsx,json,css,scss,md}"
     },
-    "keywords": [
-        "node",
-        "express",
-        "socket.io",
-        "mongodb",
-        "mongoose",
-        "joi",
-        "cors",
-        "dotenv"
-    ],
+    "keywords": [],
     "author": "",
     "license": "ISC",
     "dependencies": {
