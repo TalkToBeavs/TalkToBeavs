@@ -13,6 +13,7 @@ export const socketMiddleware = (socket) => (params) => (next) => (action) => {
       socket.connect(payload.url);
 
       socket.on('connect', () => {
+        dispatch({ type: 'chat/setStatus', payload: "connected" });
         console.log('connected to socket');
       });
 
@@ -23,7 +24,6 @@ export const socketMiddleware = (socket) => (params) => (next) => (action) => {
           message: 'joined the room',
         };
         dispatch(addMessage(init));
-        di;
       });
 
       break;
@@ -61,6 +61,9 @@ const chatSlice = createSlice({
     addMessage: (state, action) => {
       state.messages.push(action.payload);
     },
+    setStatus: (state, action) => {
+      state.status = action.payload;
+    }
   },
 });
 
