@@ -73,7 +73,7 @@ export default function TextChat() {
               fontWeight='bold'
               color={colorMode === 'light' ? 'gray.500' : 'gray.400'}
             >
-              {isMe ? 'You' : 'Anonymous'}
+              {isMe ? 'You' : onid}
             </Text>
             <Box
               display='flex'
@@ -101,7 +101,7 @@ export default function TextChat() {
                   fontSize='xs'
                   color={colorMode === 'light' ? 'gray.500' : 'gray.400'}
                 >
-                  12:00
+                  {new Date(message.createdAt).setSeconds(0) && new Date(message.createdAt).toLocaleTimeString([], {hour: '2-digit', minute: '2-digit'})}
                 </Box>
               </Box>
               <Avatar size='sm' mr={4} name={message.username} src='https://bit.ly/broken-link' />
