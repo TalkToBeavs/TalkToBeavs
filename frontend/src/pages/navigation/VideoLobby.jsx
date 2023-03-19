@@ -1,8 +1,6 @@
-import React from 'react';
-import { Text, Heading, Flex, Box, Button } from '@chakra-ui/react';
-import io from 'socket.io-client';
-import { useNavigate } from 'react-router-dom';
+import { Button, Flex, Heading, Text } from '@chakra-ui/react';
 import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 const VideoLobby = () => {
   // const socket = io('http://localhost:8080');

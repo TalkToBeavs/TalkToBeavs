@@ -1,4 +1,3 @@
-import { useState, useEffect } from 'react';
 import {
   Box,
   Button,
@@ -7,15 +6,15 @@ import {
   Image,
   Input,
   Text,
+  useColorMode,
   useColorModeValue,
   useMediaQuery,
-  useColorMode,
 } from '@chakra-ui/react';
 import axios from 'axios';
-import ttb from '../../assets/logo.png';
-import io from 'socket.io-client';
-import { Link, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import ttb from '../../assets/logo.png';
 import { slideAnimation } from '../../lib/animations';
 
 function Signup() {

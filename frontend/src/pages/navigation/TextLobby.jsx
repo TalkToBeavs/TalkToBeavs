@@ -1,31 +1,24 @@
-import React, { useState } from 'react';
 import {
-  Text,
-  Heading,
-  Flex,
   Box,
-  Button,
-  useColorModeValue,
-  MenuList,
-  MenuItem,
-  MenuDivider,
-  Input,
-  useMediaQuery,
-  MenuButton,
-  Menu,
+  Flex,
+  Heading,
   IconButton,
+  Menu,
+  MenuButton,
+  MenuItem,
+  MenuList,
+  Text,
+  useColorModeValue,
+  useMediaQuery,
 } from '@chakra-ui/react';
-import { useNavigate } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
-import useLobby from '../../hooks/useLobby';
-import {
-  fadeIntoViewAnimation,
-  pulseLoaderAnimation,
-  comeFromLeftAnimation,
-} from '../../lib/animations';
 import { motion } from 'framer-motion';
-import { Rings, Circles } from 'react-loader-spinner';
+import React, { useState } from 'react';
 import { MdExitToApp } from 'react-icons/md';
+import { Circles } from 'react-loader-spinner';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import useLobby from '../../hooks/useLobby';
+import { comeFromLeftAnimation, pulseLoaderAnimation } from '../../lib/animations';
 
 const TextLobby = () => {
   const navigate = useNavigate();

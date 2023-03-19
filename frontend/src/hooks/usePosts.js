@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { useEffect, useState } from 'react';
 
 function usePosts({ onid }) {
   const [posts, setPosts] = useState(null);

@@ -1,5 +1,4 @@
-import React from 'react';
-import { Text, Heading, Button, Box, Flex } from '@chakra-ui/react';
+import { Button, Flex, Heading, Text } from '@chakra-ui/react';
 import { Link } from 'react-router-dom';
 
 const FourOhFour = () => {

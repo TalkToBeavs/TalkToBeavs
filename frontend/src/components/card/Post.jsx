@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { Box, Flex, IconButton, Text, Tooltip, Spacer, useMediaQuery } from '@chakra-ui/react';
 import { ArrowDownIcon, ArrowUpIcon } from '@chakra-ui/icons';
+import { Box, Flex, IconButton, Spacer, Text, Tooltip, useMediaQuery } from '@chakra-ui/react';
+import { useState } from 'react';
+import { useDispatch } from 'react-redux';
 // import { upvotePost, downvotePost } from '../redux/slices/FeedSlice'
 import moment from 'moment';
 

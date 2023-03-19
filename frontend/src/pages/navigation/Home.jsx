@@ -1,24 +1,23 @@
-import React from 'react';
 import {
-  Heading,
   Box,
-  Flex,
-  Stack,
+  Center,
   Divider,
+  Flex,
+  Heading,
+  SimpleGrid,
+  Stack,
   Text,
   useColorModeValue,
-  SimpleGrid,
-  Center,
 } from '@chakra-ui/react';
-import TalkToBeavs from '../../components/text/TalkToBeavs';
-import {
-  slideAnimation,
-  comeFromRightAnimation,
-  comeFromLeftAnimation,
-  fadeIntoViewAnimation,
-} from '../../lib/animations';
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
+import TalkToBeavs from '../../components/text/TalkToBeavs';
+import {
+  comeFromLeftAnimation,
+  comeFromRightAnimation,
+  fadeIntoViewAnimation,
+  slideAnimation,
+} from '../../lib/animations';
 
 export default function Home() {
   const navigate = useNavigate();

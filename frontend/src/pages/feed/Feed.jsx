@@ -1,19 +1,19 @@
-import React, { useEffect } from 'react';
-import {
-  Text,
-  Flex,
-  Box,
-  useMediaQuery,
-  useDisclosure,
-  useColorModeValue,
-  Divider,
-  IconButton,
-} from '@chakra-ui/react';
 import { EditIcon } from '@chakra-ui/icons';
-import { selectAllPosts, loadPosts, createPost } from '../../redux/slices/FeedSlice';
+import {
+  Box,
+  Divider,
+  Flex,
+  IconButton,
+  Text,
+  useColorModeValue,
+  useDisclosure,
+  useMediaQuery,
+} from '@chakra-ui/react';
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Post from '../../components/card/Post';
 import CreatePostModal from '../../components/custom/CreatePostModal';
+import { createPost, loadPosts, selectAllPosts } from '../../redux/slices/FeedSlice';
 
 function Feed() {
   const [isMobile] = useMediaQuery('(max-width: 768px)');

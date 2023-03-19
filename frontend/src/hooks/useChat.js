@@ -10,7 +10,7 @@ const useChat = (roomId) => {
       body: 'You have been connected to the chat. Say hi!',
       ownedByCurrentUser: false,
       senderUsername: 'Chat Bot',
-      createdAt: Date.now()
+      createdAt: Date.now(),
     },
   ]);
   const socketRef = useRef();
@@ -41,7 +41,7 @@ const useChat = (roomId) => {
       senderId: socketRef.current.id,
       room: roomId,
       senderUsername: 'You',
-      createdAt: Date.now()
+      createdAt: Date.now(),
     });
   };
 
