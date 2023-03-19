@@ -1,13 +1,6 @@
 # Backend Ignores
-backend/node_modules
-backend/.env
-
+node_modules
+.env
 .DS_Store
 .vs
 .vscode
-
-# Frontend Ignores
-frontend/node_modules
-frontend/.vs
-frontend/.DS_Store
-frontend/src/.DS_Store
