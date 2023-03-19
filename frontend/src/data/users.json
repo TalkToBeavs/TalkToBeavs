@@ -1,0 +1,1870 @@
+[
+      {
+            "email": "johndoe@oregonstate.edu",
+            "name": "John Doe",
+            "online": true,
+            "followers": [
+                  "janedoe@oregonstate.edu",
+                  "bobsmith@oregonstate.edu",
+                  "janedoe@oregonstate.edu",
+                  "chris@oregonstate.edu",
+                  "sam@oregonstate.edu"
+            ],
+            "following": [
+                  "janedoe@oregonstate.edu",
+                  "bobsmith@oregonstate.edu",
+                  "sam@oregonstate.edu",
+                  "janedoe@oregonstate.edu",
+                  "chris@oregonstate.edu",
+                  "sam@oregonstate.edu"
+            ],
+            "posts": [
+                  {
+                        "content": "Just went on a hike and saw some amazing views!",
+                        "votes": 10,
+                        "postedBy": "johndoe@oregonstate.edu",
+                        "createdAt": "Thursday, March 7th"
+                  },
+                  {
+                        "content": "Trying out a new recipe tonight for dinner!",
+                        "votes": 2,
+                        "postedBy": "johndoe@oregonstate.edu",
+                        "createdAt": "Monday, March 11th"
+                  },
+                  {
+                        "content": "Excited to start my new job next week!",
+                        "votes": 8,
+                        "postedBy": "johndoe@oregonstate.edu",
+                        "createdAt": "Friday, March 1st"
+                  }
+            ]
+      },
+      {
+            "email": "nyumat@oregonstate.edu",
+            "name": "tom",
+            "followers": [
+                  "sam@oregonstate.edu",
+                  "chris@oregonstate.edu",
+                  "janedoe@oregonstate.edu",
+                  "chris@oregonstate.edu",
+                  "sam@oregonstate.edu"
+            ],
+            "following": [
+                  "sam@oregonstate.edu",
+                  "chris@oregonstate.edu",
+                  "janedoe@oregonstate.edu",
+                  "chris@oregonstate.edu",
+                  "sam@oregonstate.edu"
+            ],
+            "posts": [
+                  {
+                        "content": "some post",
+                        "votes": "5",
+                        "postedBy": "nyumat@oregonstate.edu",
+                        "createdAt": "Tuesday, March 5th"
+                  }
+            ]
+      },
+      {
+            "online": true,
+            "picture": "http://placehold.it/32x32",
+            "name": "Kathrine Barry",
+            "email": "kathrinebarry@oregonstate.edu",
+            "following": [
+                  "kathrinebarry@oregonstate.edu",
+                  "kathrinebarry@oregonstate.edu",
+                  "kathrinebarry@oregonstate.edu",
+                  "kathrinebarry@oregonstate.edu",
+                  "kathrinebarry@oregonstate.edu",
+                  "kathrinebarry@oregonstate.edu",
+                  "kathrinebarry@oregonstate.edu",
+                  "kathrinebarry@oregonstate.edu",
+                  "kathrinebarry@oregonstate.edu",
+                  "kathrinebarry@oregonstate.edu",
+                  "kathrinebarry@oregonstate.edu",
+                  "kathrinebarry@oregonstate.edu",
+                  "kathrinebarry@oregonstate.edu",
+                  "kathrinebarry@oregonstate.edu",
+                  "kathrinebarry@oregonstate.edu",
+                  "kathrinebarry@oregonstate.edu",
+                  "kathrinebarry@oregonstate.edu",
+                  "kathrinebarry@oregonstate.edu"
+            ],
+            "followers": [
+                  "kathrinebarry@oregonstate.edu",
+                  "kathrinebarry@oregonstate.edu",
+                  "kathrinebarry@oregonstate.edu"
+            ],
+            "posts": [
+                  {
+                        "content": "Duis commodo mollit aliqua enim non incididunt velit laboris deserunt.",
+                        "name": "Mcdonald Franco",
+                        "votes": 897,
+                        "postedBy": "exercitation",
+                        "createdAt": "Mondaay, March 3rd"
+                  },
+                  {
+                        "content": "Pariatur dolore labore ipsum cillum laboris amet.",
+                        "name": "Adele Malone",
+                        "votes": 784,
+                        "postedBy": "magna",
+                        "createdAt": "Mondaay, March 3rd"
+                  },
+                  {
+                        "content": "Minim aute est ipsum ut veniam tempor.",
+                        "name": "Rush Parks",
+                        "votes": 162,
+                        "postedBy": "anim",
+                        "createdAt": "Mondaay, March 3rd"
+                  },
+                  {
+                        "content": "Cupidatat nulla in magna occaecat ullamco consectetur ex occaecat fugiat nostrud.",
+                        "name": "Hanson Rosales",
+                        "votes": 767,
+                        "postedBy": "ad",
+                        "createdAt": "Mondaay, March 3rd"
+                  },
+                  {
+                        "content": "Dolore culpa occaecat culpa dolore laboris ea id dolore qui eiusmod pariatur minim elit.",
+                        "name": "Byers Hart",
+                        "votes": 432,
+                        "postedBy": "sunt",
+                        "createdAt": "Mondaay, March 3rd"
+                  }
+            ]
+      },
+      {
+            "online": false,
+            "picture": "http://placehold.it/32x32",
+            "name": "Navarro Gamble",
+            "email": "navarrogamble@oregonstate.edu",
+            "following": [
+                  "navarrogamble@oregonstate.edu",
+                  "navarrogamble@oregonstate.edu",
+                  "navarrogamble@oregonstate.edu",
+                  "navarrogamble@oregonstate.edu",
+                  "navarrogamble@oregonstate.edu",
+                  "navarrogamble@oregonstate.edu",
+                  "navarrogamble@oregonstate.edu",
+                  "navarrogamble@oregonstate.edu",
+                  "navarrogamble@oregonstate.edu",
+                  "navarrogamble@oregonstate.edu",
+                  "navarrogamble@oregonstate.edu",
+                  "navarrogamble@oregonstate.edu",
+                  "navarrogamble@oregonstate.edu",
+                  "navarrogamble@oregonstate.edu"
+            ],
+            "followers": [
+                  "navarrogamble@oregonstate.edu",
+                  "navarrogamble@oregonstate.edu",
+                  "navarrogamble@oregonstate.edu",
+                  "navarrogamble@oregonstate.edu",
+                  "navarrogamble@oregonstate.edu",
+                  "navarrogamble@oregonstate.edu",
+                  "navarrogamble@oregonstate.edu",
+                  "navarrogamble@oregonstate.edu",
+                  "navarrogamble@oregonstate.edu",
+                  "navarrogamble@oregonstate.edu",
+                  "navarrogamble@oregonstate.edu",
+                  "navarrogamble@oregonstate.edu",
+                  "navarrogamble@oregonstate.edu",
+                  "navarrogamble@oregonstate.edu",
+                  "navarrogamble@oregonstate.edu",
+                  "navarrogamble@oregonstate.edu",
+                  "navarrogamble@oregonstate.edu",
+                  "navarrogamble@oregonstate.edu"
+            ],
+            "posts": [
+                  {
+                        "content": "Velit voluptate tempor consectetur reprehenderit velit enim Lorem consequat eu est nisi fugiat sunt.",
+                        "name": "Hamilton Roberson",
+                        "votes": 851,
+                        "postedBy": "culpa",
+                        "createdAt": "Mondaay, March 3rd"
+                  },
+                  {
+                        "content": "Consectetur ipsum mollit eiusmod ea eu dolor voluptate nulla duis quis cupidatat minim exercitation magna.",
+                        "name": "Kristin Moon",
+                        "votes": 434,
+                        "postedBy": "cupidatat",
+                        "createdAt": "Mondaay, March 3rd"
+                  },
+                  {
+                        "content": "Esse pariatur ex aliqua nulla sit.",
+                        "name": "Christian Fletcher",
+                        "votes": 709,
+                        "postedBy": "aliqua",
+                        "createdAt": "Mondaay, March 3rd"
+                  },
+                  {
+                        "content": "Ut dolor ut culpa anim labore irure anim ex occaecat consectetur commodo.",
+                        "name": "Finch Barnes",
+                        "votes": 236,
+                        "postedBy": "proident",
+                        "createdAt": "Mondaay, March 3rd"
+                  },
+                  {
+                        "content": "Commodo incididunt nisi amet velit culpa.",
+                        "name": "Jacquelyn Stewart",
+                        "votes": 318,
+                        "postedBy": "ex",
+                        "createdAt": "Mondaay, March 3rd"
+                  },
+                  {
+                        "content": "Cillum minim non nostrud pariatur sunt qui amet minim nulla sunt.",
+                        "name": "Griffith Greene",
+                        "votes": 621,
+                        "postedBy": "proident",
+                        "createdAt": "Mondaay, March 3rd"
+                  },
+                  {
+                        "content": "Nulla in nostrud nisi esse ut eu veniam magna adipisicing veniam sit.",
+                        "name": "Fitzpatrick Lawrence",
+                        "votes": 909,
+                        "postedBy": "officia",
+                        "createdAt": "Mondaay, March 3rd"
+                  },
+                  {
+                        "content": "Do laborum laboris nulla deserunt mollit voluptate dolor sint id quis quis consequat.",
+                        "name": "Leona Carpenter",
+                        "votes": 162,
+                        "postedBy": "voluptate",
+                        "createdAt": "Mondaay, March 3rd"
+                  },
+                  {
+                        "content": "Nulla labore ad cupidatat eu laboris.",
+                        "name": "Jerry Michael",
+                        "votes": 811,
+                        "postedBy": "nisi",
+                        "createdAt": "Mondaay, March 3rd"
+                  }
+            ]
+      },
+      {
+            "online": false,
+            "picture": "http://placehold.it/32x32",
+            "name": "Raymond House",
+            "email": "raymondhouse@oregonstate.edu",
+            "following": [
+                  "raymondhouse@oregonstate.edu",
+                  "raymondhouse@oregonstate.edu",
+                  "raymondhouse@oregonstate.edu",
+                  "raymondhouse@oregonstate.edu",
+                  "raymondhouse@oregonstate.edu"
+            ],
+            "followers": [
+                  "raymondhouse@oregonstate.edu",
+                  "raymondhouse@oregonstate.edu",
+                  "raymondhouse@oregonstate.edu",
+                  "raymondhouse@oregonstate.edu",
+                  "raymondhouse@oregonstate.edu",
+                  "raymondhouse@oregonstate.edu",
+                  "raymondhouse@oregonstate.edu",
+                  "raymondhouse@oregonstate.edu",
+                  "raymondhouse@oregonstate.edu",
+                  "raymondhouse@oregonstate.edu",
+                  "raymondhouse@oregonstate.edu",
+                  "raymondhouse@oregonstate.edu"
+            ],
+            "posts": [
+                  {
+                        "content": "Cillum ullamco occaecat sunt commodo eu fugiat sunt qui eu ut ipsum ullamco.",
+                        "name": "Schneider Charles",
+                        "votes": 717,
+                        "postedBy": "irure",
+                        "createdAt": "Mondaay, March 3rd"
+                  },
+                  {
+                        "content": "Laboris nisi et aute magna irure enim laborum cillum eu laboris.",
+                        "name": "Rice Andrews",
+                        "votes": 60,
+                        "postedBy": "incididunt",
+                        "createdAt": "Mondaay, March 3rd"
+                  },
+                  {
+                        "content": "In mollit sunt nisi anim id nisi et labore velit officia adipisicing.",
+                        "name": "Regina Boyd",
+                        "votes": 672,
+                        "postedBy": "ipsum",
+                        "createdAt": "Mondaay, March 3rd"
+                  },
+                  {
+                        "content": "Lorem labore et tempor eu ut duis laborum esse pariatur deserunt.",
+                        "name": "Gilbert Orr",
+                        "votes": 274,
+                        "postedBy": "nisi",
+                        "createdAt": "Mondaay, March 3rd"
+                  },
+                  {
+                        "content": "Dolore cillum cillum commodo anim minim est in pariatur nostrud dolor commodo eu.",
+                        "name": "Janet Farley",
+                        "votes": 645,
+                        "postedBy": "proident",
+                        "createdAt": "Mondaay, March 3rd"
+                  },
+                  {
+                        "content": "Nulla mollit enim aliquip nulla reprehenderit eu non culpa.",
+                        "name": "Delia Marks",
+                        "votes": 112,
+                        "postedBy": "culpa",
+                        "createdAt": "Mondaay, March 3rd"
+                  },
+                  {
+                        "content": "Minim quis anim qui enim est quis est nostrud proident ullamco eu.",
+                        "name": "Brown Griffith",
+                        "votes": 704,
+                        "postedBy": "non",
+                        "createdAt": "Mondaay, March 3rd"
+                  },
+                  {
+                        "content": "Amet reprehenderit duis dolor enim sit aliqua in et reprehenderit et do.",
+                        "name": "Erickson William",
+                        "votes": 114,
+                        "postedBy": "nostrud",
+                        "createdAt": "Mondaay, March 3rd"
+                  },
+                  {
+                        "content": "Lorem officia ea culpa amet incididunt.",
+                        "name": "Pennington Lane",
+                        "votes": 763,
+                        "postedBy": "excepteur",
+                        "createdAt": "Mondaay, March 3rd"
+                  },
+                  {
+                        "content": "Voluptate ad occaecat adipisicing pariatur anim exercitation id do.",
+                        "name": "Kerri Meyer",
+                        "votes": 940,
+                        "postedBy": "officia",
+                        "createdAt": "Mondaay, March 3rd"
+                  },
+                  {
+                        "content": "Pariatur laborum sunt officia minim veniam sit culpa occaecat ad.",
+                        "name": "Courtney Allison",
+                        "votes": 98,
+                        "postedBy": "sint",
+                        "createdAt": "Mondaay, March 3rd"
+                  },
+                  {
+                        "content": "Ex deserunt ullamco id excepteur do.",
+                        "name": "Schmidt Winters",
+                        "votes": 496,
+                        "postedBy": "consectetur",
+                        "createdAt": "Mondaay, March 3rd"
+                  },
+                  {
+                        "content": "Esse qui veniam dolor quis do elit pariatur aute officia minim sit fugiat mollit laboris.",
+                        "name": "Elaine Whitney",
+                        "votes": 497,
+                        "postedBy": "est",
+                        "createdAt": "Mondaay, March 3rd"
+                  }
+            ]
+      },
+      {
+            "online": false,
+            "picture": "http://placehold.it/32x32",
+            "name": "Hunt Pierce",
+            "email": "huntpierce@oregonstate.edu",
+            "following": [
+                  "huntpierce@oregonstate.edu",
+                  "huntpierce@oregonstate.edu",
+                  "huntpierce@oregonstate.edu",
+                  "huntpierce@oregonstate.edu",
+                  "huntpierce@oregonstate.edu",
+                  "huntpierce@oregonstate.edu",
+                  "huntpierce@oregonstate.edu",
+                  "huntpierce@oregonstate.edu",
+                  "huntpierce@oregonstate.edu",
+                  "huntpierce@oregonstate.edu",
+                  "huntpierce@oregonstate.edu",
+                  "huntpierce@oregonstate.edu",
+                  "huntpierce@oregonstate.edu",
+                  "huntpierce@oregonstate.edu",
+                  "huntpierce@oregonstate.edu",
+                  "huntpierce@oregonstate.edu",
+                  "huntpierce@oregonstate.edu",
+                  "huntpierce@oregonstate.edu",
+                  "huntpierce@oregonstate.edu",
+                  "huntpierce@oregonstate.edu"
+            ],
+            "followers": [
+                  "huntpierce@oregonstate.edu",
+                  "huntpierce@oregonstate.edu",
+                  "huntpierce@oregonstate.edu",
+                  "huntpierce@oregonstate.edu"
+            ],
+            "posts": [
+                  {
+                        "content": "Lorem est tempor ea ex fugiat.",
+                        "name": "Kelsey Prince",
+                        "votes": 169,
+                        "postedBy": "non",
+                        "createdAt": "Mondaay, March 3rd"
+                  },
+                  {
+                        "content": "Anim duis reprehenderit aliqua eu voluptate nulla.",
+                        "name": "Lidia Mueller",
+                        "votes": 308,
+                        "postedBy": "nostrud",
+                        "createdAt": "Mondaay, March 3rd"
+                  },
+                  {
+                        "content": "Qui et reprehenderit dolor consectetur magna et.",
+                        "name": "Meyer Decker",
+                        "votes": 27,
+                        "postedBy": "veniam",
+                        "createdAt": "Mondaay, March 3rd"
+                  }
+            ]
+      },
+      {
+            "online": false,
+            "picture": "http://placehold.it/32x32",
+            "name": "Bush Parker",
+            "email": "bushparker@oregonstate.edu",
+            "following": [
+                  "bushparker@oregonstate.edu",
+                  "bushparker@oregonstate.edu",
+                  "bushparker@oregonstate.edu"
+            ],
+            "followers": [
+                  "bushparker@oregonstate.edu",
+                  "bushparker@oregonstate.edu",
+                  "bushparker@oregonstate.edu",
+                  "bushparker@oregonstate.edu",
+                  "bushparker@oregonstate.edu",
+                  "bushparker@oregonstate.edu"
+            ],
+            "posts": [
+                  {
+                        "content": "Nostrud do commodo dolore ex officia voluptate enim nostrud enim.",
+                        "name": "Sampson Mullen",
+                        "votes": 734,
+                        "postedBy": "velit",
+                        "createdAt": "Mondaay, March 3rd"
+                  },
+                  {
+                        "content": "Consequat enim proident eiusmod est.",
+                        "name": "Stuart Waters",
+                        "votes": 214,
+                        "postedBy": "ut",
+                        "createdAt": "Mondaay, March 3rd"
+                  },
+                  {
+                        "content": "Qui aliqua Lorem non duis mollit sint duis in irure tempor magna.",
+                        "name": "Elsie Cotton",
+                        "votes": 951,
+                        "postedBy": "Lorem",
+                        "createdAt": "Mondaay, March 3rd"
+                  },
+                  {
+                        "content": "Aute deserunt ipsum ad amet amet officia aliquip nostrud.",
+                        "name": "Palmer Bowers",
+                        "votes": 136,
+                        "postedBy": "ut",
+                        "createdAt": "Mondaay, March 3rd"
+                  }
+            ]
+      },
+      {
+            "email": "johndoe@oregonstate.edu",
+            "name": "John Doe",
+            "online": true,
+            "followers": [
+                  "janedoe@oregonstate.edu",
+                  "bobsmith@oregonstate.edu",
+                  "janedoe@oregonstate.edu",
+                  "chris@oregonstate.edu",
+                  "sam@oregonstate.edu"
+            ],
+            "following": [
+                  "janedoe@oregonstate.edu",
+                  "bobsmith@oregonstate.edu",
+                  "sam@oregonstate.edu",
+                  "janedoe@oregonstate.edu",
+                  "chris@oregonstate.edu",
+                  "sam@oregonstate.edu"
+            ],
+            "posts": [
+                  {
+                        "content": "Just went on a hike and saw some amazing views!",
+                        "votes": 10,
+                        "postedBy": "johndoe@oregonstate.edu",
+                        "createdAt": "Thursday, March 7th"
+                  },
+                  {
+                        "content": "Trying out a new recipe tonight for dinner!",
+                        "votes": 2,
+                        "postedBy": "johndoe@oregonstate.edu",
+                        "createdAt": "Monday, March 11th"
+                  },
+                  {
+                        "content": "Excited to start my new job next week!",
+                        "votes": 8,
+                        "postedBy": "johndoe@oregonstate.edu",
+                        "createdAt": "Friday, March 1st"
+                  }
+            ]
+      },
+      {
+            "email": "nyumat@oregonstate.edu",
+            "name": "tom",
+            "followers": [
+                  "sam@oregonstate.edu",
+                  "chris@oregonstate.edu",
+                  "janedoe@oregonstate.edu",
+                  "chris@oregonstate.edu",
+                  "sam@oregonstate.edu"
+            ],
+            "following": [
+                  "sam@oregonstate.edu",
+                  "chris@oregonstate.edu",
+                  "janedoe@oregonstate.edu",
+                  "chris@oregonstate.edu",
+                  "sam@oregonstate.edu"
+            ],
+            "posts": [
+                  {
+                        "content": "some post",
+                        "votes": "5",
+                        "postedBy": "nyumat@oregonstate.edu",
+                        "createdAt": "Tuesday, March 5th"
+                  }
+            ]
+      },
+      {
+            "online": true,
+            "picture": "http://placehold.it/32x32",
+            "name": "Kathrine Barry",
+            "email": "kathrinebarry@oregonstate.edu",
+            "following": [
+                  "kathrinebarry@oregonstate.edu",
+                  "kathrinebarry@oregonstate.edu",
+                  "kathrinebarry@oregonstate.edu",
+                  "kathrinebarry@oregonstate.edu",
+                  "kathrinebarry@oregonstate.edu",
+                  "kathrinebarry@oregonstate.edu",
+                  "kathrinebarry@oregonstate.edu",
+                  "kathrinebarry@oregonstate.edu",
+                  "kathrinebarry@oregonstate.edu",
+                  "kathrinebarry@oregonstate.edu",
+                  "kathrinebarry@oregonstate.edu",
+                  "kathrinebarry@oregonstate.edu",
+                  "kathrinebarry@oregonstate.edu",
+                  "kathrinebarry@oregonstate.edu",
+                  "kathrinebarry@oregonstate.edu",
+                  "kathrinebarry@oregonstate.edu",
+                  "kathrinebarry@oregonstate.edu",
+                  "kathrinebarry@oregonstate.edu"
+            ],
+            "followers": [
+                  "kathrinebarry@oregonstate.edu",
+                  "kathrinebarry@oregonstate.edu",
+                  "kathrinebarry@oregonstate.edu"
+            ],
+            "posts": [
+                  {
+                        "content": "Duis commodo mollit aliqua enim non incididunt velit laboris deserunt.",
+                        "name": "Mcdonald Franco",
+                        "votes": 897,
+                        "postedBy": "exercitation",
+                        "createdAt": "Mondaay, March 3rd"
+                  },
+                  {
+                        "content": "Pariatur dolore labore ipsum cillum laboris amet.",
+                        "name": "Adele Malone",
+                        "votes": 784,
+                        "postedBy": "magna",
+                        "createdAt": "Mondaay, March 3rd"
+                  },
+                  {
+                        "content": "Minim aute est ipsum ut veniam tempor.",
+                        "name": "Rush Parks",
+                        "votes": 162,
+                        "postedBy": "anim",
+                        "createdAt": "Mondaay, March 3rd"
+                  },
+                  {
+                        "content": "Cupidatat nulla in magna occaecat ullamco consectetur ex occaecat fugiat nostrud.",
+                        "name": "Hanson Rosales",
+                        "votes": 767,
+                        "postedBy": "ad",
+                        "createdAt": "Mondaay, March 3rd"
+                  },
+                  {
+                        "content": "Dolore culpa occaecat culpa dolore laboris ea id dolore qui eiusmod pariatur minim elit.",
+                        "name": "Byers Hart",
+                        "votes": 432,
+                        "postedBy": "sunt",
+                        "createdAt": "Mondaay, March 3rd"
+                  }
+            ]
+      },
+      {
+            "online": false,
+            "picture": "http://placehold.it/32x32",
+            "name": "Navarro Gamble",
+            "email": "navarrogamble@oregonstate.edu",
+            "following": [
+                  "navarrogamble@oregonstate.edu",
+                  "navarrogamble@oregonstate.edu",
+                  "navarrogamble@oregonstate.edu",
+                  "navarrogamble@oregonstate.edu",
+                  "navarrogamble@oregonstate.edu",
+                  "navarrogamble@oregonstate.edu",
+                  "navarrogamble@oregonstate.edu",
+                  "navarrogamble@oregonstate.edu",
+                  "navarrogamble@oregonstate.edu",
+                  "navarrogamble@oregonstate.edu",
+                  "navarrogamble@oregonstate.edu",
+                  "navarrogamble@oregonstate.edu",
+                  "navarrogamble@oregonstate.edu",
+                  "navarrogamble@oregonstate.edu"
+            ],
+            "followers": [
+                  "navarrogamble@oregonstate.edu",
+                  "navarrogamble@oregonstate.edu",
+                  "navarrogamble@oregonstate.edu",
+                  "navarrogamble@oregonstate.edu",
+                  "navarrogamble@oregonstate.edu",
+                  "navarrogamble@oregonstate.edu",
+                  "navarrogamble@oregonstate.edu",
+                  "navarrogamble@oregonstate.edu",
+                  "navarrogamble@oregonstate.edu",
+                  "navarrogamble@oregonstate.edu",
+                  "navarrogamble@oregonstate.edu",
+                  "navarrogamble@oregonstate.edu",
+                  "navarrogamble@oregonstate.edu",
+                  "navarrogamble@oregonstate.edu",
+                  "navarrogamble@oregonstate.edu",
+                  "navarrogamble@oregonstate.edu",
+                  "navarrogamble@oregonstate.edu",
+                  "navarrogamble@oregonstate.edu"
+            ],
+            "posts": [
+                  {
+                        "content": "Velit voluptate tempor consectetur reprehenderit velit enim Lorem consequat eu est nisi fugiat sunt.",
+                        "name": "Hamilton Roberson",
+                        "votes": 851,
+                        "postedBy": "culpa",
+                        "createdAt": "Mondaay, March 3rd"
+                  },
+                  {
+                        "content": "Consectetur ipsum mollit eiusmod ea eu dolor voluptate nulla duis quis cupidatat minim exercitation magna.",
+                        "name": "Kristin Moon",
+                        "votes": 434,
+                        "postedBy": "cupidatat",
+                        "createdAt": "Mondaay, March 3rd"
+                  },
+                  {
+                        "content": "Esse pariatur ex aliqua nulla sit.",
+                        "name": "Christian Fletcher",
+                        "votes": 709,
+                        "postedBy": "aliqua",
+                        "createdAt": "Mondaay, March 3rd"
+                  },
+                  {
+                        "content": "Ut dolor ut culpa anim labore irure anim ex occaecat consectetur commodo.",
+                        "name": "Finch Barnes",
+                        "votes": 236,
+                        "postedBy": "proident",
+                        "createdAt": "Mondaay, March 3rd"
+                  },
+                  {
+                        "content": "Commodo incididunt nisi amet velit culpa.",
+                        "name": "Jacquelyn Stewart",
+                        "votes": 318,
+                        "postedBy": "ex",
+                        "createdAt": "Mondaay, March 3rd"
+                  },
+                  {
+                        "content": "Cillum minim non nostrud pariatur sunt qui amet minim nulla sunt.",
+                        "name": "Griffith Greene",
+                        "votes": 621,
+                        "postedBy": "proident",
+                        "createdAt": "Mondaay, March 3rd"
+                  },
+                  {
+                        "content": "Nulla in nostrud nisi esse ut eu veniam magna adipisicing veniam sit.",
+                        "name": "Fitzpatrick Lawrence",
+                        "votes": 909,
+                        "postedBy": "officia",
+                        "createdAt": "Mondaay, March 3rd"
+                  },
+                  {
+                        "content": "Do laborum laboris nulla deserunt mollit voluptate dolor sint id quis quis consequat.",
+                        "name": "Leona Carpenter",
+                        "votes": 162,
+                        "postedBy": "voluptate",
+                        "createdAt": "Mondaay, March 3rd"
+                  },
+                  {
+                        "content": "Nulla labore ad cupidatat eu laboris.",
+                        "name": "Jerry Michael",
+                        "votes": 811,
+                        "postedBy": "nisi",
+                        "createdAt": "Mondaay, March 3rd"
+                  }
+            ]
+      },
+      {
+            "online": false,
+            "picture": "http://placehold.it/32x32",
+            "name": "Raymond House",
+            "email": "raymondhouse@oregonstate.edu",
+            "following": [
+                  "raymondhouse@oregonstate.edu",
+                  "raymondhouse@oregonstate.edu",
+                  "raymondhouse@oregonstate.edu",
+                  "raymondhouse@oregonstate.edu",
+                  "raymondhouse@oregonstate.edu"
+            ],
+            "followers": [
+                  "raymondhouse@oregonstate.edu",
+                  "raymondhouse@oregonstate.edu",
+                  "raymondhouse@oregonstate.edu",
+                  "raymondhouse@oregonstate.edu",
+                  "raymondhouse@oregonstate.edu",
+                  "raymondhouse@oregonstate.edu",
+                  "raymondhouse@oregonstate.edu",
+                  "raymondhouse@oregonstate.edu",
+                  "raymondhouse@oregonstate.edu",
+                  "raymondhouse@oregonstate.edu",
+                  "raymondhouse@oregonstate.edu",
+                  "raymondhouse@oregonstate.edu"
+            ],
+            "posts": [
+                  {
+                        "content": "Cillum ullamco occaecat sunt commodo eu fugiat sunt qui eu ut ipsum ullamco.",
+                        "name": "Schneider Charles",
+                        "votes": 717,
+                        "postedBy": "irure",
+                        "createdAt": "Mondaay, March 3rd"
+                  },
+                  {
+                        "content": "Laboris nisi et aute magna irure enim laborum cillum eu laboris.",
+                        "name": "Rice Andrews",
+                        "votes": 60,
+                        "postedBy": "incididunt",
+                        "createdAt": "Mondaay, March 3rd"
+                  },
+                  {
+                        "content": "In mollit sunt nisi anim id nisi et labore velit officia adipisicing.",
+                        "name": "Regina Boyd",
+                        "votes": 672,
+                        "postedBy": "ipsum",
+                        "createdAt": "Mondaay, March 3rd"
+                  },
+                  {
+                        "content": "Lorem labore et tempor eu ut duis laborum esse pariatur deserunt.",
+                        "name": "Gilbert Orr",
+                        "votes": 274,
+                        "postedBy": "nisi",
+                        "createdAt": "Mondaay, March 3rd"
+                  },
+                  {
+                        "content": "Dolore cillum cillum commodo anim minim est in pariatur nostrud dolor commodo eu.",
+                        "name": "Janet Farley",
+                        "votes": 645,
+                        "postedBy": "proident",
+                        "createdAt": "Mondaay, March 3rd"
+                  },
+                  {
+                        "content": "Nulla mollit enim aliquip nulla reprehenderit eu non culpa.",
+                        "name": "Delia Marks",
+                        "votes": 112,
+                        "postedBy": "culpa",
+                        "createdAt": "Mondaay, March 3rd"
+                  },
+                  {
+                        "content": "Minim quis anim qui enim est quis est nostrud proident ullamco eu.",
+                        "name": "Brown Griffith",
+                        "votes": 704,
+                        "postedBy": "non",
+                        "createdAt": "Mondaay, March 3rd"
+                  },
+                  {
+                        "content": "Amet reprehenderit duis dolor enim sit aliqua in et reprehenderit et do.",
+                        "name": "Erickson William",
+                        "votes": 114,
+                        "postedBy": "nostrud",
+                        "createdAt": "Mondaay, March 3rd"
+                  },
+                  {
+                        "content": "Lorem officia ea culpa amet incididunt.",
+                        "name": "Pennington Lane",
+                        "votes": 763,
+                        "postedBy": "excepteur",
+                        "createdAt": "Mondaay, March 3rd"
+                  },
+                  {
+                        "content": "Voluptate ad occaecat adipisicing pariatur anim exercitation id do.",
+                        "name": "Kerri Meyer",
+                        "votes": 940,
+                        "postedBy": "officia",
+                        "createdAt": "Mondaay, March 3rd"
+                  },
+                  {
+                        "content": "Pariatur laborum sunt officia minim veniam sit culpa occaecat ad.",
+                        "name": "Courtney Allison",
+                        "votes": 98,
+                        "postedBy": "sint",
+                        "createdAt": "Mondaay, March 3rd"
+                  },
+                  {
+                        "content": "Ex deserunt ullamco id excepteur do.",
+                        "name": "Schmidt Winters",
+                        "votes": 496,
+                        "postedBy": "consectetur",
+                        "createdAt": "Mondaay, March 3rd"
+                  },
+                  {
+                        "content": "Esse qui veniam dolor quis do elit pariatur aute officia minim sit fugiat mollit laboris.",
+                        "name": "Elaine Whitney",
+                        "votes": 497,
+                        "postedBy": "est",
+                        "createdAt": "Mondaay, March 3rd"
+                  }
+            ]
+      },
+      {
+            "online": false,
+            "picture": "http://placehold.it/32x32",
+            "name": "Hunt Pierce",
+            "email": "huntpierce@oregonstate.edu",
+            "following": [
+                  "huntpierce@oregonstate.edu",
+                  "huntpierce@oregonstate.edu",
+                  "huntpierce@oregonstate.edu",
+                  "huntpierce@oregonstate.edu",
+                  "huntpierce@oregonstate.edu",
+                  "huntpierce@oregonstate.edu",
+                  "huntpierce@oregonstate.edu",
+                  "huntpierce@oregonstate.edu",
+                  "huntpierce@oregonstate.edu",
+                  "huntpierce@oregonstate.edu",
+                  "huntpierce@oregonstate.edu",
+                  "huntpierce@oregonstate.edu",
+                  "huntpierce@oregonstate.edu",
+                  "huntpierce@oregonstate.edu",
+                  "huntpierce@oregonstate.edu",
+                  "huntpierce@oregonstate.edu",
+                  "huntpierce@oregonstate.edu",
+                  "huntpierce@oregonstate.edu",
+                  "huntpierce@oregonstate.edu",
+                  "huntpierce@oregonstate.edu"
+            ],
+            "followers": [
+                  "huntpierce@oregonstate.edu",
+                  "huntpierce@oregonstate.edu",
+                  "huntpierce@oregonstate.edu",
+                  "huntpierce@oregonstate.edu"
+            ],
+            "posts": [
+                  {
+                        "content": "Lorem est tempor ea ex fugiat.",
+                        "name": "Kelsey Prince",
+                        "votes": 169,
+                        "postedBy": "non",
+                        "createdAt": "Mondaay, March 3rd"
+                  },
+                  {
+                        "content": "Anim duis reprehenderit aliqua eu voluptate nulla.",
+                        "name": "Lidia Mueller",
+                        "votes": 308,
+                        "postedBy": "nostrud",
+                        "createdAt": "Mondaay, March 3rd"
+                  },
+                  {
+                        "content": "Qui et reprehenderit dolor consectetur magna et.",
+                        "name": "Meyer Decker",
+                        "votes": 27,
+                        "postedBy": "veniam",
+                        "createdAt": "Mondaay, March 3rd"
+                  }
+            ]
+      },
+      {
+            "online": false,
+            "picture": "http://placehold.it/32x32",
+            "name": "Bush Parker",
+            "email": "bushparker@oregonstate.edu",
+            "following": [
+                  "bushparker@oregonstate.edu",
+                  "bushparker@oregonstate.edu",
+                  "bushparker@oregonstate.edu"
+            ],
+            "followers": [
+                  "bushparker@oregonstate.edu",
+                  "bushparker@oregonstate.edu",
+                  "bushparker@oregonstate.edu",
+                  "bushparker@oregonstate.edu",
+                  "bushparker@oregonstate.edu",
+                  "bushparker@oregonstate.edu"
+            ],
+            "posts": [
+                  {
+                        "content": "Nostrud do commodo dolore ex officia voluptate enim nostrud enim.",
+                        "name": "Sampson Mullen",
+                        "votes": 734,
+                        "postedBy": "velit",
+                        "createdAt": "Mondaay, March 3rd"
+                  },
+                  {
+                        "content": "Consequat enim proident eiusmod est.",
+                        "name": "Stuart Waters",
+                        "votes": 214,
+                        "postedBy": "ut",
+                        "createdAt": "Mondaay, March 3rd"
+                  },
+                  {
+                        "content": "Qui aliqua Lorem non duis mollit sint duis in irure tempor magna.",
+                        "name": "Elsie Cotton",
+                        "votes": 951,
+                        "postedBy": "Lorem",
+                        "createdAt": "Mondaay, March 3rd"
+                  },
+                  {
+                        "content": "Aute deserunt ipsum ad amet amet officia aliquip nostrud.",
+                        "name": "Palmer Bowers",
+                        "votes": 136,
+                        "postedBy": "ut",
+                        "createdAt": "Mondaay, March 3rd"
+                  }
+            ]
+      },
+      {
+            "email": "johndoe@oregonstate.edu",
+            "name": "John Doe",
+            "online": true,
+            "followers": [
+                  "janedoe@oregonstate.edu",
+                  "bobsmith@oregonstate.edu",
+                  "janedoe@oregonstate.edu",
+                  "chris@oregonstate.edu",
+                  "sam@oregonstate.edu"
+            ],
+            "following": [
+                  "janedoe@oregonstate.edu",
+                  "bobsmith@oregonstate.edu",
+                  "sam@oregonstate.edu",
+                  "janedoe@oregonstate.edu",
+                  "chris@oregonstate.edu",
+                  "sam@oregonstate.edu"
+            ],
+            "posts": [
+                  {
+                        "content": "Just went on a hike and saw some amazing views!",
+                        "votes": 10,
+                        "postedBy": "johndoe@oregonstate.edu",
+                        "createdAt": "Thursday, March 7th"
+                  },
+                  {
+                        "content": "Trying out a new recipe tonight for dinner!",
+                        "votes": 2,
+                        "postedBy": "johndoe@oregonstate.edu",
+                        "createdAt": "Monday, March 11th"
+                  },
+                  {
+                        "content": "Excited to start my new job next week!",
+                        "votes": 8,
+                        "postedBy": "johndoe@oregonstate.edu",
+                        "createdAt": "Friday, March 1st"
+                  }
+            ]
+      },
+      {
+            "email": "nyumat@oregonstate.edu",
+            "name": "tom",
+            "followers": [
+                  "sam@oregonstate.edu",
+                  "chris@oregonstate.edu",
+                  "janedoe@oregonstate.edu",
+                  "chris@oregonstate.edu",
+                  "sam@oregonstate.edu"
+            ],
+            "following": [
+                  "sam@oregonstate.edu",
+                  "chris@oregonstate.edu",
+                  "janedoe@oregonstate.edu",
+                  "chris@oregonstate.edu",
+                  "sam@oregonstate.edu"
+            ],
+            "posts": [
+                  {
+                        "content": "some post",
+                        "votes": "5",
+                        "postedBy": "nyumat@oregonstate.edu",
+                        "createdAt": "Tuesday, March 5th"
+                  }
+            ]
+      },
+      {
+            "online": true,
+            "picture": "http://placehold.it/32x32",
+            "name": "Kathrine Barry",
+            "email": "kathrinebarry@oregonstate.edu",
+            "following": [
+                  "kathrinebarry@oregonstate.edu",
+                  "kathrinebarry@oregonstate.edu",
+                  "kathrinebarry@oregonstate.edu",
+                  "kathrinebarry@oregonstate.edu",
+                  "kathrinebarry@oregonstate.edu",
+                  "kathrinebarry@oregonstate.edu",
+                  "kathrinebarry@oregonstate.edu",
+                  "kathrinebarry@oregonstate.edu",
+                  "kathrinebarry@oregonstate.edu",
+                  "kathrinebarry@oregonstate.edu",
+                  "kathrinebarry@oregonstate.edu",
+                  "kathrinebarry@oregonstate.edu",
+                  "kathrinebarry@oregonstate.edu",
+                  "kathrinebarry@oregonstate.edu",
+                  "kathrinebarry@oregonstate.edu",
+                  "kathrinebarry@oregonstate.edu",
+                  "kathrinebarry@oregonstate.edu",
+                  "kathrinebarry@oregonstate.edu"
+            ],
+            "followers": [
+                  "kathrinebarry@oregonstate.edu",
+                  "kathrinebarry@oregonstate.edu",
+                  "kathrinebarry@oregonstate.edu"
+            ],
+            "posts": [
+                  {
+                        "content": "Duis commodo mollit aliqua enim non incididunt velit laboris deserunt.",
+                        "name": "Mcdonald Franco",
+                        "votes": 897,
+                        "postedBy": "exercitation",
+                        "createdAt": "Mondaay, March 3rd"
+                  },
+                  {
+                        "content": "Pariatur dolore labore ipsum cillum laboris amet.",
+                        "name": "Adele Malone",
+                        "votes": 784,
+                        "postedBy": "magna",
+                        "createdAt": "Mondaay, March 3rd"
+                  },
+                  {
+                        "content": "Minim aute est ipsum ut veniam tempor.",
+                        "name": "Rush Parks",
+                        "votes": 162,
+                        "postedBy": "anim",
+                        "createdAt": "Mondaay, March 3rd"
+                  },
+                  {
+                        "content": "Cupidatat nulla in magna occaecat ullamco consectetur ex occaecat fugiat nostrud.",
+                        "name": "Hanson Rosales",
+                        "votes": 767,
+                        "postedBy": "ad",
+                        "createdAt": "Mondaay, March 3rd"
+                  },
+                  {
+                        "content": "Dolore culpa occaecat culpa dolore laboris ea id dolore qui eiusmod pariatur minim elit.",
+                        "name": "Byers Hart",
+                        "votes": 432,
+                        "postedBy": "sunt",
+                        "createdAt": "Mondaay, March 3rd"
+                  }
+            ]
+      },
+      {
+            "online": false,
+            "picture": "http://placehold.it/32x32",
+            "name": "Navarro Gamble",
+            "email": "navarrogamble@oregonstate.edu",
+            "following": [
+                  "navarrogamble@oregonstate.edu",
+                  "navarrogamble@oregonstate.edu",
+                  "navarrogamble@oregonstate.edu",
+                  "navarrogamble@oregonstate.edu",
+                  "navarrogamble@oregonstate.edu",
+                  "navarrogamble@oregonstate.edu",
+                  "navarrogamble@oregonstate.edu",
+                  "navarrogamble@oregonstate.edu",
+                  "navarrogamble@oregonstate.edu",
+                  "navarrogamble@oregonstate.edu",
+                  "navarrogamble@oregonstate.edu",
+                  "navarrogamble@oregonstate.edu",
+                  "navarrogamble@oregonstate.edu",
+                  "navarrogamble@oregonstate.edu"
+            ],
+            "followers": [
+                  "navarrogamble@oregonstate.edu",
+                  "navarrogamble@oregonstate.edu",
+                  "navarrogamble@oregonstate.edu",
+                  "navarrogamble@oregonstate.edu",
+                  "navarrogamble@oregonstate.edu",
+                  "navarrogamble@oregonstate.edu",
+                  "navarrogamble@oregonstate.edu",
+                  "navarrogamble@oregonstate.edu",
+                  "navarrogamble@oregonstate.edu",
+                  "navarrogamble@oregonstate.edu",
+                  "navarrogamble@oregonstate.edu",
+                  "navarrogamble@oregonstate.edu",
+                  "navarrogamble@oregonstate.edu",
+                  "navarrogamble@oregonstate.edu",
+                  "navarrogamble@oregonstate.edu",
+                  "navarrogamble@oregonstate.edu",
+                  "navarrogamble@oregonstate.edu",
+                  "navarrogamble@oregonstate.edu"
+            ],
+            "posts": [
+                  {
+                        "content": "Velit voluptate tempor consectetur reprehenderit velit enim Lorem consequat eu est nisi fugiat sunt.",
+                        "name": "Hamilton Roberson",
+                        "votes": 851,
+                        "postedBy": "culpa",
+                        "createdAt": "Mondaay, March 3rd"
+                  },
+                  {
+                        "content": "Consectetur ipsum mollit eiusmod ea eu dolor voluptate nulla duis quis cupidatat minim exercitation magna.",
+                        "name": "Kristin Moon",
+                        "votes": 434,
+                        "postedBy": "cupidatat",
+                        "createdAt": "Mondaay, March 3rd"
+                  },
+                  {
+                        "content": "Esse pariatur ex aliqua nulla sit.",
+                        "name": "Christian Fletcher",
+                        "votes": 709,
+                        "postedBy": "aliqua",
+                        "createdAt": "Mondaay, March 3rd"
+                  },
+                  {
+                        "content": "Ut dolor ut culpa anim labore irure anim ex occaecat consectetur commodo.",
+                        "name": "Finch Barnes",
+                        "votes": 236,
+                        "postedBy": "proident",
+                        "createdAt": "Mondaay, March 3rd"
+                  },
+                  {
+                        "content": "Commodo incididunt nisi amet velit culpa.",
+                        "name": "Jacquelyn Stewart",
+                        "votes": 318,
+                        "postedBy": "ex",
+                        "createdAt": "Mondaay, March 3rd"
+                  },
+                  {
+                        "content": "Cillum minim non nostrud pariatur sunt qui amet minim nulla sunt.",
+                        "name": "Griffith Greene",
+                        "votes": 621,
+                        "postedBy": "proident",
+                        "createdAt": "Mondaay, March 3rd"
+                  },
+                  {
+                        "content": "Nulla in nostrud nisi esse ut eu veniam magna adipisicing veniam sit.",
+                        "name": "Fitzpatrick Lawrence",
+                        "votes": 909,
+                        "postedBy": "officia",
+                        "createdAt": "Mondaay, March 3rd"
+                  },
+                  {
+                        "content": "Do laborum laboris nulla deserunt mollit voluptate dolor sint id quis quis consequat.",
+                        "name": "Leona Carpenter",
+                        "votes": 162,
+                        "postedBy": "voluptate",
+                        "createdAt": "Mondaay, March 3rd"
+                  },
+                  {
+                        "content": "Nulla labore ad cupidatat eu laboris.",
+                        "name": "Jerry Michael",
+                        "votes": 811,
+                        "postedBy": "nisi",
+                        "createdAt": "Mondaay, March 3rd"
+                  }
+            ]
+      },
+      {
+            "online": false,
+            "picture": "http://placehold.it/32x32",
+            "name": "Raymond House",
+            "email": "raymondhouse@oregonstate.edu",
+            "following": [
+                  "raymondhouse@oregonstate.edu",
+                  "raymondhouse@oregonstate.edu",
+                  "raymondhouse@oregonstate.edu",
+                  "raymondhouse@oregonstate.edu",
+                  "raymondhouse@oregonstate.edu"
+            ],
+            "followers": [
+                  "raymondhouse@oregonstate.edu",
+                  "raymondhouse@oregonstate.edu",
+                  "raymondhouse@oregonstate.edu",
+                  "raymondhouse@oregonstate.edu",
+                  "raymondhouse@oregonstate.edu",
+                  "raymondhouse@oregonstate.edu",
+                  "raymondhouse@oregonstate.edu",
+                  "raymondhouse@oregonstate.edu",
+                  "raymondhouse@oregonstate.edu",
+                  "raymondhouse@oregonstate.edu",
+                  "raymondhouse@oregonstate.edu",
+                  "raymondhouse@oregonstate.edu"
+            ],
+            "posts": [
+                  {
+                        "content": "Cillum ullamco occaecat sunt commodo eu fugiat sunt qui eu ut ipsum ullamco.",
+                        "name": "Schneider Charles",
+                        "votes": 717,
+                        "postedBy": "irure",
+                        "createdAt": "Mondaay, March 3rd"
+                  },
+                  {
+                        "content": "Laboris nisi et aute magna irure enim laborum cillum eu laboris.",
+                        "name": "Rice Andrews",
+                        "votes": 60,
+                        "postedBy": "incididunt",
+                        "createdAt": "Mondaay, March 3rd"
+                  },
+                  {
+                        "content": "In mollit sunt nisi anim id nisi et labore velit officia adipisicing.",
+                        "name": "Regina Boyd",
+                        "votes": 672,
+                        "postedBy": "ipsum",
+                        "createdAt": "Mondaay, March 3rd"
+                  },
+                  {
+                        "content": "Lorem labore et tempor eu ut duis laborum esse pariatur deserunt.",
+                        "name": "Gilbert Orr",
+                        "votes": 274,
+                        "postedBy": "nisi",
+                        "createdAt": "Mondaay, March 3rd"
+                  },
+                  {
+                        "content": "Dolore cillum cillum commodo anim minim est in pariatur nostrud dolor commodo eu.",
+                        "name": "Janet Farley",
+                        "votes": 645,
+                        "postedBy": "proident",
+                        "createdAt": "Mondaay, March 3rd"
+                  },
+                  {
+                        "content": "Nulla mollit enim aliquip nulla reprehenderit eu non culpa.",
+                        "name": "Delia Marks",
+                        "votes": 112,
+                        "postedBy": "culpa",
+                        "createdAt": "Mondaay, March 3rd"
+                  },
+                  {
+                        "content": "Minim quis anim qui enim est quis est nostrud proident ullamco eu.",
+                        "name": "Brown Griffith",
+                        "votes": 704,
+                        "postedBy": "non",
+                        "createdAt": "Mondaay, March 3rd"
+                  },
+                  {
+                        "content": "Amet reprehenderit duis dolor enim sit aliqua in et reprehenderit et do.",
+                        "name": "Erickson William",
+                        "votes": 114,
+                        "postedBy": "nostrud",
+                        "createdAt": "Mondaay, March 3rd"
+                  },
+                  {
+                        "content": "Lorem officia ea culpa amet incididunt.",
+                        "name": "Pennington Lane",
+                        "votes": 763,
+                        "postedBy": "excepteur",
+                        "createdAt": "Mondaay, March 3rd"
+                  },
+                  {
+                        "content": "Voluptate ad occaecat adipisicing pariatur anim exercitation id do.",
+                        "name": "Kerri Meyer",
+                        "votes": 940,
+                        "postedBy": "officia",
+                        "createdAt": "Mondaay, March 3rd"
+                  },
+                  {
+                        "content": "Pariatur laborum sunt officia minim veniam sit culpa occaecat ad.",
+                        "name": "Courtney Allison",
+                        "votes": 98,
+                        "postedBy": "sint",
+                        "createdAt": "Mondaay, March 3rd"
+                  },
+                  {
+                        "content": "Ex deserunt ullamco id excepteur do.",
+                        "name": "Schmidt Winters",
+                        "votes": 496,
+                        "postedBy": "consectetur",
+                        "createdAt": "Mondaay, March 3rd"
+                  },
+                  {
+                        "content": "Esse qui veniam dolor quis do elit pariatur aute officia minim sit fugiat mollit laboris.",
+                        "name": "Elaine Whitney",
+                        "votes": 497,
+                        "postedBy": "est",
+                        "createdAt": "Mondaay, March 3rd"
+                  }
+            ]
+      },
+      {
+            "online": false,
+            "picture": "http://placehold.it/32x32",
+            "name": "Hunt Pierce",
+            "email": "huntpierce@oregonstate.edu",
+            "following": [
+                  "huntpierce@oregonstate.edu",
+                  "huntpierce@oregonstate.edu",
+                  "huntpierce@oregonstate.edu",
+                  "huntpierce@oregonstate.edu",
+                  "huntpierce@oregonstate.edu",
+                  "huntpierce@oregonstate.edu",
+                  "huntpierce@oregonstate.edu",
+                  "huntpierce@oregonstate.edu",
+                  "huntpierce@oregonstate.edu",
+                  "huntpierce@oregonstate.edu",
+                  "huntpierce@oregonstate.edu",
+                  "huntpierce@oregonstate.edu",
+                  "huntpierce@oregonstate.edu",
+                  "huntpierce@oregonstate.edu",
+                  "huntpierce@oregonstate.edu",
+                  "huntpierce@oregonstate.edu",
+                  "huntpierce@oregonstate.edu",
+                  "huntpierce@oregonstate.edu",
+                  "huntpierce@oregonstate.edu",
+                  "huntpierce@oregonstate.edu"
+            ],
+            "followers": [
+                  "huntpierce@oregonstate.edu",
+                  "huntpierce@oregonstate.edu",
+                  "huntpierce@oregonstate.edu",
+                  "huntpierce@oregonstate.edu"
+            ],
+            "posts": [
+                  {
+                        "content": "Lorem est tempor ea ex fugiat.",
+                        "name": "Kelsey Prince",
+                        "votes": 169,
+                        "postedBy": "non",
+                        "createdAt": "Mondaay, March 3rd"
+                  },
+                  {
+                        "content": "Anim duis reprehenderit aliqua eu voluptate nulla.",
+                        "name": "Lidia Mueller",
+                        "votes": 308,
+                        "postedBy": "nostrud",
+                        "createdAt": "Mondaay, March 3rd"
+                  },
+                  {
+                        "content": "Qui et reprehenderit dolor consectetur magna et.",
+                        "name": "Meyer Decker",
+                        "votes": 27,
+                        "postedBy": "veniam",
+                        "createdAt": "Mondaay, March 3rd"
+                  }
+            ]
+      },
+      {
+            "online": false,
+            "picture": "http://placehold.it/32x32",
+            "name": "Bush Parker",
+            "email": "bushparker@oregonstate.edu",
+            "following": [
+                  "bushparker@oregonstate.edu",
+                  "bushparker@oregonstate.edu",
+                  "bushparker@oregonstate.edu"
+            ],
+            "followers": [
+                  "bushparker@oregonstate.edu",
+                  "bushparker@oregonstate.edu",
+                  "bushparker@oregonstate.edu",
+                  "bushparker@oregonstate.edu",
+                  "bushparker@oregonstate.edu",
+                  "bushparker@oregonstate.edu"
+            ],
+            "posts": [
+                  {
+                        "content": "Nostrud do commodo dolore ex officia voluptate enim nostrud enim.",
+                        "name": "Sampson Mullen",
+                        "votes": 734,
+                        "postedBy": "velit",
+                        "createdAt": "Mondaay, March 3rd"
+                  },
+                  {
+                        "content": "Consequat enim proident eiusmod est.",
+                        "name": "Stuart Waters",
+                        "votes": 214,
+                        "postedBy": "ut",
+                        "createdAt": "Mondaay, March 3rd"
+                  },
+                  {
+                        "content": "Qui aliqua Lorem non duis mollit sint duis in irure tempor magna.",
+                        "name": "Elsie Cotton",
+                        "votes": 951,
+                        "postedBy": "Lorem",
+                        "createdAt": "Mondaay, March 3rd"
+                  },
+                  {
+                        "content": "Aute deserunt ipsum ad amet amet officia aliquip nostrud.",
+                        "name": "Palmer Bowers",
+                        "votes": 136,
+                        "postedBy": "ut",
+                        "createdAt": "Mondaay, March 3rd"
+                  }
+            ]
+      },
+      {
+            "email": "johndoe@oregonstate.edu",
+            "name": "John Doe",
+            "online": true,
+            "followers": [
+                  "janedoe@oregonstate.edu",
+                  "bobsmith@oregonstate.edu",
+                  "janedoe@oregonstate.edu",
+                  "chris@oregonstate.edu",
+                  "sam@oregonstate.edu"
+            ],
+            "following": [
+                  "janedoe@oregonstate.edu",
+                  "bobsmith@oregonstate.edu",
+                  "sam@oregonstate.edu",
+                  "janedoe@oregonstate.edu",
+                  "chris@oregonstate.edu",
+                  "sam@oregonstate.edu"
+            ],
+            "posts": [
+                  {
+                        "content": "Just went on a hike and saw some amazing views!",
+                        "votes": 10,
+                        "postedBy": "johndoe@oregonstate.edu",
+                        "createdAt": "Thursday, March 7th"
+                  },
+                  {
+                        "content": "Trying out a new recipe tonight for dinner!",
+                        "votes": 2,
+                        "postedBy": "johndoe@oregonstate.edu",
+                        "createdAt": "Monday, March 11th"
+                  },
+                  {
+                        "content": "Excited to start my new job next week!",
+                        "votes": 8,
+                        "postedBy": "johndoe@oregonstate.edu",
+                        "createdAt": "Friday, March 1st"
+                  }
+            ]
+      },
+      {
+            "email": "nyumat@oregonstate.edu",
+            "name": "tom",
+            "followers": [
+                  "sam@oregonstate.edu",
+                  "chris@oregonstate.edu",
+                  "janedoe@oregonstate.edu",
+                  "chris@oregonstate.edu",
+                  "sam@oregonstate.edu"
+            ],
+            "following": [
+                  "sam@oregonstate.edu",
+                  "chris@oregonstate.edu",
+                  "janedoe@oregonstate.edu",
+                  "chris@oregonstate.edu",
+                  "sam@oregonstate.edu"
+            ],
+            "posts": [
+                  {
+                        "content": "some post",
+                        "votes": "5",
+                        "postedBy": "nyumat@oregonstate.edu",
+                        "createdAt": "Tuesday, March 5th"
+                  }
+            ]
+      },
+      {
+            "online": true,
+            "picture": "http://placehold.it/32x32",
+            "name": "Kathrine Barry",
+            "email": "kathrinebarry@oregonstate.edu",
+            "following": [
+                  "kathrinebarry@oregonstate.edu",
+                  "kathrinebarry@oregonstate.edu",
+                  "kathrinebarry@oregonstate.edu",
+                  "kathrinebarry@oregonstate.edu",
+                  "kathrinebarry@oregonstate.edu",
+                  "kathrinebarry@oregonstate.edu",
+                  "kathrinebarry@oregonstate.edu",
+                  "kathrinebarry@oregonstate.edu",
+                  "kathrinebarry@oregonstate.edu",
+                  "kathrinebarry@oregonstate.edu",
+                  "kathrinebarry@oregonstate.edu",
+                  "kathrinebarry@oregonstate.edu",
+                  "kathrinebarry@oregonstate.edu",
+                  "kathrinebarry@oregonstate.edu",
+                  "kathrinebarry@oregonstate.edu",
+                  "kathrinebarry@oregonstate.edu",
+                  "kathrinebarry@oregonstate.edu",
+                  "kathrinebarry@oregonstate.edu"
+            ],
+            "followers": [
+                  "kathrinebarry@oregonstate.edu",
+                  "kathrinebarry@oregonstate.edu",
+                  "kathrinebarry@oregonstate.edu"
+            ],
+            "posts": [
+                  {
+                        "content": "Duis commodo mollit aliqua enim non incididunt velit laboris deserunt.",
+                        "name": "Mcdonald Franco",
+                        "votes": 897,
+                        "postedBy": "exercitation",
+                        "createdAt": "Mondaay, March 3rd"
+                  },
+                  {
+                        "content": "Pariatur dolore labore ipsum cillum laboris amet.",
+                        "name": "Adele Malone",
+                        "votes": 784,
+                        "postedBy": "magna",
+                        "createdAt": "Mondaay, March 3rd"
+                  },
+                  {
+                        "content": "Minim aute est ipsum ut veniam tempor.",
+                        "name": "Rush Parks",
+                        "votes": 162,
+                        "postedBy": "anim",
+                        "createdAt": "Mondaay, March 3rd"
+                  },
+                  {
+                        "content": "Cupidatat nulla in magna occaecat ullamco consectetur ex occaecat fugiat nostrud.",
+                        "name": "Hanson Rosales",
+                        "votes": 767,
+                        "postedBy": "ad",
+                        "createdAt": "Mondaay, March 3rd"
+                  },
+                  {
+                        "content": "Dolore culpa occaecat culpa dolore laboris ea id dolore qui eiusmod pariatur minim elit.",
+                        "name": "Byers Hart",
+                        "votes": 432,
+                        "postedBy": "sunt",
+                        "createdAt": "Mondaay, March 3rd"
+                  }
+            ]
+      },
+      {
+            "online": false,
+            "picture": "http://placehold.it/32x32",
+            "name": "Navarro Gamble",
+            "email": "navarrogamble@oregonstate.edu",
+            "following": [
+                  "navarrogamble@oregonstate.edu",
+                  "navarrogamble@oregonstate.edu",
+                  "navarrogamble@oregonstate.edu",
+                  "navarrogamble@oregonstate.edu",
+                  "navarrogamble@oregonstate.edu",
+                  "navarrogamble@oregonstate.edu",
+                  "navarrogamble@oregonstate.edu",
+                  "navarrogamble@oregonstate.edu",
+                  "navarrogamble@oregonstate.edu",
+                  "navarrogamble@oregonstate.edu",
+                  "navarrogamble@oregonstate.edu",
+                  "navarrogamble@oregonstate.edu",
+                  "navarrogamble@oregonstate.edu",
+                  "navarrogamble@oregonstate.edu"
+            ],
+            "followers": [
+                  "navarrogamble@oregonstate.edu",
+                  "navarrogamble@oregonstate.edu",
+                  "navarrogamble@oregonstate.edu",
+                  "navarrogamble@oregonstate.edu",
+                  "navarrogamble@oregonstate.edu",
+                  "navarrogamble@oregonstate.edu",
+                  "navarrogamble@oregonstate.edu",
+                  "navarrogamble@oregonstate.edu",
+                  "navarrogamble@oregonstate.edu",
+                  "navarrogamble@oregonstate.edu",
+                  "navarrogamble@oregonstate.edu",
+                  "navarrogamble@oregonstate.edu",
+                  "navarrogamble@oregonstate.edu",
+                  "navarrogamble@oregonstate.edu",
+                  "navarrogamble@oregonstate.edu",
+                  "navarrogamble@oregonstate.edu",
+                  "navarrogamble@oregonstate.edu",
+                  "navarrogamble@oregonstate.edu"
+            ],
+            "posts": [
+                  {
+                        "content": "Velit voluptate tempor consectetur reprehenderit velit enim Lorem consequat eu est nisi fugiat sunt.",
+                        "name": "Hamilton Roberson",
+                        "votes": 851,
+                        "postedBy": "culpa",
+                        "createdAt": "Mondaay, March 3rd"
+                  },
+                  {
+                        "content": "Consectetur ipsum mollit eiusmod ea eu dolor voluptate nulla duis quis cupidatat minim exercitation magna.",
+                        "name": "Kristin Moon",
+                        "votes": 434,
+                        "postedBy": "cupidatat",
+                        "createdAt": "Mondaay, March 3rd"
+                  },
+                  {
+                        "content": "Esse pariatur ex aliqua nulla sit.",
+                        "name": "Christian Fletcher",
+                        "votes": 709,
+                        "postedBy": "aliqua",
+                        "createdAt": "Mondaay, March 3rd"
+                  },
+                  {
+                        "content": "Ut dolor ut culpa anim labore irure anim ex occaecat consectetur commodo.",
+                        "name": "Finch Barnes",
+                        "votes": 236,
+                        "postedBy": "proident",
+                        "createdAt": "Mondaay, March 3rd"
+                  },
+                  {
+                        "content": "Commodo incididunt nisi amet velit culpa.",
+                        "name": "Jacquelyn Stewart",
+                        "votes": 318,
+                        "postedBy": "ex",
+                        "createdAt": "Mondaay, March 3rd"
+                  },
+                  {
+                        "content": "Cillum minim non nostrud pariatur sunt qui amet minim nulla sunt.",
+                        "name": "Griffith Greene",
+                        "votes": 621,
+                        "postedBy": "proident",
+                        "createdAt": "Mondaay, March 3rd"
+                  },
+                  {
+                        "content": "Nulla in nostrud nisi esse ut eu veniam magna adipisicing veniam sit.",
+                        "name": "Fitzpatrick Lawrence",
+                        "votes": 909,
+                        "postedBy": "officia",
+                        "createdAt": "Mondaay, March 3rd"
+                  },
+                  {
+                        "content": "Do laborum laboris nulla deserunt mollit voluptate dolor sint id quis quis consequat.",
+                        "name": "Leona Carpenter",
+                        "votes": 162,
+                        "postedBy": "voluptate",
+                        "createdAt": "Mondaay, March 3rd"
+                  },
+                  {
+                        "content": "Nulla labore ad cupidatat eu laboris.",
+                        "name": "Jerry Michael",
+                        "votes": 811,
+                        "postedBy": "nisi",
+                        "createdAt": "Mondaay, March 3rd"
+                  }
+            ]
+      },
+      {
+            "online": false,
+            "picture": "http://placehold.it/32x32",
+            "name": "Raymond House",
+            "email": "raymondhouse@oregonstate.edu",
+            "following": [
+                  "raymondhouse@oregonstate.edu",
+                  "raymondhouse@oregonstate.edu",
+                  "raymondhouse@oregonstate.edu",
+                  "raymondhouse@oregonstate.edu",
+                  "raymondhouse@oregonstate.edu"
+            ],
+            "followers": [
+                  "raymondhouse@oregonstate.edu",
+                  "raymondhouse@oregonstate.edu",
+                  "raymondhouse@oregonstate.edu",
+                  "raymondhouse@oregonstate.edu",
+                  "raymondhouse@oregonstate.edu",
+                  "raymondhouse@oregonstate.edu",
+                  "raymondhouse@oregonstate.edu",
+                  "raymondhouse@oregonstate.edu",
+                  "raymondhouse@oregonstate.edu",
+                  "raymondhouse@oregonstate.edu",
+                  "raymondhouse@oregonstate.edu",
+                  "raymondhouse@oregonstate.edu"
+            ],
+            "posts": [
+                  {
+                        "content": "Cillum ullamco occaecat sunt commodo eu fugiat sunt qui eu ut ipsum ullamco.",
+                        "name": "Schneider Charles",
+                        "votes": 717,
+                        "postedBy": "irure",
+                        "createdAt": "Mondaay, March 3rd"
+                  },
+                  {
+                        "content": "Laboris nisi et aute magna irure enim laborum cillum eu laboris.",
+                        "name": "Rice Andrews",
+                        "votes": 60,
+                        "postedBy": "incididunt",
+                        "createdAt": "Mondaay, March 3rd"
+                  },
+                  {
+                        "content": "In mollit sunt nisi anim id nisi et labore velit officia adipisicing.",
+                        "name": "Regina Boyd",
+                        "votes": 672,
+                        "postedBy": "ipsum",
+                        "createdAt": "Mondaay, March 3rd"
+                  },
+                  {
+                        "content": "Lorem labore et tempor eu ut duis laborum esse pariatur deserunt.",
+                        "name": "Gilbert Orr",
+                        "votes": 274,
+                        "postedBy": "nisi",
+                        "createdAt": "Mondaay, March 3rd"
+                  },
+                  {
+                        "content": "Dolore cillum cillum commodo anim minim est in pariatur nostrud dolor commodo eu.",
+                        "name": "Janet Farley",
+                        "votes": 645,
+                        "postedBy": "proident",
+                        "createdAt": "Mondaay, March 3rd"
+                  },
+                  {
+                        "content": "Nulla mollit enim aliquip nulla reprehenderit eu non culpa.",
+                        "name": "Delia Marks",
+                        "votes": 112,
+                        "postedBy": "culpa",
+                        "createdAt": "Mondaay, March 3rd"
+                  },
+                  {
+                        "content": "Minim quis anim qui enim est quis est nostrud proident ullamco eu.",
+                        "name": "Brown Griffith",
+                        "votes": 704,
+                        "postedBy": "non",
+                        "createdAt": "Mondaay, March 3rd"
+                  },
+                  {
+                        "content": "Amet reprehenderit duis dolor enim sit aliqua in et reprehenderit et do.",
+                        "name": "Erickson William",
+                        "votes": 114,
+                        "postedBy": "nostrud",
+                        "createdAt": "Mondaay, March 3rd"
+                  },
+                  {
+                        "content": "Lorem officia ea culpa amet incididunt.",
+                        "name": "Pennington Lane",
+                        "votes": 763,
+                        "postedBy": "excepteur",
+                        "createdAt": "Mondaay, March 3rd"
+                  },
+                  {
+                        "content": "Voluptate ad occaecat adipisicing pariatur anim exercitation id do.",
+                        "name": "Kerri Meyer",
+                        "votes": 940,
+                        "postedBy": "officia",
+                        "createdAt": "Mondaay, March 3rd"
+                  },
+                  {
+                        "content": "Pariatur laborum sunt officia minim veniam sit culpa occaecat ad.",
+                        "name": "Courtney Allison",
+                        "votes": 98,
+                        "postedBy": "sint",
+                        "createdAt": "Mondaay, March 3rd"
+                  },
+                  {
+                        "content": "Ex deserunt ullamco id excepteur do.",
+                        "name": "Schmidt Winters",
+                        "votes": 496,
+                        "postedBy": "consectetur",
+                        "createdAt": "Mondaay, March 3rd"
+                  },
+                  {
+                        "content": "Esse qui veniam dolor quis do elit pariatur aute officia minim sit fugiat mollit laboris.",
+                        "name": "Elaine Whitney",
+                        "votes": 497,
+                        "postedBy": "est",
+                        "createdAt": "Mondaay, March 3rd"
+                  }
+            ]
+      },
+      {
+            "online": false,
+            "picture": "http://placehold.it/32x32",
+            "name": "Hunt Pierce",
+            "email": "huntpierce@oregonstate.edu",
+            "following": [
+                  "huntpierce@oregonstate.edu",
+                  "huntpierce@oregonstate.edu",
+                  "huntpierce@oregonstate.edu",
+                  "huntpierce@oregonstate.edu",
+                  "huntpierce@oregonstate.edu",
+                  "huntpierce@oregonstate.edu",
+                  "huntpierce@oregonstate.edu",
+                  "huntpierce@oregonstate.edu",
+                  "huntpierce@oregonstate.edu",
+                  "huntpierce@oregonstate.edu",
+                  "huntpierce@oregonstate.edu",
+                  "huntpierce@oregonstate.edu",
+                  "huntpierce@oregonstate.edu",
+                  "huntpierce@oregonstate.edu",
+                  "huntpierce@oregonstate.edu",
+                  "huntpierce@oregonstate.edu",
+                  "huntpierce@oregonstate.edu",
+                  "huntpierce@oregonstate.edu",
+                  "huntpierce@oregonstate.edu",
+                  "huntpierce@oregonstate.edu"
+            ],
+            "followers": [
+                  "huntpierce@oregonstate.edu",
+                  "huntpierce@oregonstate.edu",
+                  "huntpierce@oregonstate.edu",
+                  "huntpierce@oregonstate.edu"
+            ],
+            "posts": [
+                  {
+                        "content": "Lorem est tempor ea ex fugiat.",
+                        "name": "Kelsey Prince",
+                        "votes": 169,
+                        "postedBy": "non",
+                        "createdAt": "Mondaay, March 3rd"
+                  },
+                  {
+                        "content": "Anim duis reprehenderit aliqua eu voluptate nulla.",
+                        "name": "Lidia Mueller",
+                        "votes": 308,
+                        "postedBy": "nostrud",
+                        "createdAt": "Mondaay, March 3rd"
+                  },
+                  {
+                        "content": "Qui et reprehenderit dolor consectetur magna et.",
+                        "name": "Meyer Decker",
+                        "votes": 27,
+                        "postedBy": "veniam",
+                        "createdAt": "Mondaay, March 3rd"
+                  }
+            ]
+      },
+      {
+            "online": false,
+            "picture": "http://placehold.it/32x32",
+            "name": "Bush Parker",
+            "email": "bushparker@oregonstate.edu",
+            "following": [
+                  "bushparker@oregonstate.edu",
+                  "bushparker@oregonstate.edu",
+                  "bushparker@oregonstate.edu"
+            ],
+            "followers": [
+                  "bushparker@oregonstate.edu",
+                  "bushparker@oregonstate.edu",
+                  "bushparker@oregonstate.edu",
+                  "bushparker@oregonstate.edu",
+                  "bushparker@oregonstate.edu",
+                  "bushparker@oregonstate.edu"
+            ],
+            "posts": [
+                  {
+                        "content": "Nostrud do commodo dolore ex officia voluptate enim nostrud enim.",
+                        "name": "Sampson Mullen",
+                        "votes": 734,
+                        "postedBy": "velit",
+                        "createdAt": "Mondaay, March 3rd"
+                  },
+                  {
+                        "content": "Consequat enim proident eiusmod est.",
+                        "name": "Stuart Waters",
+                        "votes": 214,
+                        "postedBy": "ut",
+                        "createdAt": "Mondaay, March 3rd"
+                  },
+                  {
+                        "content": "Qui aliqua Lorem non duis mollit sint duis in irure tempor magna.",
+                        "name": "Elsie Cotton",
+                        "votes": 951,
+                        "postedBy": "Lorem",
+                        "createdAt": "Mondaay, March 3rd"
+                  },
+                  {
+                        "content": "Aute deserunt ipsum ad amet amet officia aliquip nostrud.",
+                        "name": "Palmer Bowers",
+                        "votes": 136,
+                        "postedBy": "ut",
+                        "createdAt": "Mondaay, March 3rd"
+                  }
+            ]
+      }
+]
