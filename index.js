@@ -31,7 +31,7 @@ const PORT = process.env.PORT || 8080
 app.use(cors())
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
-app.use(tracker)
+// app.use(tracker)
 
 // Routes
 app.use('/api/auth/register', register)
@@ -73,5 +73,6 @@ const io = new Server(server, {
 })
 
 io.on('connection', (socket) => {
+    console.log(`[Backend ⚡️]: New Connection: ${socket.id}`)
     newConnection(socket, io)
 })

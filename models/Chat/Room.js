@@ -8,7 +8,7 @@ const roomSchema = new mongoose.Schema({
         unique: true,
     },
     users: {
-        type: [User.schema],
+        type: [String],
         required: true,
     },
 
