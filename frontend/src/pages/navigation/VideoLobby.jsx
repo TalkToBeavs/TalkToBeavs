@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
 const VideoLobby = () => {
-  // const socket = io('http://localhost:8080');
+  // const socket = io('https://talk-to-beavs.herokuapp.com');
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
