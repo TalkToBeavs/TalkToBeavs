@@ -80,7 +80,7 @@ export default function TextChat() {
               fontWeight='bold'
               color={colorMode === 'light' ? 'gray.500' : 'gray.400'}
             >
-              {isMe ? 'You' : onid}
+              {isMe ? 'You' : 'Anonymous'}
             </Text>
             <Box
               display='flex'
