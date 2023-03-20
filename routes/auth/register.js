@@ -1,6 +1,7 @@
 import { Router } from 'express'
 import joi from 'joi'
 import User from '../../models/User/User.js'
+import { genSalt, hash } from "bcrypt"
 const router = Router()
 
 router.post('/', async (req, res) => {
@@ -20,7 +21,7 @@ router.post('/', async (req, res) => {
             return res.status(401).json({ message: error.details[0].message })
         }
 
-        const user = await User.find({ email: req.body.email })
+        const user = await User.findOne({ email: req.body.email })
 
         if (user.length > 0) {
             return res.status(400).json({ message: 'User already exists' })
@@ -30,6 +31,9 @@ router.post('/', async (req, res) => {
                 password: req.body.password,
                 email: req.body.email,
             })
+
+            const salt = await genSalt(10);
+            user.password = await hash(user.password, salt);
 
             await user.save()
 
