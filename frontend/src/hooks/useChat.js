@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import socketIOClient from 'socket.io-client';
 
 const NEW_CHAT_MESSAGE_EVENT = 'newMessage';
-const SOCKET_SERVER_URL = 'https://talk-to-beavs.herokuapp.com';
+const SOCKET_SERVER_URL = 'http://localhost:8080';
 
 const useChat = (roomId) => {
   const [messages, setMessages] = useState([
@@ -10,6 +10,7 @@ const useChat = (roomId) => {
       body: 'You have been connected to the chat. Say hi!',
       ownedByCurrentUser: false,
       senderUsername: 'Chat Bot',
+      createdAt: Date.now(),
     },
   ]);
   const socketRef = useRef();
@@ -40,6 +41,7 @@ const useChat = (roomId) => {
       senderId: socketRef.current.id,
       room: roomId,
       senderUsername: 'You',
+      createdAt: Date.now(),
     });
   };
 

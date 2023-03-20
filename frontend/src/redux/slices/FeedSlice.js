@@ -1,4 +1,4 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 
 const initialState = {
@@ -6,13 +6,13 @@ const initialState = {
 };
 
 export const loadPosts = createAsyncThunk('feed/loadPosts', async () => {
-  const response = await axios.get('https://talk-to-beavs.herokuapp.com/api/feed/get_posts');
+  const response = await axios.get('http://localhost:8080/api/feed/get_posts');
   return response.data.posts;
 });
 
 export const createPost = createAsyncThunk('feed/createPost', async (post, { rejectWithValue }) => {
   try {
-    const response = await axios.post('https://talk-to-beavs.herokuapp.com/api/feed/create_post', post);
+    const response = await axios.post('http://localhost:8080/api/feed/create_post', post);
     return response.data.post;
   } catch (err) {
     return rejectWithValue(err.response.data);

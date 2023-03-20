@@ -1,22 +1,19 @@
-import React, { useEffect, useState } from 'react';
 import {
-  Flex,
-  Box,
-  FormControl,
-  FormLabel,
-  FormErrorMessage,
-  FormHelperText,
-  Modal,
-  ModalOverlay,
-  ModalContent,
-  ModalHeader,
-  ModalFooter,
-  ModalBody,
-  ModalCloseButton,
-  Textarea,
   Button,
   Divider,
+  FormControl,
+  FormErrorMessage,
+  FormLabel,
+  Modal,
+  ModalBody,
+  ModalCloseButton,
+  ModalContent,
+  ModalFooter,
+  ModalHeader,
+  ModalOverlay,
+  Textarea,
 } from '@chakra-ui/react';
+import { useState } from 'react';
 import { useSelector } from 'react-redux';
 
 export default function CreatePostModal({ isOpen, onClose, handleValidPost }) {

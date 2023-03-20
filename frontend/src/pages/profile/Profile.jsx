@@ -1,22 +1,12 @@
-import React, { useEffect } from 'react';
-import {
-  Box,
-  Heading,
-  Text,
-  Flex,
-  Divider,
-  Avatar,
-  IconButton,
-  HStack,
-  VStack,
-} from '@chakra-ui/react';
-import { useParams } from 'react-router-dom';
+import { Avatar, Box, Divider, Flex, Heading } from '@chakra-ui/react';
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import useProfile from '../../hooks/useProfile';
-import FollowStats from '../../components/text/FollowStats';
-import usePosts from '../../hooks/usePosts';
+import { useParams } from 'react-router-dom';
 import ProfilePostList from '../../components/card/ProfilePostList';
 import FollowButton from '../../components/custom/FollowButton';
+import FollowStats from '../../components/text/FollowStats';
+import usePosts from '../../hooks/usePosts';
+import useProfile from '../../hooks/useProfile';
 
 export default function Profile() {
   const { onid } = useParams();

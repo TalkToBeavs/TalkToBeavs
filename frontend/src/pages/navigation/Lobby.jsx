@@ -1,15 +1,6 @@
+import { Box, Button, ButtonGroup, Flex, HStack, Heading, Input, Text } from '@chakra-ui/react';
 import React from 'react';
-import {
-  Button,
-  Text,
-  Heading,
-  Flex,
-  Box,
-  HStack,
-  ButtonGroup,
-  Input,
-} from '@chakra-ui/react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const Lobby = () => {
   const [name, setName] = React.useState('');

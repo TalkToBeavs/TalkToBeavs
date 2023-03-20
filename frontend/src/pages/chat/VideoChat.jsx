@@ -1,6 +1,5 @@
-import { useState, useRef, useEffect } from 'react';
-import { Button, Center, Text, VStack, HStack, Input, Image } from '@chakra-ui/react';
-import io from 'socket.io-client';
+import { Button, Center, HStack, Image, Input, Text, VStack } from '@chakra-ui/react';
+import { useEffect, useRef, useState } from 'react';
 import ttb from '../../assets/logo.png';
 
 // const socket = io("ws://localhost:8080", {

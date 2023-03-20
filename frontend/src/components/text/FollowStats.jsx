@@ -1,5 +1,4 @@
-import React from 'react';
-import { Box, Text, HStack, Divider } from '@chakra-ui/react';
+import { Box, Divider, HStack, Text } from '@chakra-ui/react';
 import useProfile from '../../hooks/useProfile';
 
 export default function FollowStats({ onid, user }) {

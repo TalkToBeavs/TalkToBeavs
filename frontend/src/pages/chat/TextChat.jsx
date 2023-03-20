@@ -1,20 +1,28 @@
-import React, { useState, useRef } from 'react';
 import {
   Avatar,
-  IconButton,
-  Button,
-  Input,
   Box,
-  Text,
+  Button,
+  Flex,
   FormControl,
   Icon,
+  IconButton,
+  Input,
+  Menu,
+  MenuButton,
+  MenuItem,
+  MenuList,
+  Text,
   useColorMode,
+  useColorModeValue,
   useMediaQuery,
 } from '@chakra-ui/react';
+import React from 'react';
+import { MdExitToApp } from 'react-icons/md';
 import { RiSendPlaneFill } from 'react-icons/ri';
-import { useSelector, useDispatch } from 'react-redux';
-import { useNavigate, useParams, useLocation } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import useChat from '../../hooks/useChat';
+import moment from 'moment';
 
 export default function TextChat() {
   const navigate = useNavigate();
@@ -101,7 +109,7 @@ export default function TextChat() {
                   fontSize='xs'
                   color={colorMode === 'light' ? 'gray.500' : 'gray.400'}
                 >
-                  12:00
+                  {moment(new Date(message.createdAt)).format('h:mm A')}
                 </Box>
               </Box>
               <Avatar size='sm' mr={4} name={message.username} src='https://bit.ly/broken-link' />
@@ -113,61 +121,102 @@ export default function TextChat() {
   };
 
   return (
-    <Box
-      minH={isMobile ? 'calc(100vh - 80px)' : 'calc(100vh)'}
-      maxW='100vw'
-      display='flex'
-      flexDirection='column'
-      bg={colorMode === 'light' ? 'white' : 'gray.800'}
-      transition='background-color 200ms'
+    <Flex
+      direction='column'
+      align='stretch'
+      justify='center'
+      h='100vh'
+      bg={useColorModeValue('gray.50', 'inherit')}
     >
+      {!isMobile && (
+        <Menu closeOnSelect={true}>
+          <MenuButton
+            as={IconButton}
+            position='absolute'
+            top='5'
+            right='5'
+            zIndex='9999'
+            icon={<MdExitToApp />}
+          />
+          <MenuList>
+            {['Leave Text Chat', 'Logout'].map((item, i) => (
+              <MenuItem
+                key={i}
+                onClick={() => {
+                  switch (item) {
+                    case 'Leave Text Chat':
+                      navigate('/home');
+                      break;
+                    case 'Logout':
+                      navigate('/logout');
+                      break;
+                    default:
+                      break;
+                  }
+                }}
+              >
+                {item}
+              </MenuItem>
+            ))}
+          </MenuList>
+        </Menu>
+      )}
       <Box
-        id='msg-box'
-        p={6}
-        pb={0}
-        flex={1}
-        overflowY='scroll'
-        ref={messageBox}
-        className='invisible'
-        css={{
-          '&::-webkit-scrollbar': {
-            display: 'none',
-          },
-          msOverflowStyle: 'none',
-          scrollbarWidth: 'none',
-        }}
-      >
-        {showMessages()}
-        <Box ref={endOfMessages}>{/* scroll target empty div */}</Box>
-      </Box>
-      <FormControl
-        p={16}
-        zIndex={3}
-        as='form'
+        minH={isMobile ? 'calc(100vh - 80px)' : 'calc(100vh)'}
+        maxW='100vw'
         display='flex'
-        alignItems='centre'
-        onSubmit={handleSendMessage}
+        flexDirection='column'
+        bg={colorMode === 'light' ? 'white' : 'gray.800'}
+        transition='background-color 200ms'
       >
-        <Input
-          position='sticky'
-          bottom={0}
-          h={isMobile ? '50px' : '100px'}
-          value={newMessage}
-          onChange={handleNewMessageChange}
-        />
-        <IconButton
-          ml={2}
-          type='submit'
-          icon={<Icon as={RiSendPlaneFill} />}
-          _focus={{ boxShadow: 'none' }}
-          size={isMobile ? 'md' : 'lg'}
-          w={isMobile ? '50px' : '100px'}
-          isRound
-        />
-        <Button hidden type='submit'>
-          send
-        </Button>
-      </FormControl>
-    </Box>
+        <Box
+          id='msg-box'
+          p={6}
+          pb={0}
+          flex={1}
+          overflowY='scroll'
+          ref={messageBox}
+          className='invisible'
+          css={{
+            '&::-webkit-scrollbar': {
+              display: 'none',
+            },
+            msOverflowStyle: 'none',
+            scrollbarWidth: 'none',
+          }}
+        >
+          {showMessages()}
+          <Box ref={endOfMessages}>{/* scroll target empty div */}</Box>
+        </Box>
+        <FormControl
+          p={16}
+          zIndex={3}
+          as='form'
+          display='flex'
+          alignItems='centre'
+          onSubmit={handleSendMessage}
+        >
+          <Input
+            position='sticky'
+            bottom={0}
+            h={isMobile ? '50px' : '100px'}
+            value={newMessage}
+            onChange={handleNewMessageChange}
+          />
+          <IconButton
+            ml={2}
+            type='submit'
+            icon={<Icon as={RiSendPlaneFill} />}
+            _focus={{ boxShadow: 'none' }}
+            size={isMobile ? 'md' : 'lg'}
+            w={isMobile ? '50px' : '100px'}
+            isRound
+          />
+          <Button hidden type='submit'>
+            send
+          </Button>
+        </FormControl>
+      </Box>
+    </Flex>
   );
 }

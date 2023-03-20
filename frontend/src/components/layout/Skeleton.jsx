@@ -1,41 +1,36 @@
-import React, { useEffect } from 'react';
 import {
-  IconButton,
   Avatar,
   Box,
   CloseButton,
+  Drawer,
+  DrawerContent,
   Flex,
   HStack,
-  VStack,
-  MenuItem,
   Icon,
-  useColorModeValue,
-  Link,
-  Drawer,
+  IconButton,
   Image,
-  DrawerContent,
-  Text,
-  useMediaQuery,
-  useDisclosure,
+  Link,
   Menu,
   MenuButton,
+  MenuItem,
   MenuList,
+  Text,
+  VStack,
   useBreakpointValue,
+  useColorModeValue,
+  useDisclosure,
+  useMediaQuery,
 } from '@chakra-ui/react';
-import {
-  FiHome,
-  FiCompass,
-  FiMenu,
-  FiChevronDown,
-} from 'react-icons/fi';
-import ttb from '../../assets/logo.png';
+import { useEffect } from 'react';
 import { CgProfile } from 'react-icons/cg';
+import { FiChevronDown, FiCompass, FiHome, FiMenu } from 'react-icons/fi';
 import { SlLogout } from 'react-icons/sl';
-import { NavLink, useLocation, useNavigate } from 'react-router-dom';
-import OnlineUser from './OnlineUser';
 import { useDispatch, useSelector } from 'react-redux';
-import { TalkToBeavsMobile } from '../text/TalkToBeavs';
+import { NavLink, useLocation, useNavigate } from 'react-router-dom';
+import ttb from '../../assets/logo.png';
 import { loadUserData } from '../../redux/slices/UserSlice';
+import { TalkToBeavsMobile } from '../text/TalkToBeavs';
+import OnlineUser from './OnlineUser';
 
 const LinkItems = [
   { name: 'Home', icon: FiHome, link: '/home' },

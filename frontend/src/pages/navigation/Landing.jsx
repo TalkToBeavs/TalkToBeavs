@@ -1,17 +1,14 @@
-import React from 'react';
 import {
-  Text,
   Box,
-  Flex,
-  Heading,
   Button,
   ButtonGroup,
+  Flex,
+  Heading,
   useColorModeValue,
   useMediaQuery,
-  Image,
 } from '@chakra-ui/react';
 import { useNavigate } from 'react-router-dom';
-import TalkToBeavs, { TalkToBeavsMobile } from '../../components/text/TalkToBeavs';
+import TalkToBeavs from '../../components/text/TalkToBeavs';
 
 const Landing = () => {
   const [isMobile] = useMediaQuery('(max-width: 768px)');
