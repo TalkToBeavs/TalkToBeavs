@@ -13,19 +13,29 @@ import roomOptions from './room_options.js'
       - getQueueStatus
 */
 
+var queue = []
+var room = []
 const queueOptions = (socket, io) => {
-    var queue = []
     roomOptions(socket, io)
 
     socket.on('joinQueue', async (data) => {
         console.log(`[Backend ⚡️]: ${data.name} joined the queue`)
-        if (queue[0] && queue[0].name !== data.name) {
+        if (queue.length >= 1) {
             try {
-                io.emit('joinRoom', {
-                    name: queue[0].name,
+                room.push(queue.pop())
+                room.push(data)
+                const newRoom = new Room({
+                    users: [room[0].name, room[1].name],
+                    messages: [],
+                    isVideo: false,
+                    name: `${room[0].name} and ${room[1].name}'s room`,
                 })
-                queue = []
-                console.log('Room created: ')
+                await newRoom.save()
+
+                socket.join(newRoom._id)
+
+
+                io.emit('joinQueue', newRoom)
             } catch (err) {
                 console.log(err)
             }

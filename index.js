@@ -19,7 +19,7 @@ import get_profile from './routes/social/get_profile.js'
 import online_users from './routes/social/online_users.js'
 
 // Sockets
-import { Server, Socket } from 'socket.io'
+import { Server } from 'socket.io'
 import newConnection from './sockets/handlers/new_connection.js'
 
 // Middleware
@@ -33,7 +33,7 @@ const PORT = process.env.PORT || 8080
 app.use(cors())
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
-app.use(tracker)
+// app.use(tracker)
 
 // Routes
 app.use('/api/auth/register', register)
@@ -75,5 +75,6 @@ const io = new Server(server, {
 })
 
 io.on('connection', (socket) => {
+    console.log(`[Backend ⚡️]: New Connection: ${socket.id}`)
     newConnection(socket, io)
 })
