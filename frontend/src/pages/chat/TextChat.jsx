@@ -22,6 +22,7 @@ import { RiSendPlaneFill } from 'react-icons/ri';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import useChat from '../../hooks/useChat';
+import moment from 'moment';
 
 export default function TextChat() {
   const navigate = useNavigate();
@@ -108,11 +109,7 @@ export default function TextChat() {
                   fontSize='xs'
                   color={colorMode === 'light' ? 'gray.500' : 'gray.400'}
                 >
-                  {new Date(message.createdAt).setSeconds(0) &&
-                    new Date(message.createdAt).toLocaleTimeString([], {
-                      hour: '2-digit',
-                      minute: '2-digit',
-                    })}
+                  {moment(new Date(message.createdAt)).format('h:mm A')}
                 </Box>
               </Box>
               <Avatar size='sm' mr={4} name={message.username} src='https://bit.ly/broken-link' />
