@@ -1,6 +1,5 @@
-import React, { useEffect } from 'react';
-import { Routes, Route, useLocation } from 'react-router-dom';
 import { Provider } from 'react-redux';
+import { Route, Routes, useLocation } from 'react-router-dom';
 import ThemeToggle from '../components/layout/ThemeToggle';
 
 import SidebarWithHeader from '../components/layout/Skeleton';
@@ -9,22 +8,22 @@ import store from '../redux/store/store';
 
 import FourOhFour from '../pages/error/FourOhFour';
 
-import VideoLobby from '../pages/navigation/VideoLobby';
-import TextLobby from '../pages/navigation/TextLobby';
-import Lobby from '../pages/navigation/Lobby';
-import Landing from '../pages/navigation/Landing';
-import Logout from '../pages/navigation/Logout';
 import Home from '../pages/navigation/Home';
+import Landing from '../pages/navigation/Landing';
+import Lobby from '../pages/navigation/Lobby';
+import Logout from '../pages/navigation/Logout';
+import TextLobby from '../pages/navigation/TextLobby';
+import VideoLobby from '../pages/navigation/VideoLobby';
 
 import Feed from '../pages/feed/Feed';
 
-import Signup from '../pages/auth/Signup';
 import Login from '../pages/auth/Login';
+import Signup from '../pages/auth/Signup';
 
-import VideoChat from '../pages/chat/VideoChat';
-import TextChat from '../pages/chat/TextChat';
-import Profile from '../pages/profile/Profile';
 import { AnimatePresence } from 'framer-motion';
+import TextChat from '../pages/chat/TextChat';
+import VideoChat from '../pages/chat/VideoChat';
+import Profile from '../pages/profile/Profile';
 
 const App = () => {
   const location = useLocation();

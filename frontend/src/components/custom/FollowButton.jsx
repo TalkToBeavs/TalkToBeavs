@@ -1,11 +1,9 @@
+import { AddIcon, CheckIcon } from '@chakra-ui/icons';
+import { Box, Button, Flex, IconButton, Text } from '@chakra-ui/react';
 import React from 'react';
-import { IconButton, Flex, Box, Text, Button } from '@chakra-ui/react';
-import { CheckIcon, AddIcon } from '@chakra-ui/icons';
-import { useSelector, useDispatch } from 'react-redux';
-import useOnlineUsers from '../../hooks/useOnlineUsers';
-import { followUser, selectIsFollowing, selectUser } from '../../redux/slices/UserSlice';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import useProfile from '../../hooks/useProfile';
+import { followUser, selectIsFollowing, selectUser } from '../../redux/slices/UserSlice';
 
 // Current user can follow/unfollow the props.user
 export default function FollowButton({ user }) {

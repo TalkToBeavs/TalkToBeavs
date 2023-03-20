@@ -1,4 +1,3 @@
-import React from 'react';
 import { Heading, Text, useColorMode, useColorModeValue } from '@chakra-ui/react';
 
 export function TalkToBeavsMobile() {

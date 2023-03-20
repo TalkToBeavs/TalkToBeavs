@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Avatar, Stack, AvatarBadge, Text, Box, AvatarGroup, Flex } from '@chakra-ui/react';
+import { Avatar, AvatarBadge, Flex, Stack, Text } from '@chakra-ui/react';
+import { useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 
 export default function UserAvatar({ user }) {

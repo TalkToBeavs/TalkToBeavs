@@ -1,9 +1,9 @@
-import { configureStore, combineReducers } from '@reduxjs/toolkit';
+import { combineReducers, configureStore } from '@reduxjs/toolkit';
 
-import VideoSlice from '../slices/VideoSlice';
 import ChatSlice from '../slices/ChatSlice';
-import UserSlice from '../slices/UserSlice';
 import FeedSlice from '../slices/FeedSlice';
+import UserSlice from '../slices/UserSlice';
+import VideoSlice from '../slices/VideoSlice';
 
 const rootReducer = combineReducers({
   video: VideoSlice,
@@ -11,7 +11,6 @@ const rootReducer = combineReducers({
   user: UserSlice,
   feed: FeedSlice,
 });
-
 
 const store = configureStore({
   reducer: rootReducer,

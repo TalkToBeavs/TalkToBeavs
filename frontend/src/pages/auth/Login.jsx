@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import {
   Box,
   Button,
@@ -7,17 +6,18 @@ import {
   Image,
   Input,
   Text,
-  useColorModeValue,
   useColorMode,
+  useColorModeValue,
   useMediaQuery,
 } from '@chakra-ui/react';
 import axios from 'axios';
-import ttb from '../../assets/logo.png';
-import { Link, useNavigate } from 'react-router-dom';
-import { loginUser } from '../../redux/slices/UserSlice';
-import { useDispatch } from 'react-redux';
 import { motion } from 'framer-motion';
+import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { Link, useNavigate } from 'react-router-dom';
+import ttb from '../../assets/logo.png';
 import { slideAnimation } from '../../lib/animations';
+import { loginUser } from '../../redux/slices/UserSlice';
 
 function Login() {
   const navigate = useNavigate();

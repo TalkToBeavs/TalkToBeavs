@@ -1,14 +1,6 @@
-import React from 'react';
-import {
-  Text,
-  Box,
-  useColorMode,
-  useColorModeValue,
-  Divider,
-} from '@chakra-ui/react';
-import UserAvatar from '../custom/UserAvatar';
-import usersJson from '../../data/users.json';
+import { Box, Divider, Text, useColorMode, useColorModeValue } from '@chakra-ui/react';
 import useOnlineUsers from '../../hooks/useOnlineUsers';
+import UserAvatar from '../custom/UserAvatar';
 
 const OnlineUser = () => {
   const [users, fetchUsers] = useOnlineUsers();
