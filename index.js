@@ -17,7 +17,7 @@ import get_profile from './routes/social/get_profile.js'
 import online_users from './routes/social/online_users.js'
 
 // Sockets
-import { Server, Socket } from 'socket.io'
+import { Server } from 'socket.io'
 import newConnection from './sockets/handlers/new_connection.js'
 
 // Middleware
