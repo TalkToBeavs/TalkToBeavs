@@ -32,8 +32,6 @@ export default function FollowStats({ onid, user }) {
             </Text>
           </Box>
 
-          <Divider orientation='vertical' h='100px' />
-
           <Box
             w={'8.5rem'}
             textAlign={'center'}
