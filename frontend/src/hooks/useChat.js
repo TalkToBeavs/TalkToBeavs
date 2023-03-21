@@ -7,9 +7,9 @@ const SOCKET_SERVER_URL = 'https://talk-to-beavs.herokuapp.com';
 const useChat = (roomId) => {
   const [messages, setMessages] = useState([
     {
-      body: 'You have been connected to the chat. Say hi!',
+      body: `You have been connected to the chat. Say hi!`,
       ownedByCurrentUser: false,
-      senderUsername: 'Chat Bot',
+      senderUsername: 'TalkToBeavs Chat',
       createdAt: Date.now(),
     },
   ]);
@@ -20,12 +20,12 @@ const useChat = (roomId) => {
       query: { roomId },
     });
 
-    socketRef.current.on(NEW_CHAT_MESSAGE_EVENT, (message) => {
+    socketRef.current.on(NEW_CHAT_MESSAGE_EVENT, (message, otherUser) => {
       console.log(message);
       const incomingMessage = {
         ...message,
         ownedByCurrentUser: message.senderId === socketRef.current.id,
-        senderUsername: message.senderId === socketRef.current.id ? 'You' : message.senderId,
+        senderUsername: message.senderUsername === socketRef.current.id ? 'You' : message.senderUsername,
       };
       setMessages((messages) => [...messages, incomingMessage]);
     });
@@ -35,12 +35,12 @@ const useChat = (roomId) => {
     };
   }, [roomId]);
 
-  const sendMessage = (messageBody) => {
+  const sendMessage = (messageBody, otherUser) => {
     socketRef.current.emit(NEW_CHAT_MESSAGE_EVENT, {
       body: messageBody,
       senderId: socketRef.current.id,
       room: roomId,
-      senderUsername: 'You',
+      senderUsername: otherUser?.email.split('@')[0],
       createdAt: Date.now(),
     });
   };

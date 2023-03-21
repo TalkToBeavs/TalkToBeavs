@@ -32,14 +32,17 @@ export default function TextChat() {
   const messages_ = useSelector((state) => state.chat.messages);
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user.data);
+  const otherUser = useSelector((state) => state.user.data);
   const messageBox = React.useRef(null);
   const endOfMessages = React.useRef(null);
   const { id } = useParams();
   const location = useLocation();
   const [newMessage, setNewMessage] = React.useState('');
+  // const [otherOnid, setOtherOnid] = React.useState('');
 
   let onid = user?.email.split('@')[0];
-  const { messages, sendMessage } = useChat(id || location.pathname.split('/')[2]);
+  let otherOnid = otherUser?.email.split('@')[0];
+  const { messages, sendMessage } = useChat(id || location.pathname.split('/')[2], otherUser);
 
   const handleNewMessageChange = (event) => {
     setNewMessage(event.target.value);
@@ -47,7 +50,7 @@ export default function TextChat() {
 
   const handleSendMessage = (e) => {
     e.preventDefault();
-    sendMessage(newMessage);
+    sendMessage(newMessage, otherUser);
     setNewMessage('');
   };
 
@@ -62,6 +65,8 @@ export default function TextChat() {
   const showMessages = () => {
     return messages.map((message, index) => {
       const isMe = message.ownedByCurrentUser;
+      // console.log(message)
+      console.log(otherUser)
       return (
         <Box
           key={index}
@@ -81,7 +86,7 @@ export default function TextChat() {
               fontWeight='bold'
               color={colorMode === 'light' ? 'gray.500' : 'gray.400'}
             >
-              {isMe ? 'You' : 'Anonymous'}
+              {isMe ? onid : message.senderUsername}
             </Text>
             <Box
               display='flex'
