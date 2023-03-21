@@ -10,7 +10,7 @@ var queue = []
 const newConnection = (socket, io) => {
     chat_options.default(socket, io)
     
-    socket.on('joinQueue', (data) => {
+    socket.on('joinTextQueue', (data) => {
         console.log(`[Backend ⚡️]: ${data.name} joined the queue`);
         queue.push(socket);
         if (queue.length >= 2) {

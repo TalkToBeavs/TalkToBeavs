@@ -1,13 +1,13 @@
 import { useEffect, useRef, useState } from 'react';
 import socketIOClient from 'socket.io-client';
 
-const useLobby = (onid) => {
+const useLobby = (onid, option) => {
   const [queue, setQueue] = useState([]);
   const [roomId, setRoomId] = useState(null);
   const socketRef = useRef(null);
 
   useEffect(() => {
-    socketRef.current = socketIOClient('https://talk-to-beavs.herokuapp.com', {
+    socketRef.current = socketIOClient('http://localhost:8080', {
       query: { onid },
     });
 
@@ -27,6 +27,10 @@ const useLobby = (onid) => {
   }, [onid]);
 
   const joinQueue = () => {
+
+    if ()
+
+
     socketRef.current.emit('joinQueue', {
       name: onid,
     });

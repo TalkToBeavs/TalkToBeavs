@@ -16,6 +16,9 @@ import get_posts from './routes/feed/get_posts.js'
 import get_profile from './routes/social/get_profile.js'
 import online_users from './routes/social/online_users.js'
 
+// Profile
+import edit_profile from './routes/profile/edit_profile.js'
+
 // Sockets
 import { Server } from 'socket.io'
 import newConnection from './sockets/handlers/new_connection.js'
@@ -45,6 +48,8 @@ app.use('/api/social/online_users', online_users)
 
 app.use('/api/feed/create_post', create_post)
 app.use('/api/feed/get_posts', get_posts)
+
+app.use('/api/profile/edit_profile', edit_profile)
 
 // Default Route
 app.get('/', (req, res) => {

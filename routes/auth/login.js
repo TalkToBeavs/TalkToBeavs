@@ -24,7 +24,7 @@ router.post('/', async (req, res) => {
 
         const user = await User.findOne({ email: req.body.email })
 
-        const validPassword = await compare(req.body.password, user.password);
+        const validPassword = await compare(req.body.password, user.password)
 
         // We will need to replace to the tokens in the frontend to use this instead at some point.
         const token = generateAuthToken(user._id);
