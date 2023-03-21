@@ -1,4 +1,4 @@
-import { Box, Button, ButtonGroup, Flex, HStack, Heading, Input, Text } from '@chakra-ui/react';
+import { Box, Button, ButtonGroup, Flex, HStack, Heading, Avatar, Input, Text } from '@chakra-ui/react';
 import React from 'react';
 import { Link } from 'react-router-dom';
 

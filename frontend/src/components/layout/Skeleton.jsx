@@ -32,6 +32,9 @@ import { loadUserData } from '../../redux/slices/UserSlice';
 import { TalkToBeavsMobile } from '../text/TalkToBeavs';
 import OnlineUser from './OnlineUser';
 
+const token = localStorage.getItem('token');
+const onid = token?.split('@')[0];
+
 const LinkItems = [
   { name: 'Home', icon: FiHome, link: '/home' },
   { name: 'Profile', icon: CgProfile, link: '/profile' },
@@ -77,7 +80,7 @@ function SidebarWithHeader({ children }) {
           location.pathname !== '/login' &&
           breakPt &&
           location.pathname !== '/signup' &&
-          !location.pathname.includes('text') &&
+          // !location.pathname.includes('text') &&
           !location.pathname.includes('video') &&
           location.pathname !== '/' && (
             <SidebarContent onClose={onClose} display={{ base: 'none', md: 'block' }} />
@@ -108,36 +111,6 @@ function SidebarWithHeader({ children }) {
     </Box>
   );
 }
-
-const SidebarContent = ({ onClose, ...rest }) => {
-  return (
-    <Box
-      bg={useColorModeValue('white', 'gray.900')}
-      borderRight='1px'
-      borderEndRadius='xl'
-      py='4'
-      borderColor={useColorModeValue('gray.200', '#DE6A1F36')}
-      w={{ base: 'full', md: 52 }}
-      pos='fixed'
-      h='full'
-      top={0}
-      {...rest}
-    >
-      {/* <Flex h="10" alignItems="center" mx="8" justifyContent="space-between"> */}
-
-      <Image src={ttb} alt='Logo' />
-
-      <CloseButton display={{ base: 'flex', md: 'none' }} onClick={onClose} />
-      {/* </Flex> */}
-      {LinkItems.map((link, i) => (
-        <NavItem key={i} icon={link.icon}>
-          {link}
-        </NavItem>
-      ))}
-      {/* <OnlineUser /> */}
-    </Box>
-  );
-};
 
 const NavItem = ({ icon, children, ...rest }) => {
   const token = localStorage.getItem('token');
@@ -189,6 +162,44 @@ const NavItem = ({ icon, children, ...rest }) => {
   );
 };
 
+const SidebarContent = ({ onClose, ...rest }) => {
+  const token = localStorage.getItem('token');
+  const onid = token?.split('@')[0];
+  return (
+    <Box
+      bg={useColorModeValue('white', 'gray.900')}
+      borderRight='1px'
+      borderEndRadius='xl'
+      py='4'
+      borderColor={useColorModeValue('gray.200', '#DE6A1F36')}
+      w={{ base: 'full', md: 52 }}
+      pos='fixed'
+      h='full'
+      top={0}
+      {...rest}
+    >
+      {/* <Flex h="10" alignItems="center" mx="8" justifyContent="space-between"> */}
+
+      <Image src={ttb} alt='Logo' />
+
+      <CloseButton display={{ base: 'flex', md: 'none' }} onClick={onClose} />
+      {/* </Flex> */}
+      {LinkItems.map((link, i) => {
+        if (i === 1) {
+          // modify the second element of the link array
+          link.name = onid;
+        }
+        return (
+        < NavItem key={i} icon={link.icon}>
+            {link}
+          </NavItem>
+        )
+      })}
+      {/* <OnlineUser /> */}
+    </Box>
+  );
+};
+
 const MobileNav = ({ onOpen, ...rest }) => {
   const location = useLocation();
   const user = useSelector((state) => state.user.data);
@@ -225,7 +236,7 @@ const MobileNav = ({ onOpen, ...rest }) => {
           <Menu>
             <MenuButton py={2} _focus={{ boxShadow: 'none' }}>
               <HStack>
-                <Avatar size={'sm'} name={user?.name} />
+              <Avatar size={'sm'} name={user?.name} />
                 <VStack
                   display={{ base: 'none', md: 'flex' }}
                   alignItems='flex-start'

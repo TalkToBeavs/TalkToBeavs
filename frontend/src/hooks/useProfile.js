@@ -5,7 +5,7 @@ function useProfile({ onid, user }) {
   const [profile, setProfile] = useState(null);
   const fetchProfile = async () => {
     try {
-      const response = await axios.get(`https://talk-to-beavs.herokuapp.com/api/social/get_profile?onid=${onid}`);
+      const response = await axios.get(`http://localhost:8080/api/social/get_profile?onid=${onid}`);
       setProfile(response.data.user);
     } catch (err) {
       setProfile(null);
