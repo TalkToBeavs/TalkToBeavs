@@ -12,7 +12,7 @@ export const loadUserData = createAsyncThunk(
   'user/loadUserData',
   async (email, { rejectWithValue }) => {
     try {
-      const response = await axios.get(`http://localhost:8080/api/auth/load_user?email=${email}`);
+      const response = await axios.get(`https://talk-to-beavs.herokuapp.com/api/auth/load_user?email=${email}`);
       return response.data;
     } catch (err) {
       return rejectWithValue(err.response.data);
@@ -24,7 +24,7 @@ export const registerUser = createAsyncThunk(
   'user/register',
   async (values, { rejectWithValue }) => {
     try {
-      const response = await axios.post('http://localhost:8080/api/auth/register', values);
+      const response = await axios.post('https://talk-to-beavs.herokuapp.com/api/auth/register', values);
       return response.data;
     } catch (err) {
       return rejectWithValue(err.response.data);
@@ -34,7 +34,7 @@ export const registerUser = createAsyncThunk(
 
 export const followUser = createAsyncThunk('user/follow', async (values, { rejectWithValue }) => {
   try {
-    const response = await axios.post('http://localhost:8080/api/social/follow_user', values);
+    const response = await axios.post('https://talk-to-beavs.herokuapp.com/api/social/follow_user', values);
     return response.data;
   } catch (err) {
     return rejectWithValue(err.response.data);
