@@ -37,7 +37,7 @@ const onid = token?.split('@')[0];
 
 const LinkItems = [
   { name: 'Home', icon: FiHome, link: '/home' },
-  { name: 'Profile', icon: CgProfile, link: '/profile' },
+  { name: onid, icon: CgProfile, link: '/profile' },
   { name: 'Feed', icon: FiCompass, link: '/feed' },
   { name: 'Logout', icon: SlLogout, link: `/logout` },
 ];
@@ -113,8 +113,6 @@ function SidebarWithHeader({ children }) {
 }
 
 const NavItem = ({ icon, children, ...rest }) => {
-  const token = localStorage.getItem('token');
-  const onid = token?.split('@')[0];
   return (
     <Link
       style={{ textDecoration: 'none' }}
@@ -163,8 +161,6 @@ const NavItem = ({ icon, children, ...rest }) => {
 };
 
 const SidebarContent = ({ onClose, ...rest }) => {
-  const token = localStorage.getItem('token');
-  const onid = token?.split('@')[0];
   return (
     <Box
       bg={useColorModeValue('white', 'gray.900')}
@@ -184,17 +180,11 @@ const SidebarContent = ({ onClose, ...rest }) => {
 
       <CloseButton display={{ base: 'flex', md: 'none' }} onClick={onClose} />
       {/* </Flex> */}
-      {LinkItems.map((link, i) => {
-        if (i === 1) {
-          // modify the second element of the link array
-          link.name = onid;
-        }
-        return (
-        < NavItem key={i} icon={link.icon}>
-            {link}
-          </NavItem>
-        )
-      })}
+      {LinkItems.map((link, i) => (
+        <NavItem key={i} icon={link.icon}>
+          {link}
+        </NavItem>
+      ))}
       {/* <OnlineUser /> */}
     </Box>
   );

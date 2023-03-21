@@ -124,7 +124,7 @@ export default function TextChat() {
                   {moment(new Date(message.createdAt)).format('h:mm A')}
                 </Box>
               </Box>
-              <Avatar size='sm' mr={4} name={avatarUsername} src='https://bit.ly/broken-link' />
+              <Avatar size='sm' mr={4} name={message.senderGivenName} src='https://bit.ly/broken-link' />
             </Box>
           </Box>
         </Box>
