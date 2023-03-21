@@ -10,6 +10,7 @@ const useChat = (roomId) => {
       body: `You have been connected to the chat. Say hi!`,
       ownedByCurrentUser: false,
       senderUsername: 'TalkToBeavs Chat',
+      senderGivenName: 'TalkToBeavs Chat',
       createdAt: Date.now(),
     },
   ]);
@@ -41,6 +42,7 @@ const useChat = (roomId) => {
       senderId: socketRef.current.id,
       room: roomId,
       senderUsername: otherUser?.email.split('@')[0],
+      senderGivenName: otherUser?.name,
       createdAt: Date.now(),
     });
   };
