@@ -1,13 +1,12 @@
 import { Router } from 'express'
 import User from '../../models/User/User.js'
-import { compare } from 'bcrypt'
 
 const router = Router()
 
 router.get('/', async (req, res) => {
     try {
         const userEmail = req.query.email
-
+        
         const user = await User.findOne({ email: userEmail })
 
         if (!user) {
