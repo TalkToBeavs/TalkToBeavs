@@ -19,6 +19,37 @@ export const createPost = createAsyncThunk('feed/createPost', async (post, { rej
   }
 });
 
+export const upvotePostAsync = createAsyncThunk(
+  'feed/upvotePost',
+  async ({ postId, isUpvoted, isDownvoted, onid }, { rejectWithValue }) => {
+      try {
+          const response = await axios.post(
+              `https://talk-to-beavs.herokuapp.com/api/feed/upvote_post/`,
+              { isUpvoted, isDownvoted, postId, onid }
+          )
+          return response.data.post
+      } catch (err) {
+          return rejectWithValue(err.response.data)
+      }
+  }
+)
+
+export const downvotePostAsync = createAsyncThunk(
+  'feed/downvotePost',
+  async ({ postId, isUpvoted, isDownvoted, onid }, { rejectWithValue }) => {
+    try {
+          console.log("downvotePostAsync isUpvoted:", isUpvoted)
+          const response = await axios.post(
+              `https://talk-to-beavs.herokuapp.com/api/feed/downvote_post/`,
+              { isUpvoted, isDownvoted, postId, onid }
+          )
+          return response.data.post
+      } catch (err) {
+          return rejectWithValue(err.response.data)
+      }
+  }
+)
+
 const feedSlice = createSlice({
   name: 'feed',
   initialState,
@@ -29,6 +60,20 @@ const feedSlice = createSlice({
     });
     builder.addCase(createPost.fulfilled, (state, action) => {
       state.posts.unshift(action.payload);
+    });
+    builder.addCase(upvotePostAsync.fulfilled, (state, action) => {
+      const postIndex = state.posts.findIndex(post => post._id === action.payload._id);
+      if (postIndex !== -1) {
+        state.posts[postIndex].upvotes = action.payload.upvotes;
+        state.posts[postIndex].downvotes = action.payload.downvotes;
+      }
+    });
+    builder.addCase(downvotePostAsync.fulfilled, (state, action) => {
+        const postIndex = state.posts.findIndex(post => post._id === action.payload._id);
+        if (postIndex !== -1) {
+          state.posts[postIndex].downvotes = action.payload.downvotes;
+          state.posts[postIndex].upvotes = action.payload.upvotes;
+        }
     });
   },
 });
