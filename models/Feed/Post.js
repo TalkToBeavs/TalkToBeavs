@@ -8,14 +8,14 @@ const postSchema = new mongoose.Schema(
             required: true,
         },
         upvotes: {
-            type: Number,
+            type: Array,
             required: false,
-            default: 0,
+            default: [],
         },
         downvotes: {
-            type: Number,
+            type: Array,
             required: false,
-            default: 0,
+            default: [],
         },
         postedBy: {
             type: String,

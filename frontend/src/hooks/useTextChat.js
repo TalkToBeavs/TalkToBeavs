@@ -7,9 +7,10 @@ const SOCKET_SERVER_URL = 'http://localhost:8080';
 const useTextChat = (roomId) => {
   const [messages, setMessages] = useState([
     {
-      body: 'You have been connected to the chat. Say hi!',
+      body: `You have been connected to the chat. Say hi!`,
       ownedByCurrentUser: false,
-      senderUsername: 'Chat Bot',
+      senderUsername: 'TalkToBeavs Chat',
+      senderGivenName: 'TalkToBeavs Chat',
       createdAt: Date.now(),
     },
   ]);
@@ -20,12 +21,12 @@ const useTextChat = (roomId) => {
       query: { roomId },
     });
 
-    socketRef.current.on(NEW_CHAT_MESSAGE_EVENT, (message) => {
+    socketRef.current.on(NEW_CHAT_MESSAGE_EVENT, (message, otherUser) => {
       console.log(message);
       const incomingMessage = {
         ...message,
         ownedByCurrentUser: message.senderId === socketRef.current.id,
-        senderUsername: message.senderId === socketRef.current.id ? 'You' : message.senderId,
+        senderUsername: message.senderUsername === socketRef.current.id ? 'You' : message.senderUsername,
       };
       setMessages((messages) => [...messages, incomingMessage]);
     });
@@ -35,12 +36,13 @@ const useTextChat = (roomId) => {
     };
   }, [roomId]);
 
-  const sendMessage = (messageBody) => {
+  const sendMessage = (messageBody, otherUser) => {
     socketRef.current.emit(NEW_CHAT_MESSAGE_EVENT, {
       body: messageBody,
       senderId: socketRef.current.id,
       room: roomId,
-      senderUsername: 'You',
+      senderUsername: otherUser?.email.split('@')[0],
+      senderGivenName: otherUser?.name,
       createdAt: Date.now(),
     });
   };

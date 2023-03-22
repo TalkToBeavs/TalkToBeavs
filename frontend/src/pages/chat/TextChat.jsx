@@ -32,14 +32,18 @@ export default function TextChat() {
   const messages_ = useSelector((state) => state.chat.messages);
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user.data);
+  const otherUser = useSelector((state) => state.user.data);
   const messageBox = React.useRef(null);
   const endOfMessages = React.useRef(null);
   const { id } = useParams();
   const location = useLocation();
   const [newMessage, setNewMessage] = React.useState('');
+  // const [otherOnid, setOtherOnid] = React.useState('');
 
   let onid = user?.email.split('@')[0];
-  const { messages, sendMessage } = useTextChat(id || location.pathname.split('/')[2]);
+  let senderName = otherUser?.name;
+  let otherOnid = otherUser?.email.split('@')[0];
+  const { messages, sendMessage } = useChat(id || location.pathname.split('/')[2], otherUser);
 
   const handleNewMessageChange = (event) => {
     setNewMessage(event.target.value);
@@ -47,7 +51,7 @@ export default function TextChat() {
 
   const handleSendMessage = (e) => {
     e.preventDefault();
-    sendMessage(newMessage);
+    sendMessage(newMessage, otherUser);
     setNewMessage('');
   };
 
@@ -62,6 +66,14 @@ export default function TextChat() {
   const showMessages = () => {
     return messages.map((message, index) => {
       const isMe = message.ownedByCurrentUser;
+      // console.log(message)
+      // console.log(otherUser)
+      console.log(senderName)
+      let avatarUsername = message.senderUsername;
+      if (avatarUsername === onid) {
+        avatarUsername = senderName
+      }
+
       return (
         <Box
           key={index}
@@ -81,7 +93,7 @@ export default function TextChat() {
               fontWeight='bold'
               color={colorMode === 'light' ? 'gray.500' : 'gray.400'}
             >
-              {isMe ? 'You' : 'Anonymous'}
+              {isMe ? onid : message.senderUsername}
             </Text>
             <Box
               display='flex'
@@ -112,7 +124,7 @@ export default function TextChat() {
                   {moment(new Date(message.createdAt)).format('h:mm A')}
                 </Box>
               </Box>
-              <Avatar size='sm' mr={4} name={message.username} src='https://bit.ly/broken-link' />
+              <Avatar size='sm' mr={4} name={message.senderGivenName} src='https://bit.ly/broken-link' />
             </Box>
           </Box>
         </Box>
@@ -128,39 +140,6 @@ export default function TextChat() {
       h='100vh'
       bg={useColorModeValue('gray.50', 'inherit')}
     >
-      {!isMobile && (
-        <Menu closeOnSelect={true}>
-          <MenuButton
-            as={IconButton}
-            position='absolute'
-            top='5'
-            right='5'
-            zIndex='9999'
-            icon={<MdExitToApp />}
-          />
-          <MenuList>
-            {['Leave Text Chat', 'Logout'].map((item, i) => (
-              <MenuItem
-                key={i}
-                onClick={() => {
-                  switch (item) {
-                    case 'Leave Text Chat':
-                      navigate('/home');
-                      break;
-                    case 'Logout':
-                      navigate('/logout');
-                      break;
-                    default:
-                      break;
-                  }
-                }}
-              >
-                {item}
-              </MenuItem>
-            ))}
-          </MenuList>
-        </Menu>
-      )}
       <Box
         minH={isMobile ? 'calc(100vh - 80px)' : 'calc(100vh)'}
         maxW='100vw'
@@ -168,6 +147,7 @@ export default function TextChat() {
         flexDirection='column'
         bg={colorMode === 'light' ? 'white' : 'gray.800'}
         transition='background-color 200ms'
+        marginLeft = {{ base: 'full', md: 52 }}
       >
         <Box
           id='msg-box'
