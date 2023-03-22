@@ -43,7 +43,7 @@ export default function TextChat() {
   let onid = user?.email.split('@')[0];
   let senderName = otherUser?.name;
   let otherOnid = otherUser?.email.split('@')[0];
-  const { messages, sendMessage } = useChat(id || location.pathname.split('/')[2], otherUser);
+  const { messages, sendMessage } = useTextChat(id || location.pathname.split('/')[2], otherUser);
 
   const handleNewMessageChange = (event) => {
     setNewMessage(event.target.value);
