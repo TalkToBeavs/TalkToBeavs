@@ -29,7 +29,7 @@ function VideoChat() {
     video: true,
   };
   
-  const socket = io("ws://talk-to-beavs.herokuapp.com", {
+  const socket = io("wss://talk-to-beavs.herokuapp.com", {
     transports: ["websocket"],
     query: {
       roomId
