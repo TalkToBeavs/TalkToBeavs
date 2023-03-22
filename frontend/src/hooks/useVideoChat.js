@@ -1,7 +1,9 @@
-import React, { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import socketIOClient from 'socket.io-client'
 
-const SOCKET_SERVER_URL = 'https://talk-to-beavs.herokuapp.com'
+const SOCKET_SERVER_URL = 'wss://talk-to-beavs.herokuapp.com'
+const SDP_EVENT = 'sdp'
+const CANDIDATE_EVENT = 'candidate'
 
 function useVideoChat(roomId) {
   const [connected, setConnected] = useState(false)
@@ -15,6 +17,11 @@ function useVideoChat(roomId) {
   const localStream = useRef(null);
   const remoteStream = useRef(null);
   const socketRef = useRef()
+
+  const options = {
+    audio: true,
+    video: true,
+  }
 
   const createOffer = async () => {
     let config = {
@@ -53,7 +60,7 @@ function useVideoChat(roomId) {
   };
 
   const sendToPeer = (eventType, payload) => {
-    socket.emit(eventType, payload);
+    socketRef.current.emit(eventType, payload);
   };
 
   useEffect(() => {
@@ -69,34 +76,24 @@ function useVideoChat(roomId) {
     socketRef.current.on("sdp", (data) => {
       peer.current.setRemoteDescription(new RTCSessionDescription(data.sdp));
       if (data.sdp.type === "offer") {
-        createAnswer();
-      }
-
-      if (data.sdp.type === "answer") {
+        setHasOffer(false);
         setHasAnswer(true);
-        setStatus("Call Accepted!");
+        setStatus("Incoming Call...")
+        // createAnswer();
+      } else {
+        setHasAnswer(false);
+        setStatus("Connected!")
       }
-
-      setPeerConnected(true);
-
     });
 
     socketRef.current.on("candidate", (candiate) => {
-      console.log("candidate received");
       peer.current.addIceCandidate(new RTCIceCandidate(candiate));
     });
 
-
-    const peerConnection = new RTCPeerConnection({
-      iceServers: [
-        {
-          urls: "stun:stun.l.google.com:19302",
-        },
-      ],
-    });
+    const peerConnection = new RTCPeerConnection();
 
     navigator.mediaDevices
-      .getUserMedia({ video: true, audio: true })
+      .getUserMedia(options)
       .then((stream) => {
         localStream.current.srcObject = stream;
         stream.getTracks().forEach((track) => {
@@ -109,34 +106,76 @@ function useVideoChat(roomId) {
 
     peerConnection.onicecandidate = (e) => {
       if (e.candidate) {
-        socketRef.current.emit("candidate", { candidate: e.candidate });
+        sendToPeer("candidate", e.candidate);
       }
     };
 
     peerConnection.ontrack = (e) => {
-      console.log("ontrack");
       remoteStream.current.srcObject = e.streams[0];
     };
 
-    peerConnection.onnegotiationneeded = async () => {
-      console.log("onnegotiationneeded");
-      try {
-        let sdp = await peer.current.createOffer();
-        handleSDP(sdp);
-      } catch (err) {
-        console.log(err);
+    peerConnection.onnegotiationneeded = (e) => {
+
+      if (peerConnection.signalingState !== "stable") {
+        return;
       }
+
+      console.log("Negotiation Needed")
+
+      // if (hasOffer) {
+      //   createOffer();
+      // }
+      // if (hasAnswer) {
+      //   createAnswer();
+      // }      
+    };
+
+    peerConnection.oniceconnectionstatechange = (e) => {
+      if (peerConnection.iceConnectionState === "disconnected") {
+        console.log("Disconnected");
+      }
+
+      if (peerConnection.iceConnectionState === "connected") {
+        console.log("Connected");
+      }
+
+      if (peerConnection.iceConnectionState === "failed") {
+        console.log("Failed");
+      }
+
+      if (peerConnection.iceConnectionState === "closed") {
+        console.log("Closed");
+      }
+
+      if (peerConnection.iceConnectionState === "new") {
+        console.log("New");
+      }
+
+      if (peerConnection.iceConnectionState === "checking") {
+        console.log("Checking");
+      }
+
+      if (peerConnection.iceConnectionState === "completed") {
+        console.log("Completed");
+      }
+
     };
 
     peer.current = peerConnection;
+
+    return () => {
+      socketRef.current.disconnect();
+      setStatus("Disconnected")
+    }
+
   }, [roomId]);
 
 
   return {
-    connected,
-    peerConnected,
     localStream,
     remoteStream,
+    createOffer,
+    createAnswer,
     status,
   };
 
