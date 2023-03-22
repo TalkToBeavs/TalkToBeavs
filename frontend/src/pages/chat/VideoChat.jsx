@@ -28,7 +28,7 @@ function VideoChat() {
     audio: true,
     video: true,
   };
-  
+
   const socket = io("wss://talk-to-beavs.herokuapp.com", {
     transports: ["websocket"],
     query: {
@@ -77,7 +77,11 @@ function VideoChat() {
 
   useEffect(() => {
     socket.on("sdp", (data) => {
-      peer.current.setRemoteDescription(new RTCSessionDescription(data.sdp));
+      const sdp = JSON.parse(JSON.stringify(data.sdp));
+      peer.current.setRemoteDescription(new RTCSessionDescription({
+        type: sdp.type ? sdp.type : "offer",
+        sdp: sdp.sdp,
+      }));
 
       if (data.sdp.type === "offer") {
         setHasOffer(false);
@@ -162,7 +166,7 @@ function VideoChat() {
       if (hasOffer && !hasAnswer) {
         createOffer();
       }
-    }, 2000);
+    }, 3000);
 
     return () => {
       setStatus("Disconnected");
