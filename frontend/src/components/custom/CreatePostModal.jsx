@@ -1,9 +1,16 @@
+import { ChevronDownIcon } from '@chakra-ui/icons';
 import {
+  Box,
   Button,
   Divider,
   FormControl,
   FormErrorMessage,
   FormLabel,
+  Input,
+  Menu,
+  MenuButton,
+  MenuItem,
+  MenuList,
   Modal,
   ModalBody,
   ModalCloseButton,
@@ -11,14 +18,66 @@ import {
   ModalFooter,
   ModalHeader,
   ModalOverlay,
+  SimpleGrid,
   Textarea,
 } from '@chakra-ui/react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 
 export default function CreatePostModal({ isOpen, onClose, handleValidPost }) {
   const [content, setContent] = useState('');
   const [error, setError] = useState(false);
+  const [data, setData] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [searchValue, setSearchValue] = useState('');
+  const [shouldFetch, setShouldFetch] = useState(false);
+  const [menuListHeight, setMenuListHeight] = useState(0);
+
+  const handleGifClick = (url) => {
+    setContent(url);
+  };
+
+  useEffect(() => {
+    async function fetchData() {
+      const response = await fetch(
+        `https://api.giphy.com/v1/gifs/search?q=${searchValue}&api_key=9CCUpGOJH9WMOxUG8cvrftGjTX3WInfx&limit=25`,
+      );
+      const json = await response.json();
+      setData(json.data);
+      setShouldFetch(false);
+    }
+
+    if (shouldFetch) {
+      fetchData();
+    }
+  }, [shouldFetch, searchValue]);
+
+  const menuListRef = (node) => {
+    if (node !== null) {
+      setMenuListHeight(node.offsetHeight);
+    }
+  };
+
+  useEffect(() => {
+    const menuListElement = menuListRef.current;
+    if (menuListElement) {
+      const { scrollHeight, clientHeight } = menuListElement;
+      setMenuListHeight(scrollHeight - clientHeight);
+    }
+  }, [data]);
+
+  useEffect(() => {
+    const menuListElement = menuListRef.current;
+    if (menuListElement) {
+      if (menuListHeight > 200) {
+        menuListElement.style.overflowY = 'scroll';
+        menuListElement.style.maxHeight = '200px';
+      } else {
+        menuListElement.style.overflowY = 'auto';
+        menuListElement.style.maxHeight = 'none';
+      }
+    }
+  }, [menuListHeight]);
 
   const userData = useSelector((state) => state.user.data);
 
@@ -42,6 +101,12 @@ export default function CreatePostModal({ isOpen, onClose, handleValidPost }) {
     setError(false);
     onClose();
   };
+
+  const performSearch = () => {
+    console.log(searchValue);
+  };
+
+  console.log(searchValue);
 
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
@@ -68,10 +133,67 @@ export default function CreatePostModal({ isOpen, onClose, handleValidPost }) {
           {error && <FormErrorMessage>{error}</FormErrorMessage>}
         </ModalBody>
         <ModalFooter>
+          <Menu>
+            {({ isOpen }) => (
+              <>
+                <MenuButton isActive={isOpen} as={Button} rightIcon={<ChevronDownIcon />}>
+                  {isOpen ? 'Close' : 'Open'}
+                </MenuButton>
+                <MenuList ref={menuListRef}>
+                  <Input
+                    placeholder='Search for GIFs'
+                    onChange={(event) => setSearchValue(event.target.value)}
+                  />
+                  <Button
+                    onClick={() => {
+                      setShouldFetch(true);
+                    }}
+                  >
+                    Search
+                  </Button>
+                  <SimpleGrid columns={5} spacing={0} align='center' justify='center'>
+                    {data &&
+                      data.map(({ id, embed_url }) => (
+                        <MenuItem key={id} onClick={() => handleGifClick(embed_url)}>
+                          <Box position='relative' height='80px' width='80px'>
+                            <iframe
+                              src={embed_url}
+                              width='80'
+                              height='80'
+                              frameBorder='0'
+                              className='giphy-embed'
+                              allowFullScreen={false}
+                              style={{ pointerEvents: 'none' }}
+                            ></iframe>
+                            <div
+                              style={{
+                                position: 'absolute',
+                                top: 0,
+                                left: 0,
+                                width: '100%',
+                                height: '100%',
+                                zIndex: 1,
+                                cursor: 'default',
+                              }}
+                            ></div>
+                          </Box>
+                        </MenuItem>
+                      ))}
+                  </SimpleGrid>
+                </MenuList>
+              </>
+            )}
+          </Menu>
           <Button colorScheme='orange' mr={3} onClick={handleSubmit}>
             Post
           </Button>
-          <Button variant='ghost' onClick={handleClose}>
+          <Button
+            variant='ghost'
+            onClick={() => {
+              setSearchValue('');
+              handleClose();
+            }}
+          >
             Cancel
           </Button>
         </ModalFooter>
