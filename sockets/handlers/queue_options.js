@@ -3,16 +3,8 @@ import roomOptions from './room_options.js'
 /*
       This is the handler for the queue options.
       This will be called when a user enters the queue.
-      
-      The handlers for the queue options are:
-      - joinQueue
-      - leaveQueue
-      - getQueue
-      - getQueueSize
-      - getQueuePosition
-      - getQueueStatus
+      (deprecated)
 */
-
 var queue = []
 var room = []
 const queueOptions = (socket, io) => {

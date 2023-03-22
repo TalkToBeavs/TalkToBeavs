@@ -32,7 +32,7 @@ const App = () => {
       <AnimatePresence mode='wait'>
         <SidebarWithHeader>
           <ThemeToggle />
-          <Routes location={location} key={location.pathname}>
+          <Routes>
             <Route path='/' element={<Landing />} />
             <Route path='/signup' element={<Signup />} />
             <Route path='/login' element={<Login />} />

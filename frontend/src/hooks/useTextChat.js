@@ -2,9 +2,9 @@ import { useEffect, useRef, useState } from 'react';
 import socketIOClient from 'socket.io-client';
 
 const NEW_CHAT_MESSAGE_EVENT = 'newMessage';
-const SOCKET_SERVER_URL = 'https://talk-to-beavs.herokuapp.com';
+const SOCKET_SERVER_URL = 'http://localhost:8080';
 
-const useChat = (roomId) => {
+const useTextChat = (roomId) => {
   const [messages, setMessages] = useState([
     {
       body: `You have been connected to the chat. Say hi!`,
@@ -50,4 +50,4 @@ const useChat = (roomId) => {
   return { messages, sendMessage };
 };
 
-export default useChat;
+export default useTextChat;
