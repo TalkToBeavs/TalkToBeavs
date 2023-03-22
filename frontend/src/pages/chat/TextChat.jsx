@@ -21,7 +21,7 @@ import { MdExitToApp } from 'react-icons/md';
 import { RiSendPlaneFill } from 'react-icons/ri';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
-import useTextChat from '../../hooks/useTextChat';
+import useChat from '../../hooks/useChat';
 import moment from 'moment';
 
 export default function TextChat() {

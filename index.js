@@ -20,9 +20,6 @@ import online_users from './routes/social/online_users.js'
 import upvote_post from './routes/feed/upvote_post.js'
 import downvote_post from './routes/feed/downvote_post.js'
 
-// Profile
-import edit_profile from './routes/profile/edit_profile.js'
-
 // Sockets
 import { Server } from 'socket.io'
 import newConnection from './sockets/handlers/new_connection.js'
@@ -55,8 +52,6 @@ app.use('/api/feed/get_posts', get_posts)
 app.use('/api/feed/upvote_post', upvote_post)
 app.use('/api/feed/downvote_post', downvote_post)
 
-app.use('/api/profile/edit_profile', edit_profile)
-
 // Default Route
 app.get('/', (req, res) => {
     res.send('Hello TalkToBeavs!')
@@ -84,5 +79,6 @@ const io = new Server(server, {
 })
 
 io.on('connection', (socket) => {
+    console.log(`[Backend ⚡️]: New Connection: ${socket.id}`)
     newConnection(socket, io)
 })

@@ -2,7 +2,16 @@ import Room from '../../models/Chat/Room.js'
 /*
       This file handles the room options.
       This will be called when a user enters a room.
-      (deprecated)
+
+      The handlers for the room options are:
+      - joinRoom
+      - leaveRoom
+      - getRoom
+      - getRoomUsers
+      - getRoomMessages
+      - getRoomStatus
+      - sendMessage
+      - deleteRoom
 */
 
 const roomOptions = (socket, io) => {

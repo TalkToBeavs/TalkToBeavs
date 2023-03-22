@@ -14,19 +14,6 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    standing: {
-        type: String,
-        enum: ['Freshman', 'Sophomore', 'Junior', 'Senior', 'Grad Student'],
-        required: false,
-    },
-    major: {
-        type: String,
-        required: false,
-    },
-    bio: {
-        type: String,
-        required: false,
-    },
     followers: {
         type: [mongoose.Schema.Types.ObjectId],
         ref: 'User',

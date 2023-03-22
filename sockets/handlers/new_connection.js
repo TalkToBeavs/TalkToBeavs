@@ -6,35 +6,20 @@ import * as chat_options from './chat_options.js'
 
       We can use this to log the connection and disconnect events.
 */
-var textQueue = [];
-var videoQueue = [];
+var queue = []
 const newConnection = (socket, io) => {
     chat_options.default(socket, io)
-
-    socket.on('joinTextQueue', (data) => {
-        console.log(`[Backend ⚡️]: ${data.name} joined the text queue`);
-        textQueue.push(socket);
-        if (textQueue.length >= 2) {
-            const peer1 = textQueue.shift();
-            const peer2 = textQueue.shift();
+    
+    socket.on('joinQueue', (data) => {
+        console.log(`[Backend ⚡️]: ${data.name} joined the queue`);
+        queue.push(socket);
+        if (queue.length >= 2) {
+            const peer1 = queue.shift();
+            const peer2 = queue.shift();
             const roomId = socket.id;
             peer1.join(roomId);
             peer2.join(roomId);
             console.log(`[Backend ⚡️]: Peers joined room ${roomId}`);
-            io.to(peer1.id).emit('matched', { message: `You have been matched! Room ID: ${roomId}`, room: roomId });
-            io.to(peer2.id).emit('matched', { message: `You have been matched! Room ID: ${roomId}`, room: roomId });
-        }
-    });
-
-    socket.on('joinVideoQueue', (data) => {
-        console.log(`[Backend ⚡️]: ${data.name} joined the video queue`);
-        videoQueue.push(socket);
-        if (videoQueue.length >= 2) {
-            const peer1 = videoQueue.shift();
-            const peer2 = videoQueue.shift();
-            const roomId = socket.id;
-            peer1.join(roomId);
-            peer2.join(roomId);
             io.to(peer1.id).emit('matched', { message: `You have been matched! Room ID: ${roomId}`, room: roomId });
             io.to(peer2.id).emit('matched', { message: `You have been matched! Room ID: ${roomId}`, room: roomId });
         }
@@ -53,20 +38,28 @@ const newConnection = (socket, io) => {
 
 
     socket.on('joinRoom', (data) => {
+        console.log(`[Backend ⚡️]: ${data.username} joined.`)
         io.to(roomId).emit('joinRoom', data)
     })
 
     socket.on('disconnect', () => {
-        const text_index = textQueue.indexOf(socket);
-        const video_index = videoQueue.indexOf(socket);
-
-        if (video_index !== -1) {
-            videoQueue.splice(video_index, 1);
-        } else {
-            textQueue.splice(text_index, 1);
+        console.log(`[Backend ⚡️]: User disconnected with socket id ${socket.id}`);
+        const index = queue.indexOf(socket);
+        if (index !== -1) {
+            queue.splice(index, 1);
         }
     })
 
+    // socket.on("sdp", (data) => {
+    //     socket.broadcast.emit("sdp", data)
+    // })
+
+    // socket.on("candidate", (data) => {
+    //     socket.broadcast.emit("candidate", data)
+    // })
+
+    // Add the queue options handler
+    // queue_options.default(socket, io)
 }
 
 export default newConnection

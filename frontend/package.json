@@ -28,7 +28,6 @@
     "react-redux": "^8.0.5",
     "react-router-dom": "^6.9.0",
     "react-transition-group": "^4.4.5",
-    "simple-peer": "^9.11.1",
     "socket.io-client": "^4.6.1"
   },
   "devDependencies": {
