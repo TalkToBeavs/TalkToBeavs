@@ -57,10 +57,6 @@ const TextLobby = () => {
     };
   }, [roomId]);
 
-  // React.useEffect(() => {
-  //   dispatch({ type: 'chat/connect', payload: { url: 'ws://localhost:8080', who: user?.email || 'Anonymous' } });
-  // }, []);
-
   return (
     <Flex
       direction='column'
@@ -76,10 +72,10 @@ const TextLobby = () => {
             position='absolute'
             top='5'
             right='5'
-            zIndex='9999'
+            zIndex='99999'
             icon={<MdExitToApp />}
           />
-          <MenuList>
+          <MenuList zIndex='99999'>
             {['Leave Lobby', 'Logout'].map((item, i) => (
               <MenuItem
                 key={i}
@@ -173,19 +169,6 @@ const TextLobby = () => {
         Waiting for another beaver to join
         <span>{dots}</span>
       </Text>
-
-      {/* <form onSubmit={handleSubmit}>
-        <Input
-          type='text'
-          value={input}
-          onChange={(e) => setInput(e.target.value)}
-          placeholder='Enter Room ID'
-        />
-      </form> */}
-
-      {/* <Button colorScheme='orange' onClick={() => navigate('/text/440')}>
-        Go To Chat
-      </Button> */}
     </Flex>
   );
 };
