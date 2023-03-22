@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react'
 import socketIOClient from 'socket.io-client'
 
-const SOCKET_SERVER_URL = 'http://localhost:8080'
+const SOCKET_SERVER_URL = 'https://talk-to-beavs.herokuapp.com'
 
 function useVideoChat(roomId) {
   const [connected, setConnected] = useState(false)
