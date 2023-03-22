@@ -19,6 +19,8 @@ import get_profile from './routes/social/get_profile.js'
 import online_users from './routes/social/online_users.js'
 import upvote_post from './routes/feed/upvote_post.js'
 import downvote_post from './routes/feed/downvote_post.js'
+import edit_post from './routes/feed/edit_post.js'
+import delete_post from './routes/feed/delete_post.js'
 
 // Profile
 import edit_profile from './routes/profile/edit_profile.js'
@@ -54,6 +56,8 @@ app.use('/api/feed/create_post', create_post)
 app.use('/api/feed/get_posts', get_posts)
 app.use('/api/feed/upvote_post', upvote_post)
 app.use('/api/feed/downvote_post', downvote_post)
+app.use('/api/feed/edit_post', edit_post)
+app.use('/api/feed/delete_post', delete_post)
 
 app.use('/api/profile/edit_profile', edit_profile)
 
