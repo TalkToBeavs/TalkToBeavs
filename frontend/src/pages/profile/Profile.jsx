@@ -7,13 +7,14 @@ import FollowButton from '../../components/custom/FollowButton';
 import FollowStats from '../../components/text/FollowStats';
 import usePosts from '../../hooks/usePosts';
 import useProfile from '../../hooks/useProfile';
+import { loadPosts, selectAllPosts } from '../../redux/slices/FeedSlice';
 
 export default function Profile() {
   const { onid } = useParams();
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user.data);
   const profile = useProfile({ onid, user });
-  const posts = usePosts({ onid });
+  const allPosts = useSelector(selectAllPosts).filter(post => post.postedBy.split('@')[0].toString() === onid.toString());
   useEffect(() => {
     document.querySelector('title').innerHTML = `${onid}'s Profile`;
 
@@ -21,6 +22,10 @@ export default function Profile() {
       document.querySelector('title').innerHTML = 'Talk2Beavs - OSU CS494';
     };
   }, [onid]);
+
+  useEffect(() => {
+    dispatch(loadPosts());
+  }, []);
 
   return (
     profile && (
@@ -58,7 +63,7 @@ export default function Profile() {
               <Divider mt={2} />
             </Heading>
 
-            <ProfilePostList posts={posts} />
+            <ProfilePostList posts={allPosts} />
           </Flex>
         </Box>
       </>
