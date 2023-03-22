@@ -7,7 +7,7 @@ const useLobby = (onid, option) => {
   const socketRef = useRef(null);
 
   useEffect(() => {
-    socketRef.current = socketIOClient('http://localhost:8080', {
+    socketRef.current = socketIOClient('https://https://talk-to-beavs.herokuapp.com', {
       query: { onid },
     });
 
