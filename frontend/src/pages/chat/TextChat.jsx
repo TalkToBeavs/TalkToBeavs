@@ -21,7 +21,7 @@ import { MdExitToApp } from 'react-icons/md';
 import { RiSendPlaneFill } from 'react-icons/ri';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
-import useChat from '../../hooks/useChat';
+import useTextChat from '../../hooks/useTextChat';
 import moment from 'moment';
 
 export default function TextChat() {
@@ -39,7 +39,7 @@ export default function TextChat() {
   const [newMessage, setNewMessage] = React.useState('');
 
   let onid = user?.email.split('@')[0];
-  const { messages, sendMessage } = useChat(id || location.pathname.split('/')[2]);
+  const { messages, sendMessage } = useTextChat(id || location.pathname.split('/')[2]);
 
   const handleNewMessageChange = (event) => {
     setNewMessage(event.target.value);

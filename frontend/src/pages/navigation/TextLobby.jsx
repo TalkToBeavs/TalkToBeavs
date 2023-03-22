@@ -27,7 +27,7 @@ const TextLobby = () => {
   const [isMobile] = useMediaQuery('(max-width: 768px)');
   const [input, setInput] = useState('');
   let onid = user?.email.split('@')[0];
-  const { queue, joinQueue, roomId, disconnect } = useLobby(onid);
+  const { queue, joinQueue, roomId, disconnect } = useLobby(onid, 'text');
   const dots = ['.', '.', '.'].map((dot, i) => (
     <motion.span
       key={i}

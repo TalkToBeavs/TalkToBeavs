@@ -27,13 +27,15 @@ const useLobby = (onid, option) => {
   }, [onid]);
 
   const joinQueue = () => {
-
-    if ()
-
-
-    socketRef.current.emit('joinQueue', {
-      name: onid,
-    });
+    if (option === 'text') {
+      socketRef.current.emit('joinTextQueue', {
+        name: onid,
+      });
+    } else {
+      socketRef.current.emit('joinVideoQueue', {
+        name: onid,
+      });
+    }
   };
 
   const disconnect = () => {

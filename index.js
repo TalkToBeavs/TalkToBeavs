@@ -78,6 +78,5 @@ const io = new Server(server, {
 })
 
 io.on('connection', (socket) => {
-    console.log(`[Backend ⚡️]: New Connection: ${socket.id}`)
     newConnection(socket, io)
 })
