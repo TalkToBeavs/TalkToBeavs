@@ -72,10 +72,10 @@ const VideoLobby = () => {
             position='absolute'
             top='5'
             right='5'
-            zIndex='9999'
+            zIndex='99999'
             icon={<MdExitToApp />}
           />
-          <MenuList>
+          <MenuList zIndex='99999'>
             {['Leave Lobby', 'Logout'].map((item, i) => (
               <MenuItem
                 key={i}
