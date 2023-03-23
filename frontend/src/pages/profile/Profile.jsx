@@ -1,4 +1,4 @@
-import { Avatar, Box, Divider, Flex, Heading } from '@chakra-ui/react';
+import { Avatar, Box, Text, Divider, Flex, Heading } from '@chakra-ui/react';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
@@ -7,13 +7,14 @@ import FollowButton from '../../components/custom/FollowButton';
 import FollowStats from '../../components/text/FollowStats';
 import usePosts from '../../hooks/usePosts';
 import useProfile from '../../hooks/useProfile';
+import { loadPosts, selectAllPosts } from '../../redux/slices/FeedSlice';
 
 export default function Profile() {
   const { onid } = useParams();
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user.data);
   const profile = useProfile({ onid, user });
-  const posts = usePosts({ onid });
+  const allPosts = useSelector(selectAllPosts).filter(post => post.postedBy.split('@')[0].toString() === onid.toString());
   useEffect(() => {
     document.querySelector('title').innerHTML = `${onid}'s Profile`;
 
@@ -21,6 +22,10 @@ export default function Profile() {
       document.querySelector('title').innerHTML = 'Talk2Beavs - OSU CS494';
     };
   }, [onid]);
+
+  useEffect(() => {
+    dispatch(loadPosts());
+  }, []);
 
   return (
     profile && (
@@ -32,6 +37,18 @@ export default function Profile() {
             <Heading as='h1' size='2xl' mb={4}>
               {profile.name.charAt(0).toUpperCase() + profile.name.slice(1)}
             </Heading>
+            <Box my={4} maxW='40%' textAlign='center'>
+              {profile.standing && profile.major && (
+                <Box mb={4}>
+                  <Text>{profile.standing} in {profile.major}</Text>
+                </Box>
+              )}
+              {profile.bio && (
+                <Box mb={4}>
+                  <Text fontStyle='italic'>"{profile.bio}"</Text>
+                </Box>
+              )}
+            </Box>
             <Divider
               w={{
                 base: '50%',
@@ -58,7 +75,7 @@ export default function Profile() {
               <Divider mt={2} />
             </Heading>
 
-            <ProfilePostList posts={posts} />
+            <ProfilePostList posts={allPosts} />
           </Flex>
         </Box>
       </>

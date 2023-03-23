@@ -32,14 +32,29 @@ export const registerUser = createAsyncThunk(
   },
 );
 
-export const followUser = createAsyncThunk('user/follow', async (values, { rejectWithValue }) => {
-  try {
-    const response = await axios.post('http://localhost:8080/api/social/follow_user', values);
-    return response.data;
-  } catch (err) {
-    return rejectWithValue(err.response.data);
+export const editUser = createAsyncThunk(
+  'user/edit', 
+  async (values, { rejectWithValue }) => {
+    try {
+      const response = await axios.patch(`https://talk-to-beavs.herokuapp.com/api/profile/edit_profile`, values);
+      return response.data;
+    } catch (err) {
+      return rejectWithValue(err.response.data);
+    }
+  },
+);
+
+export const followUser = createAsyncThunk(
+  'user/follow', 
+  async (values, { rejectWithValue }) => {
+    try {
+      const response = await axios.post('https://talk-to-beavs.herokuapp.com/api/social/follow_user', values);
+      return response.data;
+    } catch (err) {
+      return rejectWithValue(err.response.data);
+    }
   }
-});
+);
 
 const initialState = {
   data: null,
@@ -76,6 +91,12 @@ const userSlice = createSlice({
       state.error = null;
       state.message = null;
     },
+    editUserInfo: (state, action) => {
+      state.data.standing = action.payload.standing;
+      state.data.major = action.payload.major;
+      state.data.bio = action.payload.bio;
+      state.data.name = action.payload.name;
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(registerUser.fulfilled, (state, action) => {
@@ -100,13 +121,16 @@ const userSlice = createSlice({
       state.error = null;
       state.message = null;
     });
+    builder.addCase(editUser.fulfilled, (state, action) => {
+      state.data = action.payload.user;
+    });
     builder.addCase(followUser.fulfilled, (state, action) => {
       state.data = action.payload.user;
     });
   },
 });
 
-export const { setUser, loadUser, loginUser, logoutUser } = userSlice.actions;
+export const { setUser, loadUser, loginUser, logoutUser, editUserInfo } = userSlice.actions;
 export default userSlice.reducer;
 
 export const selectUser = (state) => state.user.data;
