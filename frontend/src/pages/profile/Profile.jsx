@@ -8,6 +8,8 @@ import FollowStats from '../../components/text/FollowStats';
 import usePosts from '../../hooks/usePosts';
 import useProfile from '../../hooks/useProfile';
 import { loadPosts, selectAllPosts } from '../../redux/slices/FeedSlice';
+import { motion } from 'framer-motion';
+import { fadeInAnimation } from '../../lib/animations';
 
 export default function Profile() {
   const { onid } = useParams();
@@ -31,7 +33,7 @@ export default function Profile() {
     profile && (
       <>
         <Box w='100%' h='100%' py={8}>
-          <Flex direction='column' align='center' justify='center' w='100%' h='100%'>
+          <Flex direction='column' align='center' justify='center' w='100%' h='100%' as={motion.div} animation={fadeInAnimation}>
             <Avatar size='2xl' name={profile.name} src={profile.avatarImg} mb={4} />
             <FollowButton user={profile} />
             <Heading as='h1' size='2xl' mb={4}>
