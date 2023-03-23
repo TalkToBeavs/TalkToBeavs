@@ -6,7 +6,7 @@ function useOnlineUsers() {
 
   const fetchUsers = async () => {
     try {
-      const response = await axios.get('https://talk-to-beavs.herokuapp.com.herokuapp.com/api/social/online_users');
+      const response = await axios.get('https://talk-to-beavs.herokuapp.com/api/social/online_users');
       setUsers(response.data.users);
     } catch (err) {
       setUsers([]);

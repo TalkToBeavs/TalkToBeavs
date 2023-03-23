@@ -49,7 +49,7 @@ function Login() {
     };
 
     try {
-      const res = await axios.post('https://talk-to-beavs.herokuapp.com.herokuapp.com/api/auth/login', data);
+      const res = await axios.post('https://talk-to-beavs.herokuapp.com/api/auth/login', data);
 
       if (res.status === 200) {
         localStorage.setItem('token', res.data.user.email);
