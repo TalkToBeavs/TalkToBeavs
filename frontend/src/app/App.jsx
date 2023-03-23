@@ -24,6 +24,7 @@ import { AnimatePresence } from 'framer-motion';
 import TextChat from '../pages/chat/TextChat';
 import VideoChat from '../pages/chat/VideoChat';
 import Profile from '../pages/profile/Profile';
+import Edit from '../pages/profile/Edit';
 
 const App = () => {
   const location = useLocation();
@@ -41,6 +42,7 @@ const App = () => {
             <Route path='/home' element={<Home />} />
 
             <Route path='/profile/:onid' element={<Profile />} />
+            <Route path='/edit' element={<Edit />} />
 
             <Route path='/feed' element={<Feed />} />
             <Route path='/lobby' element={<Lobby />} />
