@@ -15,7 +15,7 @@ function LogoutButton() {
   const handleLogout = async () => {
     setError('');
     try {
-      const res = await axios.post('https://talk-to-beavs.herokuapp.com/api/auth/logout', {
+      const res = await axios.post('https://talk-to-beavs.herokuapp.com.herokuapp.com/api/auth/logout', {
         email: localStorage.getItem('token'), // assuming email was used as the token
       });
       if (res.status === 200) {
