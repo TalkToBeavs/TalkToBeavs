@@ -12,7 +12,7 @@ const Post = ({ post }) => {
   const token = localStorage.getItem('token');
   const onid = token?.split('@')[0];
 
-  const parts = post.content.split(' ');
+  const parts = post.content.split(/[ \n]+/);
   const link = parts[0];
   const text = parts.slice(1).join(' ');
 
