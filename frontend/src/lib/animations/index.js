@@ -152,6 +152,19 @@ const fadeIntoView = keyframes`
 
 const fadeIntoViewAnimation = `${fadeIntoView} 1.8s ease-in-out`;
 
+const fadeIn = keyframes`
+      0% {
+            opacity: 0;
+      }
+
+      100% {
+            opacity: 1;
+      }
+
+`;
+
+const fadeInAnimation = `${fadeIn} 0.5s ease-in-out`;
+
 const pulseLoaderLoop = keyframes`
       0% {
             transform: scale(1);
@@ -177,4 +190,5 @@ export {
       comeFromBottomAnimation,
       fadeIntoViewAnimation,
       pulseLoaderAnimation,
+      fadeInAnimation,
 };

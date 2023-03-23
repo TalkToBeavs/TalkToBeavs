@@ -1,17 +1,17 @@
-import { Box } from '@chakra-ui/react';
+import { Box, useMediaQuery } from '@chakra-ui/react';
 import Post from './Post';
 
 export default function ProfilePostList({ posts }) {
+  const [isMobile] = useMediaQuery('(max-width: 768px)');
   return (
     <Box
-      w={{
-        base: '100%',
-        sm: '100%',
-        md: '80%',
-        lg: '100%',
-      }}
-      // h="100%"
-      my={8}
+      h={'100vh'}
+      overflowY={'scroll'}
+      display={'flex'}
+      flexDirection={'column'}
+      w={isMobile ? '100%' : '70%'}
+      ml={isMobile ? 0 : 8}
+      mt={4}
     >
       {posts && posts.map((post, i) => <Post key={i} post={post} />)}
     </Box>
