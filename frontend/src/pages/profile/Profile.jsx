@@ -1,4 +1,4 @@
-import { Avatar, Box, Divider, Flex, Heading } from '@chakra-ui/react';
+import { Avatar, Box, Text, Divider, Flex, Heading } from '@chakra-ui/react';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
@@ -37,6 +37,18 @@ export default function Profile() {
             <Heading as='h1' size='2xl' mb={4}>
               {profile.name.charAt(0).toUpperCase() + profile.name.slice(1)}
             </Heading>
+            <Box my={4} maxW='40%' textAlign='center'>
+              {profile.standing && profile.major && (
+                <Box mb={4}>
+                  <Text>{profile.standing} in {profile.major}</Text>
+                </Box>
+              )}
+              {profile.bio && (
+                <Box mb={4}>
+                  <Text fontStyle='italic'>"{profile.bio}"</Text>
+                </Box>
+              )}
+            </Box>
             <Divider
               w={{
                 base: '50%',
