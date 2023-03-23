@@ -113,7 +113,6 @@ function SidebarWithHeader({ children }) {
 }
 
 const NavItem = ({ icon, children, ...rest }) => {
-  console.log(children);
   let onid = localStorage.getItem('token')?.split('@')[0];
   return (
     <Link

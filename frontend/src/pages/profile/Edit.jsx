@@ -13,10 +13,10 @@ export default function Edit() {
     const token = localStorage.getItem('token')
     const onid = token?.split('@')[0]
     const profile = useProfile({ onid, user })
-    const [name, setName] = React.useState(user.name)
-    const [standing, setStanding] = React.useState(user.standing || '')
-    const [major, setMajor] = React.useState(user.major || '')
-    const [bio, setBio] = React.useState(user.bio || '')
+    const [name, setName] = React.useState(user?.name)
+    const [standing, setStanding] = React.useState(user?.standing || '')
+    const [major, setMajor] = React.useState(user?.major || '')
+    const [bio, setBio] = React.useState(user?.bio || '')
 
     const handleSubmit = (event) => {
         event.preventDefault()

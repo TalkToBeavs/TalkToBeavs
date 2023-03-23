@@ -13,6 +13,7 @@ export default function FollowButton({ user }) {
   const isFollowing = useSelector(selectIsFollowing(user._id));
   const [userIsFollowing, setUserIsFollowing] = React.useState(isFollowing);
   const [isSubmitting, setIsSubmitting] = React.useState(false);
+  const email = localStorage.getItem('token');
 
   const handleFollow = async (e) => {
     e.preventDefault();
@@ -25,7 +26,7 @@ export default function FollowButton({ user }) {
     dispatch(followUser(req)).finally(() => setIsSubmitting(false));
   };
 
-  if (loggedInUser?.email === user?.email)
+  if (email === user?.email)
     return (
       <Flex>
         <Box my={6}>
