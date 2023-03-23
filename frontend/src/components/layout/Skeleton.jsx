@@ -54,7 +54,7 @@ function SidebarWithHeader({ children }) {
     if (localStorage.getItem('token')?.includes('@oregonstate.edu')) {
       dispatch(loadUserData(localStorage.getItem('token')));
     } else {
-      navigate('/login');
+      navigate('/');
     }
   }, []);
 
@@ -226,7 +226,7 @@ const MobileNav = ({ onOpen, ...rest }) => {
           <Menu>
             <MenuButton py={2} _focus={{ boxShadow: 'none' }}>
               <HStack>
-              <Avatar size={'sm'} name={user?.name} />
+                <Avatar size={'sm'} name={user?.name} />
                 <VStack
                   display={{ base: 'none', md: 'flex' }}
                   alignItems='flex-start'
