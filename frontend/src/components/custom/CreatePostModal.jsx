@@ -42,7 +42,7 @@ export default function CreatePostModal({ isOpen, onClose, handleValidPost }) {
 
   useEffect(() => {
     async function fetchDataSearch() {
-      const response = await fetch(`http://localhost:8080/api/feed/giphy_search?q=${searchValue}`);
+      const response = await fetch(`https://talk-to-beavs.herokuapp.com/api/feed/giphy_search?q=${searchValue}`);
       const json = await response.json();
 
       setData(json.data.data);
@@ -56,7 +56,7 @@ export default function CreatePostModal({ isOpen, onClose, handleValidPost }) {
 
   useEffect(() => {
     async function fetchDataTrending() {
-      const response = await fetch(`http://localhost:8080/api/feed/giphy_trending`);
+      const response = await fetch(`https://talk-to-beavs.herokuapp.com/api/feed/giphy_trending`);
       const json = await response.json();
       setData(json.data.data);
       setShouldFetchTrending(false);
