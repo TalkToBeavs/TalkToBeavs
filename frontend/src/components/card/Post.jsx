@@ -1,7 +1,6 @@
 import { ArrowDownIcon, ArrowUpIcon, DeleteIcon, EditIcon } from '@chakra-ui/icons';
-import { useEffect } from 'react';
 import { Box, Flex, IconButton, Spacer, Text, Tooltip, useMediaQuery, useDisclosure } from '@chakra-ui/react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { upvotePostAsync, downvotePostAsync, editPost, deletePost } from '../../redux/slices/FeedSlice'
 import EditPostModal from '../custom/EditPostModal';
@@ -12,7 +11,9 @@ const Post = ({ post }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const token = localStorage.getItem('token');
   const onid = token?.split('@')[0];
-
+  const parts = post.content.split(/[ \n]+/);
+  const link = parts[0];
+  const text = parts.slice(1).join(' ');
   const dispatch = useDispatch();
 
   const handleUpvote = () => {
@@ -26,7 +27,7 @@ const Post = ({ post }) => {
     } else {
       dispatch(upvotePostAsync({ postId: post._id, isUpvoted: true, isDownvoted: false, onid: onid }))
     }
-  }
+  };
 
   const handleDownvote = () => {
     if (!post.downvotes || !post.downvotes.includes(onid)) {
@@ -63,9 +64,27 @@ const Post = ({ post }) => {
       marginBottom={6}
     >
       <Flex justifyContent='space-between' alignItems='center' mb={2}>
-        <Text fontSize='lg' fontWeight='bold'>
+      {post.content.includes('https://giphy.com') ? (
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
+          <iframe
+            src={link}
+            width='150'
+            height='150'
+            frameBorder='0'
+            className='giphy-embed'
+            allowFullScreen
+            style={{ display: 'block', margin: '0', marginBottom: '0.5rem' }}
+          ></iframe>
+
+          <Text fontSize='lg' fontWeight='bold' mb={2} style={{ marginLeft: '0' }}>
+            {text}
+          </Text>
+        </div>
+      ) : (
+        <Text fontSize='lg' fontWeight='bold' mb={2}>
           {post.content}
         </Text>
+      )}
         {(post.postedBy.split('@')[0].toString() === onid.toString()) && (
           <Flex alignItems='center'>
             {!isOpen ? (
