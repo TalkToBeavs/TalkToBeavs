@@ -7,7 +7,7 @@ function usePosts({ onid }) {
   const fetchPosts = async () => {
     try {
       const response = await axios.get(
-        `https://talk-to-beavs.herokuapp.com/api/feed/get_posts/user?onid=${onid}`,
+        `http://localhost:8080/api/feed/get_posts/user?onid=${onid}`,
       );
       setPosts(response.data.posts);
     } catch (err) {

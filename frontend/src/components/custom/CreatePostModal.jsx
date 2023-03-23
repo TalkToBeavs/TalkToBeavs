@@ -40,12 +40,13 @@ export default function CreatePostModal({ isOpen, onClose, handleValidPost }) {
   useEffect(() => {
     async function fetchData() {
       const response = await fetch(
-        `https://api.giphy.com/v1/gifs/search?q=${searchValue}&api_key=9CCUpGOJH9WMOxUG8cvrftGjTX3WInfx&limit=25`,
+        `http://localhost:8080/api/feed/giphy_search?q=${searchValue}`,
       );
       const json = await response.json();
       setData(json.data);
       setShouldFetch(false);
     }
+    console.log(data)
 
     if (shouldFetch) {
       fetchData();
@@ -109,7 +110,11 @@ export default function CreatePostModal({ isOpen, onClose, handleValidPost }) {
   console.log(searchValue);
 
   return (
-    <Modal isOpen={isOpen} onClose={onClose}>
+<Modal isOpen={isOpen} onClose={() => {
+  console.log('Modal closed');
+  onClose();
+  setData('')
+}}>
       <ModalOverlay />
       <ModalContent>
         <ModalHeader>Create a post</ModalHeader>
@@ -136,7 +141,20 @@ export default function CreatePostModal({ isOpen, onClose, handleValidPost }) {
           <Menu>
             {({ isOpen }) => (
               <>
-                <MenuButton isActive={isOpen} as={Button} rightIcon={<ChevronDownIcon />}>
+                <MenuButton
+                  isActive={isOpen}
+                  as={Button}
+                  rightIcon={<ChevronDownIcon />}
+                  onClick={() => {
+                    console.log(data);
+                    if (!isOpen) {
+                      console.log('active');
+                    } else {
+                      console.log('not active');
+                      setData('');
+                    }
+                  }}
+                >
                   {isOpen ? 'Close' : 'Open'}
                 </MenuButton>
                 <MenuList ref={menuListRef}>
@@ -146,7 +164,11 @@ export default function CreatePostModal({ isOpen, onClose, handleValidPost }) {
                   />
                   <Button
                     onClick={() => {
+                      console.log(searchValue);
                       setShouldFetch(true);
+                      setTimeout(() => {
+                        setSearchValue('');
+                      }, 1000);
                     }}
                   >
                     Search
@@ -154,7 +176,12 @@ export default function CreatePostModal({ isOpen, onClose, handleValidPost }) {
                   <SimpleGrid columns={5} spacing={0} align='center' justify='center'>
                     {data &&
                       data.map(({ id, embed_url }) => (
-                        <MenuItem key={id} onClick={() => handleGifClick(embed_url)}>
+                        <MenuItem
+                          key={id}
+                          onClick={() => {
+                            handleGifClick(embed_url);
+                          }}
+                        >
                           <Box position='relative' height='80px' width='80px'>
                             <iframe
                               src={embed_url}
@@ -191,6 +218,7 @@ export default function CreatePostModal({ isOpen, onClose, handleValidPost }) {
             variant='ghost'
             onClick={() => {
               setSearchValue('');
+              setData('');
               handleClose();
             }}
           >

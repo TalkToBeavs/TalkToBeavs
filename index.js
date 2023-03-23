@@ -15,6 +15,7 @@ import load_user from './routes/auth/load_user.js'
 import follow_user from './routes/social/follow_user.js'
 import create_post from './routes/feed/create_post.js'
 import get_posts from './routes/feed/get_posts.js'
+import giphy_search from './routes/feed/giphy_search.js'
 import get_profile from './routes/social/get_profile.js'
 import online_users from './routes/social/online_users.js'
 import upvote_post from './routes/feed/upvote_post.js'
@@ -49,6 +50,7 @@ app.use('/api/social/online_users', online_users)
 
 app.use('/api/feed/create_post', create_post)
 app.use('/api/feed/get_posts', get_posts)
+app.use('/api/feed/giphy_search', giphy_search)
 app.use('/api/feed/upvote_post', upvote_post)
 app.use('/api/feed/downvote_post', downvote_post)
 
