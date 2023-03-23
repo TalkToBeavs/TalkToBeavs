@@ -32,12 +32,12 @@ import { loadUserData } from '../../redux/slices/UserSlice';
 import { TalkToBeavsMobile } from '../text/TalkToBeavs';
 import OnlineUser from './OnlineUser';
 
-const token = localStorage.getItem('token');
-const onid = token?.split('@')[0];
 
 const LinkItems = [
   { name: 'Home', icon: FiHome, link: '/home' },
-  { name: onid, icon: CgProfile, link: '/profile' },
+  {
+    name: (localStorage.getItem('token')?.split('@')[0] || "Profile"), icon: CgProfile, link: '/profile'
+  },
   { name: 'Feed', icon: FiCompass, link: '/feed' },
   { name: 'Logout', icon: SlLogout, link: `/logout` },
 ];
@@ -113,11 +113,13 @@ function SidebarWithHeader({ children }) {
 }
 
 const NavItem = ({ icon, children, ...rest }) => {
+  console.log(children);
+  let onid = localStorage.getItem('token')?.split('@')[0];
   return (
     <Link
       style={{ textDecoration: 'none' }}
       _focus={{ boxShadow: 'none' }}
-      to={children.link === '/profile' ? children.link + `/${onid}` : children.link}
+      to={children.link === '/profile' ? `/profile/${onid}` : children.link}
       as={NavLink}
       _activeLink={{
         color: 'orange.500',
