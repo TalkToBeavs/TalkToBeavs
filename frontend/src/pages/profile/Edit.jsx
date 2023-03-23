@@ -26,8 +26,8 @@ export default function Edit() {
         const bio = event.target.bio.value;
         const email = token
         const updatedUser = { email, name, standing, major, bio }
-        navigate(`/profile/${onid}`)
         dispatch(editUser(updatedUser))
+        navigate(-1)
     };
 
     useEffect(() => {
@@ -89,9 +89,9 @@ export default function Edit() {
                                         value={major}
                                         onChange={(event) => setMajor(event.target.value)}
                                     />
-                                    </FormControl>
+                                </FormControl>
 
-                                    <FormControl id="bio" mt={4}>
+                                <FormControl id="bio" mt={4}>
                                     <FormLabel>Bio</FormLabel>
                                     <Textarea
                                         placeholder="Tell us about yourself"

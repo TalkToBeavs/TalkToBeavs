@@ -29,8 +29,10 @@ export default function Profile() {
     dispatch(loadPosts());
   }, []);
 
+  console.log(profile)
+
   return (
-    profile &&  (
+    profile && (
       <>
         <Box w='100%' h='100%' py={8}>
           <Flex direction='column' align='center' justify='center' w='100%' h='100%' as={motion.div} animation={fadeInAnimation}>
@@ -82,6 +84,6 @@ export default function Profile() {
         </Box>
       </>
     )
-    
+
   );
 }
