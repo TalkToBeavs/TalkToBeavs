@@ -13,6 +13,8 @@ function useVideoChat(roomId) {
   const [hasAnswer, setHasAnswer] = useState(false)
   const [status, setStatus] = useState("Not Connected")
 
+  const [name, setName] = useState("A Random Beaver")
+
   const peer = useRef(null);
   const localStream = useRef(null);
   const remoteStream = useRef(null);
@@ -32,7 +34,6 @@ function useVideoChat(roomId) {
       let sdp = await peer.current.createOffer(config);
       handleSDP(sdp);
       setHasOffer(false);
-      setStatus("Calling...");
     } catch (err) {
       console.log(err);
     }
@@ -47,7 +48,7 @@ function useVideoChat(roomId) {
       let sdp = await peer.current.createAnswer(config);
       handleSDP(sdp);
       setHasAnswer(false);
-      setStatus("Call Accepted!");
+      setStatus("Connected!")
     } catch (err) {
       console.log(err);
     }
@@ -77,17 +78,18 @@ function useVideoChat(roomId) {
       peer.current.setRemoteDescription(new RTCSessionDescription(data.sdp));
       if (data.sdp.type === "offer") {
         setHasOffer(false);
-        setHasAnswer(true);
-        setStatus("Incoming Call...")
+        createAnswer();
+        setPeerConnected(true);
+        setStatus("Joined!")
+        setConnected(true);
         // createAnswer();
-      } else {
-        setHasAnswer(false);
-        setStatus("Connected!")
       }
+
     });
 
     socketRef.current.on("candidate", (candiate) => {
       peer.current.addIceCandidate(new RTCIceCandidate(candiate));
+      socketRef.current.emit("name", { name: name });
     });
 
     const peerConnection = new RTCPeerConnection();
@@ -127,12 +129,15 @@ function useVideoChat(roomId) {
       // }
       // if (hasAnswer) {
       //   createAnswer();
-      // }      
+      // }
     };
 
     peerConnection.oniceconnectionstatechange = (e) => {
       if (peerConnection.iceConnectionState === "disconnected") {
         console.log("Disconnected");
+        setConnected(false);
+        setStatus("Disconnected")
+        setPeerConnected(false);
       }
 
       if (peerConnection.iceConnectionState === "connected") {
@@ -164,11 +169,22 @@ function useVideoChat(roomId) {
     peer.current = peerConnection;
 
     return () => {
+      // Close the peer connection
+      peer.current.close();
+
+      // Close the socket connection  
+      socketRef.current.close();
+
+      // Disconnect from the server
       socketRef.current.disconnect();
+
       setStatus("Disconnected")
+      setConnected(false);
+      setPeerConnected(false);
     }
 
   }, [roomId]);
+
 
 
   return {
@@ -177,6 +193,13 @@ function useVideoChat(roomId) {
     createOffer,
     createAnswer,
     status,
+    socketRef,
+    hasOffer,
+    hasAnswer,
+    setStatus,
+    connected,
+    peerConnected,
+    name,
   };
 
 }
