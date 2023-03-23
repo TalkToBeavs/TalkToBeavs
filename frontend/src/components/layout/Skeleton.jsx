@@ -225,8 +225,8 @@ const MobileNav = ({ onOpen, ...rest }) => {
 
       <HStack spacing='8'>
         <Flex alignItems={'center'} mx='auto'>
-          <Menu>
-            <MenuButton py={2} _focus={{ boxShadow: 'none' }}>
+          <Menu isLazy zIndex={9999}>
+            <MenuButton py={2} _focus={{ boxShadow: 'none' }} zIndex={999999}>
               <HStack>
                 <Avatar size={'sm'} name={user?.name} />
                 <VStack
@@ -249,9 +249,11 @@ const MobileNav = ({ onOpen, ...rest }) => {
               boxShadow={'xl'}
               py='1'
               mt='2'
+              zIndex={999999}
             >
               {['Home', 'Profile', 'Feed', 'Logout'].map((item, i) => (
                 <MenuItem
+                  zIndex={999999}
                   key={i}
                   onClick={() => {
                     if (item === 'Logout') {
