@@ -28,7 +28,7 @@ export default function Profile() {
   }, []);
 
   return (
-    profile && (
+    profile &&  (
       <>
         <Box w='100%' h='100%' py={8}>
           <Flex direction='column' align='center' justify='center' w='100%' h='100%'>
@@ -80,5 +80,6 @@ export default function Profile() {
         </Box>
       </>
     )
+    
   );
 }

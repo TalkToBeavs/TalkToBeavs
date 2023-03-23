@@ -17,6 +17,7 @@ const Post = ({ post }) => {
   const dispatch = useDispatch();
 
   const handleUpvote = () => {
+    console.log('gotcha upvote')
     if (!post.upvotes || !post.upvotes.includes(onid)) {
       if (post.downvotes && post.downvotes.includes(onid)) {
         //if its downvoted and they upvote do +2 instead of +1
@@ -51,6 +52,8 @@ const Post = ({ post }) => {
     // want to delete a post, but for now we'll just be deleting instantly...
     dispatch(deletePost({ postId: post._id }));
   }
+
+  console.log('feed rendered')
 
   return (
     <Box
