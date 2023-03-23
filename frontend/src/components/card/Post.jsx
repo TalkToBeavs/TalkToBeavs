@@ -86,12 +86,12 @@ const Post = ({ post }) => {
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
           <iframe
             src={link}
-            width='100'
-            height='100'
+            width='150'
+            height='150'
             frameBorder='0'
             className='giphy-embed'
             allowFullScreen
-            style={{ display: 'block', margin: '0', marginBottom: '2rem' }}
+            style={{ display: 'block', margin: '0', marginBottom: '0.5rem' }}
           ></iframe>
 
           <Text fontSize='lg' fontWeight='bold' mb={2} style={{ marginLeft: '0' }}>
