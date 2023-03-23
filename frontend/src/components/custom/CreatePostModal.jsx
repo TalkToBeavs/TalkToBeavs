@@ -41,42 +41,25 @@ export default function CreatePostModal({ isOpen, onClose, handleValidPost }) {
   };
 
   useEffect(() => {
-    async function fetchData() {
+    async function fetchDataSearch() {
       const response = await fetch(`http://localhost:8080/api/feed/giphy_search?q=${searchValue}`);
       const json = await response.json();
+
       setData(json.data.data);
       setShouldFetch(false);
-      console.log(json.data.data.length);
-      if (!json.data.data) {
-        setLoading(true);
-      } else {
-        if (json.data.data.length === 0) {
-          setErrorMessage('No results found');
-        }
-        setLoading(false);
-      }
     }
 
     if (shouldFetch) {
-      fetchData();
+      fetchDataSearch();
     }
   }, [shouldFetch, searchValue]);
 
   useEffect(() => {
     async function fetchDataTrending() {
-      console.log('gotcha');
       const response = await fetch(`http://localhost:8080/api/feed/giphy_trending`);
       const json = await response.json();
       setData(json.data.data);
       setShouldFetchTrending(false);
-      if (!json.data.data) {
-        setLoading(true);
-      } else {
-        if (json.data.data.length === 0) {
-          setErrorMessage('No results found');
-        }
-        setLoading(false);
-      }
     }
 
     if (shouldFetchTrending) {
@@ -170,7 +153,6 @@ export default function CreatePostModal({ isOpen, onClose, handleValidPost }) {
                       if (event.keyCode === 13) {
                         if (!searchValue) {
                           setErrorMessage('Please enter a search term');
-                          console.log('nosearch');
                         } else {
                           setLoading(true);
                           setShouldFetch(true);
@@ -185,7 +167,6 @@ export default function CreatePostModal({ isOpen, onClose, handleValidPost }) {
                     m={3}
                     onClick={() => {
                       if (!searchValue) {
-                        console.log('nosearch');
                         setErrorMessage('Please enter a search term');
                       } else {
                         setLoading(true);
@@ -198,7 +179,9 @@ export default function CreatePostModal({ isOpen, onClose, handleValidPost }) {
                   <Button
                     m={3}
                     onClick={() => {
-                      setLoading(true);
+                      if (!data) {
+                        setLoading(true);
+                      }
                       setSearchValue('');
                       setShouldFetchTrending(true);
                       setTimeout(() => {
