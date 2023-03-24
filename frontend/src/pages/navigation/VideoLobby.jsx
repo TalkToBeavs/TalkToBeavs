@@ -114,8 +114,8 @@ const VideoLobby = () => {
         }}
       >
         <Rings
-          height="100vh"
-          width="100vw"
+          height={isMobile ? '70vh' : '80vh'}
+          width={isMobile ? '70vw' : '80vw'}
           color="#DE6A1F"
           radius="6"
           wrapperStyle={{
