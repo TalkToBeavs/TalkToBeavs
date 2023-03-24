@@ -1,6 +1,6 @@
 import { AddIcon, CheckIcon } from '@chakra-ui/icons';
-import { Box, Button, Flex, IconButton, Text } from '@chakra-ui/react';
-import React from 'react';
+import { Box, Button, Flex, IconButton, Spinner, Text } from '@chakra-ui/react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { followUser, selectIsFollowing, selectUser } from '../../redux/slices/UserSlice';
@@ -12,18 +12,25 @@ export default function FollowButton({ user }) {
   const loggedInUser = useSelector(selectUser);
   const isFollowing = useSelector(selectIsFollowing(user._id));
   const [userIsFollowing, setUserIsFollowing] = React.useState(isFollowing);
+  const [isSubmitting, setIsSubmitting] = React.useState(false);
+  const email = localStorage.getItem('token');
 
   const handleFollow = async (e) => {
     e.preventDefault();
+    setIsSubmitting(true);
     setUserIsFollowing(!userIsFollowing);
     const req = {
       currentUserEmail: loggedInUser.email,
       email: user.email,
     };
-    dispatch(followUser(req));
+    dispatch(followUser(req)).finally(() => setIsSubmitting(false));
   };
 
-  if (loggedInUser?.email === user?.email)
+  useEffect(() => {
+    setUserIsFollowing(isFollowing);
+  }, [isFollowing]);
+
+  if (email === user?.email)
     return (
       <Flex>
         <Box my={6}>
@@ -49,7 +56,9 @@ export default function FollowButton({ user }) {
             onClick={handleFollow}
             aria-label='Follow'
             icon={
-              userIsFollowing ? (
+              isSubmitting ? (
+                <Spinner size='sm' color='gray.400' />
+              ) : userIsFollowing ? (
                 <>
                   <Flex
                     direction='row'

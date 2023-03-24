@@ -1,60 +1,126 @@
-import {
-  Box,
-  Button,
-  ButtonGroup,
-  Flex,
-  Heading,
-  useColorModeValue,
-  useMediaQuery,
-} from '@chakra-ui/react';
 import { useNavigate } from 'react-router-dom';
 import TalkToBeavs from '../../components/text/TalkToBeavs';
+import SVGComponent from '../../assets/logo';
+import { motion } from 'framer-motion';
+import { comeFromLeftAnimation, comeFromTopAnimation, comeFromBottomAnimation } from '../../lib/animations/index';
+import {
+  Flex,
+  Container,
+  Heading,
+  Stack,
+  Text,
+  Button,
+  useMediaQuery,
+  useColorModeValue,
+  Box,
+} from '@chakra-ui/react';
 
-const Landing = () => {
-  const [isMobile] = useMediaQuery('(max-width: 768px)');
+export default function Landing() {
   const navigate = useNavigate();
-  return (
-    <Flex
-      direction='column'
-      justify='center'
-      align='center'
-      minH={'100vh'}
-      bg={useColorModeValue('gray.100', 'gray.900')}
-    >
-      <Box
-        p={8}
-        maxWidth={isMobile ? '70%' : '50%'}
-        borderWidth={1}
-        borderRadius={8}
-        boxShadow='lg'
-      >
-        <Box textAlign='center'>
-          <Heading textAlign='center' fontSize='4xl' fontWeight='extrabold'>
-            {/* <Image
-              src={logo}
-              alt='logo'
-              width='50%'
-              height='50%'
-              objectFit='contain'
-            /> */}
-            <Box mt={4} scale={isMobile ? 0.5 : 1}>
-              <TalkToBeavs />
-            </Box>
-          </Heading>
-        </Box>
-        <Box my={4} textAlign='center'>
-          <ButtonGroup mt={4} width='min' mx={4}>
-            <Button onClick={() => navigate('/signup')} colorScheme='orange' mt={4}>
-              Sign Up
-            </Button>
-            <Button onClick={() => navigate('/login')} colorScheme='orange' mt={4}>
-              Login
-            </Button>
-          </ButtonGroup>
-        </Box>
-      </Box>
-    </Flex>
-  );
-};
+  const [isMobile] = useMediaQuery('(max-width: 600px)');
+  const child = {
+    visible: {
+      opacity: 1,
+      x: 0,
+      y: 0,
+      transition: {
+        type: 'spring',
+        damping: 12,
+        stiffness: 100,
+      },
+    },
+    hidden: {
+      opacity: 0,
+      x: -20,
+      y: 10,
+      transition: {
+        type: 'spring',
+        damping: 12,
+        stiffness: 100,
+      },
+    },
+  };
 
-export default Landing;
+  const container = {
+    hidden: { opacity: 0 },
+    visible: (i = 1) => ({
+      opacity: 1,
+      transition: { staggerChildren: 0.03, delayChildren: 0.04 * i },
+    }),
+  };
+
+  const text = `Stay connected with all of your peers. Make new friends. Get help with your classes. Welcome to TalkToBeavs.`
+
+  const letters = Array.from(text);
+
+  return (
+    <Container maxW={'5xl'}>
+      <Flex as={motion.div} animation={comeFromTopAnimation} justify={'center'} align={'center'}>
+        <SVGComponent />
+      </Flex>
+      <Stack
+        my={isMobile ? -12 : -24}
+        textAlign={'center'}
+        align={'center'}
+        spacing={{ base: 8, md: 10 }}
+        py={{ base: -28, md: -36 }}>
+        <Box
+          as={motion.div}
+          animation={comeFromLeftAnimation}
+          initial="hidden"
+          color={useColorModeValue('gray.800', 'white')}
+          animate="visible"
+          sx={{
+            textShadow: '2px 2px #fbd38d',
+          }}
+          fontWeight={600}
+          fontSize={{ base: '3xl', sm: '4xl', md: '6xl' }}
+          lineHeight={'110%'}>
+          Chatting with peers {' '}
+          <Text as={'i'} color={useColorModeValue('orange.300', 'orange.400')}>
+            made easy.
+          </Text>
+        </Box>
+        <Text color={useColorModeValue('gray.800', 'white')} maxW={'3xl'} fontSize={
+          isMobile ? 'xs' : 'lg'
+        } textAlign={'center'}>
+          <motion.i
+            variants={container}
+            style={{ overflow: 'visible', display: 'flex', fontSize: `${isMobile ? '0.50rem' : '1rem'}`, whiteSpace: 'pre-wrap', wordWrap: 'break-word' }}
+            color={useColorModeValue('gray.800', 'white')}
+            initial='hidden'
+            animate='visible'
+            aria-label='Stay connected with all of your peers. Make new friends. Get help with your classes. This is TalkToBeavs.'
+          >
+            {letters.map((letter, index) => (
+              <motion.span variants={child} key={index} style={{ color: 'inherit' }}>
+                {letter === ' ' ? '\u00A0' : letter}
+              </motion.span>
+            ))}
+          </motion.i>
+        </Text>
+        <Stack spacing={6} direction={'row'}>
+          <Button
+            rounded={'full'}
+            as={motion.div}
+            animation={comeFromBottomAnimation}
+            px={6}
+            bg={useColorModeValue('orange.300', 'orange.400')}
+            onClick={() => navigate('/signup')}
+            _hover={{ cursor: 'pointer', bg: 'orange.700' }}>
+            Get started
+          </Button>
+          <Button
+            bg={useColorModeValue('orange.300', 'orange.400')}
+            _hover={{ cursor: 'pointer', bg: 'orange.700' }}
+            onClick={() => {
+              window.location.href = 'https://github.com/Nyumat/TalkToBeavs';
+            }}
+            rounded={'full'} px={6} as={motion.div} animation={comeFromBottomAnimation}>
+            Learn more
+          </Button>
+        </Stack>
+      </Stack>
+    </Container >
+  );
+}

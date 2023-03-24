@@ -114,26 +114,20 @@ const comeFromTop = keyframes`
 const comeFromTopAnimation = `${comeFromTop} 2.4s ease-in-out`;
 
 const comeFromBottom = keyframes`
+
       0% {
             opacity: 0;
-            transform: translate3d(0, 100%, 0);
-      }
-
-      50% {
-            opacity: 0.5;
-
-            transform: translate3d(0, 0, 0);
+            transform: translate3d(0, 300%, 0);
       }
 
       100% {
             opacity: 1;
-
             transform: translate3d(0, 0, 0);
       }
 
       `;
 
-const comeFromBottomAnimation = `${comeFromBottom} 2.4s ease-in-out`;
+const comeFromBottomAnimation = `${comeFromBottom} 3.4s ease-in-out`;
 
 const fadeIntoView = keyframes`
       0% {
@@ -158,6 +152,19 @@ const fadeIntoView = keyframes`
 
 const fadeIntoViewAnimation = `${fadeIntoView} 1.8s ease-in-out`;
 
+const fadeIn = keyframes`
+      0% {
+            opacity: 0;
+      }
+
+      100% {
+            opacity: 1;
+      }
+
+`;
+
+const fadeInAnimation = `${fadeIn} 0.5s ease-in-out`;
+
 const pulseLoaderLoop = keyframes`
       0% {
             transform: scale(1);
@@ -175,12 +182,13 @@ const pulseLoaderLoop = keyframes`
 const pulseLoaderAnimation = `${pulseLoaderLoop} 3.5s ease-in-out infinite`;
 
 export {
-  slideAnimation,
-  popInAnimation,
-  comeFromLeftAnimation,
-  comeFromRightAnimation,
-  comeFromTopAnimation,
-  comeFromBottomAnimation,
-  fadeIntoViewAnimation,
-  pulseLoaderAnimation,
+      slideAnimation,
+      popInAnimation,
+      comeFromLeftAnimation,
+      comeFromRightAnimation,
+      comeFromTopAnimation,
+      comeFromBottomAnimation,
+      fadeIntoViewAnimation,
+      pulseLoaderAnimation,
+      fadeInAnimation,
 };

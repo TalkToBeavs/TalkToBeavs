@@ -32,12 +32,12 @@ import { loadUserData } from '../../redux/slices/UserSlice';
 import { TalkToBeavsMobile } from '../text/TalkToBeavs';
 import OnlineUser from './OnlineUser';
 
-const token = localStorage.getItem('token');
-const onid = token?.split('@')[0];
 
 const LinkItems = [
   { name: 'Home', icon: FiHome, link: '/home' },
-  { name: onid, icon: CgProfile, link: '/profile' },
+  {
+    name: (localStorage.getItem('token')?.split('@')[0] || "Profile"), icon: CgProfile, link: '/profile'
+  },
   { name: 'Feed', icon: FiCompass, link: '/feed' },
   { name: 'Logout', icon: SlLogout, link: `/logout` },
 ];
@@ -54,7 +54,7 @@ function SidebarWithHeader({ children }) {
     if (localStorage.getItem('token')?.includes('@oregonstate.edu')) {
       dispatch(loadUserData(localStorage.getItem('token')));
     } else {
-      navigate('/login');
+      navigate('/');
     }
   }, []);
 
@@ -113,11 +113,12 @@ function SidebarWithHeader({ children }) {
 }
 
 const NavItem = ({ icon, children, ...rest }) => {
+  let onid = localStorage.getItem('token')?.split('@')[0];
   return (
     <Link
       style={{ textDecoration: 'none' }}
       _focus={{ boxShadow: 'none' }}
-      to={children.link === '/profile' ? children.link + `/${onid}` : children.link}
+      to={children.link === '/profile' ? `/profile/${onid}` : children.link}
       as={NavLink}
       _activeLink={{
         color: 'orange.500',
@@ -223,10 +224,10 @@ const MobileNav = ({ onOpen, ...rest }) => {
 
       <HStack spacing='8'>
         <Flex alignItems={'center'} mx='auto'>
-          <Menu>
-            <MenuButton py={2} _focus={{ boxShadow: 'none' }}>
+          <Menu isLazy zIndex={9999}>
+            <MenuButton py={2} _focus={{ boxShadow: 'none' }} zIndex={999999}>
               <HStack>
-              <Avatar size={'sm'} name={user?.name} />
+                <Avatar size={'sm'} name={user?.name} />
                 <VStack
                   display={{ base: 'none', md: 'flex' }}
                   alignItems='flex-start'
@@ -247,9 +248,11 @@ const MobileNav = ({ onOpen, ...rest }) => {
               boxShadow={'xl'}
               py='1'
               mt='2'
+              zIndex={999999}
             >
               {['Home', 'Profile', 'Feed', 'Logout'].map((item, i) => (
                 <MenuItem
+                  zIndex={999999}
                   key={i}
                   onClick={() => {
                     if (item === 'Logout') {
