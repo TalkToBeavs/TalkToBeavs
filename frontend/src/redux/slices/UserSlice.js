@@ -33,7 +33,7 @@ export const registerUser = createAsyncThunk(
 );
 
 export const editUser = createAsyncThunk(
-  'user/edit', 
+  'user/edit',
   async (values, { rejectWithValue }) => {
     try {
       const response = await axios.patch(`https://talk-to-beavs.herokuapp.com/api/profile/edit_profile`, values);
@@ -45,7 +45,7 @@ export const editUser = createAsyncThunk(
 );
 
 export const followUser = createAsyncThunk(
-  'user/follow', 
+  'user/follow',
   async (values, { rejectWithValue }) => {
     try {
       const response = await axios.post('https://talk-to-beavs.herokuapp.com/api/social/follow_user', values);
@@ -122,7 +122,7 @@ const userSlice = createSlice({
       state.message = null;
     });
     builder.addCase(editUser.fulfilled, (state, action) => {
-      state.data = action.payload.user;
+      state.data = action.payload.userWithoutPassword;
     });
     builder.addCase(followUser.fulfilled, (state, action) => {
       state.data = action.payload.user;

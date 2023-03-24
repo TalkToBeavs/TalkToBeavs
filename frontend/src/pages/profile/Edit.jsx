@@ -13,10 +13,10 @@ export default function Edit() {
     const token = localStorage.getItem('token')
     const onid = token?.split('@')[0]
     const profile = useProfile({ onid, user })
-    const [name, setName] = React.useState(user.name)
-    const [standing, setStanding] = React.useState(user.standing || '')
-    const [major, setMajor] = React.useState(user.major || '')
-    const [bio, setBio] = React.useState(user.bio || '')
+    const [name, setName] = React.useState(user?.name)
+    const [standing, setStanding] = React.useState(user?.standing || '')
+    const [major, setMajor] = React.useState(user?.major || '')
+    const [bio, setBio] = React.useState(user?.bio || '')
 
     const handleSubmit = (event) => {
         event.preventDefault()
@@ -26,8 +26,8 @@ export default function Edit() {
         const bio = event.target.bio.value;
         const email = token
         const updatedUser = { email, name, standing, major, bio }
-        navigate(`/profile/${onid}`)
         dispatch(editUser(updatedUser))
+        navigate(-1)
     };
 
     useEffect(() => {
@@ -89,9 +89,9 @@ export default function Edit() {
                                         value={major}
                                         onChange={(event) => setMajor(event.target.value)}
                                     />
-                                    </FormControl>
+                                </FormControl>
 
-                                    <FormControl id="bio" mt={4}>
+                                <FormControl id="bio" mt={4}>
                                     <FormLabel>Bio</FormLabel>
                                     <Textarea
                                         placeholder="Tell us about yourself"
