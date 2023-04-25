@@ -35,9 +35,7 @@ import OnlineUser from './OnlineUser';
 
 const LinkItems = [
   { name: 'Home', icon: FiHome, link: '/home' },
-  {
-    name: (localStorage.getItem('token')?.split('@')[0] || "Profile"), icon: CgProfile, link: '/profile'
-  },
+  { name: "Profile", icon: CgProfile, link: '/profile' },
   { name: 'Feed', icon: FiCompass, link: '/feed' },
   { name: 'Logout', icon: SlLogout, link: `/logout` },
 ];
@@ -48,14 +46,18 @@ function SidebarWithHeader({ children }) {
 
   const dispatch = useDispatch();
   const location = useLocation();
+  const user = useSelector((state) => state.user.data);
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (localStorage.getItem('token')?.includes('@oregonstate.edu')) {
+    if (localStorage.getItem('token')) {
       dispatch(loadUserData(localStorage.getItem('token')));
-    } else {
-      navigate('/');
     }
+
+    if (!localStorage.getItem('token')) {
+      navigate('/login');
+    }
+
   }, []);
 
   const breakPt = useBreakpointValue({ base: false, md: true });
@@ -113,7 +115,8 @@ function SidebarWithHeader({ children }) {
 }
 
 const NavItem = ({ icon, children, ...rest }) => {
-  let onid = localStorage.getItem('token')?.split('@')[0];
+  const user = useSelector((state) => state.user.data);
+  const onid = user?.email?.split('@')[0];
   return (
     <Link
       style={{ textDecoration: 'none' }}
@@ -192,9 +195,8 @@ const SidebarContent = ({ onClose, ...rest }) => {
 };
 
 const MobileNav = ({ onOpen, ...rest }) => {
-  const location = useLocation();
   const user = useSelector((state) => state.user.data);
-  const onid = user?.onid || localStorage.getItem('token')?.split('@')[0];
+  const onid = user?.email?.split('@')[0];
   const navigate = useNavigate();
 
   return (

@@ -12,7 +12,11 @@ export const loadUserData = createAsyncThunk(
   'user/loadUserData',
   async (email, { rejectWithValue }) => {
     try {
-      const response = await axios.get(`https://talk-to-beavs.herokuapp.com/api/auth/load_user?email=${email}`);
+      const response = await axios.get(`https://talk-to-beavs.herokuapp.com/api/auth/load_user`, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
+        },
+      });
       return response.data;
     } catch (err) {
       return rejectWithValue(err.response.data);
@@ -24,7 +28,11 @@ export const registerUser = createAsyncThunk(
   'user/register',
   async (values, { rejectWithValue }) => {
     try {
-      const response = await axios.post('https://talk-to-beavs.herokuapp.com/api/auth/register', values);
+      const response = await axios.post('https://talk-to-beavs.herokuapp.com/api/auth/register', values, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
+        },
+      });
       return response.data;
     } catch (err) {
       return rejectWithValue(err.response.data);
@@ -32,29 +40,31 @@ export const registerUser = createAsyncThunk(
   },
 );
 
-export const editUser = createAsyncThunk(
-  'user/edit',
-  async (values, { rejectWithValue }) => {
-    try {
-      const response = await axios.patch(`https://talk-to-beavs.herokuapp.com/api/profile/edit_profile`, values);
-      return response.data;
-    } catch (err) {
-      return rejectWithValue(err.response.data);
-    }
-  },
-);
-
-export const followUser = createAsyncThunk(
-  'user/follow',
-  async (values, { rejectWithValue }) => {
-    try {
-      const response = await axios.post('https://talk-to-beavs.herokuapp.com/api/social/follow_user', values);
-      return response.data;
-    } catch (err) {
-      return rejectWithValue(err.response.data);
-    }
+export const editUser = createAsyncThunk('user/edit', async (values, { rejectWithValue }) => {
+  try {
+    const response = await axios.patch(`https://talk-to-beavs.herokuapp.com/api/profile/edit_profile`, values, {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('token')}`,
+      },
+    });
+    return response.data;
+  } catch (err) {
+    return rejectWithValue(err.response.data);
   }
-);
+});
+
+export const followUser = createAsyncThunk('user/follow', async (values, { rejectWithValue }) => {
+  try {
+    const response = await axios.post('https://talk-to-beavs.herokuapp.com/api/social/follow_user', values, {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('token')}`,
+      },
+    });
+    return response.data;
+  } catch (err) {
+    return rejectWithValue(err.response.data);
+  }
+});
 
 const initialState = {
   data: null,

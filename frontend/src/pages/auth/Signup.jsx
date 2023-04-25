@@ -29,9 +29,6 @@ function Signup() {
   const { colorMode } = useColorMode();
 
   const handleSubmit = async (e) => {
-    console.log(email);
-    console.log(name);
-    console.log(password);
     const data = {
       email,
       name,
@@ -55,7 +52,7 @@ function Signup() {
         setTimeout(() => {
           setError('');
           setIsLoading(false);
-          console.log('success');
+
           setResponse('Signup successful!');
         }, 1000);
         setTimeout(() => {

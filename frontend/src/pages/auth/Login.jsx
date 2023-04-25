@@ -52,7 +52,7 @@ function Login() {
       const res = await axios.post('https://talk-to-beavs.herokuapp.com/api/auth/login', data);
 
       if (res.status === 200) {
-        localStorage.setItem('token', res.data.user.email);
+        localStorage.setItem('token', res.data.token);
         setTimeout(() => {
           setError('');
           dispatch(loginUser(res.data.user));

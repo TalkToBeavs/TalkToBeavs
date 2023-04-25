@@ -10,8 +10,7 @@ export default function Edit() {
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const user = useSelector((state) => state.user.data)
-    const token = localStorage.getItem('token')
-    const onid = token?.split('@')[0]
+    const onid = user?.email.split('@')[0]
     const profile = useProfile({ onid, user })
     const [name, setName] = React.useState(user?.name)
     const [standing, setStanding] = React.useState(user?.standing || '')
@@ -24,7 +23,7 @@ export default function Edit() {
         const standing = event.target.standing.value;
         const major = event.target.major.value;
         const bio = event.target.bio.value;
-        const email = token
+        const email = user.email
         const updatedUser = { email, name, standing, major, bio }
         dispatch(editUser(updatedUser))
         navigate(-1)

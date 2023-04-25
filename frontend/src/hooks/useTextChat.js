@@ -26,7 +26,8 @@ const useTextChat = (roomId) => {
       const incomingMessage = {
         ...message,
         ownedByCurrentUser: message.senderId === socketRef.current.id,
-        senderUsername: message.senderUsername === socketRef.current.id ? 'You' : message.senderUsername,
+        senderUsername:
+          message.senderUsername === socketRef.current.id ? 'You' : message.senderUsername,
       };
       setMessages((messages) => [...messages, incomingMessage]);
     });

@@ -45,8 +45,6 @@ const TextLobby = () => {
 
   React.useEffect(() => {
     joinQueue();
-    console.log('queue', queue);
-    console.log('roomId', roomId);
 
     if (roomId) {
       navigate(`/text/${roomId}`);

@@ -66,9 +66,9 @@ export default function TextChat() {
   const showMessages = () => {
     return messages.map((message, index) => {
       const isMe = message.ownedByCurrentUser;
-      // console.log(message)
-      // console.log(otherUser)
-      console.log(senderName)
+
+
+
       let avatarUsername = message.senderUsername;
       if (avatarUsername === onid) {
         avatarUsername = senderName

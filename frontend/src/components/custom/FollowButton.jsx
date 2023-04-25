@@ -13,7 +13,7 @@ export default function FollowButton({ user }) {
   const isFollowing = useSelector(selectIsFollowing(user._id));
   const [userIsFollowing, setUserIsFollowing] = React.useState(isFollowing);
   const [isSubmitting, setIsSubmitting] = React.useState(false);
-  const email = localStorage.getItem('token');
+  const email = loggedInUser?.email;
 
   const handleFollow = async (e) => {
     e.preventDefault();
