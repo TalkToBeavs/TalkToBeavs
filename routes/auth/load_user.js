@@ -5,9 +5,8 @@ const router = Router()
 
 router.get('/', async (req, res) => {
     try {
-        const userEmail = req.query.email
         
-        const user = await User.findOne({ email: userEmail })
+        const user = await User.findOne({ email: req.user.email })
 
         if (!user) {
             return res.status(400).json({ error: 'User not found' })

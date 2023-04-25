@@ -2,7 +2,7 @@ import { Router } from 'express'
 import { compare } from 'bcrypt'
 import joi from 'joi'
 import User from '../../models/User/User.js'
-import generateAuthToken from "../../lib/generateAuthToken.js"
+import { generateToken } from '../../middleware/token.js'
 
 const router = Router()
 
@@ -26,8 +26,7 @@ router.post('/', async (req, res) => {
 
         const validPassword = await compare(req.body.password, user.password)
 
-        // We will need to replace to the tokens in the frontend to use this instead at some point.
-        const token = generateAuthToken(user._id);
+        const token = generateToken(user);
 
         if (user && validPassword) {
             user.online = true
