@@ -8,6 +8,11 @@ const router = Router()
 dotenv.config()
 
 router.post('/', async (req, res) => {
+
+    if (req.user.email.split('@')[0] !== req.body.onid) {
+        return res.status(401).json({ error: 'Unauthorized' });
+    }
+
     const { postId, isUpvoted, isDownvoted, onid } = req.body
 
     try {
@@ -17,6 +22,10 @@ router.post('/', async (req, res) => {
         if (!postToDownvote) {
             return res.status(400).json({ error: 'Post to downvote not found' })
         }
+
+        postToDownvote.upvotes = [...new Set(postToDownvote.upvotes)];
+        postToDownvote.downvotes = [...new Set(postToDownvote.downvotes)];
+
 
         if (isDownvoted === false) {
             if (isUpvoted === true) {

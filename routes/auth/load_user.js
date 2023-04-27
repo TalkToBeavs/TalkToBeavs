@@ -1,24 +1,22 @@
-import { Router } from 'express'
-import User from '../../models/User/User.js'
+import { Router } from 'express';
+import User from '../../models/User/User.js';
 
-const router = Router()
+const router = Router();
 
 router.get('/', async (req, res) => {
-    try {
-        
-        const user = await User.findOne({ email: req.user.email })
+  try {
+    const user = await User.findOne({ email: req.user.email });
 
-        if (!user) {
-            return res.status(400).json({ error: 'User not found' })
-        } else {
-            // We do not want to send the password back to the client.
-            const { password, ...userWithoutPassword } = user.toObject()
-            return res.status(200).json({ message: 'User loaded', user: userWithoutPassword })
-        }
-
-    } catch (err) {
-        return res.status(500).json({ error: err.message })
+    if (!user) {
+      return res.status(400).json({ error: 'User not found' });
+    } else {
+      // We do not want to send the password back to the client.
+      const { password, ...userWithoutPassword } = user.toObject();
+      return res.status(200).json({ message: 'User loaded', user: userWithoutPassword });
     }
-})
+  } catch (err) {
+    return res.status(500).json({ error: err.message });
+  }
+});
 
-export default router
+export default router;

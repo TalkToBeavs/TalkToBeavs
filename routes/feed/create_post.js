@@ -15,6 +15,11 @@ router.post('/', async (req, res) => {
         postedBy: joi.string().required(),
     })
 
+    const onid = req.user.email.split('@')[0]
+    if (onid !== req.body.postedBy) {
+        return res.status(401).json({ error: 'Unauthorized' })
+    }
+
     const { error } = schema.validate(req.body)
 
     const { content, postedBy } = req.body

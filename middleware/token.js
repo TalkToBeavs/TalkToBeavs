@@ -1,7 +1,6 @@
 import jwt from 'jsonwebtoken';
 import dotenv from 'dotenv';
 import User from '../models/User/User.js';
-import bcrypt from 'bcrypt';
 
 dotenv.config();
 
@@ -14,7 +13,7 @@ const generateToken = (user) => {
     },
     process.env.JWT_SECRET,
     {
-      expiresIn: '30d',
+      expiresIn: '1d',
     },
   );
 
@@ -24,8 +23,8 @@ const generateToken = (user) => {
 const verifyToken = async (req, res, next) => {
   const token = req.headers.authorization;
   const tokenString = token?.split(' ')[1];
-
-  if (!tokenString) {
+  
+  if (!token) {
     return res
       .status(401)
       .json({ msg: '[⚡️]: Hello There! You do not have a token. Authorization denied.' });
@@ -33,8 +32,10 @@ const verifyToken = async (req, res, next) => {
 
   try {
     const decoded = jwt.verify(tokenString, process.env.JWT_SECRET);
-    req.user = decoded;
+    const user = await User.findById(decoded.id);
 
+    const { password, posts, following, followers, ...userWithout } = user.toObject();
+    req.user = userWithout;
     next();
   } catch (err) {
     res
