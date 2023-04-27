@@ -28,8 +28,8 @@ const Post = ({ post }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const location = useLocation();
   const user = useSelector((state) => state.user.data);
-  const onid = user.email.split('@')[0];
-  const email = user.email;
+  const onid = user?.email.split('@')[0];
+  const email = user?.email;
   const parts = post.content.split(/[ \n]+/);
   const link = parts[0];
   const text = parts.slice(1).join(' ');
@@ -125,7 +125,7 @@ const Post = ({ post }) => {
     }, 1000);
   };
 
-  return (
+  return user && (
     <Box
       borderWidth='1px'
       borderRadius='lg'

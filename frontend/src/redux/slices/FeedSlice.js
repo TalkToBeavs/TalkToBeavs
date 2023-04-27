@@ -6,7 +6,11 @@ const initialState = {
 };
 
 export const loadPosts = createAsyncThunk('feed/loadPosts', async () => {
-  const response = await axios.get('https://talk-to-beavs.herokuapp.com/api/feed/get_posts');
+  const response = await axios.get('https://talk-to-beavs.herokuapp.com/api/feed/get_posts', {
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem('token')}`,
+    },
+  });
   return response.data.posts;
 });
 
