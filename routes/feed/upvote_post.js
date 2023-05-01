@@ -26,7 +26,9 @@ router.post('/', async (req, res) => {
     postToUpvote.upvotes = [...new Set(postToUpvote.upvotes)];
     postToUpvote.downvotes = [...new Set(postToUpvote.downvotes)];
 
-    if (isUpvoted === false) {
+    const alreadyUpvoted = postToUpvote.upvotes.includes(onid);
+
+    if (isUpvoted === false && !alreadyUpvoted) {
       if (isDownvoted === true) {
         // postToUpvote.downvotes -= 1
         const downvotesIndex = postToUpvote.downvotes.indexOf(onid);
