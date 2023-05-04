@@ -77,7 +77,7 @@ function Login() {
         setError('User not found');
       } else if (
         err.response.data.message.substring(err.response.data.message.length - 71) ===
-        'fails to match the required pattern: /^[a-zA-Z._%+-]+@oregonstate.edu$/'
+        'fails to match the required pattern: ^[a-zA-Z0-9._%+-]+@oregonstate.edu$'
       ) {
         setError('Please use your Oregon State email');
       } else {
