@@ -52,7 +52,7 @@ function Login() {
       const res = await axios.post('https://talk-to-beavs.herokuapp.com/api/auth/login', data);
 
       if (res.status === 200) {
-        localStorage.setItem('token', res.data.user.email);
+        localStorage.setItem('token', res.data.token);
         setTimeout(() => {
           setError('');
           dispatch(loginUser(res.data.user));
@@ -77,7 +77,7 @@ function Login() {
         setError('User not found');
       } else if (
         err.response.data.message.substring(err.response.data.message.length - 71) ===
-        'fails to match the required pattern: /^[a-zA-Z._%+-]+@oregonstate.edu$/'
+        'fails to match the required pattern: ^[a-zA-Z0-9._%+-]+@oregonstate.edu$'
       ) {
         setError('Please use your Oregon State email');
       } else {

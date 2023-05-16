@@ -12,7 +12,7 @@ import {
 } from '@chakra-ui/react';
 import moment from 'moment';
 import React from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import {
   deletePost,
   downvotePostAsync,
@@ -20,12 +20,16 @@ import {
   upvotePostAsync,
 } from '../../redux/slices/FeedSlice';
 import EditPostModal from '../custom/EditPostModal';
+import useProfile from '../../hooks/useProfile';
+import { useLocation } from 'react-router-dom';
 
 const Post = ({ post }) => {
   const [isMobile] = useMediaQuery('(max-width: 768px)');
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const token = localStorage.getItem('token');
-  const onid = token?.split('@')[0];
+  const location = useLocation();
+  const user = useSelector((state) => state.user.data);
+  const onid = user?.email.split('@')[0];
+  const email = user?.email;
   const parts = post.content.split(/[ \n]+/);
   const link = parts[0];
   const text = parts.slice(1).join(' ');
@@ -121,7 +125,7 @@ const Post = ({ post }) => {
     }, 1000);
   };
 
-  return (
+  return user && (
     <Box
       borderWidth='1px'
       borderRadius='lg'

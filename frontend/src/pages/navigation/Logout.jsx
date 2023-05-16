@@ -1,7 +1,7 @@
 import { Box, Button, Flex, Heading, Image, Text, VStack } from '@chakra-ui/react';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import ttb from '../../assets/logo.png';
 import TalkToBeavs from '../../components/text/TalkToBeavs';
@@ -10,13 +10,20 @@ import { logoutUser } from '../../redux/slices/UserSlice';
 function LogoutButton() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const user = useSelector((state) => state.user.data);
+  const email = user?.email;
   const [error, setError] = useState('');
 
   const handleLogout = async () => {
     setError('');
     try {
+
       const res = await axios.post('https://talk-to-beavs.herokuapp.com/api/auth/logout', {
-        email: localStorage.getItem('token'), // assuming email was used as the token
+        email: email,
+      }, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
+        },
       });
       if (res.status === 200) {
         localStorage.removeItem('token');
@@ -28,7 +35,7 @@ function LogoutButton() {
         setError('Logout failed');
       }
     } catch (err) {
-      console.log(err);
+
       setError('Logout failed');
     }
   };

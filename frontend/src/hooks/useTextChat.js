@@ -22,11 +22,11 @@ const useTextChat = (roomId) => {
     });
 
     socketRef.current.on(NEW_CHAT_MESSAGE_EVENT, (message, otherUser) => {
-      console.log(message);
       const incomingMessage = {
         ...message,
         ownedByCurrentUser: message.senderId === socketRef.current.id,
-        senderUsername: message.senderUsername === socketRef.current.id ? 'You' : message.senderUsername,
+        senderUsername:
+          message.senderUsername === socketRef.current.id ? 'You' : message.senderUsername,
       };
       setMessages((messages) => [...messages, incomingMessage]);
     });

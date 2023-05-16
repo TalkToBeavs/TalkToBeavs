@@ -15,7 +15,7 @@ export default function Profile() {
   const { onid } = useParams();
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user.data);
-  const profile = useProfile({ onid, user });
+  const profile = useProfile({ onid });
   const allPosts = useSelector(selectAllPosts).filter(post => post.postedBy.split('@')[0].toString() === onid.toString());
   useEffect(() => {
     document.querySelector('title').innerHTML = `${onid}'s Profile`;
@@ -27,9 +27,7 @@ export default function Profile() {
 
   useEffect(() => {
     dispatch(loadPosts());
-  }, []);
-
-  console.log(profile)
+  }, [dispatch]);
 
   return (
     profile && (

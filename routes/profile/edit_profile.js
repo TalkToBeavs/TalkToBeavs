@@ -14,6 +14,10 @@ router.patch("/", async (req, res) => {
             email,
       } = req.body;
 
+      if (req.user.email !== email) {
+            return res.status(401).json({ message: "Unauthorized" });
+      }
+
       const schema = joi.object({
             email: joi.string().required(),
       });

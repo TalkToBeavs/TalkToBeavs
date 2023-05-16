@@ -17,11 +17,11 @@
 	<h3 align="center">🦫 Welcome to the official repository for TalkToBeavs! 🦫 </h3>
 	<br>
 	<p align="center"
-	<i align="center"> TalkToBeavs is a social media application that allows Oregon State University students to connect with each other and chat in real-time. Users can create and join their own rooms to chat with other beavs.
-	<br><br>Users can post messages in the text chat room and share GIFs from Giphy on the feed. Users can upvote and downvote posts on the feed to signify their liking of a post. Users can also follow other beavs to see their posts.</i>
+	<i align="center"> TalkToBeavs is a social media application that allows Oregon State University students to connect with each other and chat in real-time. Users can create and join their own rooms to chat with other beavs in Video or Text chat.
+	<br><br>Users can post messages and share GIFs from Giphy on the feed. Users can upvote and downvote posts on the feed to signify their liking/dislike of a post. Users can also follow other beavs to see their posts, as well as edit their profile.</i>
       <br>
 	<br>
-	<h3 align="center">TalkToBeavs was made with ♡ by <a href="https://github.com/Nyumat">@Nyumat</a>  <a href="https://github.com/artkolpakov">@artkolpakov</a> <a href="https://github.com/hannacol">@hannacol</a> <a href="https://github.com/solderq35">@solderq35</a></h3>
+	<h3 align="center">TalkToBeavs was made with ♡ by: <br> <a href="https://github.com/Nyumat">@nyumat</a>  <a href="https://github.com/artkolpakov">@artkolpakov</a> <a href="https://github.com/hannacol">@hannacol</a> <a href="https://github.com/solderq35">@solderq35</a></h3>
 	<br>
       <h3 align="center">
 	🚀  This Project has been deployed <a href="https://talktobeavs.onrender.com">here</a> 🚀  </h3>
@@ -62,7 +62,7 @@ npm install
 # Create a .env.local file in the root directory
 touch .env.local
 
-# Your .env file should look like this:
+# Your .env.local file should look like this:
 PORT=
 MONGODB_URI=
 FEED_ID=
@@ -88,9 +88,9 @@ npm run dev
 <h2>TalkToBeavs is proud to be built with:</h2>
 
 - [React](https://react.dev/)
-   - UI library for building user interfaces
+   - JavaScript library for building user interfaces
 - [MongoDB](https://www.mongodb.com/)
-   - NoSQL document database for storing user data
+   - NoSQL document database
 - [Vite](https://vitejs.dev/)
    - Fast and lightweight development server
 - [Socket.io](https://socket.io/)

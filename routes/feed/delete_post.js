@@ -8,9 +8,18 @@ const router = Router()
 dotenv.config()
 
 router.post('/', async (req, res) => {
+
+    if (!req.user) {
+        return res.status(401).json({ message: 'Unauthorized' })
+    }
+
     const { postId } = req.body
     try {
-        await Post.findOneAndRemove({ _id: postId })
+        const post = await findById(postId);
+
+        if (post.postedBy.toString() !== req.user.email.split('@')[0]) {
+            return res.status(401).json({ message: 'Unauthorized' })
+        }
 
         const feed = await Feed.findOne({ _id: process.env.FEED_ID })
         const postIndex = feed.posts.findIndex(post => post._id.toString() === postId.toString());

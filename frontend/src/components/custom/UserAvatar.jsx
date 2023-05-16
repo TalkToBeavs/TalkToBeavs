@@ -7,7 +7,6 @@ export default function UserAvatar({ user }) {
   const [active, setActive] = useState(false);
 
   const onid = email.replace(/@.*/, '');
-  const token = localStorage.getItem('token');
 
   const navigate = useNavigate();
 

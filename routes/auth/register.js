@@ -10,7 +10,7 @@ router.post('/', async (req, res) => {
         password: joi.string().required(),
         email: joi
             .string()
-            .pattern(new RegExp('^[a-zA-Z._%+-]+@oregonstate.edu$'))
+            .pattern(new RegExp('^[a-zA-Z0-9._%+-]+@oregonstate.edu$'))
             .required(),
     })
 

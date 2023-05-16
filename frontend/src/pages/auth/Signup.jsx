@@ -29,9 +29,6 @@ function Signup() {
   const { colorMode } = useColorMode();
 
   const handleSubmit = async (e) => {
-    console.log(email);
-    console.log(name);
-    console.log(password);
     const data = {
       email,
       name,
@@ -55,7 +52,7 @@ function Signup() {
         setTimeout(() => {
           setError('');
           setIsLoading(false);
-          console.log('success');
+
           setResponse('Signup successful!');
         }, 1000);
         setTimeout(() => {
@@ -75,7 +72,7 @@ function Signup() {
         setError('User already exists');
       } else if (
         err.response.data.message.substring(err.response.data.message.length - 71) ===
-        'fails to match the required pattern: /^[a-zA-Z._%+-]+@oregonstate.edu$/'
+        'fails to match the required pattern: ^[a-zA-Z0-9._%+-]+@oregonstate.edu$'
       ) {
         setError('Please use your Oregon State email');
       } else {

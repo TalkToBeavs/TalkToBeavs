@@ -12,12 +12,10 @@ const useLobby = (onid, option) => {
     });
 
     socketRef.current.on('matched', (data) => {
-      console.log(`[Frontend ⚡️]: ${data.message}`);
       setRoomId(data.room);
     });
 
     socketRef.current.on('getPeer', (data) => {
-      console.log(`[Frontend ⚡️]: Your peer is in ${data.room}`);
       setRoomId(data.room);
     });
 

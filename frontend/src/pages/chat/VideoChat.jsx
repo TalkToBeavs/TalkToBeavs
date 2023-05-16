@@ -33,7 +33,7 @@ function VideoChat() {
     }
 
     socketRef.current.on("disconnect", () => {
-      console.log("Disconnected");
+
       setLoading(true);
       setStatus("Disconnected");
       navigate("/video");

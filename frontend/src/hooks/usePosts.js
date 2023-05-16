@@ -8,6 +8,11 @@ function usePosts({ onid }) {
     try {
       const response = await axios.get(
         `https://talk-to-beavs.herokuapp.com/api/feed/get_posts/user?onid=${onid}`,
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem('token')}`,
+          },
+        },
       );
       setPosts(response.data.posts);
     } catch (err) {
