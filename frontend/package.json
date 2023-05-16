@@ -37,5 +37,9 @@
     "@vitejs/plugin-react": "^3.1.0",
     "prettier-plugin-organize-imports": "^3.2.2",
     "vite": "^4.1.0"
+  },
+  "engines": {
+    "node": "v20.1.0",
+    "npm": "9.6.4"
   }
 }
