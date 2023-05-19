@@ -30,7 +30,7 @@ const Post = ({ post }) => {
   const user = useSelector((state) => state.user.data);
   const onid = user?.email.split('@')[0];
   const email = user?.email;
-  const parts = post.content.split(/[ \n]+/);
+  const parts = post.content.split(/\n/);
   const link = parts[0];
   const text = parts.slice(1).join(' ');
   const [shouldSetUpvote, setShouldSetUpvote] = React.useState(false);
@@ -137,27 +137,37 @@ const Post = ({ post }) => {
       marginBottom={6}
     >
       <Flex justifyContent='space-between' alignItems='center' mb={2}>
-        {post.content.includes('https://giphy.com') ? (
-          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
-            <iframe
-              src={link}
-              width='150'
-              height='150'
-              frameBorder='0'
-              className='giphy-embed'
-              allowFullScreen
-              style={{ display: 'block', margin: '0', marginBottom: '0.5rem' }}
-            ></iframe>
-
-            <Text fontSize='lg' fontWeight='bold' mb={2} style={{ marginLeft: '0' }}>
-              {text}
-            </Text>
-          </div>
-        ) : (
-          <Text fontSize='lg' fontWeight='bold' mb={2}>
-            {post.content}
+      {post.content.includes('https://giphy.com') ? (
+  <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
+    {parts.map((part, index) => {
+      if (part.includes('https://giphy.com')) {
+        return (
+          <iframe
+            key={index}
+            src={part}
+            width='150'
+            height='150'
+            frameBorder='0'
+            className='giphy-embed'
+            allowFullScreen
+            style={{ display: 'block', margin: '0', marginBottom: '0.5rem' }}
+          ></iframe>
+        );
+      } else {
+        return (
+          <Text key={index} fontSize='lg' fontWeight='bold' mb={2} style={{ marginLeft: '0' }}>
+            {part}
           </Text>
-        )}
+        );
+      }
+    })}
+  </div>
+) : (
+  <Text fontSize='lg' fontWeight='bold' mb={2}>
+    {post.content}
+  </Text>
+)}
+
         {post.postedBy.split('@')[0].toString() === onid.toString() && (
           <Flex alignItems='center'>
             {!isOpen && !isEditing ? (
