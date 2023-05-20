@@ -13,6 +13,7 @@ import load_user from './routes/auth/load_user.js';
 // Social
 import follow_user from './routes/social/follow_user.js';
 import create_post from './routes/feed/create_post.js';
+import create_feed from './routes/feed/create_feed.js';
 import get_posts from './routes/feed/get_posts.js';
 import giphy_search from './routes/feed/giphy_search.js';
 import giphy_trending from './routes/feed/giphy_trending.js';
@@ -45,10 +46,12 @@ const limiter = rateLimit({
   standardHeaders: true,
 });
 
-const dbURI = process.env.NODE_ENV === 'production' ? process.env.MONGODB_URI : process.env.DEV_DB_URI;
+const dbURI =
+  process.env.NODE_ENV === 'production' ? process.env.MONGODB_URI : process.env.DEV_DB_URI;
 const devOrigins = ['http://localhost:5173', 'http://localhost:5174'];
 const prodOrigins = ['https://talktobeavs.onrender.com'];
 const origin = process.env.NODE_ENV === 'production' ? prodOrigins : devOrigins;
+export const FEED_ID = process.env.NODE_ENV === 'production' ? process.env.FEED_ID : process.env.DEV_DB_FEED_ID;
 
 app.disable('x-powered-by');
 app.use(
@@ -63,7 +66,7 @@ app.use(express.urlencoded({ extended: true }));
 // app.use(tracker)
 
 // Routes
-app.use('/api', limiter);
+// app.use('/api', limiter);
 app.use('/api/auth/register', register);
 app.use('/api/auth/login', login);
 app.use('/api/auth/logout', logout);
@@ -74,6 +77,7 @@ app.use('/api/social/get_profile', verifyToken, get_profile);
 app.use('/api/social/online_users', verifyToken, online_users);
 
 app.use('/api/feed/create_post', verifyToken, create_post);
+app.use('/api/feed/create_feed', verifyToken, create_feed);
 app.use('/api/feed/get_posts', verifyToken, get_posts);
 app.use('/api/feed/giphy_search', verifyToken, giphy_search);
 app.use('/api/feed/giphy_trending', verifyToken, giphy_trending);

@@ -31,7 +31,8 @@ function Feed() {
   };
 
   return (
-    allPosts && (
+    
+    (
       <Flex
         w='100%'
         h={isMobile ? 'calc(100vh - 80px)' : '100vh'}
@@ -90,7 +91,7 @@ function Feed() {
           ml={isMobile ? 0 : 8}
           mt={4}
         >
-          {allPosts.map((post, i) => (
+          {allPosts?.map((post, i) => (
             <Post key={i} post={post} />
           ))}
         </Box>

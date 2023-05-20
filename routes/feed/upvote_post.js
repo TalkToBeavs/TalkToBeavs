@@ -1,11 +1,9 @@
 import { Router } from 'express';
 import Post from '../../models/Feed/Post.js';
 import Feed from '../../models/Feed/Feed.js';
-import dotenv from 'dotenv';
+import { FEED_ID } from '../../index.js';
 
 const router = Router();
-
-dotenv.config();
 
 router.post('/', async (req, res) => {
   if (req.user.email.split('@')[0] !== req.body.onid) {
@@ -46,7 +44,7 @@ router.post('/', async (req, res) => {
       }
     }
 
-    const feed = await Feed.findOne({ _id: process.env.FEED_ID });
+    const feed = await Feed.findOne({ _id: FEED_ID });
     const postIndex = feed.posts.findIndex((post) => post._id.toString() === postId.toString());
     feed.posts[postIndex] = postToUpvote;
 

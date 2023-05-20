@@ -167,9 +167,7 @@ const Post = ({ post }) => {
     {post.content}
   </Text>
 )}
-
         {post.postedBy.split('@')[0].toString() === onid.toString() && (
-
           <Flex alignItems='center'>
             <Tooltip label='Upvote' aria-label='Upvote'>
               {shouldSetUpvote ? (

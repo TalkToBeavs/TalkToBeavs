@@ -45,6 +45,11 @@ export default function CreatePostModal({ isOpen, onClose, handleValidPost }) {
     async function fetchDataSearch() {
       const response = await fetch(
         `https://talk-to-beavs.herokuapp.com/api/feed/giphy_search?q=${searchValue}`,
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem('token')}`,
+          }
+        }
       );
       const json = await response.json();
 
@@ -59,7 +64,13 @@ export default function CreatePostModal({ isOpen, onClose, handleValidPost }) {
 
   useEffect(() => {
     async function fetchDataTrending() {
-      const response = await fetch(`https://talk-to-beavs.herokuapp.com/api/feed/giphy_trending`);
+      const response = await fetch(`https://talk-to-beavs.herokuapp.com/api/feed/giphy_trending`,
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem('token')}`,
+          }
+        }
+      );
       const json = await response.json();
       setData(json.data.data);
       setShouldFetchTrending(false);
@@ -86,16 +97,11 @@ export default function CreatePostModal({ isOpen, onClose, handleValidPost }) {
         content: content,
         postedBy: userData.email,
       };
-      setContent('');
-      setError(false);
       onClose();
+      setError(false);
+      setContent('');
       handleValidPost(post);
     }
-    setIsCreating(true);
-    // hard code ending spinner
-    setTimeout(() => {
-      setIsCreating(false);
-    }, 1000);
   };
 
   const handleClose = () => {

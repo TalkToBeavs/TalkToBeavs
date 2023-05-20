@@ -3,11 +3,9 @@ import joi from 'joi'
 import Post from '../../models/Feed/Post.js'
 import Feed from '../../models/Feed/Feed.js'
 import User from '../../models/User/User.js'
-import dotenv from 'dotenv'
+import { FEED_ID } from '../../index.js'
 
 const router = Router()
-
-dotenv.config()
 
 router.post('/', async (req, res) => {
     const schema = joi.object({
@@ -46,7 +44,7 @@ router.post('/', async (req, res) => {
 
         await user.save()
 
-        const feed = await Feed.findOne({ _id: process.env.FEED_ID })
+        const feed = await Feed.findOne({ _id: FEED_ID })
 
         feed.posts.push(post)
 
