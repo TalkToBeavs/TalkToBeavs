@@ -67,11 +67,9 @@ export default function TextChat() {
     return messages.map((message, index) => {
       const isMe = message.ownedByCurrentUser;
 
-
-
       let avatarUsername = message.senderUsername;
       if (avatarUsername === onid) {
-        avatarUsername = senderName
+        avatarUsername = senderName;
       }
 
       return (
@@ -124,7 +122,12 @@ export default function TextChat() {
                   {moment(new Date(message.createdAt)).format('h:mm A')}
                 </Box>
               </Box>
-              <Avatar size='sm' mr={4} name={message.senderGivenName} src='https://bit.ly/broken-link' />
+              <Avatar
+                size='sm'
+                mr={4}
+                name={message.senderGivenName}
+                src='https://bit.ly/broken-link'
+              />
             </Box>
           </Box>
         </Box>
@@ -147,7 +150,7 @@ export default function TextChat() {
         flexDirection='column'
         bg={colorMode === 'light' ? 'white' : 'gray.800'}
         transition='background-color 200ms'
-        marginLeft = {{ base: 'full', md: 52 }}
+        marginLeft={{ base: 'full', md: 52 }}
       >
         <Box
           id='msg-box'

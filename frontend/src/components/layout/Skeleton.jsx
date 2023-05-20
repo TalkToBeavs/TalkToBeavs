@@ -32,10 +32,9 @@ import { loadUserData } from '../../redux/slices/UserSlice';
 import { TalkToBeavsMobile } from '../text/TalkToBeavs';
 import OnlineUser from './OnlineUser';
 
-
 const LinkItems = [
   { name: 'Home', icon: FiHome, link: '/home' },
-  { name: "Profile", icon: CgProfile, link: '/profile' },
+  { name: 'Profile', icon: CgProfile, link: '/profile' },
   { name: 'Feed', icon: FiCompass, link: '/feed' },
   { name: 'Logout', icon: SlLogout, link: `/logout` },
 ];
@@ -57,7 +56,6 @@ function SidebarWithHeader({ children }) {
     if (!localStorage.getItem('token')) {
       navigate('/login');
     }
-
   }, []);
 
   const breakPt = useBreakpointValue({ base: false, md: true });

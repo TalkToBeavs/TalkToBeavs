@@ -117,7 +117,7 @@ const feedSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder.addCase(loadPosts.fulfilled, (state, action) => {
-      state.posts = action.payload[0].posts;
+      state.posts = action.payload ? action.payload[0].posts : [];
     });
     builder.addCase(createPost.fulfilled, (state, action) => {
       state.posts.unshift(action.payload);

@@ -12,7 +12,7 @@ import {
 } from '@chakra-ui/react';
 import axios from 'axios';
 import { motion } from 'framer-motion';
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import ttb from '../../assets/logo.png';
@@ -51,6 +51,7 @@ function Login() {
     try {
       const res = await axios.post('https://talk-to-beavs.herokuapp.com/api/auth/login', data);
 
+
       if (res.status === 200) {
         localStorage.setItem('token', res.data.token);
         setTimeout(() => {
@@ -69,20 +70,27 @@ function Login() {
         }, 1000);
       }
     } catch (err) {
-      console.error(err.response.data.message);
       setLoading(false);
-      if (err.response.data.message === 'Incorrect password') {
-        setError('Incorrect password');
-      } else if (err.response.data.message === 'User not found') {
-        setError('User not found');
-      } else if (
-        err.response.data.message.substring(err.response.data.message.length - 71) ===
-        'fails to match the required pattern: ^[a-zA-Z0-9._%+-]+@oregonstate.edu$'
-      ) {
-        setError('Please use your Oregon State email');
+
+      if (err?.code === "ERR_NETWORK") {
+        setError('Connection error. Please try again later.');
       } else {
-        setError('Login failed');
+        if (err.response.data.message === 'Incorrect password') {
+          setError('Incorrect password');
+        } else if (err.response.data.message === 'User not found') {
+          setError('User not found');
+        } else if (
+          err.response.data.message.substring(err.response.data.message.length - 71) ===
+          'fails to match the required pattern: ^[a-zA-Z0-9._%+-]+@oregonstate.edu$'
+        ) {
+          setError('Please use your Oregon State email');
+        } else {
+          setError('Login failed');
+        }
       }
+    } finally {
+      setEmail('');
+      setPassword('');
     }
   };
 

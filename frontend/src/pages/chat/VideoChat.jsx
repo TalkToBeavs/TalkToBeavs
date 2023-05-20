@@ -1,8 +1,17 @@
-import { useState, useEffect } from "react";
-import { Button, Center, Text, VStack, HStack, Flex, Spinner, useColorModeValue } from "@chakra-ui/react";
-import { useParams, useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
-import useVideoChat from "../../hooks/useVideoChat";
+import { useState, useEffect } from 'react';
+import {
+  Button,
+  Center,
+  Text,
+  VStack,
+  HStack,
+  Flex,
+  Spinner,
+  useColorModeValue,
+} from '@chakra-ui/react';
+import { useParams, useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import useVideoChat from '../../hooks/useVideoChat';
 
 function VideoChat() {
   const { roomId } = useParams();
@@ -24,36 +33,34 @@ function VideoChat() {
   useEffect(() => {
     if (connected && peerConnected) {
       setLoading(false);
-      setStatus("Connected!");
+      setStatus('Connected!');
     }
 
     if (!connected && !peerConnected) {
       setLoading(true);
-      setStatus("Connecting...");
+      setStatus('Connecting...');
     }
 
-    socketRef.current.on("disconnect", () => {
-
+    socketRef.current.on('disconnect', () => {
       setLoading(true);
-      setStatus("Disconnected");
-      navigate("/video");
+      setStatus('Disconnected');
+      navigate('/video');
     });
-
   }, [connected, peerConnected]);
 
   return (
-    <Center h="100vh" w="100vw" bg={useColorModeValue("gray.100", "gray.900")}>
+    <Center h='100vh' w='100vw' bg={useColorModeValue('gray.100', 'gray.900')}>
       <VStack spacing={4}>
-        <Text fontSize="xl" fontWeight="bold">
+        <Text fontSize='xl' fontWeight='bold'>
           You are in room: {roomId}
         </Text>
-        <Text fontSize="xl" fontWeight="bold">
-          {status ?? "Connecting..."}
+        <Text fontSize='xl' fontWeight='bold'>
+          {status ?? 'Connecting...'}
         </Text>
-        {loading && <Spinner size="sm" />}
-        <Flex direction="row" spacing={4} gap={1} justify="center" align="center">
-          <Flex direction="column" justify="center" align="center">
-            <Text fontSize="lg" fontWeight="bold">
+        {loading && <Spinner size='sm' />}
+        <Flex direction='row' spacing={4} gap={1} justify='center' align='center'>
+          <Flex direction='column' justify='center' align='center'>
+            <Text fontSize='lg' fontWeight='bold'>
               {user?.name}
             </Text>
             <video
@@ -61,17 +68,17 @@ function VideoChat() {
               autoPlay
               muted={isMuted}
               style={{
-                height: "max-content",
-                margin: "10px",
-                width: "max-content",
-                border: "2px solid orange",
-                borderRadius: "10px",
+                height: 'max-content',
+                margin: '10px',
+                width: 'max-content',
+                border: '2px solid orange',
+                borderRadius: '10px',
               }}
             />
           </Flex>
 
-          <Flex direction="column" justify="center" align="center">
-            <Text fontSize="lg" fontWeight="bold">
+          <Flex direction='column' justify='center' align='center'>
+            <Text fontSize='lg' fontWeight='bold'>
               A Random Beaver
             </Text>
             <video
@@ -79,38 +86,38 @@ function VideoChat() {
               autoPlay
               muted
               style={{
-                height: "max-content",
-                margin: "10px",
-                width: "max-content",
-                border: "2px solid black",
-                borderRadius: "10px",
+                height: 'max-content',
+                margin: '10px',
+                width: 'max-content',
+                border: '2px solid black',
+                borderRadius: '10px',
               }}
             />
           </Flex>
         </Flex>
         <HStack spacing={4}>
           <Button
-            colorScheme="green"
+            colorScheme='green'
             onClick={() => {
               createOffer();
-              setStatus("Connected!");
+              setStatus('Connected!');
               setLoading(false);
             }}
           >
             Connect
           </Button>
           <Button
-            colorScheme="orange"
+            colorScheme='orange'
             onClick={() => {
               setIsMuted(!isMuted);
             }}
           >
-            {isMuted ? "Unmute" : "Mute"}
+            {isMuted ? 'Unmute' : 'Mute'}
           </Button>
           <Button
-            colorScheme="red"
+            colorScheme='red'
             onClick={() => {
-              navigate("/video");
+              navigate('/video');
             }}
           >
             End Call
@@ -119,8 +126,6 @@ function VideoChat() {
       </VStack>
     </Center>
   );
-
 }
-
 
 export default VideoChat;
