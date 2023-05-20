@@ -1,29 +1,29 @@
-import { useState, useEffect, useRef } from 'react'
-import socketIOClient from 'socket.io-client'
+import { useState, useEffect, useRef } from 'react';
+import socketIOClient from 'socket.io-client';
 
-const SOCKET_SERVER_URL = 'wss://talk-to-beavs.herokuapp.com'
-const SDP_EVENT = 'sdp'
-const CANDIDATE_EVENT = 'candidate'
+const SOCKET_SERVER_URL = 'wss://talk-to-beavs.herokuapp.com';
+const SDP_EVENT = 'sdp';
+const CANDIDATE_EVENT = 'candidate';
 
 function useVideoChat(roomId) {
-  const [connected, setConnected] = useState(false)
-  const [peerConnected, setPeerConnected] = useState(false)
+  const [connected, setConnected] = useState(false);
+  const [peerConnected, setPeerConnected] = useState(false);
 
-  const [hasOffer, setHasOffer] = useState(true)
-  const [hasAnswer, setHasAnswer] = useState(false)
-  const [status, setStatus] = useState("Not Connected")
+  const [hasOffer, setHasOffer] = useState(true);
+  const [hasAnswer, setHasAnswer] = useState(false);
+  const [status, setStatus] = useState('Not Connected');
 
-  const [name, setName] = useState("A Random Beaver")
+  const [name, setName] = useState('A Random Beaver');
 
   const peer = useRef(null);
   const localStream = useRef(null);
   const remoteStream = useRef(null);
-  const socketRef = useRef()
+  const socketRef = useRef();
 
   const options = {
     audio: true,
     video: true,
-  }
+  };
 
   const createOffer = async () => {
     let config = {
@@ -48,7 +48,7 @@ function useVideoChat(roomId) {
       let sdp = await peer.current.createAnswer(config);
       handleSDP(sdp);
       setHasAnswer(false);
-      setStatus("Connected!")
+      setStatus('Connected!');
     } catch (err) {
       console.log(err);
     }
@@ -56,8 +56,8 @@ function useVideoChat(roomId) {
 
   const handleSDP = (sdp) => {
     peer.current.setLocalDescription(sdp);
-    socketRef.current.emit("sdp", { sdp });
-    sendToPeer("sdp", sdp);
+    socketRef.current.emit('sdp', { sdp });
+    sendToPeer('sdp', sdp);
   };
 
   const sendToPeer = (eventType, payload) => {
@@ -65,31 +65,29 @@ function useVideoChat(roomId) {
   };
 
   useEffect(() => {
-
     socketRef.current = socketIOClient(SOCKET_SERVER_URL, {
       query: { roomId },
     });
 
-    socketRef.current.on("connection", (data) => {
-      console.log("connected to server");
+    socketRef.current.on('connection', (data) => {
+      console.log('connected to server');
     });
 
-    socketRef.current.on("sdp", (data) => {
+    socketRef.current.on('sdp', (data) => {
       peer.current.setRemoteDescription(new RTCSessionDescription(data.sdp));
-      if (data.sdp.type === "offer") {
+      if (data.sdp.type === 'offer') {
         setHasOffer(false);
         createAnswer();
         setPeerConnected(true);
-        setStatus("Joined!")
+        setStatus('Joined!');
         setConnected(true);
         // createAnswer();
       }
-
     });
 
-    socketRef.current.on("candidate", (candiate) => {
+    socketRef.current.on('candidate', (candiate) => {
       peer.current.addIceCandidate(new RTCIceCandidate(candiate));
-      socketRef.current.emit("name", { name: name });
+      socketRef.current.emit('name', { name: name });
     });
 
     const peerConnection = new RTCPeerConnection();
@@ -108,7 +106,7 @@ function useVideoChat(roomId) {
 
     peerConnection.onicecandidate = (e) => {
       if (e.candidate) {
-        sendToPeer("candidate", e.candidate);
+        sendToPeer('candidate', e.candidate);
       }
     };
 
@@ -117,12 +115,11 @@ function useVideoChat(roomId) {
     };
 
     peerConnection.onnegotiationneeded = (e) => {
-
-      if (peerConnection.signalingState !== "stable") {
+      if (peerConnection.signalingState !== 'stable') {
         return;
       }
 
-      console.log("Negotiation Needed")
+      console.log('Negotiation Needed');
 
       // if (hasOffer) {
       //   createOffer();
@@ -133,37 +130,36 @@ function useVideoChat(roomId) {
     };
 
     peerConnection.oniceconnectionstatechange = (e) => {
-      if (peerConnection.iceConnectionState === "disconnected") {
-        console.log("Disconnected");
+      if (peerConnection.iceConnectionState === 'disconnected') {
+        console.log('Disconnected');
         setConnected(false);
-        setStatus("Disconnected")
+        setStatus('Disconnected');
         setPeerConnected(false);
       }
 
-      if (peerConnection.iceConnectionState === "connected") {
-        console.log("Connected");
+      if (peerConnection.iceConnectionState === 'connected') {
+        console.log('Connected');
       }
 
-      if (peerConnection.iceConnectionState === "failed") {
-        console.log("Failed");
+      if (peerConnection.iceConnectionState === 'failed') {
+        console.log('Failed');
       }
 
-      if (peerConnection.iceConnectionState === "closed") {
-        console.log("Closed");
+      if (peerConnection.iceConnectionState === 'closed') {
+        console.log('Closed');
       }
 
-      if (peerConnection.iceConnectionState === "new") {
-        console.log("New");
+      if (peerConnection.iceConnectionState === 'new') {
+        console.log('New');
       }
 
-      if (peerConnection.iceConnectionState === "checking") {
-        console.log("Checking");
+      if (peerConnection.iceConnectionState === 'checking') {
+        console.log('Checking');
       }
 
-      if (peerConnection.iceConnectionState === "completed") {
-        console.log("Completed");
+      if (peerConnection.iceConnectionState === 'completed') {
+        console.log('Completed');
       }
-
     };
 
     peer.current = peerConnection;
@@ -172,20 +168,17 @@ function useVideoChat(roomId) {
       // Close the peer connection
       peer.current.close();
 
-      // Close the socket connection  
+      // Close the socket connection
       socketRef.current.close();
 
       // Disconnect from the server
       socketRef.current.disconnect();
 
-      setStatus("Disconnected")
+      setStatus('Disconnected');
       setConnected(false);
       setPeerConnected(false);
-    }
-
+    };
   }, [roomId]);
-
-
 
   return {
     localStream,
@@ -201,7 +194,6 @@ function useVideoChat(roomId) {
     peerConnected,
     name,
   };
-
 }
 
-export default useVideoChat
+export default useVideoChat;

@@ -125,133 +125,135 @@ const Post = ({ post }) => {
     }, 1000);
   };
 
-  return user && (
-    <Box
-      borderWidth='1px'
-      borderRadius='lg'
-      p={3}
-      _hover={{ shadow: 'lg' }}
-      w='70%'
-      maxW={isMobile ? '100%' : '60%'}
-      margin='0 auto'
-      marginBottom={6}
-    >
-      <Flex justifyContent='space-between' alignItems='center' mb={2}>
-        {post.content.includes('https://giphy.com') ? (
-          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
-            <iframe
-              src={link}
-              width='150'
-              height='150'
-              frameBorder='0'
-              className='giphy-embed'
-              allowFullScreen
-              style={{ display: 'block', margin: '0', marginBottom: '0.5rem' }}
-            ></iframe>
+  return (
+    user && (
+      <Box
+        borderWidth='1px'
+        borderRadius='lg'
+        p={3}
+        _hover={{ shadow: 'lg' }}
+        w='70%'
+        maxW={isMobile ? '100%' : '60%'}
+        margin='0 auto'
+        marginBottom={6}
+      >
+        <Flex justifyContent='space-between' alignItems='center' mb={2}>
+          {post.content.includes('https://giphy.com') ? (
+            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
+              <iframe
+                src={link}
+                width='150'
+                height='150'
+                frameBorder='0'
+                className='giphy-embed'
+                allowFullScreen
+                style={{ display: 'block', margin: '0', marginBottom: '0.5rem' }}
+              ></iframe>
 
-            <Text fontSize='lg' fontWeight='bold' mb={2} style={{ marginLeft: '0' }}>
-              {text}
+              <Text fontSize='lg' fontWeight='bold' mb={2} style={{ marginLeft: '0' }}>
+                {text}
+              </Text>
+            </div>
+          ) : (
+            <Text fontSize='lg' fontWeight='bold' mb={2}>
+              {post.content}
             </Text>
-          </div>
-        ) : (
-          <Text fontSize='lg' fontWeight='bold' mb={2}>
-            {post.content}
-          </Text>
-        )}
-        {post.postedBy.split('@')[0].toString() === onid.toString() && (
-          <Flex alignItems='center'>
-            {!isOpen && !isEditing ? (
-              <Tooltip label='Edit post' aria-label='Edit post'>
-                <IconButton
-                  icon={<EditIcon />}
-                  variant='ghost'
-                  size='sm'
-                  colorScheme='teal'
-                  onClick={onOpen}
-                  mr={2}
+          )}
+          {post.postedBy.split('@')[0].toString() === onid.toString() && (
+            <Flex alignItems='center'>
+              {!isOpen && !isEditing ? (
+                <Tooltip label='Edit post' aria-label='Edit post'>
+                  <IconButton
+                    icon={<EditIcon />}
+                    variant='ghost'
+                    size='sm'
+                    colorScheme='teal'
+                    onClick={onOpen}
+                    mr={2}
+                  />
+                </Tooltip>
+              ) : null}
+
+              {isOpen ? (
+                <EditPostModal
+                  isOpen={isOpen}
+                  onClose={onClose}
+                  handleValidEditPost={handleValidEditPost}
+                  post={post}
                 />
-              </Tooltip>
-            ) : null}
+              ) : null}
 
-            {isOpen ? (
-              <EditPostModal
-                isOpen={isOpen}
-                onClose={onClose}
-                handleValidEditPost={handleValidEditPost}
-                post={post}
-              />
-            ) : null}
+              {isEditing ? <Spinner size='sm' color='gray.400' mt='0' /> : null}
 
-            {isEditing ? <Spinner size='sm' color='gray.400' mt='0' /> : null}
-
-            {isDeleting ? (
-              <Spinner size='sm' color='gray.400' />
-            ) : (
-              <Tooltip label='Delete post' aria-label='Delete post'>
-                <IconButton
-                  icon={<DeleteIcon />}
-                  variant='ghost'
-                  size='sm'
-                  colorScheme='red'
-                  onClick={handleDelete}
-                />
-              </Tooltip>
-            )}
-          </Flex>
-        )}
-      </Flex>
-
-      <Flex alignItems='center' mb={2}>
-        <Text fontSize='sm' color='gray.500'>
-          {moment(post.createdAt).calendar()}
-        </Text>
-        <Spacer />
-      </Flex>
-
-      <Flex alignItems='center' justifyContent='space-between'>
-        <Flex alignItems='center'>
-          <Tooltip label='Upvote' aria-label='Upvote'>
-            {shouldSetUpvote ? (
-              <Spinner size='sm' color='gray.400' mr={4} />
-            ) : (
-              <IconButton
-                icon={<ArrowUpIcon />}
-                variant='ghost'
-                size='sm'
-                colorScheme={post.upvotes && post.upvotes.includes(onid) ? 'green' : 'gray'}
-                onClick={handleUpvote}
-                mr={2}
-              />
-            )}
-          </Tooltip>
-
-          <Text fontSize='sm' color='gray.500' mr={2}>
-            {post.upvotes.length - post.downvotes.length}
-          </Text>
-
-          <Tooltip label='Downvote' aria-label='Downvote'>
-            {shouldSetDownvote ? (
-              <Spinner size='sm' color='gray.400' ml={4} />
-            ) : (
-              <IconButton
-                icon={<ArrowDownIcon />}
-                variant='ghost'
-                size='sm'
-                colorScheme={post.downvotes && post.downvotes.includes(onid) ? 'red' : 'gray'}
-                onClick={handleDownvote}
-                mr={2}
-              />
-            )}
-          </Tooltip>
+              {isDeleting ? (
+                <Spinner size='sm' color='gray.400' />
+              ) : (
+                <Tooltip label='Delete post' aria-label='Delete post'>
+                  <IconButton
+                    icon={<DeleteIcon />}
+                    variant='ghost'
+                    size='sm'
+                    colorScheme='red'
+                    onClick={handleDelete}
+                  />
+                </Tooltip>
+              )}
+            </Flex>
+          )}
         </Flex>
 
-        <Box textAlign='right'>
+        <Flex alignItems='center' mb={2}>
           <Text fontSize='sm' color='gray.500'>
-            {post.postedBy.split('@')[0]}
+            {moment(post.createdAt).calendar()}
           </Text>
-        </Box>
-      </Flex>
-    </Box>
+          <Spacer />
+        </Flex>
+
+        <Flex alignItems='center' justifyContent='space-between'>
+          <Flex alignItems='center'>
+            <Tooltip label='Upvote' aria-label='Upvote'>
+              {shouldSetUpvote ? (
+                <Spinner size='sm' color='gray.400' mr={4} />
+              ) : (
+                <IconButton
+                  icon={<ArrowUpIcon />}
+                  variant='ghost'
+                  size='sm'
+                  colorScheme={post.upvotes && post.upvotes.includes(onid) ? 'green' : 'gray'}
+                  onClick={handleUpvote}
+                  mr={2}
+                />
+              )}
+            </Tooltip>
+
+            <Text fontSize='sm' color='gray.500' mr={2}>
+              {post.upvotes.length - post.downvotes.length}
+            </Text>
+
+            <Tooltip label='Downvote' aria-label='Downvote'>
+              {shouldSetDownvote ? (
+                <Spinner size='sm' color='gray.400' ml={4} />
+              ) : (
+                <IconButton
+                  icon={<ArrowDownIcon />}
+                  variant='ghost'
+                  size='sm'
+                  colorScheme={post.downvotes && post.downvotes.includes(onid) ? 'red' : 'gray'}
+                  onClick={handleDownvote}
+                  mr={2}
+                />
+              )}
+            </Tooltip>
+          </Flex>
+
+          <Box textAlign='right'>
+            <Text fontSize='sm' color='gray.500'>
+              {post.postedBy.split('@')[0]}
+            </Text>
+          </Box>
+        </Flex>
+      </Box>
+    )
   );
 };
 

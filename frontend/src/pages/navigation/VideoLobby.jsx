@@ -97,7 +97,6 @@ const VideoLobby = () => {
         </Menu>
       )}
 
-
       {/* Either use the Rings or Circles loader works fine */}
 
       <Box
@@ -114,8 +113,8 @@ const VideoLobby = () => {
         <Rings
           height={isMobile ? '70vh' : '80vh'}
           width={isMobile ? '70vw' : '80vw'}
-          color="#DE6A1F"
-          radius="6"
+          color='#DE6A1F'
+          radius='6'
           wrapperStyle={{
             position: 'absolute',
             top: '50%',
@@ -125,7 +124,7 @@ const VideoLobby = () => {
             opacity: 0.1,
           }}
           visible={true}
-          ariaLabel="rings-loading"
+          ariaLabel='rings-loading'
         />
         {/* <Circles
           height={isMobile ? '60vh' : '50vh'}

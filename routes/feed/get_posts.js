@@ -8,6 +8,10 @@ router.get('/', async (req, res) => {
   try {
     const feed = await Feed.find({}).populate('posts').exec();
 
+    if (!feed.posts || feed.posts?.length === 0) {
+      return res.status(200).json({ message: 'No posts yet' });
+    }
+
     feed[0].posts.sort((a, b) => {
       return new Date(b.createdAt) - new Date(a.createdAt);
     });

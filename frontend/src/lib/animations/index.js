@@ -182,13 +182,13 @@ const pulseLoaderLoop = keyframes`
 const pulseLoaderAnimation = `${pulseLoaderLoop} 3.5s ease-in-out infinite`;
 
 export {
-      slideAnimation,
-      popInAnimation,
-      comeFromLeftAnimation,
-      comeFromRightAnimation,
-      comeFromTopAnimation,
-      comeFromBottomAnimation,
-      fadeIntoViewAnimation,
-      pulseLoaderAnimation,
-      fadeInAnimation,
+  slideAnimation,
+  popInAnimation,
+  comeFromLeftAnimation,
+  comeFromRightAnimation,
+  comeFromTopAnimation,
+  comeFromBottomAnimation,
+  fadeIntoViewAnimation,
+  pulseLoaderAnimation,
+  fadeInAnimation,
 };

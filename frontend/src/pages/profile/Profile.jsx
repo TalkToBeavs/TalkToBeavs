@@ -16,7 +16,9 @@ export default function Profile() {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user.data);
   const profile = useProfile({ onid });
-  const allPosts = useSelector(selectAllPosts).filter(post => post.postedBy.split('@')[0].toString() === onid.toString());
+  const allPosts = useSelector(selectAllPosts).filter(
+    (post) => post.postedBy.split('@')[0].toString() === onid.toString(),
+  );
   useEffect(() => {
     document.querySelector('title').innerHTML = `${onid}'s Profile`;
 
@@ -33,7 +35,15 @@ export default function Profile() {
     profile && (
       <>
         <Box w='100%' h='100%' py={8}>
-          <Flex direction='column' align='center' justify='center' w='100%' h='100%' as={motion.div} animation={fadeInAnimation}>
+          <Flex
+            direction='column'
+            align='center'
+            justify='center'
+            w='100%'
+            h='100%'
+            as={motion.div}
+            animation={fadeInAnimation}
+          >
             <Avatar size='2xl' name={profile.name} src={profile.avatarImg} mb={4} />
             <FollowButton user={profile} />
             <Heading as='h1' size='2xl' mb={4}>
@@ -42,7 +52,9 @@ export default function Profile() {
             <Box my={4} maxW='40%' textAlign='center'>
               {profile.standing && profile.major && (
                 <Box mb={4}>
-                  <Text>{profile.standing} in {profile.major}</Text>
+                  <Text>
+                    {profile.standing} in {profile.major}
+                  </Text>
                 </Box>
               )}
               {profile.bio && (
@@ -82,6 +94,5 @@ export default function Profile() {
         </Box>
       </>
     )
-
   );
 }

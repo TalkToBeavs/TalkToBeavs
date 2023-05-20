@@ -2,7 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
-import rateLimiit from 'express-rate-limit';
+import rateLimit from 'express-rate-limit';
 
 // Auth
 import register from './routes/auth/register.js';
@@ -39,16 +39,21 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 8080;
 
-const limiter = rateLimiit({
+const limiter = rateLimit({
   windowMs: 15 * 60 * 1000,
-  max: 100,
+  max: 15,
   standardHeaders: true,
 });
+
+const dbURI = process.env.NODE_ENV === 'production' ? process.env.MONGODB_URI : process.env.DEV_DB_URI;
+const devOrigins = ['http://localhost:5173', 'http://localhost:5174'];
+const prodOrigins = ['https://talktobeavs.onrender.com'];
+const origin = process.env.NODE_ENV === 'production' ? prodOrigins : devOrigins;
 
 app.disable('x-powered-by');
 app.use(
   cors({
-    origin: ['https://talktobeavs.onrender.com'],
+    origin: origin,
     credentials: true,
     optionsSuccessStatus: 200,
   }),
@@ -83,7 +88,7 @@ app.get('/', (req, res) => {
   res.send('Hello TalkToBeavs!');
 });
 mongoose
-  .connect(process.env.MONGODB_URI, {
+  .connect(dbURI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
