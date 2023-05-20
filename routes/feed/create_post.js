@@ -16,7 +16,7 @@ router.post('/', async (req, res) => {
     })
 
     const onid = req.user.email.split('@')[0]
-    if (onid !== req.body.postedBy) {
+    if (onid !== req.body.postedBy.split('@')[0]) {
         return res.status(401).json({ error: 'Unauthorized' })
     }
 

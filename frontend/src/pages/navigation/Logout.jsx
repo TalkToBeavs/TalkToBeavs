@@ -17,14 +17,17 @@ function LogoutButton() {
   const handleLogout = async () => {
     setError('');
     try {
-
-      const res = await axios.post('https://talk-to-beavs.herokuapp.com/api/auth/logout', {
-        email: email,
-      }, {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem('token')}`,
+      const res = await axios.post(
+        'https://talk-to-beavs.herokuapp.com/api/auth/logout',
+        {
+          email: email,
         },
-      });
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem('token')}`,
+          },
+        },
+      );
       if (res.status === 200) {
         localStorage.removeItem('token');
         dispatch(logoutUser());
@@ -33,10 +36,13 @@ function LogoutButton() {
         }, 2000);
       } else {
         setError('Logout failed');
+        localStorage.removeItem('token');
+        navigate('/login');
       }
     } catch (err) {
-
       setError('Logout failed');
+      localStorage.removeItem('token');
+      navigate('/login');
     }
   };
 

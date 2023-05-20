@@ -17,7 +17,7 @@ router.post('/', async (req, res) => {
       return res.status(400).json({ error: 'Post to edit not found' });
     }
 
-    if (postToEdit.postedBy.toString() !== req.user.email.split('@')[0]) {
+    if (postToEdit.postedBy.toString().split('@')[0] !== req.user.email.split('@')[0]) {
       return res.status(401).json({ message: 'Unauthorized' });
     }
 
