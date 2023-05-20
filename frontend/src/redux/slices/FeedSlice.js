@@ -117,10 +117,15 @@ const feedSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder.addCase(loadPosts.fulfilled, (state, action) => {
-      state.posts = action.payload ? action.payload[0].posts : [];
+      if (action.payload) {
+        state.posts = action.payload[0]?.posts;
+      } else {
+        state.posts = [];
+      }
+      // state.posts = action.payload ? action.payload[0]?.posts
     });
     builder.addCase(createPost.fulfilled, (state, action) => {
-      state.posts.unshift(action.payload);
+      state?.posts?.unshift(action.payload);
     });
     builder.addCase(upvotePostAsync.fulfilled, (state, action) => {
       const postIndex = state.posts.findIndex((post) => post._id === action.payload._id);
