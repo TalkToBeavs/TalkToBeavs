@@ -169,99 +169,51 @@ const Post = ({ post }) => {
 )}
 
         {post.postedBy.split('@')[0].toString() === onid.toString() && (
+
           <Flex alignItems='center'>
-            {!isOpen && !isEditing ? (
-              <Tooltip label='Edit post' aria-label='Edit post'>
+            <Tooltip label='Upvote' aria-label='Upvote'>
+              {shouldSetUpvote ? (
+                <Spinner size='sm' color='gray.400' mr={4} />
+              ) : (
                 <IconButton
-                  icon={<EditIcon />}
+                  icon={<ArrowUpIcon />}
                   variant='ghost'
                   size='sm'
-                  colorScheme='teal'
-                  onClick={onOpen}
+                  colorScheme={post.upvotes && post.upvotes.includes(onid) ? 'green' : 'gray'}
+                  onClick={handleUpvote}
                   mr={2}
                 />
-              </Tooltip>
-            ) : null}
+              )}
+            </Tooltip>
 
-            {isOpen ? (
-              <EditPostModal
-                isOpen={isOpen}
-                onClose={onClose}
-                handleValidEditPost={handleValidEditPost}
-                post={post}
-              />
-            ) : null}
+            <Text fontSize='sm' color='gray.500' mr={2}>
+              {post.upvotes.length - post.downvotes.length}
+            </Text>
 
-            {isEditing ? <Spinner size='sm' color='gray.400' mt='0' /> : null}
-
-            {isDeleting ? (
-              <Spinner size='sm' color='gray.400' />
-            ) : (
-              <Tooltip label='Delete post' aria-label='Delete post'>
+            <Tooltip label='Downvote' aria-label='Downvote'>
+              {shouldSetDownvote ? (
+                <Spinner size='sm' color='gray.400' ml={4} />
+              ) : (
                 <IconButton
-                  icon={<DeleteIcon />}
+                  icon={<ArrowDownIcon />}
                   variant='ghost'
                   size='sm'
-                  colorScheme='red'
-                  onClick={handleDelete}
+                  colorScheme={post.downvotes && post.downvotes.includes(onid) ? 'red' : 'gray'}
+                  onClick={handleDownvote}
+                  mr={2}
                 />
-              </Tooltip>
-            )}
+              )}
+            </Tooltip>
           </Flex>
-        )}
-      </Flex>
 
-      <Flex alignItems='center' mb={2}>
-        <Text fontSize='sm' color='gray.500'>
-          {moment(post.createdAt).calendar()}
-        </Text>
-        <Spacer />
-      </Flex>
-
-      <Flex alignItems='center' justifyContent='space-between'>
-        <Flex alignItems='center'>
-          <Tooltip label='Upvote' aria-label='Upvote'>
-            {shouldSetUpvote ? (
-              <Spinner size='sm' color='gray.400' mr={4} />
-            ) : (
-              <IconButton
-                icon={<ArrowUpIcon />}
-                variant='ghost'
-                size='sm'
-                colorScheme={post.upvotes && post.upvotes.includes(onid) ? 'green' : 'gray'}
-                onClick={handleUpvote}
-                mr={2}
-              />
-            )}
-          </Tooltip>
-
-          <Text fontSize='sm' color='gray.500' mr={2}>
-            {post.upvotes.length - post.downvotes.length}
-          </Text>
-
-          <Tooltip label='Downvote' aria-label='Downvote'>
-            {shouldSetDownvote ? (
-              <Spinner size='sm' color='gray.400' ml={4} />
-            ) : (
-              <IconButton
-                icon={<ArrowDownIcon />}
-                variant='ghost'
-                size='sm'
-                colorScheme={post.downvotes && post.downvotes.includes(onid) ? 'red' : 'gray'}
-                onClick={handleDownvote}
-                mr={2}
-              />
-            )}
-          </Tooltip>
+          <Box textAlign='right'>
+            <Text fontSize='sm' color='gray.500'>
+              {post.postedBy.split('@')[0]}
+            </Text>
+          </Box>
         </Flex>
-
-        <Box textAlign='right'>
-          <Text fontSize='sm' color='gray.500'>
-            {post.postedBy.split('@')[0]}
-          </Text>
-        </Box>
-      </Flex>
-    </Box>
+      </Box>
+    )
   );
 };
 

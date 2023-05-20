@@ -23,7 +23,7 @@ const generateToken = (user) => {
 const verifyToken = async (req, res, next) => {
   const token = req.headers.authorization;
   const tokenString = token?.split(' ')[1];
-  
+
   if (!token) {
     return res
       .status(401)

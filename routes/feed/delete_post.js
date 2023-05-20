@@ -15,9 +15,9 @@ router.post('/', async (req, res) => {
 
     const { postId } = req.body
     try {
-        const post = await findById(postId);
+        const post = await Post.findById(postId);
 
-        if (post.postedBy.toString() !== req.user.email.split('@')[0]) {
+        if (post.postedBy.toString().split('@')[0] !== req.user.email.split('@')[0]) {
             return res.status(401).json({ message: 'Unauthorized' })
         }
 

@@ -2,7 +2,11 @@ import { useNavigate } from 'react-router-dom';
 import TalkToBeavs from '../../components/text/TalkToBeavs';
 import SVGComponent from '../../assets/logo';
 import { motion } from 'framer-motion';
-import { comeFromLeftAnimation, comeFromTopAnimation, comeFromBottomAnimation } from '../../lib/animations/index';
+import {
+  comeFromLeftAnimation,
+  comeFromTopAnimation,
+  comeFromBottomAnimation,
+} from '../../lib/animations/index';
 import {
   Flex,
   Container,
@@ -49,7 +53,7 @@ export default function Landing() {
     }),
   };
 
-  const text = `Stay connected with all of your peers. Make new friends. Get help with your classes. Welcome to TalkToBeavs.`
+  const text = `Stay connected with all of your peers. Make new friends. Get help with your classes. Welcome to TalkToBeavs.`;
 
   const letters = Array.from(text);
 
@@ -63,30 +67,41 @@ export default function Landing() {
         textAlign={'center'}
         align={'center'}
         spacing={{ base: 8, md: 10 }}
-        py={{ base: -28, md: -36 }}>
+        py={{ base: -28, md: -36 }}
+      >
         <Box
           as={motion.div}
           animation={comeFromLeftAnimation}
-          initial="hidden"
+          initial='hidden'
           color={useColorModeValue('gray.800', 'white')}
-          animate="visible"
+          animate='visible'
           sx={{
             textShadow: '2px 2px #fbd38d',
           }}
           fontWeight={600}
           fontSize={{ base: '3xl', sm: '4xl', md: '6xl' }}
-          lineHeight={'110%'}>
-          Chatting with peers {' '}
+          lineHeight={'110%'}
+        >
+          Chatting with peers{' '}
           <Text as={'i'} color={useColorModeValue('orange.300', 'orange.400')}>
             made easy.
           </Text>
         </Box>
-        <Text color={useColorModeValue('gray.800', 'white')} maxW={'3xl'} fontSize={
-          isMobile ? 'xs' : 'lg'
-        } textAlign={'center'}>
+        <Text
+          color={useColorModeValue('gray.800', 'white')}
+          maxW={'3xl'}
+          fontSize={isMobile ? 'xs' : 'lg'}
+          textAlign={'center'}
+        >
           <motion.i
             variants={container}
-            style={{ overflow: 'visible', display: 'flex', fontSize: `${isMobile ? '0.50rem' : '1rem'}`, whiteSpace: 'pre-wrap', wordWrap: 'break-word' }}
+            style={{
+              overflow: 'visible',
+              display: 'flex',
+              fontSize: `${isMobile ? '0.50rem' : '1rem'}`,
+              whiteSpace: 'pre-wrap',
+              wordWrap: 'break-word',
+            }}
             color={useColorModeValue('gray.800', 'white')}
             initial='hidden'
             animate='visible'
@@ -107,7 +122,8 @@ export default function Landing() {
             px={6}
             bg={useColorModeValue('orange.300', 'orange.400')}
             onClick={() => navigate('/signup')}
-            _hover={{ cursor: 'pointer', bg: 'orange.700' }}>
+            _hover={{ cursor: 'pointer', bg: 'orange.700' }}
+          >
             Get started
           </Button>
           <Button
@@ -116,11 +132,15 @@ export default function Landing() {
             onClick={() => {
               window.location.href = 'https://github.com/Nyumat/TalkToBeavs';
             }}
-            rounded={'full'} px={6} as={motion.div} animation={comeFromBottomAnimation}>
+            rounded={'full'}
+            px={6}
+            as={motion.div}
+            animation={comeFromBottomAnimation}
+          >
             Learn more
           </Button>
         </Stack>
       </Stack>
-    </Container >
+    </Container>
   );
 }
