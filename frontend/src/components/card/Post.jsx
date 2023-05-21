@@ -1,27 +1,23 @@
-import { ArrowDownIcon, ArrowUpIcon, DeleteIcon, EditIcon } from '@chakra-ui/icons';
+import { ArrowDownIcon, ArrowUpIcon } from '@chakra-ui/icons';
 import {
   Box,
   Flex,
   IconButton,
-  Spacer,
   Spinner,
   Text,
   Tooltip,
   useDisclosure,
   useMediaQuery,
 } from '@chakra-ui/react';
-import moment from 'moment';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useLocation } from 'react-router-dom';
 import {
   deletePost,
   downvotePostAsync,
   editPost,
   upvotePostAsync,
 } from '../../redux/slices/FeedSlice';
-import EditPostModal from '../custom/EditPostModal';
-import useProfile from '../../hooks/useProfile';
-import { useLocation } from 'react-router-dom';
 
 const Post = ({ post }) => {
   const [isMobile] = useMediaQuery('(max-width: 768px)');
@@ -125,85 +121,92 @@ const Post = ({ post }) => {
     }, 1000);
   };
 
-  return user && (
-    <Box
-      borderWidth='1px'
-      borderRadius='lg'
-      p={3}
-      _hover={{ shadow: 'lg' }}
-      w='70%'
-      maxW={isMobile ? '100%' : '60%'}
-      margin='0 auto'
-      marginBottom={6}
-    >
-      <Flex justifyContent='space-between' alignItems='center' mb={2}>
-      {post.content.includes('https://giphy.com') ? (
-  <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
-    {parts.map((part, index) => {
-      if (part.includes('https://giphy.com')) {
-        return (
-          <iframe
-            key={index}
-            src={part}
-            width='150'
-            height='150'
-            frameBorder='0'
-            className='giphy-embed'
-            allowFullScreen
-            style={{ display: 'block', margin: '0', marginBottom: '0.5rem' }}
-          ></iframe>
-        );
-      } else {
-        return (
-          <Text key={index} fontSize='lg' fontWeight='bold' mb={2} style={{ marginLeft: '0' }}>
-            {part}
-          </Text>
-        );
-      }
-    })}
-  </div>
-) : (
-  <Text fontSize='lg' fontWeight='bold' mb={2}>
-    {post.content}
-  </Text>
-)}
-        {post.postedBy.split('@')[0].toString() === onid.toString() && (
-          <Flex alignItems='center'>
-            <Tooltip label='Upvote' aria-label='Upvote'>
-              {shouldSetUpvote ? (
-                <Spinner size='sm' color='gray.400' mr={4} />
-              ) : (
-                <IconButton
-                  icon={<ArrowUpIcon />}
-                  variant='ghost'
-                  size='sm'
-                  colorScheme={post.upvotes && post.upvotes.includes(onid) ? 'green' : 'gray'}
-                  onClick={handleUpvote}
-                  mr={2}
-                />
-              )}
-            </Tooltip>
-
-            <Text fontSize='sm' color='gray.500' mr={2}>
-              {post.upvotes.length - post.downvotes.length}
+  return (
+    user && (
+      <Box
+        borderWidth='1px'
+        borderRadius='lg'
+        p={3}
+        _hover={{ shadow: 'lg' }}
+        w='70%'
+        maxW={isMobile ? '100%' : '60%'}
+        margin='0 auto'
+        marginBottom={6}
+      >
+        <Flex justifyContent='space-between' alignItems='center' mb={2}>
+          {post.content.includes('https://giphy.com') ? (
+            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
+              {parts.map((part, index) => {
+                if (part.includes('https://giphy.com')) {
+                  return (
+                    <iframe
+                      key={index}
+                      src={part}
+                      width='150'
+                      height='150'
+                      frameBorder='0'
+                      className='giphy-embed'
+                      allowFullScreen
+                      style={{ display: 'block', margin: '0', marginBottom: '0.5rem' }}
+                    ></iframe>
+                  );
+                } else {
+                  return (
+                    <Text
+                      key={index}
+                      fontSize='lg'
+                      fontWeight='bold'
+                      mb={2}
+                      style={{ marginLeft: '0' }}
+                    >
+                      {part}
+                    </Text>
+                  );
+                }
+              })}
+            </div>
+          ) : (
+            <Text fontSize='lg' fontWeight='bold' mb={2}>
+              {post.content}
             </Text>
+          )}
+          {post.postedBy.split('@')[0].toString() === onid.toString() && (
+            <Flex alignItems='center'>
+              <Tooltip label='Upvote' aria-label='Upvote'>
+                {shouldSetUpvote ? (
+                  <Spinner size='sm' color='gray.400' mr={4} />
+                ) : (
+                  <IconButton
+                    icon={<ArrowUpIcon />}
+                    variant='ghost'
+                    size='sm'
+                    colorScheme={post.upvotes && post.upvotes.includes(onid) ? 'green' : 'gray'}
+                    onClick={handleUpvote}
+                    mr={2}
+                  />
+                )}
+              </Tooltip>
 
-            <Tooltip label='Downvote' aria-label='Downvote'>
-              {shouldSetDownvote ? (
-                <Spinner size='sm' color='gray.400' ml={4} />
-              ) : (
-                <IconButton
-                  icon={<ArrowDownIcon />}
-                  variant='ghost'
-                  size='sm'
-                  colorScheme={post.downvotes && post.downvotes.includes(onid) ? 'red' : 'gray'}
-                  onClick={handleDownvote}
-                  mr={2}
-                />
-              )}
-            </Tooltip>
-          </Flex>
+              <Text fontSize='sm' color='gray.500' mr={2}>
+                {post.upvotes.length - post.downvotes.length}
+              </Text>
 
+              <Tooltip label='Downvote' aria-label='Downvote'>
+                {shouldSetDownvote ? (
+                  <Spinner size='sm' color='gray.400' ml={4} />
+                ) : (
+                  <IconButton
+                    icon={<ArrowDownIcon />}
+                    variant='ghost'
+                    size='sm'
+                    colorScheme={post.downvotes && post.downvotes.includes(onid) ? 'red' : 'gray'}
+                    onClick={handleDownvote}
+                    mr={2}
+                  />
+                )}
+              </Tooltip>
+            </Flex>
+          )}
           <Box textAlign='right'>
             <Text fontSize='sm' color='gray.500'>
               {post.postedBy.split('@')[0]}
@@ -214,5 +217,4 @@ const Post = ({ post }) => {
     )
   );
 };
-
 export default Post;
