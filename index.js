@@ -50,8 +50,8 @@ const dbURI =
   process.env.NODE_ENV === 'production' ? process.env.MONGODB_URI : process.env.DEV_DB_URI;
 const devOrigins = ['http://localhost:5173', 'http://localhost:5174'];
 const prodOrigins = ['https://talktobeavs.onrender.com'];
-const origin = process.env.NODE_ENV === 'production' ? prodOrigins : devOrigins;
 export const FEED_ID = process.env.NODE_ENV === 'production' ? process.env.FEED_ID : process.env.DEV_DB_FEED_ID;
+const origin = process.env.NODE_ENV === 'production' ? prodOrigins : devOrigins;
 
 app.disable('x-powered-by');
 app.use(
