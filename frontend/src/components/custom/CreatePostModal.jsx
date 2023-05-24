@@ -41,40 +41,41 @@ export default function CreatePostModal({ isOpen, onClose, handleValidPost }) {
     setContent(url);
   };
 
-  useEffect(() => {
-    async function fetchDataSearch() {
-      const response = await fetch(
-        `https://talk-to-beavs.herokuapp.com/api/feed/giphy_search?q=${searchValue}`,
-        {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem('token')}`,
-          }
+  async function fetchDataSearch() {
+    const response = await fetch(
+      `https://talk-to-beavs.herokuapp.com/api/feed/giphy_search?q=${searchValue}`,
+      {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
         }
-      );
-      const json = await response.json();
+      }
+    );
+    const json = await response.json();
 
-      setData(json.data.data);
-      setShouldFetch(false);
-    }
+    setData(json.data.data);
+    setShouldFetch(false);
+  }
 
+  async function fetchDataTrending() {
+    const response = await fetch(`https://talk-to-beavs.herokuapp.com/api/feed/giphy_trending`,
+      {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
+        }
+      }
+    );
+    const json = await response.json();
+    setData(json.data.data);
+    setShouldFetchTrending(false);
+  }
+
+  useEffect(() => {
     if (shouldFetch) {
       fetchDataSearch();
     }
   }, [shouldFetch, searchValue]);
 
   useEffect(() => {
-    async function fetchDataTrending() {
-      const response = await fetch(`https://talk-to-beavs.herokuapp.com/api/feed/giphy_trending`,
-        {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem('token')}`,
-          }
-        }
-      );
-      const json = await response.json();
-      setData(json.data.data);
-      setShouldFetchTrending(false);
-    }
 
     if (shouldFetchTrending) {
       fetchDataTrending();
