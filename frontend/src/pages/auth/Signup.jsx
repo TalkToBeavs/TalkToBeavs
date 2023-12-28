@@ -17,6 +17,10 @@ import { Link, useNavigate } from 'react-router-dom';
 import ttb from '../../assets/logo.png';
 import { slideAnimation } from '../../lib/animations';
 
+const BASE_URL = import.meta.env.VITE_APP_PROD_BACKEND_URL;
+
+if (!BASE_URL) throw new Error('Missing backend URL');
+
 function Signup() {
   const [isLoading, setIsLoading] = useState(false);
   const [name, setName] = useState('');
@@ -46,7 +50,7 @@ function Signup() {
     }
 
     try {
-      const res = await axios.post('https://talk-to-beavs.herokuapp.com/api/auth/register', data);
+      const res = await axios.post(`${BASE_URL}/api/auth/register`, data);
 
       if (res.status === 201) {
         setTimeout(() => {

@@ -7,6 +7,10 @@ import ttb from '../../assets/logo.png';
 import TalkToBeavs from '../../components/text/TalkToBeavs';
 import { logoutUser } from '../../redux/slices/UserSlice';
 
+const BASE_URL = import.meta.env.VITE_APP_PROD_BACKEND_URL;
+
+if (!BASE_URL) throw new Error('Missing backend URL');
+
 function LogoutButton() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -18,7 +22,7 @@ function LogoutButton() {
     setError('');
     try {
       const res = await axios.post(
-        'https://talk-to-beavs.herokuapp.com/api/auth/logout',
+        `${BASE_URL}/api/auth/logout`,
         {
           email: email,
         },

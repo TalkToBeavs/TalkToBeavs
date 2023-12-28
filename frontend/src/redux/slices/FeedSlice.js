@@ -1,12 +1,16 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 
+const BASE_URL = import.meta.env.VITE_APP_PROD_BACKEND_URL;
+
+if (!BASE_URL) throw new Error('Missing backend URL');
+
 const initialState = {
   posts: [],
 };
 
 export const loadPosts = createAsyncThunk('feed/loadPosts', async () => {
-  const response = await axios.get('https://talk-to-beavs.herokuapp.com/api/feed/get_posts', {
+  const response = await axios.get(`${BASE_URL}/api/feed/get_posts`, {
     headers: {
       Authorization: `Bearer ${localStorage.getItem('token')}`,
     },
@@ -17,7 +21,7 @@ export const loadPosts = createAsyncThunk('feed/loadPosts', async () => {
 export const createPost = createAsyncThunk('feed/createPost', async (post, { rejectWithValue }) => {
   try {
     const response = await axios.post(
-      'https://talk-to-beavs.herokuapp.com/api/feed/create_post',
+      `${BASE_URL}/api/feed/create_post`,
       post,
       {
         headers: {
@@ -36,7 +40,7 @@ export const upvotePostAsync = createAsyncThunk(
   async ({ postId, isUpvoted, isDownvoted, onid }, { rejectWithValue }) => {
     try {
       const response = await axios.post(
-        `https://talk-to-beavs.herokuapp.com/api/feed/upvote_post/`,
+        `${BASE_URL}/api/feed/upvote_post/`,
         { isUpvoted, isDownvoted, postId, onid },
         {
           headers: {
@@ -56,7 +60,7 @@ export const downvotePostAsync = createAsyncThunk(
   async ({ postId, isUpvoted, isDownvoted, onid }, { rejectWithValue }) => {
     try {
       const response = await axios.post(
-        `https://talk-to-beavs.herokuapp.com/api/feed/downvote_post/`,
+        `${BASE_URL}/api/feed/downvote_post/`,
         { isUpvoted, isDownvoted, postId, onid },
         {
           headers: {
@@ -76,7 +80,7 @@ export const editPost = createAsyncThunk(
   async ({ postId, content }, { rejectWithValue }) => {
     try {
       const response = await axios.post(
-        `https://talk-to-beavs.herokuapp.com/api/feed/edit_post/`,
+        `${BASE_URL}/api/feed/edit_post/`,
         { postId, content },
         {
           headers: {
@@ -96,7 +100,7 @@ export const deletePost = createAsyncThunk(
   async ({ postId }, { rejectWithValue }) => {
     try {
       const response = await axios.post(
-        `https://talk-to-beavs.herokuapp.com/api/feed/delete_post/`,
+        `${BASE_URL}/api/feed/delete_post/`,
         { postId },
         {
           headers: {

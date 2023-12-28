@@ -52,10 +52,6 @@ function SidebarWithHeader({ children }) {
     if (localStorage.getItem('token')) {
       dispatch(loadUserData(localStorage.getItem('token')));
     }
-
-    if (!localStorage.getItem('token')) {
-      navigate('/login');
-    }
   }, []);
 
   const breakPt = useBreakpointValue({ base: false, md: true });

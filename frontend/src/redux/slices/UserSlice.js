@@ -2,6 +2,10 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 import usersJson from '../../data/users.json';
 
+const BASE_URL = import.meta.env.VITE_APP_PROD_BACKEND_URL;
+
+if (!BASE_URL) throw new Error('Missing backend URL');
+
 const mappedUsers = usersJson.map((user) => {
   return {
     ...user,
@@ -12,7 +16,7 @@ export const loadUserData = createAsyncThunk(
   'user/loadUserData',
   async (email, { rejectWithValue }) => {
     try {
-      const response = await axios.get(`https://talk-to-beavs.herokuapp.com/api/auth/load_user`, {
+      const response = await axios.get(`${BASE_URL}/api/auth/load_user`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem('token')}`,
         },
@@ -29,7 +33,7 @@ export const registerUser = createAsyncThunk(
   async (values, { rejectWithValue }) => {
     try {
       const response = await axios.post(
-        'https://talk-to-beavs.herokuapp.com/api/auth/register',
+        `${BASE_URL}/api/auth/register`,
         values,
         {
           headers: {
@@ -47,7 +51,7 @@ export const registerUser = createAsyncThunk(
 export const editUser = createAsyncThunk('user/edit', async (values, { rejectWithValue }) => {
   try {
     const response = await axios.patch(
-      `https://talk-to-beavs.herokuapp.com/api/profile/edit_profile`,
+      `${BASE_URL}/api/profile/edit_profile`,
       values,
       {
         headers: {
@@ -64,7 +68,7 @@ export const editUser = createAsyncThunk('user/edit', async (values, { rejectWit
 export const followUser = createAsyncThunk('user/follow', async (values, { rejectWithValue }) => {
   try {
     const response = await axios.post(
-      'https://talk-to-beavs.herokuapp.com/api/social/follow_user',
+      `${BASE_URL}/api/social/follow_user`,
       values,
       {
         headers: {

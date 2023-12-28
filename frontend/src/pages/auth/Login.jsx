@@ -19,6 +19,10 @@ import ttb from '../../assets/logo.png';
 import { slideAnimation } from '../../lib/animations';
 import { loginUser } from '../../redux/slices/UserSlice';
 
+const BASE_URL = import.meta.env.VITE_APP_PROD_BACKEND_URL;
+
+if (!BASE_URL) throw new Error('Missing backend URL');
+
 function Login() {
   const navigate = useNavigate();
   const [isMobile] = useMediaQuery('(max-width: 768px)');
@@ -49,7 +53,7 @@ function Login() {
     };
 
     try {
-      const res = await axios.post('https://talk-to-beavs.herokuapp.com/api/auth/login', data);
+      const res = await axios.post(`${BASE_URL}/api/auth/login`, data);
 
 
       if (res.status === 200) {
