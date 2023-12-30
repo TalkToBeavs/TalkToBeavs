@@ -31,6 +31,7 @@ import ttb from '../../assets/logo.png';
 import { loadUserData } from '../../redux/slices/UserSlice';
 import { TalkToBeavsMobile } from '../text/TalkToBeavs';
 import OnlineUser from './OnlineUser';
+import ThemeToggle from '@/components/layout/ThemeToggle';
 
 const LinkItems = [
   { name: 'Home', icon: FiHome, link: '/home' },
@@ -159,6 +160,7 @@ const NavItem = ({ icon, children, ...rest }) => {
 };
 
 const SidebarContent = ({ onClose, ...rest }) => {
+  const navigate = useNavigate();
   return (
     <Box
       bg={useColorModeValue('white', 'gray.900')}
@@ -172,9 +174,10 @@ const SidebarContent = ({ onClose, ...rest }) => {
       top={0}
       {...rest}
     >
-      {/* <Flex h="10" alignItems="center" mx="8" justifyContent="space-between"> */}
+          {/* <Flex h="10" alignItems="center" mx="8" justifyContent="space-between"> */}
+          <ThemeToggle />
 
-      <Image src={ttb} alt='Logo' />
+      <Image src={ttb} alt='TalkToBeavs Logo' w='full' onClick={() => navigate('/')} cursor={'pointer'} aria-label='TalkToBeavs Logo' />
 
       <CloseButton display={{ base: 'flex', md: 'none' }} onClick={onClose} />
       {/* </Flex> */}
