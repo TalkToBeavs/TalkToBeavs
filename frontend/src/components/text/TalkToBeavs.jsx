@@ -7,13 +7,12 @@ export function TalkToBeavsMobile() {
       as='h1'
       textTransform='uppercase'
       letterSpacing='tight'
-      ml={'32'}
-      size='lg'
-      color={useColorModeValue('orange.500', 'orange.500')}
+      size='md'
+          color={useColorModeValue('orange.500', 'orange.500')}
     >
       Talk
-      <Text as='span' mx={0} color={useColorModeValue('gray.900', 'white')} fontSize='lg'>
-        2
+      <Text as='span' mx={0} color={useColorModeValue('gray.900', 'white')} fontSize='xl'>
+        to
       </Text>
       Beavs
     </Heading>

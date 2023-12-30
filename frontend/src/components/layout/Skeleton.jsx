@@ -196,10 +196,10 @@ const MobileNav = ({ onOpen, ...rest }) => {
   return (
     // display={{ base: "flex", md: "none" }}
     <Flex
-      px={{ base: 4, md: 4 }}
+          px={{ base: 4, md: 4 }}
       height='20'
       gap={4}
-      w='100vw'
+      w='full'
       alignItems='center'
       bg={useColorModeValue('white', 'gray.900')}
       borderBottomWidth='1px'
