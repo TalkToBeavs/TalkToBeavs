@@ -36,17 +36,17 @@ function LogoutButton() {
         localStorage.removeItem('token');
         dispatch(logoutUser());
         setTimeout(() => {
-          navigate('/login');
+          navigate('/');
         }, 2000);
       } else {
         setError('Logout failed');
         localStorage.removeItem('token');
-        navigate('/login');
+        navigate('/');
       }
     } catch (err) {
       setError('Logout failed');
       localStorage.removeItem('token');
-      navigate('/login');
+      navigate('/');
     }
   };
 
