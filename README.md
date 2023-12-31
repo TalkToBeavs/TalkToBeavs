@@ -39,6 +39,17 @@ npm install
 
 ### 3. Set the environment variables
 
+> Note: You will need to create a MongoDB database and a Giphy API key.
+
+<b>Frontend:</b>
+
+```bash
+# Create a .env file in root of the frontend directory
+VITE_APP_PROD_BACKEND_URL=
+```
+
+<b>Backend:</b>
+
 ```bash
 # Create a .env.local file in the root directory
 touch .env.local
