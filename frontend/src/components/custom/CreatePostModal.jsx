@@ -26,6 +26,10 @@ import {
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 
+const BASE_URL = import.meta.env.VITE_APP_PROD_BACKEND_URL;
+
+if (!BASE_URL) throw new Error('Missing backend URL');
+
 export default function CreatePostModal({ isOpen, onClose, handleValidPost }) {
   const [content, setContent] = useState('');
   const [error, setError] = useState(false);
@@ -43,7 +47,7 @@ export default function CreatePostModal({ isOpen, onClose, handleValidPost }) {
 
   async function fetchDataSearch() {
     const response = await fetch(
-      `https://talk-to-beavs.herokuapp.com/api/feed/giphy_search?q=${searchValue}`,
+      `${BASE_URL}/api/feed/giphy_search?q=${searchValue}`,
       {
         headers: {
           Authorization: `Bearer ${localStorage.getItem('token')}`,
@@ -57,7 +61,7 @@ export default function CreatePostModal({ isOpen, onClose, handleValidPost }) {
   }
 
   async function fetchDataTrending() {
-    const response = await fetch(`https://talk-to-beavs.herokuapp.com/api/feed/giphy_trending`,
+    const response = await fetch(`${BASE_URL}/api/feed/giphy_trending`,
       {
         headers: {
           Authorization: `Bearer ${localStorage.getItem('token')}`,

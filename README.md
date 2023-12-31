@@ -1,62 +1,54 @@
-<h1 align="center"><img height="300" src="frontend/src/assets/alt-logo.png" alt="logo">
+[![TalkToBeavs](hero.png)](https://talktobeavs.onrender.com/)
 
-<p align="center">
-	<img width="100" height="30" src="https://badges.aleen42.com/src/react.svg">
-	<img width="100" height="30" src="https://badges.aleen42.com/src/redux.svg">
-	<img width="100" height="30" src="https://badges.aleen42.com/src/node.svg">
-	<img width="120" height="30" src="https://badges.aleen42.com/src/javascript.svg">
-      <img width="140" height="30" src="https://badges.aleen42.com/src/react-router.svg">
-	<img width="100" height="30" src="https://badges.aleen42.com/src/vitejs.svg">
+# TalkToBeavs 🦫
+
+<p align="left">
+	<img width="70" height="20" src="https://badges.aleen42.com/src/react.svg">
+	<img width="70" height="20" src="https://badges.aleen42.com/src/redux.svg">
+	<img width="70" height="20" src="https://badges.aleen42.com/src/node.svg">
+	<img width="90" height="20" src="https://badges.aleen42.com/src/javascript.svg">
+      <img width="100" height="20" src="https://badges.aleen42.com/src/react-router.svg">
+	<img width="70" height="20" src="https://badges.aleen42.com/src/vitejs.svg">
 </p>
-	
-</h1>
 
-<!-- End header --->
+TalkToBeavs is a real-time chat application that allows users to communicate with each other through text, audio, and video. It is limited to Oregon State University students and faculty, but provides a fun and easy way to connect with other Beavers! Check it out <a href="https://talktobeavs.onrender.com">here.</a> 🚀
 
-<p align="center" style="font-size:20px;">
-	<h3 align="center">🦫 Welcome to the official repository for TalkToBeavs! 🦫 </h3>
-	<br>
-	<p align="center"
-	<i align="center"> TalkToBeavs is a social media application that allows Oregon State University students to connect with each other and chat in real-time. Users can create and join their own rooms to chat with other beavs in Video or Text chat.
-	<br><br>Users can post messages and share GIFs from Giphy on the feed. Users can upvote and downvote posts on the feed to signify their liking/dislike of a post. Users can also follow other beavs to see their posts, as well as edit their profile.</i>
-      <br>
-	<br>
-	<h3 align="center">TalkToBeavs was made with ♡ by: <br> <a href="https://github.com/Nyumat">@nyumat</a>  <a href="https://github.com/artkolpakov">@artkolpakov</a> <a href="https://github.com/hannacol">@hannacol</a> <a href="https://github.com/solderq35">@solderq35</a></h3>
-	<br>
-      <h3 align="center">
-	🚀  This Project has been deployed <a href="https://talktobeavs.onrender.com">here</a> 🚀  </h3>
-	</p>
-</p>
-<h1></h1>
-<!-- End welcome --->
+# Getting Started
 
-<h1 align="center">Getting Started</h1>
-
-
-<h2>How to run the project locally:</h2>
+## How to run the project locally:
 
 1. Clone the repository
 2. Install dependencies
 3. Get environment variables
 4. Run the project
 
-<h3>1. Clone the repository</h3>
+### 1. Clone the repository
 
 ```bash
-git clone https://github.com/osu-cs494-w23/TalkToBeavs.git
+git clone https://github.com/Nyumat/TalkToBeavs.git
 ```
 
-<h3>2. Install the dependencies</h3>
+### 2. Install the dependencies
 
 ```bash
-cd TalkToBeavs
-cd frontend
-npm install
+cd TalkToBeavs/frontend
+npm install # or yarn, pnpm, etc.
 cd ..
 npm install
 ```
 
-<h3>3. Get environment variables</h3>
+### 3. Set the environment variables
+
+> Note: You will need to create a MongoDB database and a Giphy API key.
+
+<b>Frontend:</b>
+
+```bash
+# Create a .env file in root of the frontend directory
+VITE_APP_PROD_BACKEND_URL="http://localhost:[PORT BACKEND IS RUNNING ON]"
+```
+
+<b>Backend:</b>
 
 ```bash
 # Create a .env.local file in the root directory
@@ -72,38 +64,37 @@ GIPHY_API_KEY=
 # Don't forget to add your own values!
 ```
 
-<h3>4. Run the project</h3>
+### 4. Run the project
 
 ```bash
 # Run the frontend
 cd frontend
 npm run dev
 
-# Run the backend
+# Open a new terminal window and run the backend
 cd TalkToBeavs (root directory)
 npm run dev
 ```
-<h1></h1>
 
-<h2>TalkToBeavs is proud to be built with:</h2>
+## TalkToBeavs is proud to be built with:
 
 - [React](https://react.dev/)
-   - JavaScript library for building user interfaces
+  - JavaScript library for building user interfaces
 - [MongoDB](https://www.mongodb.com/)
-   - NoSQL document database
+  - NoSQL document database
 - [Vite](https://vitejs.dev/)
-   - Fast and lightweight development server
+  - Build tool for frontend development
 - [Socket.io](https://socket.io/)
-   - Real-time communication between users
+  - Real-time communication between client and server
 - [Redux Toolkit](https://redux-toolkit.js.org/)
-   - Manage state and data flow between components
+  - Flux-like state management library
 - [Express](https://expressjs.com/)
-   - Web framework for Node.js
+  - Web application framework for Node.js
 - [WebRTC](https://webrtc.org/)
-   - Peer-to-peer video and audio communication
+  - Peer-to-peer video and audio communication in the browser
 - [Chakra UI](https://chakra-ui.com/)
-   - React component library for styling
+  - Simple, modular, and accessible component library
 - [React Router](https://reactrouter.com/)
-   - Manage client-side routing and navigation	
+  - Declarative routing for React
 - [Giphy API](https://developers.giphy.com/)
-   - Search and share GIFs
+  - API for searching and retrieving GIFs

@@ -1,13 +1,17 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 
+const BASE_URL = import.meta.env.VITE_APP_PROD_BACKEND_URL;
+
+if (!BASE_URL) throw new Error('Missing backend URL');
+
 function usePosts({ onid }) {
   const [posts, setPosts] = useState(null);
 
   const fetchPosts = async () => {
     try {
       const response = await axios.get(
-        `https://talk-to-beavs.herokuapp.com/api/feed/get_posts/user?onid=${onid}`,
+        `${BASE_URL}/api/feed/get_posts/user?onid=${onid}`,
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`,

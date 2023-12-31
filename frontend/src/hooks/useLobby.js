@@ -1,13 +1,17 @@
 import { useEffect, useRef, useState } from 'react';
 import socketIOClient from 'socket.io-client';
 
+const BASE_URL = import.meta.env.VITE_APP_PROD_BACKEND_URL;
+
+if (!BASE_URL) throw new Error('Missing backend URL');
+
 const useLobby = (onid, option) => {
   const [queue, setQueue] = useState([]);
   const [roomId, setRoomId] = useState(null);
   const socketRef = useRef(null);
 
   useEffect(() => {
-    socketRef.current = socketIOClient('https://talk-to-beavs.herokuapp.com', {
+    socketRef.current = socketIOClient(BASE_URL, {
       query: { onid },
     });
 
