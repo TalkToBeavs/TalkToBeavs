@@ -45,7 +45,7 @@ npm install
 
 ```bash
 # Create a .env file in root of the frontend directory
-VITE_APP_PROD_BACKEND_URL=
+VITE_APP_PROD_BACKEND_URL="http://localhost:[PORT BACKEND IS RUNNING ON]"
 ```
 
 <b>Backend:</b>
