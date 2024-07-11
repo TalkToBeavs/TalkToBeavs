@@ -101,8 +101,11 @@ function SidebarWithHeader({ children }) {
           </Drawer>
         )}
         {/* mobilenav */}
-        {isMobile && <MobileNav onOpen={onOpen} />}
-
+        {isMobile &&
+          location.pathname !== '/login' &&
+          location.pathname !== '/signup' &&
+          <MobileNav onOpen={onOpen} />
+        }
         <Box>{children}</Box>
       </>
     </Box>
