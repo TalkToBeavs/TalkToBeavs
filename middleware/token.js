@@ -1,13 +1,13 @@
 import jwt from 'jsonwebtoken';
 import dotenv from 'dotenv';
-import User from '../models/User/User.js';
-
+// import User from '../models/User/User.js';
+// import client from "../../TalkToBeavs/models/prisma/prisma"
 dotenv.config();
 
 const generateToken = (user) => {
   const token = jwt.sign(
     {
-      id: user._id,
+      id: user.id,
       username: user.username,
       email: user.email,
     },
@@ -32,11 +32,23 @@ const verifyToken = async (req, res, next) => {
 
   try {
     const decoded = jwt.verify(tokenString, process.env.JWT_SECRET);
-    const user = await User.findById(decoded.id);
+    const user = await client.User.findUnique({
+      where: {
+        id: decoded.id
+      },
+      select: {
+        id: true,
+        username: true,
+        email: true,
+      }
+    });
+    if (!user) {
+      return res.status(401).json({ msg: '[⚡️]: User not found. Authorization denied.' });
+    }
 
-    const { password, posts, following, followers, ...userWithout } = user.toObject();
-    req.user = userWithout;
+    req.user = user;
     next();
+
   } catch (err) {
     res
       .status(400)

@@ -10,14 +10,11 @@ function usePosts({ onid }) {
 
   const fetchPosts = async () => {
     try {
-      const response = await axios.get(
-        `${BASE_URL}/api/feed/get_posts/user?onid=${onid}`,
-        {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem('token')}`,
-          },
+      const response = await axios.get(`${BASE_URL}/api/feed/get_posts/user?onid=${onid}`, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
         },
-      );
+      });
       setPosts(response.data.posts);
     } catch (err) {
       setPosts(null);

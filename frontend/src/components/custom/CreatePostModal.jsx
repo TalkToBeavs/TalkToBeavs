@@ -46,14 +46,11 @@ export default function CreatePostModal({ isOpen, onClose, handleValidPost }) {
   };
 
   async function fetchDataSearch() {
-    const response = await fetch(
-      `${BASE_URL}/api/feed/giphy_search?q=${searchValue}`,
-      {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem('token')}`,
-        }
-      }
-    );
+    const response = await fetch(`${BASE_URL}/api/feed/giphy_search?q=${searchValue}`, {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('token')}`,
+      },
+    });
     const json = await response.json();
 
     setData(json.data.data);
@@ -61,13 +58,11 @@ export default function CreatePostModal({ isOpen, onClose, handleValidPost }) {
   }
 
   async function fetchDataTrending() {
-    const response = await fetch(`${BASE_URL}/api/feed/giphy_trending`,
-      {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem('token')}`,
-        }
-      }
-    );
+    const response = await fetch(`${BASE_URL}/api/feed/giphy_trending`, {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('token')}`,
+      },
+    });
     const json = await response.json();
     setData(json.data.data);
     setShouldFetchTrending(false);
@@ -80,7 +75,6 @@ export default function CreatePostModal({ isOpen, onClose, handleValidPost }) {
   }, [shouldFetch, searchValue]);
 
   useEffect(() => {
-
     if (shouldFetchTrending) {
       fetchDataTrending();
     }

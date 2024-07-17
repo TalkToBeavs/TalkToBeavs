@@ -55,7 +55,6 @@ function Login() {
     try {
       const res = await axios.post(`${BASE_URL}/api/auth/login`, data);
 
-
       if (res.status === 200) {
         localStorage.setItem('token', res.data.token);
         setTimeout(() => {
@@ -76,7 +75,7 @@ function Login() {
     } catch (err) {
       setLoading(false);
 
-      if (err?.code === "ERR_NETWORK") {
+      if (err?.code === 'ERR_NETWORK') {
         setError('Connection error. Please try again later.');
       } else {
         if (err.response.data.message === 'Incorrect password') {

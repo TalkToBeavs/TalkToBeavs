@@ -1,6 +1,6 @@
 import { Router } from 'express';
-import User from '../../models/User/User.js';
-
+// import User from '../../models/User/User.js';
+import client from "../../models/prisma/prisma.js"
 const router = Router();
 
 router.get('/', async (req, res) => {
@@ -12,13 +12,17 @@ router.get('/', async (req, res) => {
     const { onid } = req.query;
     const email = `${onid}@oregonstate.edu`;
 
-    const userProfile = await User.findOne({ email: email });
+    const userProfile = await client.User.findUnique({
+      where: {
+        email: email
+      }
+    });
 
-    const { password, ...userWithoutPassword } = userProfile.toObject();
-
+    
     if (!userProfile) {
       return res.status(404).json({ message: 'User not found' });
     }
+    const { password, ...userWithoutPassword } = userProfile();
 
     return res.status(200).json({ user: userWithoutPassword });
   } catch (err) {

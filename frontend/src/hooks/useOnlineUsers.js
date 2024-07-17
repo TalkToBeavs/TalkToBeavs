@@ -10,14 +10,11 @@ function useOnlineUsers() {
 
   const fetchUsers = async () => {
     try {
-      const response = await axios.get(
-        `${BASE_URL}/api/social/online_users`,
-        {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem('token')}`,
-          },
+      const response = await axios.get(`${BASE_URL}/api/social/online_users`, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
         },
-      );
+      });
       setUsers(response.data.users);
     } catch (err) {
       setUsers([]);

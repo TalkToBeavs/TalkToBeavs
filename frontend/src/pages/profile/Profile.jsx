@@ -18,7 +18,7 @@ export default function Profile() {
   const profile = useProfile({ onid });
   const allPosts = useSelector(selectAllPosts)?.filter(
     (post) => post.postedBy.split('@')[0].toString() === onid.toString(),
-  ) 
+  );
   useEffect(() => {
     document.querySelector('title').innerHTML = `${onid}'s Profile`;
 

@@ -1,0 +1,80 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Standing {
+  Freshman
+  Sophomore
+  Junior
+  Senior
+  GradStudent
+}
+
+model Room {
+  id       Int     @id @default(autoincrement())
+  name     String  @unique
+  users    User[]
+  messages String
+  isVideo  Boolean
+}
+
+model Feed {
+  id    Int    @id @default(autoincrement())
+  posts Post[]
+}
+
+model Post {
+  id         Int       @id @default(autoincrement())
+  content    String
+  upvotes    Int[]
+  downvotes  Int[]
+  postedBy   User      @relation(fields: [postedById], references: [id])
+  postedById Int
+  postAt     DateTime?
+  updatedAt  DateTime  @updatedAt
+  Feed       Feed?     @relation(fields: [feedId], references: [id])
+  feedId     Int?
+}
+
+model User {
+  id              Int                 @id @default(autoincrement())
+  email           String              @unique
+  password        String
+  name            String
+  standing        Standing?
+  major           String?
+  bio             String?
+  posts           Post[]
+  online          Boolean             @default(false)
+  room            Room?               @relation(fields: [roomId], references: [id])
+  roomId          Int?
+  following       FollowingRelation[] @relation("userFollowing")
+  followedBy      FollowerRelation[]  @relation("userFollowed")
+  followingUsers  FollowerRelation[]  @relation("userFollowing")
+  followedByUsers FollowingRelation[] @relation("userFollowed")
+}
+
+model FollowingRelation {
+  id          Int  @id @default(autoincrement())
+  user        User @relation("userFollowed", fields: [userId], references: [id])
+  userId      Int
+  following   User @relation("userFollowing", fields: [followingId], references: [id])
+  followingId Int
+
+  @@unique([userId, followingId])
+}
+
+model FollowerRelation {
+  id         Int  @id @default(autoincrement())
+  user       User @relation("userFollowed", fields: [userId], references: [id])
+  userId     Int
+  follower   User @relation("userFollowing", fields: [followerId], references: [id])
+  followerId Int
+
+  @@unique([userId, followerId])
+}

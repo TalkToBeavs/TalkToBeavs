@@ -8,7 +8,7 @@ export function TalkToBeavsMobile() {
       textTransform='uppercase'
       letterSpacing='tight'
       size='md'
-          color={useColorModeValue('orange.500', 'orange.500')}
+      color={useColorModeValue('orange.500', 'orange.500')}
     >
       Talk
       <Text as='span' mx={0} color={useColorModeValue('gray.900', 'white')} fontSize='xl'>
