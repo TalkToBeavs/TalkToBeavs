@@ -4,5 +4,6 @@ node_modules
 .DS_Store
 .vs
 .vscode
+.idea
 frontend/node_modules
 frontend/dist
