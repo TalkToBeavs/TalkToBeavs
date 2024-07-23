@@ -23,7 +23,7 @@ import EditPostModal from '../custom/EditPostModal';
 import useProfile from '../../hooks/useProfile';
 import { useLocation } from 'react-router-dom';
 
-const Post = ({ post, reportOnOpen }) => {
+const Post = ({ post, handleReportOpening }) => {
   const [isMobile] = useMediaQuery('(max-width: 768px)');
   const { isOpen, onOpen, onClose } = useDisclosure();
   const location = useLocation();
@@ -222,14 +222,9 @@ const Post = ({ post, reportOnOpen }) => {
                   icon={<WarningIcon />}
                   variant='ghost'
                   size='sm'
-                  onClick={()=> {
-                    console.log("Post Reported")
-                    reportOnOpen()
-                  }}
+                  onClick={() => handleReportOpening(post)}
               />
             </Tooltip>
-
-
           </Flex>
 
 
