@@ -13,11 +13,13 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Post from '../../components/card/Post';
 import CreatePostModal from '../../components/custom/CreatePostModal';
+import ReportPostModal from "../../components/custom/ReportPostModal";
 import { createPost, loadPosts, selectAllPosts } from '../../redux/slices/FeedSlice';
 
 function Feed() {
   const [isMobile] = useMediaQuery('(max-width: 768px)');
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const { isOpen: reportIsOpen, onOpen: reportOnOpen, onClose: reportOnClose } = useDisclosure();
 
   const dispatch = useDispatch();
   const allPosts = useSelector(selectAllPosts);
@@ -29,6 +31,10 @@ function Feed() {
   const handleValidPost = (post) => {
     dispatch(createPost(post));
   };
+
+  const handleValidReport = (reportReason) =>{
+
+  }
 
   return (
     
@@ -59,6 +65,7 @@ function Feed() {
               mt={4}
             />
             <CreatePostModal isOpen={isOpen} onClose={onClose} handleValidPost={handleValidPost} />
+            <ReportPostModal isOpen={reportIsOpen} onClose={reportOnClose} onSubmit={handleValidReport} />
           </Box>
 
           <Text
@@ -92,7 +99,7 @@ function Feed() {
           mt={4}
         >
           {allPosts?.map((post, i) => (
-            <Post key={i} post={post} />
+            <Post key={i} post={post} reportOnOpen={reportOnOpen} />
           ))}
         </Box>
       </Flex>
