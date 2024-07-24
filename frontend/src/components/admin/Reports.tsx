@@ -21,7 +21,7 @@ interface Post {
   id: number;
   title: string;
   content: string;
-  authorId: string;
+  authorId: number;
   createdAt: Date;
   updatedAt: Date;
   isPublished: boolean;
@@ -188,7 +188,7 @@ const posts: Post[] = [
     title: 'Exploring TypeScript',
     content:
       'TypeScript is a superset of JavaScript that provides static typing. It helps in catching errors early and improving code quality.',
-    authorId: '1',
+    authorId: 1,
     createdAt: new Date('2024-01-01T10:00:00Z'),
     updatedAt: new Date('2024-01-02T10:00:00Z'),
     isPublished: true,
@@ -198,7 +198,7 @@ const posts: Post[] = [
     title: 'Understanding Chakra UI',
     content:
       'Chakra UI is a simple, modular, and accessible component library for React applications. It provides a set of reusable components and hooks.',
-    authorId: '2',
+    authorId: 2,
     createdAt: new Date('2024-01-03T11:00:00Z'),
     updatedAt: new Date('2024-01-04T11:00:00Z'),
     isPublished: true,
@@ -208,7 +208,7 @@ const posts: Post[] = [
     title: 'Introduction to Web Design',
     content:
       'Web design encompasses many different skills and disciplines in the production and maintenance of websites. It involves graphic design, user experience design, and more.',
-    authorId: '3',
+    authorId: 3,
     createdAt: new Date('2024-01-05T12:00:00Z'),
     updatedAt: new Date('2024-01-06T12:00:00Z'),
     isPublished: false,
@@ -218,7 +218,7 @@ const posts: Post[] = [
     title: 'Why Use Figma?',
     content:
       'Figma is a powerful design tool that allows for collaborative design in real-time. It’s widely used for UI/UX design and prototyping.',
-    authorId: '4',
+    authorId: 4,
     createdAt: new Date('2024-01-07T13:00:00Z'),
     updatedAt: new Date('2024-01-08T13:00:00Z'),
     isPublished: true,
@@ -228,7 +228,7 @@ const posts: Post[] = [
     title: 'Getting Started with React',
     content:
       'React is a JavaScript library for building user interfaces. It allows developers to create single-page applications with a component-based architecture.',
-    authorId: '5',
+    authorId: 5,
     createdAt: new Date('2024-01-09T14:00:00Z'),
     updatedAt: new Date('2024-01-10T14:00:00Z'),
     isPublished: true,
@@ -238,7 +238,7 @@ const posts: Post[] = [
     title: 'The Benefits of Static Typing',
     content:
       'Static typing helps developers catch errors at compile time, leading to more robust and maintainable code. TypeScript is a popular choice for static typing in JavaScript.',
-    authorId: '6',
+    authorId: 6,
     createdAt: new Date('2024-01-11T15:00:00Z'),
     updatedAt: new Date('2024-01-12T15:00:00Z'),
     isPublished: false,
@@ -248,7 +248,7 @@ const posts: Post[] = [
     title: 'Advanced CSS Techniques',
     content:
       'CSS has evolved significantly with new features and techniques. Learn about Flexbox, Grid, and custom properties to create advanced layouts.',
-    authorId: '7',
+    authorId: 7,
     createdAt: new Date('2024-01-13T16:00:00Z'),
     updatedAt: new Date('2024-01-14T16:00:00Z'),
     isPublished: true,
@@ -258,7 +258,7 @@ const posts: Post[] = [
     title: 'Building Accessible Web Applications',
     content:
       'Accessibility is crucial in web design to ensure that applications are usable by everyone, including those with disabilities. Learn about ARIA roles, semantic HTML, and more.',
-    authorId: '8',
+    authorId: 8,
     createdAt: new Date('2024-01-15T17:00:00Z'),
     updatedAt: new Date('2024-01-16T17:00:00Z'),
     isPublished: true,
@@ -268,7 +268,7 @@ const posts: Post[] = [
     title: 'JavaScript ES6 Features',
     content:
       'ES6 introduced several new features to JavaScript, including arrow functions, classes, and template literals. Understanding these features can help you write cleaner and more efficient code.',
-    authorId: '9',
+    authorId: 9,
     createdAt: new Date('2024-01-17T18:00:00Z'),
     updatedAt: new Date('2024-01-18T18:00:00Z'),
     isPublished: false,
@@ -278,7 +278,7 @@ const posts: Post[] = [
     title: 'Best Practices for Code Reviews',
     content:
       'Code reviews are essential for maintaining code quality. Learn best practices for providing constructive feedback and ensuring that code is both efficient and readable.',
-    authorId: '10',
+    authorId: 10,
     createdAt: new Date('2024-01-19T19:00:00Z'),
     updatedAt: new Date('2024-01-20T19:00:00Z'),
     isPublished: true,
@@ -303,6 +303,23 @@ const Reports: React.FC = () => {
       return null;
     } else {
       return user;
+    }
+  };
+
+  const getPostTitle = (id: number) => {
+    const post = posts.find((post) => post.id === id);
+    if (post == undefined) {
+      return null;
+    } else {
+      return post.title;
+    }
+  };
+  const getPostContent = (id: number) => {
+    const post = posts.find((post) => post.id === id);
+    if (post == undefined) {
+      return null;
+    } else {
+      return post.content;
     }
   };
 
@@ -356,7 +373,22 @@ const Reports: React.FC = () => {
               {selectedReport.title}
             </Text>
             <Text mt='4'>{selectedReport.reasoning}</Text>
-            <Text mt='4' fontWeight='bold'>
+            {selectedReport.type == 'Post' ? (
+              <>
+                <Text fontSize='xl' fontWeight='bold'>
+                  Post Content:
+                </Text>
+                <Box border='1px' p='5px' borderRadius='md' mt='4'>
+                  <Text fontSize='lg' fontWeight='bold'>
+                    {getPostTitle(selectedReport?.postReportedId)}
+                  </Text>
+                  <Text>{getPostContent(selectedReport?.postReportedId)}</Text>
+                </Box>
+              </>
+            ) : (
+              <></>
+            )}
+            <Text mt='4' fontWeight='semibold'>
               Reported by: {getReportedByUsername(selectedReport.userReportingId)}
             </Text>
             <HStack spacing='4' mt='6'>
@@ -367,8 +399,10 @@ const Reports: React.FC = () => {
               )}
               <Button colorScheme='orange' onClick={() => userOnOpen()}>
                 User Options
-              </Button>{' '}
-              {/* ^^ This will be used to display a user modal  */}
+              </Button>
+              <Button colorScheme='green' onClick={() => userOnOpen()}>
+                Ignore
+              </Button>
             </HStack>
           </>
         ) : (
