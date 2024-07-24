@@ -25,6 +25,7 @@ import TextChat from "../pages/chat/TextChat";
 import VideoChat from "../pages/chat/VideoChat";
 import Edit from "../pages/profile/Edit";
 import Profile from "../pages/profile/Profile";
+import Admin from "../pages/admin/Admin";
 
 const App = () => {
 	const location = useLocation();
@@ -67,6 +68,8 @@ const App = () => {
 
 						<Route path="/text" element={<TextLobby />} />
 						<Route path="/text/:roomId" element={<TextChat />} />
+
+						<Route path="/admin" element={<Admin />} />
 
 						<Route path="*" element={<FourOhFour />} />
 					</Routes>
