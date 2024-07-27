@@ -68,11 +68,17 @@ GIPHY_API_KEY=
 - Ensure you have [Docker](https://www.docker.com/get-started) installed on your machine.
 - Keep your docker desktop app running
 ```bash
-docker run -p 5432:5432  -e POSTGRES_PASSWORD=mysecretpassword  -d postgres
+docker run -d \
+    --name talk \
+    -e POSTGRES_USER=myuser \
+    -e POSTGRES_PASSWORD=mypassword \
+    -e POSTGRES_DB=mydatabase \
+    -p 5432:5432 \
+    postgres
 ```
-- Replace your DATABASE_URL with your own  password
+- Based on this your connection URL will be
 ```bash
-postgresql://postgres:mysecretpassword@localhost:5432/postgres
+DATABASE_URL=postgresql://myuser:mypassword@localhost:5432/mydatabase?schema=public
 
 ```
 
