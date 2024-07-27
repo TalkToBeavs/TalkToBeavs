@@ -14,7 +14,7 @@ router.post('/', async (req, res) => {
   const { postId, isUpvoted, isDownvoted, onid } = req.body;
 
   try {
-    const postToDownvote = await client.Post.findUnique({
+    const postToDownvote = await client.post.findUnique({
       where: {
         id: parseInt(postId),
       },

@@ -10,11 +10,11 @@ router.post('/', async (req, res) => {
   const { postId, content } = req.body;
 
   try {
-    const postToEdit = await client.Post.findUnique({
+    const postToEdit = await client.post.findUnique({
       where: {
         id: parseInt(postId),
       },
-      includes: {
+      include: {
         postedBy: true,
       },
     });

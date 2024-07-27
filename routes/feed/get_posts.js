@@ -7,8 +7,8 @@ const router = Router();
 
 router.get('/', async (req, res) => {
   try {
-    const feed = await client.Feed.findMany({
-      includes: {
+    const feed = await client.feed.findMany({
+      include: {
         posts: {
           include: { postedBy: true },
           orderBy: { postAt: 'desc' },

@@ -30,7 +30,7 @@ router.patch("/", async (req, res) => {
       }
 
       try {
-            const user = await client.User.findUnique({
+            const user = await client.user.findUnique({
                   where: {
                         email: email
                   }
@@ -39,7 +39,7 @@ router.patch("/", async (req, res) => {
             if (!user) {
                   return res.status(401).json({ message: "User not found" });
             }
-            const updatedUser = await client.User.update({
+            const updatedUser = await client.user.update({
                   where: { email: email },
                   data: {
 

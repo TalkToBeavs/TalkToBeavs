@@ -12,7 +12,7 @@ router.get('/', async (req, res) => {
     const { onid } = req.query;
     const email = `${onid}@oregonstate.edu`;
 
-    const userProfile = await client.User.findUnique({
+    const userProfile = await client.user.findUnique({
       where: {
         email: email
       }
@@ -22,7 +22,7 @@ router.get('/', async (req, res) => {
     if (!userProfile) {
       return res.status(404).json({ message: 'User not found' });
     }
-    const { password, ...userWithoutPassword } = userProfile();
+    const { password, ...userWithoutPassword } = userProfile;
 
     return res.status(200).json({ user: userWithoutPassword });
   } catch (err) {

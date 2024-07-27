@@ -10,7 +10,7 @@ router.post('/', async (req, res) => {
   }
 
   try {
-    const feed = await client.Feed.create({
+    const feed = await client.feed.create({
       data: {
         posts: {
           create: [],

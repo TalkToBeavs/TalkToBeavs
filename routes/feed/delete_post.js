@@ -12,11 +12,11 @@ router.post('/', async (req, res) => {
 
   const { postId } = req.body;
   try {
-    const post = await client.Post.findUnique({
+    const post = await client.post.findUnique({
       where: {
         id: postId,
       },
-      includes: {
+      include: {
         postedBy: true,
       },
     });
@@ -26,10 +26,10 @@ router.post('/', async (req, res) => {
     if (post.postedBy.email.split('@')[0] !== req.user.email.split('@')[0]) {
       return res.status(401).json({ message: 'Unauthorized' });
     }
-    await client.Post.delete({
+    await client.post.delete({
       where: { id: postedId },
     });
-    const updatedFeed = await client.Feed.findUnique({
+    const updatedFeed = await client.feed.findUnique({
       where: { id: FEED_ID },
       include: {
         posts: {

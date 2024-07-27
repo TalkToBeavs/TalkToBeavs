@@ -1,12 +1,13 @@
 import { Router } from 'express';
-// import User from '../../models/User/User.js';
-import client from "../../models/prisma/prisma.js"
+import client from '../../models/prisma/prisma.js';
+import { verifyToken } from '../../middleware/token.js';
 
 const router = Router();
 
-router.get('/', async (req, res) => {
+router.get('/',verifyToken, async (req, res) => {
   try {
-    const user = await client.User.findUnique({
+    
+    const user = await client.user.findUnique({
       where:{
         email:req.user.email
       },

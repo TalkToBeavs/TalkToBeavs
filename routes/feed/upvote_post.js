@@ -1,7 +1,7 @@
 import { Router } from 'express';
 // import Post from '../../models/Feed/Post.js';
 // import Feed from '../../models/Feed/Feed.js';
-// import { FEED_ID } from '../../index.js';
+import { FEED_ID } from '../../index.js';
 import client from "../../models/prisma/prisma.js"
 
 const router = Router();

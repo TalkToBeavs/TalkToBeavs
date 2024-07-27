@@ -17,7 +17,7 @@ const queueOptions = (socket, io) => {
             try {
                 room.push(queue.pop())
                 room.push(data)
-                const newRoom = await  client.Room.create({
+                const newRoom = await  client.room.create({
                     ata: {
                         users: {
                             connect: [

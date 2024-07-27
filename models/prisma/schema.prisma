@@ -46,6 +46,7 @@ model User {
   email           String              @unique
   password        String
   name            String
+  avatarImg       String?
   standing        Standing?
   major           String?
   bio             String?

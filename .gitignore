@@ -6,3 +6,4 @@ node_modules
 .vscode
 frontend/node_modules
 frontend/dist
+.env.local

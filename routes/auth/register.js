@@ -21,7 +21,7 @@ router.post('/', async (req, res) => {
       return res.status(401).json({ message: error.details[0].message });
     }
 
-    const user = await client.User.findUnique({
+    const user = await client.user.findUnique({
       where: {
         email: req.body.email,
       },
@@ -31,12 +31,12 @@ router.post('/', async (req, res) => {
       return res.status(400).json({ message: 'User already exists' });
     } else {
       const salt = await genSalt(10);
-      user.password = await hash(user.password, salt);
-      const newUser = await client.User.create({
+     const hashedPassword = await hash(req.body.password, salt);
+      const newUser = await client.user.create({
         data: {
           name: req.body.name,
           password: hashedPassword,
-          email: req.body.email,
+          email: req.body.email, 
         },
       });
 

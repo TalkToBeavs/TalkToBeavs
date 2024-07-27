@@ -23,7 +23,7 @@ router.post('/', async (req, res) => {
             return res.status(401).json({ message: error.details[0].message })
         }
 
-        const user = await client.User.findUnique({
+        const user = await client.user.findUnique({
             where:{
                 email:req.body.email
             }
@@ -37,9 +37,9 @@ router.post('/', async (req, res) => {
         }
 
         const token = generateToken(user);
-
+       
         
-
+        
 
         const updatedUser = await client.user.update({
             where: { id: user.id },

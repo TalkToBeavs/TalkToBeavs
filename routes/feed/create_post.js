@@ -6,6 +6,7 @@ import joi from 'joi'
 import { FEED_ID } from '../../index.js'
 import client from "../../models/prisma/prisma.js"
 
+
 const router = Router()
 
 router.post('/', async (req, res) => {
@@ -28,7 +29,7 @@ router.post('/', async (req, res) => {
     }
 
     try {
-        const user = await client.User.findUnique({ 
+        const user = await client.user.findUnique({ 
             where:{
                 email: postedBy
      }
@@ -38,7 +39,7 @@ router.post('/', async (req, res) => {
             return res.status(400).json({ error: 'User not found' })
         }
 
-        const post = await client.Post.create({
+        const post = await client.post.create({
             data:{
                 postedBy: { connect: { email: user.email } },
                 Feed: { connect: { id: FEED_ID } }
