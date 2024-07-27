@@ -39,7 +39,7 @@ npm install
 
 ### 3. Set the environment variables
 
-> Note: You will need to create a MongoDB database and a Giphy API key.
+> Note: You will need to create  a Giphy API key.
 
 <b>Frontend:</b>
 
@@ -63,8 +63,21 @@ GIPHY_API_KEY=
 
 # Don't forget to add your own values!
 ```
+### 4 Run postgres using docker locally
 
-### 4. Run the project
+- Ensure you have [Docker](https://www.docker.com/get-started) installed on your machine.
+- Keep your docker desktop app running
+```bash
+docker run -p 5432:5432  -e POSTGRES_PASSWORD=mysecretpassword  -d postgres
+```
+- Replace your DATABASE_URL with your own  password
+```bash
+postgresql://postgres:mysecretpassword@localhost:5432/postgres
+
+```
+
+
+### 5. Run the project
 
 ```bash
 # Run the frontend
