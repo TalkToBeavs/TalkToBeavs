@@ -5,7 +5,7 @@ import { FaCog, FaUsers } from 'react-icons/fa';
 
 import Reports from '../../components/admin/Reports';
 import Settings from '../../components/admin/Settings';
-import UsersList from '../../components/admin/Users';
+import Users from '../../components/admin/Users';
 
 const Admin: React.FC = () => {
   return (
@@ -30,7 +30,7 @@ const Admin: React.FC = () => {
             <Reports />
           </TabPanel>
           <TabPanel>
-            <UsersList />
+            <Users />
           </TabPanel>
           <TabPanel>
             <Settings />
