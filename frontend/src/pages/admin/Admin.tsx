@@ -1,9 +1,11 @@
 import { WarningIcon } from '@chakra-ui/icons';
-import { Box, Icon, Tab, TabList, TabPanel, TabPanels, Tabs, Text } from '@chakra-ui/react';
+import { Box, Icon, Tab, TabList, TabPanel, TabPanels, Tabs } from '@chakra-ui/react';
 import React from 'react';
 import { FaCog, FaUsers } from 'react-icons/fa';
 
 import Reports from '../../components/admin/Reports';
+import Settings from '../../components/admin/Settings';
+import UsersList from '../../components/admin/Users';
 
 const Admin: React.FC = () => {
   return (
@@ -28,10 +30,10 @@ const Admin: React.FC = () => {
             <Reports />
           </TabPanel>
           <TabPanel>
-            <Text>Users (To be Implemented...)</Text>
+            <UsersList />
           </TabPanel>
           <TabPanel>
-            <Text>Settings (To be Implemented...)</Text>
+            <Settings />
           </TabPanel>
         </TabPanels>
       </Tabs>
