@@ -13,7 +13,6 @@ const UserCard: React.FC<UserCardProps> = ({ username, profilePicture, onOptions
       p='4'
       borderRadius='md'
       boxShadow='md'
-      width='70vw'
       height='5vh'
       display='flex'
       flexDirection='column'
