@@ -1,4 +1,13 @@
-import { Box, Flex, Input, Select, StackDivider, useDisclosure, VStack } from '@chakra-ui/react';
+import {
+  Box,
+  Button,
+  Flex,
+  Input,
+  Select,
+  StackDivider,
+  useDisclosure,
+  VStack,
+} from '@chakra-ui/react';
 import React, { useState } from 'react';
 import UserOptionsModal from '../custom/UserOptionsModal';
 import UserCard from './UserCard';
@@ -23,24 +32,29 @@ const Users: React.FC = () => {
       <UserOptionsModal isOpen={userIsOpen} onClose={userOnClose} user={selectedUser} />
       <Box p='4'>
         {/* Search and Filters */}
-        <Flex mb='4' align='center'>
+        <Flex mb='4' align='center' wrap='wrap'>
           <Input
             placeholder='Search users'
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            mr='4'
-            maxWidth='400px'
+            m='1'
+            minWidth='200px'
+            maxWidth='300px'
           />
           <Select
             placeholder='Select filter'
             value={filter}
             onChange={(e) => setFilter(e.target.value)}
-            mr='4'
-            maxWidth='200px'
+            m='1'
+            minWidth='200px'
+            maxWidth='300px'
           >
-            <option value='filter1'>Filter 1</option>
-            <option value='filter2'>Filter 2</option>
+            <option value='filter1'>Active</option>
+            <option value='filter2'>Reported</option>
           </Select>
+          <Button width='100px' m='1' justifyContent='center'>
+            Search
+          </Button>
         </Flex>
 
         {/* User Cards */}
