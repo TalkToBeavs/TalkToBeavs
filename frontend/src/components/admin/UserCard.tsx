@@ -1,4 +1,4 @@
-import { Avatar, Box, Button, HStack, Text } from '@chakra-ui/react';
+import { Avatar, Box, Button, HStack, Text, useMediaQuery } from '@chakra-ui/react';
 import React from 'react';
 
 interface UserCardProps {
@@ -8,6 +8,8 @@ interface UserCardProps {
 }
 
 const UserCard: React.FC<UserCardProps> = ({ username, profilePicture, onOptionsClick }) => {
+  const [isMobile] = useMediaQuery('(max-width: 767px)');
+
   return (
     <Box
       p='4'
@@ -27,7 +29,7 @@ const UserCard: React.FC<UserCardProps> = ({ username, profilePicture, onOptions
         </HStack>
 
         <Button size='sm' onClick={onOptionsClick}>
-          Options
+          {isMobile ? '...' : 'Options'}
         </Button>
       </HStack>
     </Box>
