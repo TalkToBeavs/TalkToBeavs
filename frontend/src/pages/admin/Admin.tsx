@@ -1,5 +1,14 @@
 import { WarningIcon } from '@chakra-ui/icons';
-import { Box, Icon, Tab, TabList, TabPanel, TabPanels, Tabs } from '@chakra-ui/react';
+import {
+  Box,
+  Icon,
+  Tab,
+  TabList,
+  TabPanel,
+  TabPanels,
+  Tabs,
+  useMediaQuery,
+} from '@chakra-ui/react';
 import React from 'react';
 import { FaCog, FaUsers } from 'react-icons/fa';
 
@@ -8,8 +17,10 @@ import Settings from '../../components/admin/Settings';
 import Users from '../../components/admin/Users';
 
 const Admin: React.FC = () => {
+  const [isMobile] = useMediaQuery('(max-width: 767px)');
+
   return (
-    <Box ml='200px' p='4'>
+    <Box ml={isMobile ? '0px' : '200px'} p='4'>
       <Tabs variant='enclosed' colorScheme='orange'>
         <TabList>
           <Tab>
