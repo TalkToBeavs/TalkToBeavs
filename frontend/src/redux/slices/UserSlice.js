@@ -32,15 +32,11 @@ export const registerUser = createAsyncThunk(
   'user/register',
   async (values, { rejectWithValue }) => {
     try {
-      const response = await axios.post(
-        `${BASE_URL}/api/auth/register`,
-        values,
-        {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem('token')}`,
-          },
+      const response = await axios.post(`${BASE_URL}/api/auth/register`, values, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
         },
-      );
+      });
       return response.data;
     } catch (err) {
       return rejectWithValue(err.response.data);
@@ -50,15 +46,11 @@ export const registerUser = createAsyncThunk(
 
 export const editUser = createAsyncThunk('user/edit', async (values, { rejectWithValue }) => {
   try {
-    const response = await axios.patch(
-      `${BASE_URL}/api/profile/edit_profile`,
-      values,
-      {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem('token')}`,
-        },
+    const response = await axios.patch(`${BASE_URL}/api/profile/edit_profile`, values, {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('token')}`,
       },
-    );
+    });
     return response.data;
   } catch (err) {
     return rejectWithValue(err.response.data);
@@ -67,15 +59,11 @@ export const editUser = createAsyncThunk('user/edit', async (values, { rejectWit
 
 export const followUser = createAsyncThunk('user/follow', async (values, { rejectWithValue }) => {
   try {
-    const response = await axios.post(
-      `${BASE_URL}/api/social/follow_user`,
-      values,
-      {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem('token')}`,
-        },
+    const response = await axios.post(`${BASE_URL}/api/social/follow_user`, values, {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('token')}`,
       },
-    );
+    });
     return response.data;
   } catch (err) {
     return rejectWithValue(err.response.data);

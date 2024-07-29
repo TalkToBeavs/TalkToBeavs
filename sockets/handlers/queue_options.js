@@ -1,4 +1,5 @@
-import Room from '../../models/Chat/Room.js'
+// import Room from '../../models/Chat/Room.js'
+import client from "../../models/prisma/prisma.js"
 import roomOptions from './room_options.js'
 /*
       This is the handler for the queue options.
@@ -16,15 +17,22 @@ const queueOptions = (socket, io) => {
             try {
                 room.push(queue.pop())
                 room.push(data)
-                const newRoom = new Room({
-                    users: [room[0].name, room[1].name],
-                    messages: [],
-                    isVideo: false,
-                    name: `${room[0].name} and ${room[1].name}'s room`,
+                const newRoom = await  client.room.create({
+                    ata: {
+                        users: {
+                            connect: [
+                                { name: room[0].name },
+                                { name: room[1].name }
+                            ]
+                        },
+                        messages: [],
+                        isVideo: false,
+                        name: `${room[0].name} and ${room[1].name}'s room`,
+                    }
                 })
-                await newRoom.save()
+               
 
-                socket.join(newRoom._id)
+                socket.join(newRoom.id.toString())
 
 
                 io.emit('joinQueue', newRoom)

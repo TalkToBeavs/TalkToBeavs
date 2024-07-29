@@ -1,6 +1,6 @@
 import express from 'express';
 import cors from 'cors';
-import mongoose from 'mongoose';
+
 import dotenv from 'dotenv';
 import rateLimit from 'express-rate-limit';
 
@@ -91,17 +91,17 @@ app.use('/api/profile/edit_profile', verifyToken, edit_profile);
 app.get('/', (req, res) => {
   res.send('Hello TalkToBeavs!');
 });
-mongoose
-  .connect(dbURI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
-  .then(() => {
-    console.log('[Backend ⚡️]: Connected to MongoDB');
-  })
-  .catch((err) => {
-    console.log(err);
-  });
+// mongoose
+//   .connect(dbURI, {
+//     useNewUrlParser: true,
+//     useUnifiedTopology: true,
+//   })
+//   .then(() => {
+//     console.log('[Backend ⚡️]: Connected to MongoDB');
+//   })
+//   .catch((err) => {
+//     console.log(err);
+//   });
 
 const server = app.listen(PORT, () => {
   console.log(`[Backend ⚡️]: Server is running on port ${PORT}`);

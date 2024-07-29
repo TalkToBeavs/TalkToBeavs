@@ -1,7 +1,8 @@
 import { Router } from 'express';
-import Post from '../../models/Feed/Post.js';
-import Feed from '../../models/Feed/Feed.js';
+// import Post from '../../models/Feed/Post.js';
+// import Feed from '../../models/Feed/Feed.js';
 import { FEED_ID } from '../../index.js';
+import client from "../../models/prisma/prisma.js"
 
 const router = Router();
 
@@ -13,7 +14,9 @@ router.post('/', async (req, res) => {
   const { postId, isUpvoted, isDownvoted, onid } = req.body;
 
   try {
-    const postToUpvote = await Post.findById(postId);
+    const postToUpvote = await client.post.findUnique({
+      where: { id: parseInt(postId) },
+    });
 
     // console.log("postToUpvote before the update:", postToUpvote)
 
@@ -21,37 +24,29 @@ router.post('/', async (req, res) => {
       return res.status(400).json({ error: 'Post to upvote not found' });
     }
 
-    postToUpvote.upvotes = [...new Set(postToUpvote.upvotes)];
-    postToUpvote.downvotes = [...new Set(postToUpvote.downvotes)];
+    let upvotes = [...new Set(postToUpvote.upvotes)];
+   let downvotes = [...new Set(postToUpvote.downvotes)];
 
-    const alreadyUpvoted = postToUpvote.upvotes.includes(onid);
+    const alreadyUpvoted = upvotes.includes(parseInt(onid));
 
     if (isUpvoted === false && !alreadyUpvoted) {
       if (isDownvoted === true) {
         // postToUpvote.downvotes -= 1
-        const downvotesIndex = postToUpvote.downvotes.indexOf(onid);
-        if (downvotesIndex !== -1) {
-          postToUpvote.downvotes.splice(downvotesIndex, 1);
-        }
+        downvotes = downvotes.filter(id => id !== parseInt(onid));
       }
-      // postToUpvote.upvotes += 1
-      postToUpvote.upvotes.push(onid);
-    } else {
-      // postToUpvote.upvotes -= 1
-      const upvoteIndex = postToUpvote.upvotes.indexOf(onid);
-      if (upvoteIndex !== -1) {
-        postToUpvote.upvotes.splice(upvoteIndex, 1);
-      }
+      upvotes.push(parseInt(onid));
+    }else{
+      upvotes = upvotes.filter(id => id !== parseInt(onid));
     }
-
-    const feed = await Feed.findOne({ _id: FEED_ID });
-    const postIndex = feed.posts.findIndex((post) => post._id.toString() === postId.toString());
-    feed.posts[postIndex] = postToUpvote;
-
-    // console.log("postToUpvote after the update:", postToUpvote)
-
-    await feed.save();
-    await postToUpvote.save();
+       
+    const updatedPost = await client.post.update({
+      where: { id: parseInt(postId) },
+      data: {
+        upvotes: upvotes,
+        downvotes: downvotes,
+      },
+      include: { postedBy: true }
+    });
 
     return res.status(200).json({ message: 'Post upvoted', post: postToUpvote });
   } catch (err) {

@@ -1,5 +1,6 @@
 import { Router } from 'express';
-import Feed from '../../models/Feed/Feed.js';
+// import Feed from '../../models/Feed/Feed.js';
+import client from "../../models/prisma/prisma.js"
 
 const router = Router();
 
@@ -9,8 +10,16 @@ router.post('/', async (req, res) => {
   }
 
   try {
-    let feed = await Feed.create({ posts: [] });
-    feed = await feed.save();
+    const feed = await client.feed.create({
+      data: {
+        posts: {
+          create: [],
+        },
+      },
+      include: {
+        posts: true,
+      },
+    });
     return res.status(200).json({ message: 'Feed created', feed });
   } catch (err) {
     return res.status(500).json({ error: err.message });

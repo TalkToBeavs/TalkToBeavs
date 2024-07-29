@@ -177,10 +177,17 @@ const SidebarContent = ({ onClose, ...rest }) => {
       top={0}
       {...rest}
     >
-          {/* <Flex h="10" alignItems="center" mx="8" justifyContent="space-between"> */}
-          <ThemeToggle />
+      {/* <Flex h="10" alignItems="center" mx="8" justifyContent="space-between"> */}
+      <ThemeToggle />
 
-      <Image src={ttb} alt='TalkToBeavs Logo' w='full' onClick={() => navigate('/')} cursor={'pointer'} aria-label='TalkToBeavs Logo' />
+      <Image
+        src={ttb}
+        alt='TalkToBeavs Logo'
+        w='full'
+        onClick={() => navigate('/')}
+        cursor={'pointer'}
+        aria-label='TalkToBeavs Logo'
+      />
 
       <CloseButton display={{ base: 'flex', md: 'none' }} onClick={onClose} />
       {/* </Flex> */}
@@ -202,7 +209,7 @@ const MobileNav = ({ onOpen, ...rest }) => {
   return (
     // display={{ base: "flex", md: "none" }}
     <Flex
-          px={{ base: 4, md: 4 }}
+      px={{ base: 4, md: 4 }}
       height='20'
       gap={4}
       w='full'

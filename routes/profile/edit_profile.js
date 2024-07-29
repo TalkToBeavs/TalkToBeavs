@@ -1,6 +1,7 @@
 import { Router } from "express";
-import User from "../../models/User/User.js";
+// import User from "../../models/User/User.js";
 import joi from "joi";
+import client from "../../models/prisma/prisma.js"
 
 const router = Router();
 
@@ -29,20 +30,29 @@ router.patch("/", async (req, res) => {
       }
 
       try {
-            const user = await User.findOne({ email });
+            const user = await client.user.findUnique({
+                  where: {
+                        email: email
+                  }
+            });
 
             if (!user) {
                   return res.status(401).json({ message: "User not found" });
             }
+            const updatedUser = await client.user.update({
+                  where: { email: email },
+                  data: {
 
-            user.name = name || user.name;
-            user.standing = standing || user.standing;
-            user.major = major || user.major;
-            user.bio = bio || user.bio;
+                        name: name || user.name,
+                        standing: standing || user.standing,
+                        major: major || user.major,
+                        bio: bio || user.bio
+                  }
+            })
 
-            await user.save();
-            
-            const { password, ...userWithoutPassword } = user.toObject();
+
+
+            const { password, ...userWithoutPassword } = updatedUser;
 
             return res.status(200).json({ message: "Profile Updated", userWithoutPassword });
 

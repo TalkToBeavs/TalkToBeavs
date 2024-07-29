@@ -20,15 +20,11 @@ export const loadPosts = createAsyncThunk('feed/loadPosts', async () => {
 
 export const createPost = createAsyncThunk('feed/createPost', async (post, { rejectWithValue }) => {
   try {
-    const response = await axios.post(
-      `${BASE_URL}/api/feed/create_post`,
-      post,
-      {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem('token')}`,
-        },
+    const response = await axios.post(`${BASE_URL}/api/feed/create_post`, post, {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('token')}`,
       },
-    );
+    });
     return response.data.post;
   } catch (err) {
     return rejectWithValue(err.response.data);

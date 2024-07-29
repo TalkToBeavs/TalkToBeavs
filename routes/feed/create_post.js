@@ -1,9 +1,11 @@
 import { Router } from 'express'
 import joi from 'joi'
-import Post from '../../models/Feed/Post.js'
-import Feed from '../../models/Feed/Feed.js'
-import User from '../../models/User/User.js'
+// import Post from '../../models/Feed/Post.js'
+// import Feed from '../../models/Feed/Feed.js'
+// import User from '../../models/User/User.js'
 import { FEED_ID } from '../../index.js'
+import client from "../../models/prisma/prisma.js"
+
 
 const router = Router()
 
@@ -27,29 +29,26 @@ router.post('/', async (req, res) => {
     }
 
     try {
-        const user = await User.findOne({ email: postedBy })
+        const user = await client.user.findUnique({ 
+            where:{
+                email: postedBy
+     }
+     })
 
         if (!user) {
             return res.status(400).json({ error: 'User not found' })
         }
 
-        const post = new Post({
-            content,
-            postedBy: user.email,
+        const post = await client.post.create({
+            data:{
+                postedBy: { connect: { email: user.email } },
+                Feed: { connect: { id: FEED_ID } }
+        },
+        include: {
+            postedBy: true,
+            Feed: true
+        }
         })
-
-        await post.save()
-
-        user.posts.push(post)
-
-        await user.save()
-
-        const feed = await Feed.findOne({ _id: FEED_ID })
-
-        feed.posts.push(post)
-
-        await feed.save()
-
         return res.status(200).json({ message: 'Post created', post })
     } catch (err) {
         return res.status(500).json({ error: err.message })

@@ -40,8 +40,9 @@ function Signup() {
     };
     e.preventDefault();
     setIsLoading(true);
-
+    console.log('hey 0');
     if (name === '' || email === '' || password === '') {
+      console.log('hey ');
       setTimeout(() => {
         setIsLoading(false);
         setError('Please fill in all fields');
@@ -70,6 +71,7 @@ function Signup() {
         }, 1000);
       }
     } catch (err) {
+      console.log('error');
       console.error(err.response.data.message);
       setIsLoading(false);
       if (err.response.data.message === 'User already exists') {

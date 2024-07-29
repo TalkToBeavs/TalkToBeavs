@@ -10,14 +10,11 @@ function useProfile({ onid }) {
   useEffect(() => {
     const fetchProfile = async () => {
       try {
-        const response = await axios.get(
-          `${BASE_URL}/api/social/get_profile?onid=${onid}`,
-          {
-            headers: {
-              Authorization: `Bearer ${localStorage.getItem('token')}`,
-            },
+        const response = await axios.get(`${BASE_URL}/api/social/get_profile?onid=${onid}`, {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem('token')}`,
           },
-        );
+        });
         setProfile(response.data.user);
       } catch (err) {
         setProfile(null);

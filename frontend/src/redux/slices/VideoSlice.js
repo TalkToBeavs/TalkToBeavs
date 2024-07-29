@@ -11,8 +11,7 @@ export const videoSlice = createSlice({
   name: 'video',
   initialState,
   reducers: {
-    setVideo: (state, action) => {
-      
+    setVideo: (state, action) => {},
   },
 });
 
