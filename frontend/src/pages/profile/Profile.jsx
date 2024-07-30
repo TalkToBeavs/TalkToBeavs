@@ -1,15 +1,16 @@
-import { Avatar, Box, Text, Divider, Flex, Heading } from '@chakra-ui/react';
-import { useEffect } from 'react';
+import { Avatar, Box, Divider, Flex, Heading, Text, useDisclosure } from '@chakra-ui/react';
+import { motion } from 'framer-motion';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import ProfilePostList from '../../components/card/ProfilePostList';
 import FollowButton from '../../components/custom/FollowButton';
+import ReportPostModal from '../../components/custom/ReportPostModal';
+import ReportProfileModal from '../../components/custom/ReportProfileModal';
 import FollowStats from '../../components/text/FollowStats';
-import usePosts from '../../hooks/usePosts';
 import useProfile from '../../hooks/useProfile';
-import { loadPosts, selectAllPosts } from '../../redux/slices/FeedSlice';
-import { motion } from 'framer-motion';
 import { fadeInAnimation } from '../../lib/animations';
+import { loadPosts, selectAllPosts } from '../../redux/slices/FeedSlice';
 
 export default function Profile() {
   const { onid } = useParams();
@@ -18,7 +19,22 @@ export default function Profile() {
   const profile = useProfile({ onid });
   const allPosts = useSelector(selectAllPosts)?.filter(
     (post) => post.postedBy.split('@')[0].toString() === onid.toString(),
-  ) 
+  );
+
+  const {
+    isOpen: reportPostIsOpen,
+    onOpen: reportPostOnOpen,
+    onClose: reportPostOnClose,
+  } = useDisclosure();
+  const {
+    isOpen: reportUserIsOpen,
+    onOpen: reportUserOnOpen,
+    onClose: reportUserOnClose,
+  } = useDisclosure();
+
+  const [reportedPost, setReportedPost] = useState(null);
+  const [reportedUser, setReportedUser] = useState(null);
+
   useEffect(() => {
     document.querySelector('title').innerHTML = `${onid}'s Profile`;
 
@@ -31,9 +47,61 @@ export default function Profile() {
     dispatch(loadPosts());
   }, [dispatch]);
 
+  const handleReportPostOpening = (post) => {
+    setReportedPost(post);
+    reportPostOnOpen();
+  };
+
+  const handleReportUserOpening = (user) => {
+    setReportedUser(user);
+    reportUserOnOpen();
+  };
+
+  const handleValidPostReport = (reportReason, post) => {
+    console.log(post);
+    console.log(reportReason);
+    //Todo: Add report to database
+
+    //Display Toast for successful report
+    toast({
+      title: 'Report Submitted.',
+      description: `Post by ${post.postedBy.split('@')[0]} has been reported.`,
+      status: 'success',
+      duration: 9000,
+      isClosable: true,
+    });
+  };
+
+  const handleValidUserReport = (reportReason, user) => {
+    console.log(user);
+    console.log(reportReason);
+    //Todo: Add report to database
+
+    //Display Toast for successful report
+    toast({
+      title: 'Report Submitted.',
+      description: `User has been reported.`,
+      status: 'success',
+      duration: 9000,
+      isClosable: true,
+    });
+  };
+
   return (
     profile && (
       <>
+        <ReportPostModal
+          isOpen={reportPostIsOpen}
+          onClose={reportPostOnClose}
+          onSubmit={handleValidPostReport}
+          post={reportedPost}
+        />
+        <ReportProfileModal
+          isOpen={reportUserIsOpen}
+          onClose={reportUserOnClose}
+          onSubmit={handleValidUserReport}
+          user={reportedUser}
+        />
         <Box w='100%' h='100%' py={8}>
           <Flex
             direction='column'
@@ -45,7 +113,7 @@ export default function Profile() {
             animation={fadeInAnimation}
           >
             <Avatar size='2xl' name={profile.name} src={profile.avatarImg} mb={4} />
-            <FollowButton user={profile} />
+            <FollowButton user={profile} handleReportUserOpening={handleReportUserOpening} />
             <Heading as='h1' size='2xl' mb={4}>
               {profile.name.charAt(0).toUpperCase() + profile.name.slice(1)}
             </Heading>
@@ -89,7 +157,7 @@ export default function Profile() {
               <Divider mt={2} />
             </Heading>
 
-            <ProfilePostList posts={allPosts} />
+            <ProfilePostList posts={allPosts} handleReportOpening={handleReportPostOpening} />
           </Flex>
         </Box>
       </>
