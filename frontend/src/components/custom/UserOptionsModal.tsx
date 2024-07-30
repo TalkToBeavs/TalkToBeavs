@@ -1,5 +1,10 @@
+import { ChevronDownIcon, ChevronUpIcon } from '@chakra-ui/icons';
 import {
   Button,
+  Menu,
+  MenuButton,
+  MenuItem,
+  MenuList,
   Modal,
   ModalBody,
   ModalContent,
@@ -8,7 +13,7 @@ import {
   ModalOverlay,
   Text,
 } from '@chakra-ui/react';
-import React from 'react';
+import React, { useState } from 'react';
 
 interface UserOptionsModalProps {
   isOpen: boolean;
@@ -118,9 +123,19 @@ const reports: Report[] = [
 ];
 
 const UserOptionsModal: React.FC<UserOptionsModalProps> = ({ isOpen, onClose, user }) => {
+  const [suspensionMenuOpen, setSuspensionMenuOpen] = useState(false);
+
+  const suspensionOptions = [
+    { label: '1 Day', value: 1 },
+    { label: '3 Days', value: 3 },
+    { label: '1 Week', value: 7 },
+    { label: '1 Month', value: 30 },
+  ];
+
   const handleSuspend = () => {
     // Logic to suspend the user
     console.log('User suspended');
+    setSuspensionMenuOpen(false);
     onClose();
   };
 
@@ -148,7 +163,12 @@ const UserOptionsModal: React.FC<UserOptionsModalProps> = ({ isOpen, onClose, us
   };
 
   return (
-    <Modal isOpen={isOpen} onClose={onClose}>
+    <Modal
+      isOpen={isOpen}
+      onClose={() => {
+        onClose(), setSuspensionMenuOpen(false);
+      }}
+    >
       <ModalOverlay />
       <ModalContent>
         <ModalHeader>User Management Options</ModalHeader>
@@ -161,9 +181,31 @@ const UserOptionsModal: React.FC<UserOptionsModalProps> = ({ isOpen, onClose, us
           )}
         </ModalBody>
         <ModalFooter>
-          <Button colorScheme='blue' mr={3} onClick={handleSuspend}>
-            Suspend
-          </Button>
+          <Menu>
+            <MenuButton
+              as={Button}
+              rightIcon={suspensionMenuOpen ? <ChevronUpIcon /> : <ChevronDownIcon />}
+              colorScheme='blue'
+              mr={3}
+              onClick={() => {
+                setSuspensionMenuOpen(!suspensionMenuOpen);
+              }}
+            >
+              Suspend
+            </MenuButton>
+            <MenuList>
+              {suspensionOptions.map((option) => (
+                <MenuItem
+                  key={option.value}
+                  onClick={() => {
+                    handleSuspend(option.value);
+                  }}
+                >
+                  {option.label}
+                </MenuItem>
+              ))}
+            </MenuList>
+          </Menu>
           <Button colorScheme='red' mr={3} onClick={handleBan}>
             Ban
           </Button>
