@@ -140,17 +140,21 @@ const Reports: React.FC = () => {
               <Text mt='4' fontWeight='semibold'>
                 Reported by: {getReportedByUsername(selectedReport.userReportingId)}
               </Text>
-              <HStack spacing='4' mt='6'>
-                {selectedReport.type === 'Post' ? (
-                  <Button colorScheme='red'>Delete Post</Button>
-                ) : null}
-                <Button colorScheme='orange' onClick={userOnOpen}>
+              <Flex mt='6' flexWrap='wrap' justifyContent='center'>
+                {selectedReport.type == 'Post' ? (
+                  <Button colorScheme='red' m='1'>
+                    Delete Post
+                  </Button>
+                ) : (
+                  <></>
+                )}
+                <Button colorScheme='orange' m='1' onClick={() => userOnOpen()}>
                   User Options
                 </Button>
-                <Button colorScheme='green' onClick={userOnOpen}>
+                <Button colorScheme='green' m='1'>
                   Ignore
                 </Button>
-              </HStack>
+              </Flex>
             </>
           ) : (
             <Text>Select a report to see the details</Text>
@@ -228,19 +232,21 @@ const Reports: React.FC = () => {
             <Text mt='4' fontWeight='semibold'>
               Reported by: {getReportedByUsername(selectedReport.userReportingId)}
             </Text>
-            <HStack spacing='4' mt='6'>
+            <Flex mt='6' flexWrap='wrap'>
               {selectedReport.type == 'Post' ? (
-                <Button colorScheme='red'>Delete Post</Button>
+                <Button colorScheme='red' m='1'>
+                  Delete Post
+                </Button>
               ) : (
                 <></>
               )}
-              <Button colorScheme='orange' onClick={() => userOnOpen()}>
+              <Button colorScheme='orange' m='1' onClick={() => userOnOpen()}>
                 User Options
               </Button>
-              <Button colorScheme='green' onClick={() => userOnOpen()}>
+              <Button colorScheme='green' m='1'>
                 Ignore
               </Button>
-            </HStack>
+            </Flex>
           </>
         ) : (
           <Text>Select a report to see the details</Text>
