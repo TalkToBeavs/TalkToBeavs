@@ -1,12 +1,23 @@
 import { AddIcon, CheckIcon } from '@chakra-ui/icons';
-import { Box, Button, Flex, IconButton, Spinner, Text } from '@chakra-ui/react';
+import {
+  Box,
+  Button,
+  Flex,
+  IconButton,
+  Menu,
+  MenuButton,
+  MenuItem,
+  MenuList,
+  Spinner,
+  Text,
+} from '@chakra-ui/react';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { followUser, selectIsFollowing, selectUser } from '../../redux/slices/UserSlice';
 
 // Current user can follow/unfollow the props.user
-export default function FollowButton({ user }) {
+export default function FollowButton({ user, handleReportUserOpening }) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const loggedInUser = useSelector(selectUser);
@@ -95,6 +106,21 @@ export default function FollowButton({ user }) {
               )
             }
           ></IconButton>
+          <Menu>
+            <MenuButton as={Button} m={1} onClick={() => {}}>
+              ...
+            </MenuButton>
+            <MenuList>
+              <MenuItem
+                onClick={() => {
+                  console.log('Report clicked');
+                  handleReportUserOpening(user);
+                }}
+              >
+                Report
+              </MenuItem>
+            </MenuList>
+          </Menu>
         </Box>
       </Flex>
     )

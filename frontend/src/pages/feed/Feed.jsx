@@ -8,17 +8,23 @@ import {
   useColorModeValue,
   useDisclosure,
   useMediaQuery,
+  useToast,
 } from '@chakra-ui/react';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Post from '../../components/card/Post';
 import CreatePostModal from '../../components/custom/CreatePostModal';
+import ReportPostModal from "../../components/custom/ReportPostModal";
 import { createPost, loadPosts, selectAllPosts } from '../../redux/slices/FeedSlice';
 
 function Feed() {
   const [isMobile] = useMediaQuery('(max-width: 768px)');
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const { isOpen: reportIsOpen, onOpen: reportOnOpen, onClose: reportOnClose } = useDisclosure();
 
+  const [reportedPost, setReportedPost] = useState(null)
+
+  const toast = useToast()
   const dispatch = useDispatch();
   const allPosts = useSelector(selectAllPosts);
 
@@ -29,6 +35,26 @@ function Feed() {
   const handleValidPost = (post) => {
     dispatch(createPost(post));
   };
+
+  const handleReportOpening = (post) => {
+    setReportedPost(post)
+    reportOnOpen()
+  }
+
+  const handleValidReport = (reportReason, post) =>{
+    console.log(post)
+    console.log(reportReason)
+    //Todo: Add report to database
+
+    //Display Toast for successful report
+    toast({
+      title: 'Report Submitted.',
+      description: `Post by ${post.postedBy.split('@')[0]} has been reported.`,
+      status: 'success',
+      duration: 9000,
+      isClosable: true,
+    })
+  }
 
   return (
     
@@ -59,6 +85,7 @@ function Feed() {
               mt={4}
             />
             <CreatePostModal isOpen={isOpen} onClose={onClose} handleValidPost={handleValidPost} />
+            <ReportPostModal isOpen={reportIsOpen} onClose={reportOnClose} onSubmit={handleValidReport} post={reportedPost}/>
           </Box>
 
           <Text
@@ -92,7 +119,7 @@ function Feed() {
           mt={4}
         >
           {allPosts?.map((post, i) => (
-            <Post key={i} post={post} />
+            <Post key={i} post={post} handleReportOpening={handleReportOpening} />
           ))}
         </Box>
       </Flex>
