@@ -42,7 +42,7 @@ const LinkItems = [
 
 function SidebarWithHeader({ children }) {
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const [isMobile] = useMediaQuery('(max-width: 768px)');
+  const [isMobile] = useMediaQuery('(max-width: 767px)');
 
   const dispatch = useDispatch();
   const location = useLocation();
