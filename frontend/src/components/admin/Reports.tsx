@@ -210,10 +210,13 @@ const Reports: React.FC = () => {
       <Box flex='1' p='4'>
         {selectedReport ? (
           <>
-            <Text fontSize='2xl' fontWeight='bold'>
-              {selectedReport.title}
+            <Text fontSize='2xl' fontWeight='bold' borderBottom='1px' mb='2'>
+              {selectedReport.id}. {selectedReport.title}
             </Text>
-            <Text mt='4'>{selectedReport.reasoning}</Text>
+            <Text fontSize='lg' fontWeight='bold'>User Reported:</Text>
+            <Text mb='1'>{getReportedByUsername(selectedReport.userReportedId)}</Text>
+            <Text fontSize='lg' fontWeight='bold'>Reason for Report:</Text>
+            <Text mb='1'>{selectedReport.reasoning}</Text>
             {selectedReport.type == 'Post' ? (
               <>
                 <Text fontSize='xl' fontWeight='bold'>
